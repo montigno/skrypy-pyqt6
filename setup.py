@@ -90,7 +90,7 @@ def install_linux(pyth, base_dir):
 
     fp = open(src_bash)
 
-    os.system("echo '\n#skrypy {}' >> ~/.bashrc".format(pyth))
+    os.system("echo '\n#skrypy {}' >> ~/.bashrc".format("pyqt6"))
     os.system("echo 'cmd_sk{}=\"source ".format(ext_py) + os.path.join(base_dir, "bin", "activate") +
               "; cd " + os.path.join(base_dir, "skrypy-pyqt6") +
               "; " + pyth + " main.py; deactivate\"' >> ~/.bashrc")
