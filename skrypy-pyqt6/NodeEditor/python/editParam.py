@@ -21,8 +21,7 @@ class editParam(QDialog):
 
         self.inout = inout
         self.setWindowTitle('Input parameters')
-        self.setWindowFlags(self.windowFlags() &
-                            Qt.WindowType.WindowCloseButtonHint)
+        self.setWindowFlags(self.windowFlags() & Qt.WindowType.WindowCloseButtonHint)
         self.setMinimumWidth(280)
 
         nIn = len(inout[0])
@@ -71,9 +70,7 @@ class editParam(QDialog):
         for i in range(len(inout[0])):
             hbox3 = QHBoxLayout()
             label = QLabel(inout[0][i])
-            if ('enumerate' not in self.listField[inout[0][i]] and
-                self.listField[inout[0][i]] != 'bool') or (
-                    'Node(' in str(inout[1][i])):
+            if ('enumerate' not in self.listField[inout[0][i]] and self.listField[inout[0][i]] != 'bool') or ('Node(' in str(inout[1][i])):
                 lab = QLineEdit()
                 lab.setText(str(inout[1][i]))
                 lab.setFont(font)
@@ -163,28 +160,21 @@ class editParam(QDialog):
                     if not tmpd:
                         self.info.setText("<span style=\" \
                                             font-size:10pt; \
-                                            color:#cc0000;\" > error :"
-                                          + self.label[index] +
-                                          " must be not empty </span>")
+                                            color:#cc0000;\" > error :" + self.label[index] + " must be not empty </span>")
                         return
                 if 'array' in self.listField[self.label[index]]:
                     if not tmpd[0]:
                         self.info.setText("<span style=\" \
                                             font-size:10pt; \
-                                            color:#cc0000;\" > error :"
-                                          + self.label[index] +
-                                          " must be not empty </span>")
+                                            color:#cc0000;\" > error :" + self.label[index] + " must be not empty </span>")
                         return
                 ############################################################################################
 
-                if (self.listField[self.label[index]] == 'path' and
-                        tmpd not in 'path'):
+                if self.listField[self.label[index]] == 'path' and tmpd not in 'path':
                     if not os.path.exists(tmpd):
                         self.info.setText("<span style=\" \
                                             font-size:10pt; \
-                                            color:#cc0000;\" > error :"
-                                          + self.label[index] +
-                                          " does't seems exist </span>")
+                                            color:#cc0000;\" > error :" + self.label[index] + " does't seems exist </span>")
                         return
                     else:
                         self.listVal.append(tmpd)
@@ -192,14 +182,10 @@ class editParam(QDialog):
                 elif self.listField[self.label[index]] == 'str':
                     self.listVal.append(str(tmpd))
 
-                elif (DefinitType(tmpd).returntype() !=
-                        self.listField[self.label[index]]):
+                elif DefinitType(tmpd).returntype() != self.listField[self.label[index]]:
                     self.info.setText("<span style=\" \
                                         font-size:10pt; \
-                                        color:#cc0000;\" > error : "
-                                      + self.label[index] + " must be "
-                                      + self.listField[self.label[index]]
-                                      + "</span>")
+                                        color:#cc0000;\" > error : " + self.label[index] + " must be " + self.listField[self.label[index]] + "</span>")
                     return
                 else:
                     self.listVal.append(tmpd)

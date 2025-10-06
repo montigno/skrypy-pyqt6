@@ -17,7 +17,7 @@ class seeCode(QDialog):
     def __init__(self, category, nameClass, parent=None):
         super(seeCode, self).__init__(parent)
 
-        imp = importlib.import_module('NodeEditor.modules.'+category)
+        imp = importlib.import_module('NodeEditor.modules.' + category)
         importlib.reload(imp)
         MyClass = getattr(imp, nameClass)
 
@@ -45,7 +45,7 @@ class seeCode(QDialog):
 class getDocString():
     def __init__(self, category, nameClass, parent=None):
         self.src = ''
-        modul = 'NodeEditor.modules.'+category
+        modul = 'NodeEditor.modules.' + category
         imp = importlib.import_module(modul)
         importlib.reload(imp)
         try:

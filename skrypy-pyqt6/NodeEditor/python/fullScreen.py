@@ -14,8 +14,7 @@ class SubWindow(QDialog):
         self.diagram_view = QGraphicsView()
         self.diagram_view.setBackgroundBrush(QColor(30, 30, 30, 255))
         self.diagram_view.setMouseTracking(True)
-        self.diagram_view.setRenderHints(QPainter.RenderHint.Antialiasing |
-                                         QPainter.RenderHint.SmoothPixmapTransform)
+        self.diagram_view.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
         self.diagram_scene.setSceneRect(self.diagram_scene.itemsBoundingRect())
         self.diagram_view.centerOn(0, 0)
         self.diagram_view\

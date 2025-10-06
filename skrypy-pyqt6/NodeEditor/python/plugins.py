@@ -16,8 +16,7 @@ class Plugin():
             for file in files:
                 (name, ext) = os.path.splitext(file)
                 if ext == ".py" and name != '__init__':
-                    filePy = 'Plugins' + '.' + \
-                         str(name)
+                    filePy = 'Plugins' + '.' + str(name)
                     imp = importlib.import_module(filePy)
                     importlib.reload(imp)
                     for nameClass, obj in inspect.getmembers(imp):

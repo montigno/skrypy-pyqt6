@@ -58,9 +58,7 @@ class setLimits(QDialog):
                 self.info.setText("<span style=\" \
                                   font-size:10pt; \
                                   color:#cc0000;\" > error : \
-                                  values must be "
-                                  + self.format
-                                  + "</span>")
+                                  values must be " + self.format + "</span>")
                 return
         self.close()
         self.answer = 'ok'

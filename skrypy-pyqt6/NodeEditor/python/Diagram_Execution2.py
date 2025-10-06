@@ -177,7 +177,7 @@ class execution2(QObject):
                 # progress.setLabelText('['+' , '.join(listInThread)+'] running')
                 # progress.setValue(i)
                 if progressBar:
-                    self.update_progress.emit(int(i), '['+' , '.join(listInThread)+'] running')
+                    self.update_progress.emit(int(i), '[' + ' , '.join(listInThread) + '] running')
                     i += 100 / n
                 [thread.start() for thread in threads]
                 [listDynamicValue.update(thread.join()) for thread in threads]
@@ -294,7 +294,7 @@ class execution2(QObject):
                         #     pass
                 args = dict(zip(enters_name, enters_val))
                 path_submod = os.path.dirname(os.path.realpath(__file__))
-                module = os.path.join(path_submod, '..', 'submodules',  listModul[execution][1], listModul[execution][0] + '.mod')
+                module = os.path.join(path_submod, '..', 'submodules', listModul[execution][1], listModul[execution][0] + '.mod')
                 f = open(module, 'r')
                 txt = f.read()
                 f.close()
@@ -411,7 +411,7 @@ class execution2(QObject):
                             process[-1].daemon = True
                             process[-1].start()
                             with open(os.path.join(os.path.expanduser('~'), '.skrypy', 'list_process.tmp'), 'a') as f:
-                                f.write('{}{}{}\n'.format(process[-1].pid, ' '*10, process_name))
+                                f.write('{}{}{}\n'.format(process[-1].pid, ' ' * 10, process_name))
                         if '*' in execution:
                             for p in process:
                                 try:
@@ -456,7 +456,7 @@ class execution2(QObject):
                         for ele in lengthEnter:
                             for keyDyn, valDyn in Dyn_Enters.items():
                                 listDynamicValueSub[keyDyn] = valDyn[ele]
-                            loop_threads.append(threading.Thread(target=self.go_execution, args=(txt+diagram, listDynamicValueSub.copy(), textEditor, False, '', None)))
+                            loop_threads.append(threading.Thread(target=self.go_execution, args=(txt + diagram, listDynamicValueSub.copy(), textEditor, False, '', None)))
                             loop_threads[-1].start()
                         if '*' in execution:
                             [thread.join() for thread in loop_threads]
@@ -622,7 +622,7 @@ class executionScript:
                 setattr(current_module, az[0], listDynamicValue[az[1]])
             else:
                 setattr(current_module, az[0], eval(az[1]))
-        code += textScript+'\n'
+        code += textScript + '\n'
         for lst in outputsList:
             az = lst.split(':')
             # code = az[1] + '=None\n' + code
@@ -680,7 +680,7 @@ class executionMacro:
             else:
                 code += lst
             code += ';\n'
-        code += textScript+'\n'
+        code += textScript + '\n'
         self.listDynamicValueToReturn[outputsList[0]] = '""' + code + '""'
 
     def getOutValues(self):

@@ -16,8 +16,7 @@ class changeTitle(QDialog):
     def __init__(self, nameBlock, unit, parent=None):
         super(changeTitle, self).__init__(parent)
         self.setWindowTitle('Title change')
-        self.setWindowFlags(self.windowFlags() &
-                            Qt.WindowType.WindowCloseButtonHint)
+        self.setWindowFlags(self.windowFlags() & Qt.WindowType.WindowCloseButtonHint)
         self.adjustSize()
 
         self.vbox = QVBoxLayout(self)

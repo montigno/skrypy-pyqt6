@@ -65,8 +65,7 @@ class Console(QPlainTextEdit):
 
         self.setReadOnly(True)
         self.setMaximumBlockCount(10000)  # limit console to 10000 lines
-        self.setStyleSheet(
-                        """QPlainTextEdit {background-color: #333;
+        self.setStyleSheet("""QPlainTextEdit {background-color: #333;
                            color: #00FF00;
                            font-family: Courier;}""")
         self.setMinimumSize(600, 800)

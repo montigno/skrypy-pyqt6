@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QPlainTextEdit, \
-                            QVBoxLayout, QDialog
+    QVBoxLayout, QDialog
 import sys
 
 

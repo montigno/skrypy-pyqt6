@@ -27,7 +27,7 @@ class multiple_execution_altern(QDialog):
         list_clust = ['local']
         list_clust.extend(self.get_clusters_list())
         for i, lst in enumerate(listDiagram):
-            lab = QLabel('Diagram '+str(i))
+            lab = QLabel('Diagram ' + str(i))
             comb = QComboBox(self)
             comb.addItems(listDiagram)
             comb.addItem('None')

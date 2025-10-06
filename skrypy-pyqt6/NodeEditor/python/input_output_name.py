@@ -64,16 +64,12 @@ class input_output_setName(QDialog):
         if not self.portName.text():
             self.info.setText("<span style=\" \
                               font-size:10pt; \
-                              color:#cc0000;\" > error : name "
-                              + self.typeport
-                              + " port  is empty </span>")
+                              color:#cc0000;\" > error : name " + self.typeport + " port  is empty </span>")
             return
         if self.portName.text() in self.listPorts and self.portName.text() != self.defaultName:
             self.info.setText("<span style=\" \
                               font-size:10pt; \
-                              color:#cc0000;\" > error : name "
-                              + self.typeport
-                              + " is already taken ! </span>")
+                              color:#cc0000;\" > error : name " + self.typeport + " is already taken ! </span>")
             return
         self.newName = self.portName.text()
         self.close()

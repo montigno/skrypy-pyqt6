@@ -17,8 +17,7 @@ class editParamLoopFor(QDialog):
     def __init__(self, nameBlock, unit, parent=None):
         super(editParamLoopFor, self).__init__(parent)
         self.setWindowTitle('Parameters Loop For')
-        self.setWindowFlags(self.windowFlags() &
-                            Qt.WindowType.WindowCloseButtonHint)
+        self.setWindowFlags(self.windowFlags() & Qt.WindowType.WindowCloseButtonHint)
         self.adjustSize()
         checkedTo = False
         if '*' in unit:

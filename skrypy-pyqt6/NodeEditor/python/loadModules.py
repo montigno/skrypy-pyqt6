@@ -53,8 +53,7 @@ class getlistModules:
                             src = inspect.getsource(obj)
                             for lb in self.objectsInModul:
                                 if lb:
-                                    if ('NodeEditor' not in lb and
-                                            'PyQt6' not in lb):
+                                    if ('NodeEditor' not in lb and 'PyQt6' not in lb):
                                         try:
                                             lb = lb[0:lb.index(".")]
                                         except Exception as e:
@@ -86,15 +85,13 @@ class getlistModules:
                                 listFunction = []
                                 listTypeOut = []
                                 for listF in listFunctionFound:
-                                    if (listF[0] != '__init__' and
-                                            str(listF[0])[0] != '_'):
+                                    if (listF[0] != '__init__' and str(listF[0])[0] != '_'):
                                         try:
                                             a = listF[1].__annotations__['self']
                                             listTypeOut.append(a)
                                             listFunction.append(listF[0])
                                         except Exception as e:
-                                            print(listF[1]
-                                                  + 'has not annotation')
+                                            print(listF[1] + 'has not annotation')
 
                                 # to put list out in order
                                 k = len(listFunction)
@@ -115,9 +112,7 @@ class getlistModules:
     def findClassOrder(self, txtClass):
         list = []
         for line in txtClass.splitlines():
-            if ('def ' in line and
-                    'def __init__' not in line and
-                    'def _' not in line):
+            if 'def ' in line and 'def __init__' not in line and 'def _' not in line:
                 list.append(line[line.index('def ') + 4:line.index('(self')])
 #         list.sort()
         return list

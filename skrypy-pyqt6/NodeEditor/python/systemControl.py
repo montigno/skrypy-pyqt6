@@ -1,8 +1,7 @@
 import GPUtil
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
-from PyQt6.QtWidgets import QApplication, QWidget, QPlainTextEdit, \
-                            QVBoxLayout, QDialog, QHBoxLayout, QPushButton, \
-                            QCheckBox, QTextEdit
+from PyQt6.QtWidgets import QApplication, QWidget, QPlainTextEdit, QVBoxLayout, QDialog, \
+    QHBoxLayout, QPushButton, QCheckBox, QTextEdit
 from PyQt6.QtGui import QFont
 
 import os
@@ -87,7 +86,7 @@ class controlSys(QDialog):
         txt = fp.read()
         try:
             txt = txt[txt.index('cmd_sk'):]
-            self.txt = txt[txt.index('source'): txt.index('\n')-1]
+            self.txt = txt[txt.index('source'): txt.index('\n') - 1]
             os.system(self.txt)
         except Exception as err:
             print('restart error : ', err)

@@ -52,15 +52,15 @@ class ForLoopInfo:
         self.listModulExecution = {}
 
         for ls in self.listModul.keys():
-            tmp = txtfull[txtfull.index('[submod '+ls):len(txtfull)]
+            tmp = txtfull[txtfull.index('[submod ' + ls):len(txtfull)]
             tmp1 = ''
             for i, ln in enumerate(tmp.splitlines()):
                 if i < 7:
-                    tmp1 += ln+'\n'
+                    tmp1 += ln + '\n'
                 elif i > 6:
                     break
             # self.listModulExecution[ls]=tmp1
-            self.txt += '\n'+tmp1
+            self.txt += '\n' + tmp1
 
         # print('self.txt in ForLoopInfo',self.txt)
 

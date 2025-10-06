@@ -26,10 +26,9 @@ class manage_pck(QDialog):
         self.b = QPlainTextEdit()
         fixed_font = QFont("monospace")
         fixed_font.setStyleHint(QFont.StyleHint.TypeWriter)
-        self.b.setStyleSheet(
-                        """QPlainTextEdit {background-color: #333;
-                           color: #00FF00;
-                           font-family: Courier;}""")
+        self.b.setStyleSheet("""QPlainTextEdit {background-color: #333;
+                             color: #00FF00;
+                             font-family: Courier;}""")
         self.b.setReadOnly(True)
         self.b.setMinimumSize(600, 500)
         self.b.setFont(fixed_font)

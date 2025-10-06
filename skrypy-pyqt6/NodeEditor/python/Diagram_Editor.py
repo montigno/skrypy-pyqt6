@@ -6444,7 +6444,7 @@ class NodeEdit(QWidget):
         found = False
         while not found:
             newName = "Diagram{}*".format(str(count))
-            if newName not in listTitle and (newName+"*") not in listTitle:
+            if newName not in listTitle and (newName + "*") not in listTitle:
                 found = True
             else:
                 count += 1
@@ -8336,7 +8336,8 @@ class SaveDiagram(QTextEdit):
             elif type(item) is ScriptItem:
                 listCodeScript[item.unit] = item.elemProxy.toPlainText()
                 rect = item.rect()
-                self.append('script=[' + str(item.unit) +
+                self.append('script=[' +
+                            str(item.unit) +
                             '] title=[' + item.name +
                             '] inputs=' + str(editor.libTools
                                               [editor.currentTab]
@@ -8344,11 +8345,11 @@ class SaveDiagram(QTextEdit):
                             ' outputs=' + str(editor.libTools
                                               [editor.currentTab]
                                               [item.unit][1]) +
-                            ' code=[' + "your code" +
-                            '] RectF=[' + str((coord.x(),
-                                               coord.y(),
-                                               rect.width(),
-                                               rect.height())) +
+                            ' code=[' + "your code" + '] RectF=[' +
+                            str((coord.x(),
+                                 coord.y(),
+                                 rect.width(),
+                                 rect.height())) +
                             ']')
             elif type(item) is StopExecution:
                 # rect = item.rect()
@@ -8442,11 +8443,11 @@ class ScriptItem(QGraphicsRectItem):
 
             # def __init__(self):
             #     super(TextEditPy, self).__init__(parent)
-                # self.setTextInteractionFlags(Qt.TextInteractionFlag.NoTextInteraction)
+            #     self.setTextInteractionFlags(Qt.TextInteractionFlag.NoTextInteraction)
 
             def keyPressEvent(self, event):
                 if event.key() == (Qt.Key.Key_Tab):
-                    self.insertPlainText(' '*4)
+                    self.insertPlainText(' ' * 4)
                     return
                 super(TextEditPy, self).keyPressEvent(event)
 
@@ -8721,7 +8722,7 @@ class ScriptItem(QGraphicsRectItem):
             if type(elem) is LinkItem:
                 a = editor.listNodes[editor.currentTab][elem.name]
                 if typeio == 'in':
-                    b = a[a.index("#Node#")+6:]
+                    b = a[a.index("#Node#") + 6:]
                 else:
                     b = a[0:a.index("#Node#")]
                 if (self.unit + ':' + name) == b:
@@ -8928,7 +8929,7 @@ class ShowLegend:
                 if types.name != 'float':
                     txtLab = types.name
                 else:
-                    txtLab = types.name+', ndarray or tensor'
+                    txtLab = types.name + ', ndarray or tensor'
 
                 textRow = QGraphicsTextItem(txtLab, parent=None)
                 textRow.setDefaultTextColor(QColor(color))
@@ -9124,7 +9125,7 @@ class ssh_diagram_execution():
 
         if 'gricad' in self.cluster:
             with open(path_ssh_cmd_file, 'w') as fssh:
-                fssh.write(pre_exec+"\n")
+                fssh.write(pre_exec + "\n")
                 fssh.write("cd {}\n".format(host_skrypy_path))
                 fssh.write("source /applis/site/guix-start.sh\n")
                 fssh.write("python3 Execution_ssh.py {} {} {} {} {} {}\n".format(host_path, diagram, n_cpu, self.mode, opx, self.cluster))
@@ -9134,7 +9135,7 @@ class ssh_diagram_execution():
                 fssh.write("exit\n")
         else:
             with open(path_ssh_cmd_file, 'w') as fssh:
-                fssh.write(pre_exec+"\n")
+                fssh.write(pre_exec + "\n")
                 fssh.write("cd {}\n".format(host_skrypy_path))
                 fssh.write("source bin/activate\n")
                 fssh.write("cd skrypy\n")
@@ -9252,9 +9253,12 @@ class SubWindowManager(QMdiSubWindow):
                 QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel
             )
             if reply == QMessageBox.StandardButton.Yes:
-                editor.menub.btnPressed(QAction('Save Diagram'))
-                self.signal1.emit(self)
-                event.accept()
+                answ = editor.menub.btnPressed(QAction('Save Diagram'))
+                if answ == 'yes':
+                    self.signal1.emit(self)
+                    event.accept()
+                else:
+                    event.ignore()
             elif reply == QMessageBox.StandardButton.No:
                 self.signal1.emit(self)
                 event.accept()
@@ -9475,7 +9479,7 @@ class ThreadDiagram(QRunnable):
         self.pipe_exec.update_progress.connect(self.update_progressBar)
         with open(os.path.join(os.path.expanduser('~'), '.skrypy', 'list_process.tmp'), 'w') as f:
             # list_proc = f.readlines()
-            f.write('{}{}{}\n'.format('Process Name', ' '*10, 'ID'))
+            f.write('{}{}{}\n'.format('Process Name', ' ' * 10, 'ID'))
 
     @pyqtSlot()
     def run(self):
@@ -9534,9 +9538,7 @@ class ToolBar(QToolBar):
                             QToolBar::separator {background-color: transparent; width: 10}
                             ''')
         self.setFixedHeight(50)
-        path_relatif = os.path.dirname(os.path.dirname(
-                                        os.path.dirname(
-                                            os.path.abspath(__file__))))
+        path_relatif = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
         list_toolbar_menu = [('New Diagram', 'newDiagram.png', '(Ctrl+N)'), ('Open Diagram', 'open_diagram.png', '(Ctrl+O)'), ('Save Diagram', 'save_diagram.png', '(Ctrl+S)'),
                              ('Save Diagram As...', 'saveAs_diagram.png', ''), ('separator',),
@@ -9558,7 +9560,7 @@ class ToolBar(QToolBar):
             else:
                 pathbkg = os.path.join(path_relatif, 'ressources', list_menu[1])
                 txto = list_menu[0]
-                tools_diagr = QAction(QIcon(pathbkg), txto+' '+list_menu[2], self)
+                tools_diagr = QAction(QIcon(pathbkg), txto + ' ' + list_menu[2], self)
                 tools_diagr.triggered.connect(partial(self.action, txto))
                 self.addAction(tools_diagr)
 
@@ -9919,8 +9921,8 @@ class UpdateList:
             elif line[0:6] == 'script':
                 args = ["script", "title", "inputs", "outputs", "code", "RectF"]
                 unit, tit, inp, outp, code, pos = GetValueInBrackets(line, args).getValues()
-                inp = "["+inp+"]"
-                outp = "["+outp+"]"
+                inp = "[" + inp + "]"
+                outp = "[" + outp + "]"
                 editor.listTools[editor.currentTab][unit] = code
                 editor.libTools[editor.currentTab][unit] = (eval(inp), eval(outp))
             elif line[0:5] == 'probe':
@@ -9960,8 +9962,7 @@ class UpdateUndoRedo:
         currentTitle = editor.getSubWindowCurrentTitle()
         self.titlesavetmp = currentTitle
         try:
-            if (currentTitle[-1] != '*' and  # !!! intermittent bug
-                    len(editor.undoredoTyping[editor.currentTab]) > 1):
+            if (currentTitle[-1] != '*' and len(editor.undoredoTyping[editor.currentTab]) > 1):
                 currentTitle = '{}{}'.format(currentTitle, '*')
                 editor.setSubWindowCurrentTitle(currentTitle)
         except Exception as err:

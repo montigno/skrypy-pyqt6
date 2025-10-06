@@ -277,9 +277,7 @@ class servers_window(QDialog):
             else:
                 self.info.setText("<span style=\" \
                                   font-size:10pt; \
-                                  color:#cc0000;\" > error : "
-                                  + self.name_line.text()
-                                  + " already exists ! </span>")
+                                  color:#cc0000;\" > error : " + self.name_line.text() + " already exists ! </span>")
                 return
 
     def saveas(self):
@@ -350,7 +348,7 @@ class servers_window(QDialog):
         host_name = self.area_name.text()
 
         if '@' in host_name:
-            host_name = host_name[host_name.index('@')+1:]
+            host_name = host_name[host_name.index('@') + 1:]
         else:
             msg = 'the host has not user name'
             msg = self.styleErrorMessage(msg)

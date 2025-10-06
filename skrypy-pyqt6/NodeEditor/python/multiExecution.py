@@ -22,7 +22,7 @@ class multiple_execution(QDialog):
         vbox = QVBoxLayout(self)
         self.zonecombo = []
         for i, lst in enumerate(listDiagram):
-            lab = QLabel('Diagram '+str(i))
+            lab = QLabel('Diagram ' + str(i))
             comb = QComboBox(self)
             comb.addItems(listDiagram)
             comb.addItem('None')

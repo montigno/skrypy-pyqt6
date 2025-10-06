@@ -8,8 +8,7 @@ class setPreferences(QDialog):
     def __init__(self, checkedTo, parent=None):
         super(setPreferences, self).__init__(parent)
         self.setWindowTitle('Appearance')
-        self.setWindowFlags(self.windowFlags() &
-                            Qt.WindowType.WindowCloseButtonHint)
+        self.setWindowFlags(self.windowFlags() & Qt.WindowType.WindowCloseButtonHint)
         self.setMinimumWidth(280)
 
         vbox = QVBoxLayout(self)

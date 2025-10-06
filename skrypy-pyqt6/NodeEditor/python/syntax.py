@@ -83,33 +83,32 @@ class PythonHighlighter(QtGui.QSyntaxHighlighter):
                       for (pat, index, fmt) in rules]
 
     def highlightBlock(self, text):
-            """Apply syntax highlighting to the given block of text."""
-            for expression, nth, fmt in self.rules:
-                it = expression.globalMatch(text)
-                while it.hasNext():
-                    match = it.next()
-                    index = match.capturedStart(nth)
-                    length = match.capturedLength(nth)
-                    self.setFormat(index, length, fmt)
-    
-            self.setCurrentBlockState(0)
-    
-            # Handling multi-line and unclosed strings
-            in_multiline = (
-                self.match_multiline(text, *self.tri_single)
-                or self.match_multiline(text, *self.tri_double)
-            )
-    
-            # Fix: Detects unclosed single strings
-            if not in_multiline:
-                single_quote_index = text.find("'")
-                double_quote_index = text.find('"')
-    
-                # Détecte les guillemets ouverts sans fermeture sur la même ligne
-                if single_quote_index != -1 and text.count("'", single_quote_index) % 2 == 1:
-                    self.setFormat(single_quote_index, len(text) - single_quote_index, STYLES['string'])
-                elif double_quote_index != -1 and text.count('"', double_quote_index) % 2 == 1:
-                    self.setFormat(double_quote_index, len(text) - double_quote_index, STYLES['string'])
+        """Apply syntax highlighting to the given block of text."""
+        for expression, nth, fmt in self.rules:
+            it = expression.globalMatch(text)
+            while it.hasNext():
+                match = it.next()
+                index = match.capturedStart(nth)
+                length = match.capturedLength(nth)
+                self.setFormat(index, length, fmt)
+
+        self.setCurrentBlockState(0)
+
+        # Handling multi-line and unclosed strings
+        in_multiline = (
+            self.match_multiline(text, *self.tri_single) or self.match_multiline(text, *self.tri_double)
+        )
+
+        # Fix: Detects unclosed single strings
+        if not in_multiline:
+            single_quote_index = text.find("'")
+            double_quote_index = text.find('"')
+
+            # Détecte les guillemets ouverts sans fermeture sur la même ligne
+            if single_quote_index != -1 and text.count("'", single_quote_index) % 2 == 1:
+                self.setFormat(single_quote_index, len(text) - single_quote_index, STYLES['string'])
+            elif double_quote_index != -1 and text.count('"', double_quote_index) % 2 == 1:
+                self.setFormat(double_quote_index, len(text) - double_quote_index, STYLES['string'])
 
     def match_multiline(self, text, delimiter, in_state, style):
         """
@@ -124,15 +123,15 @@ class PythonHighlighter(QtGui.QSyntaxHighlighter):
             while match_iter.hasNext():
                 match = match_iter.next()
                 starts.append(match.capturedStart())
-    
+
             if not starts:
                 return False  # No delimiter on this line
-    
+
             # Only start from first occurrence
             start = starts[0]
         else:
             start = 0
-    
+
         while start < len(text):
             match_iter = delimiter.globalMatch(text, start + 3)
             end = -1
@@ -140,7 +139,7 @@ class PythonHighlighter(QtGui.QSyntaxHighlighter):
                 match = match_iter.next()
                 end = match.capturedStart()
                 break
-    
+
             if end >= 0:
                 length = end - start + 3
                 self.setFormat(start, length, style)
@@ -150,27 +149,5 @@ class PythonHighlighter(QtGui.QSyntaxHighlighter):
                 self.setFormat(start, len(text) - start, style)
                 self.setCurrentBlockState(in_state)
                 return True
-    
+
         return False
-
-
-
-# Example of use
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    editor = QtWidgets.QPlainTextEdit()
-    highlighter = PythonHighlighter(editor.document())
-
-    editor.setPlainText(
-        'def hello():\n'
-        '    """this is a docstring\n'
-        '    on multiple lines"""\n'
-        '    print("Hello Worls")\n'
-        '    return True\n'
-        '\n'
-        '# after triple quotes, the color returns to normal\n'
-    )
-
-    editor.resize(600, 400)
-    editor.show()
-    sys.exit(app.exec())
