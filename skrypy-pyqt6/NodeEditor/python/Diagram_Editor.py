@@ -6001,7 +6001,7 @@ class Menu(QMenuBar):
         elif tmpActText == 'Update Skrypy':
             c = skrypy_update(self)
             c.exec()
-            if c.getAnswer() == 'ok':
+            if c.getAnswer() == 'YES':
                 msg = QMessageBox()
                 msg.setWindowTitle("Update done...")
                 msg.setText("Please close and restart Skrypy")
@@ -6013,7 +6013,7 @@ class Menu(QMenuBar):
             c = setPreferences([True, False, True])
             c.exec()
             p1, p2, p3 = c.getNewValues()[0]
-            if c.getNewValues()[1] == 'YES':
+            if c.getNewValues()[1] == 'ok':
                 for dg in editor.diagramScene:
                     for elem in dg.items():
                         if type(elem) is LinkItem:
