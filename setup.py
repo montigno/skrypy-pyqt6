@@ -73,12 +73,13 @@ def install_linux(pyth, base_dir):
     except Exception as err:
         print("Warning with Virtualenv installation:", err)
     install(pyth + ' -m venv ' + base_dir)
-    install('cp -r skrypy/ ' + base_dir)
+    install('cp -r skrypy-pyqt6/ ' + base_dir)
     print("{}{} is created!{}".format(GREEN, base_dir, RESET))
 
     src_bash = os.path.join(os.path.expanduser('~'), '.bashrc')
-    ext_py = pyth.split(".")
-    ext_py = "_{}{}".format(ext_py[0][-1], ext_py[1])
+    # ext_py = pyth.split(".")
+    # ext_py = "_{}{}".format(ext_py[0][-1], ext_py[1])
+    ext_py = "_pyqt6"
 
     with open(src_bash, 'r') as fp:
         lines = fp.readlines()
@@ -91,13 +92,13 @@ def install_linux(pyth, base_dir):
 
     os.system("echo '\n#skrypy {}' >> ~/.bashrc".format(pyth))
     os.system("echo 'cmd_sk{}=\"source ".format(ext_py) + os.path.join(base_dir, "bin", "activate") +
-              "; cd " + os.path.join(base_dir, "skrypy") +
+              "; cd " + os.path.join(base_dir, "skrypy-pyqt6") +
               "; " + pyth + " main.py; deactivate\"' >> ~/.bashrc")
     os.system("echo 'cmd_sk{}_packages=\"source ".format(ext_py) + os.path.join(base_dir, "bin", "activate") +
-              "; cd " + os.path.join(base_dir, "skrypy") +
+              "; cd " + os.path.join(base_dir, "skrypy-pyqt6") +
               "; " + pyth + " install_modules.py; deactivate\"' >> ~/.bashrc")
     os.system("echo 'cmd_sk{}_test=\"source ".format(ext_py) + os.path.join(base_dir, "bin", "activate") +
-              "; cd " + os.path.join(base_dir, "skrypy") +
+              "; cd " + os.path.join(base_dir, "skrypy-pyqt6") +
               "; " + pyth + " testunit.py; deactivate\"' >> ~/.bashrc")
     os.system("echo 'alias skrypy{}=$cmd_sk{}".format(ext_py, ext_py) + "'>> ~/.bashrc")
     os.system("echo 'alias skrypy{}_packages=$cmd_sk{}_packages".format(ext_py, ext_py) + "'>> ~/.bashrc")
