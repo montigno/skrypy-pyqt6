@@ -1,5 +1,5 @@
 [diagram]
-script=[S0] title=[Script_python] inputs=[] outputs=[] code=[your code] RectF=[(-159.0, -234.0, 486.0, 513.0)]
+script=[S0] title=[Script_python] inputs=[] outputs=[] code=[your code] RectF=[(-159.0, -234.0, 536.0, 587.0)]
 [source S0]
 []
 import matplotlib.pyplot as plt

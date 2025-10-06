@@ -165,7 +165,7 @@ class ClearSharedMemory():
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    with open("styles.css","r") as file:
+    with open("styles.css", "r") as file:
         app.setStyleSheet(file.read())
     self_dir_path = os.path.dirname(os.path.realpath(__file__))
     imageViewer = Project_Irmage(self_dir_path)

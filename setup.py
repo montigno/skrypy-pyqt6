@@ -6,10 +6,10 @@
 # for details.
 ##########################################################################
 '''
-Skrypy 25.10.06b   setup   Oct. 06 2025
+Skrypy-pyqt6 25.10.06b   setup   Oct. 06 2025
 
 SYNOPSIS
-    Install Skrypy in a virtual python environment (administration rights required).
+    Install Skrypy-pyqt6 in a virtual python environment (administration rights required).
 
 USAGE (in the terminal)
     1 - conda activate (optional, necessary if your Python is in conda)
@@ -84,7 +84,7 @@ def install_linux(pyth, base_dir):
     with open(src_bash, 'r') as fp:
         lines = fp.readlines()
     start_here = False
-    if '#skrypy {}\n'.format(pyth) in lines:
+    if '#skrypy {}\n'.format("pyqt6") in lines:
         print("{}aliases for skrypy version {} already exist! Manually update .bashrc !{}".format(RED, pyth, RESET))
         exit()
 

@@ -22,12 +22,12 @@ class skrypy_update(QDialog):
             dicts = yaml.load(stream, yaml.FullLoader)
             self.version_current = dicts['version']
         self.skrypy_current = skrypy_current
-        skrypy_new = os.path.join(dest, "skrypy")
+        skrypy_new = os.path.join(dest, "skrypy-pyqt6")
         if os.path.exists(skrypy_new):
             shutil.rmtree(skrypy_new)
         try:
-            git.Git(dest).clone("https://github.com/montigno/skrypy.git")
-            skrypy_new = os.path.join(skrypy_new, "skrypy")
+            git.Git(dest).clone("https://github.com/montigno/skrypy-pyqt6.git")
+            skrypy_new = os.path.join(skrypy_new, "skrypy-pyqt6")
             config_new = os.path.join(skrypy_new, 'config.yml')
             with open(config_new, 'r', encoding='utf8') as stream:
                 dicts = yaml.load(stream, yaml.FullLoader)
@@ -48,14 +48,14 @@ class skrypy_update(QDialog):
 
     def confirmation_dialog(self):
 
-        label1 = QLabel("Upgrade to " + self.version_new)
+        label1 = QLabel("The latest version available is " + self.version_new)
         label2 = QLabel("Your current version is " + self.version_current)
-        label3 = QLabel("Do you want to update ? If you click OK, you will need to restart Skrypy to take effect.")
+        label3 = QLabel("Do you want to update ? If you click YES, you will need to restart Skrypy to take effect.")
         label3.setWordWrap(True)
 
-        buttonCancel = QPushButton('Cancel', self)
+        buttonCancel = QPushButton('NO', self)
         buttonCancel.clicked.connect(self.close)
-        buttonOk = QPushButton('OK', self)
+        buttonOk = QPushButton('YES', self)
         buttonOk.clicked.connect(self.upgrading)
         hbox = QHBoxLayout()
         hbox.addWidget(buttonCancel)
@@ -71,7 +71,7 @@ class skrypy_update(QDialog):
 
     def upgrading(self):
         shutil.copytree(self.skrypy_new, self.skrypy_current, dirs_exist_ok=True)
-        self.answer = 'ok'
+        self.answer = 'YES'
         self.close()
 
     def getAnswer(self):

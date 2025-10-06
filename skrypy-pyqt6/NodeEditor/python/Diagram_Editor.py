@@ -5433,7 +5433,7 @@ class Menu(QMenuBar):
         self.menuHelp = self.addMenu('Help')
         self.menuHelp.addAction('About skrypy')
         self.menuHelp.addAction('HTML documentation')
-        # self.menuHelp.addAction('Update Skrypy')
+        self.menuHelp.addAction('Update Skrypy')
         # self.menuHelp.addAction('Preferences')
         self.menuHelp.addSeparator()
         self.examples = self.menuHelp.addMenu('Examples')
@@ -5999,7 +5999,7 @@ class Menu(QMenuBar):
             webbrowser.open(tmp)
 
         elif tmpActText == 'Update Skrypy':
-            c = skrypy_update()
+            c = skrypy_update(self)
             c.exec()
             if c.getAnswer() == 'ok':
                 msg = QMessageBox()
@@ -6013,7 +6013,7 @@ class Menu(QMenuBar):
             c = setPreferences([True, False, True])
             c.exec()
             p1, p2, p3 = c.getNewValues()[0]
-            if c.getNewValues()[1] == 'ok':
+            if c.getNewValues()[1] == 'YES':
                 for dg in editor.diagramScene:
                     for elem in dg.items():
                         if type(elem) is LinkItem:
@@ -8442,7 +8442,7 @@ class ScriptItem(QGraphicsRectItem):
 
             # def __init__(self):
             #     super(TextEditPy, self).__init__(parent)
-            #     self.setTextInteractionFlags(Qt.TextInteractionFlag.NoTextInteraction)
+                # self.setTextInteractionFlags(Qt.TextInteractionFlag.NoTextInteraction)
 
             def keyPressEvent(self, event):
                 if event.key() == (Qt.Key.Key_Tab):
@@ -8455,10 +8455,10 @@ class ScriptItem(QGraphicsRectItem):
         # self.elemProxy = QTextEdit()
         self.elemProxy = TextEditPy()
         self.elemProxy.mouseReleaseEvent = self.deselect
-        if 'S' in self.unit:
-            PythonHighlighter(self.elemProxy)
         self.elemProxy.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)
         self.elemProxy.installEventFilter(editor)
+        if 'S' in self.unit:
+            PythonHighlighter(self.elemProxy)
         self.elemProxy.textChanged.connect(self.text_changed)
         self.proxyWidget = QGraphicsProxyWidget(self, Qt.WindowType.Widget)
         self.proxyWidget.setWidget(self.elemProxy)

@@ -30,7 +30,7 @@ from NodeEditor.python.multiExecution_altern import multiple_execution_altern
 from NodeEditor.python.packages_manager import manage_pck
 from NodeEditor.python.plugins import Plugin
 from NodeEditor.python.sourceBlock import seeCode, getDocString
-from NodeEditor.python.syntaxGPT import PythonHighlighter
+from NodeEditor.python.syntax import PythonHighlighter
 from NodeEditor.python.systemInfo import diagramInfo
 from NodeEditor.python.titleScript import changeTitle
 from NodeEditor.python.tools import DefinitType, ReorderList

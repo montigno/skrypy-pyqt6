@@ -6,7 +6,7 @@
 # for details.
 ##########################################################################
 
-from NodeEditor.python.syntaxGPT import PythonHighlighter
+from NodeEditor.python.syntax import PythonHighlighter
 from PyQt6.QtGui import QFont, QFontMetrics
 from PyQt6.QtWidgets import QVBoxLayout, QLabel, QDialog, QScrollArea, QTextEdit
 import importlib

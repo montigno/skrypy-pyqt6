@@ -1,12 +1,9 @@
 import sys
-
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtCore import QRegularExpressionMatch
 
 
 def format(color, style=''):
-    """Return a QTextCharFormat with the given attributes.
-    """
+    """Return a QTextCharFormat with the given attributes."""
     _color = QtGui.QColor()
     _color.setNamedColor(color)
 
@@ -16,65 +13,53 @@ def format(color, style=''):
         _format.setFontWeight(QtGui.QFont.Weight.Bold)
     if 'italic' in style:
         _format.setFontItalic(True)
-
     return _format
 
 
-# Syntax styles that can be shared by all languages
+# Syntax styles
 STYLES = {
     'keyword': format('blue'),
     'operator': format('red'),
     'brace': format('darkGray'),
     'defclass': format('black', 'bold'),
     'string': format('magenta'),
-    'string2': format('darkMagenta'),
+    'string2': format('magenta'),  # same colrr for triple quotes
     'comment': format('darkGreen', 'italic'),
     'self': format('black', 'italic'),
     'numbers': format('brown'),
 }
 
 
-class PythonHighlighter (QtGui.QSyntaxHighlighter):
-    """Syntax highlighter for the Python language.
-    """
-    # Python keywords
+class PythonHighlighter(QtGui.QSyntaxHighlighter):
+    """Syntax highlighter for the Python language."""
+
     keywords = [
         'and', 'assert', 'break', 'class', 'continue', 'def',
-        'del', 'elif', 'else', 'except', 'exec', 'finally',
+        'del', 'elif', 'else', 'except', 'finally',
         'for', 'from', 'global', 'if', 'import', 'in',
         'is', 'lambda', 'not', 'or', 'pass', 'print',
         'raise', 'return', 'try', 'while', 'yield',
         'None', 'True', 'False',
     ]
 
-    # Python operators
     operators = [
-        '=',
-        # Comparison
-        '==', '!=', '<', '<=', '>', '>=',
-        # Arithmetic
+        '=', '==', '!=', '<', '<=', '>', '>=',
         '\\+', '-', '\\*', '/', '//', '\\%', '\\*\\*',
-        # In-place
         '\\+=', '-=', '\\*=', '/=', '\\%=',
-        # Bitwise
         '\\^', '\\|', '\\&', '\\~', '>>', '<<',
     ]
 
-    # Python braces
-    braces = [
-        '\\{', '\\}', '\\(', '\\)', '\\[', '\\]',
-    ]
+    braces = ['\\{', '\\}', '\\(', '\\)', '\\[', '\\]']
 
     def __init__(self, parent: QtGui.QTextDocument) -> None:
         super().__init__(parent)
 
-        # Multi-line strings (expression, flag, style)
+        # Multi-line string delimiters
         self.tri_single = (QtCore.QRegularExpression("'''"), 1, STYLES['string2'])
         self.tri_double = (QtCore.QRegularExpression('"""'), 2, STYLES['string2'])
 
+        # Highlighting rules
         rules = []
-
-        # Keyword, operator, and brace rules
         rules += [(r'\b%s\b' % w, 0, STYLES['keyword'])
                   for w in PythonHighlighter.keywords]
         rules += [(r'%s' % o, 0, STYLES['operator'])
@@ -82,126 +67,110 @@ class PythonHighlighter (QtGui.QSyntaxHighlighter):
         rules += [(r'%s' % b, 0, STYLES['brace'])
                   for b in PythonHighlighter.braces]
 
-        # All other rules
         rules += [
-            # 'self'
             (r'\bself\b', 0, STYLES['self']),
-
-            # 'def' followed by an identifier
             (r'\bdef\b\s*(\w+)', 1, STYLES['defclass']),
-            # 'class' followed by an identifier
             (r'\bclass\b\s*(\w+)', 1, STYLES['defclass']),
-
-            # Numeric literals
             (r'\b[+-]?[0-9]+[lL]?\b', 0, STYLES['numbers']),
             (r'\b[+-]?0[xX][0-9A-Fa-f]+[lL]?\b', 0, STYLES['numbers']),
             (r'\b[+-]?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\b', 0, STYLES['numbers']),
-
-            # Double-quoted string, possibly containing escape sequences
             (r'"[^"\\]*(\\.[^"\\]*)*"', 0, STYLES['string']),
-            # Single-quoted string, possibly containing escape sequences
             (r"'[^'\\]*(\\.[^'\\]*)*'", 0, STYLES['string']),
-
-            # From '#' until a newline
             (r'#[^\n]*', 0, STYLES['comment']),
         ]
 
-        # Build a QRegularExpression for each pattern
         self.rules = [(QtCore.QRegularExpression(pat), index, fmt)
                       for (pat, index, fmt) in rules]
 
     def highlightBlock(self, text):
-        """Apply syntax highlighting to the given block of text.
-        """
-        self.tripleQuoutesWithinStrings = []
-        # Do other syntax formatting
-        for expression, nth, format in self.rules:
-            index = expression.match(text)
-            if index.hasMatch():
-                # if there is a string we check
-                # if there are some triple quotes within the string
-                # they will be ignored if they are matched again
-                if expression.pattern() in [r'"[^"\\]*(\\.[^"\\]*)*"', r"'[^'\\]*(\\.[^'\\]*)*'"]:
-                    innerIndex = self.tri_single[0].indexIn(text, index + 1)
-                    if innerIndex == -1:
-                        innerIndex = self.tri_double[0].indexIn(text, index + 1)
-
-                    if innerIndex != -1:
-                        tripleQuoteIndexes = range(innerIndex, innerIndex + 3)
-                        self.tripleQuoutesWithinStrings.extend(tripleQuoteIndexes)
-
-            while index.hasMatch():
-                # skipping triple quotes within strings
-                if index in self.tripleQuoutesWithinStrings:
-                    index += 1
-                    expression.indexIn(text, index)
-                    continue
-
-                # We actually want the index of the nth match
-                index = expression.pos(nth)
-                length = len(expression.cap(nth))
-                self.setFormat(index, length, format)
-                index = expression.indexIn(text, index + length)
-
-        self.setCurrentBlockState(0)
-
-        # Do multi-line strings
-        in_multiline = self.match_multiline(text, *self.tri_single)
-        if not in_multiline:
-            in_multiline = self.match_multiline(text, *self.tri_double)
+            """Apply syntax highlighting to the given block of text."""
+            for expression, nth, fmt in self.rules:
+                it = expression.globalMatch(text)
+                while it.hasNext():
+                    match = it.next()
+                    index = match.capturedStart(nth)
+                    length = match.capturedLength(nth)
+                    self.setFormat(index, length, fmt)
+    
+            self.setCurrentBlockState(0)
+    
+            # Handling multi-line and unclosed strings
+            in_multiline = (
+                self.match_multiline(text, *self.tri_single)
+                or self.match_multiline(text, *self.tri_double)
+            )
+    
+            # Fix: Detects unclosed single strings
+            if not in_multiline:
+                single_quote_index = text.find("'")
+                double_quote_index = text.find('"')
+    
+                # Détecte les guillemets ouverts sans fermeture sur la même ligne
+                if single_quote_index != -1 and text.count("'", single_quote_index) % 2 == 1:
+                    self.setFormat(single_quote_index, len(text) - single_quote_index, STYLES['string'])
+                elif double_quote_index != -1 and text.count('"', double_quote_index) % 2 == 1:
+                    self.setFormat(double_quote_index, len(text) - double_quote_index, STYLES['string'])
 
     def match_multiline(self, text, delimiter, in_state, style):
-        """Do highlighting of multi-line strings. ``delimiter`` should be a
-        ``QRegularExpression`` for triple-single-quotes or triple-double-quotes, and
-        ``in_state`` should be a unique integer to represent the corresponding
-        state changes when inside those strings. Returns True if we're still
-        inside a multi-line string when this function is finished.
         """
-        # If inside triple-single quotes, start at 0
-        if self.previousBlockState() == in_state:
+        Handle highlighting of multi-line strings.
+        Returns True if we're still inside a multi-line string.
+        """
+        start = 0
+        if self.previousBlockState() != in_state:
+            # Not already inside a multi-line string
+            match_iter = delimiter.globalMatch(text)
+            starts = []
+            while match_iter.hasNext():
+                match = match_iter.next()
+                starts.append(match.capturedStart())
+    
+            if not starts:
+                return False  # No delimiter on this line
+    
+            # Only start from first occurrence
+            start = starts[0]
+        else:
             start = 0
-            add = 0
-        # Otherwise, look for the delimiter on this line
-        else:
-            start = delimiter.match(text)
-            # skipping triple quotes within strings
-            if start in self.tripleQuoutesWithinStrings:
-                return False
-            # Move past this match
-            add = delimiter.matchedLength()
-            # add = self.matchedLength(delimiter)
-
-        # As long as there's a delimiter match on this line...
-        while start.hasMatch():
-            # Look for the ending delimiter
-            end = delimiter.indexIn(text, start + add)
-            # Ending delimiter on this line?
-            if end >= add:
-                length = end - start + add + delimiter.matchedLength()
+    
+        while start < len(text):
+            match_iter = delimiter.globalMatch(text, start + 3)
+            end = -1
+            while match_iter.hasNext():
+                match = match_iter.next()
+                end = match.capturedStart()
+                break
+    
+            if end >= 0:
+                length = end - start + 3
+                self.setFormat(start, length, style)
                 self.setCurrentBlockState(0)
-            # No; multi-line string
+                start = end + 3
             else:
+                self.setFormat(start, len(text) - start, style)
                 self.setCurrentBlockState(in_state)
-                length = len(text) - start + add
-            # Apply formatting
-            self.setFormat(start, length, style)
-            # Look for the next match
-            start = delimiter.match(text, start + length)
+                return True
+    
+        return False
 
-        # Return True if still inside a multi-line string, False otherwise
-        if self.currentBlockState() == in_state:
-            return True
-        else:
-            return False
 
-    def matchedLength(match: QRegularExpressionMatch, group: int = 0) -> int:
-        """
-        Reproduit matchedLength() de QRegExp en Qt6.
-        
-        :param match: QRegularExpressionMatch
-        :param group: groupe capturé (par défaut 0 = match complet)
-        :return: longueur du texte trouvé, ou -1 si pas de match
-        """
-        if not match.hasMatch():
-            return -1
-        return match.capturedEnd(group) - match.capturedStart(group)
+
+# Example of use
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    editor = QtWidgets.QPlainTextEdit()
+    highlighter = PythonHighlighter(editor.document())
+
+    editor.setPlainText(
+        'def hello():\n'
+        '    """this is a docstring\n'
+        '    on multiple lines"""\n'
+        '    print("Hello Worls")\n'
+        '    return True\n'
+        '\n'
+        '# after triple quotes, the color returns to normal\n'
+    )
+
+    editor.resize(600, 400)
+    editor.show()
+    sys.exit(app.exec())

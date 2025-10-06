@@ -7,6 +7,12 @@ QPushButton {
 	font-family: arial;
     background-color: "lightGray";
 }
+QPushButton::disabled {
+    font-size: 14px;
+	font-family: arial;
+	color: "lightGray";
+    background-color: "grey";
+}
 QLineEdit {
 	font-size: 16px;
     background-color: "white";
@@ -45,7 +51,3 @@ QMenu::item::selected {
 QCheckBox {
 	color: black;
 }
-/*QCheckBox::indicator::unchecked{
-    background-color:lightGray;
-}
-*/

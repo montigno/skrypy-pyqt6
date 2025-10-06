@@ -25,3 +25,4 @@ for keypk, valpk in pack.items():
         print('error : ', e)
 
 install('pip3 install --upgrade --force-reinstall pyqt5')
+install('pip3 install --upgrade --force-reinstall pyqt5')
