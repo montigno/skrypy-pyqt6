@@ -1,0 +1,37 @@
+[diagram]
+link=[N6] node=[F0:out0#Node#P0:Value]
+probe=[P0] label=[Value] format=[array_bool] RectF=[(410.5, -5.5, 70, 24)] 
+link=[N5] node=[F1:out0#Node#F0:out0]
+link=[N4] node=[U0:out#Node#F1:out0]
+link=[N3] node=[U1:outFloat#Node#U0:y]
+link=[N2] node=[A0:#Node#F0:in0]
+cluster=[A0] value=[(-100.0, [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], 100.0)] format=[array_float] label=[in0] RectF=[(-661.5, -115.5, 321.0, 117.0)] 
+link=[N1] node=[F0:in0#Node#F1:in0]
+link=[N0] node=[F1:in0#Node#U0:x]
+block=[U0] category=[Tools.Boolean_operations] class=[x_Equal_y] valInputs=[(['x', 'y'], ['Node(N0)', 'Node(N3)'], ['out'], ['bool'])] RectF=[(-8.0, -39.0, 150.0, 80.0)] 
+loopFor=[F1] inputs=[[[['in0', 'in', 'list_float'], ['in0', 'out', 'float']]]] outputs=[[[['out0', 'in', 'bool'], ['out0', 'out', 'list_bool']]]] listItems=[['U0']] RectF=[(-107.0, -113.0, 341.0, 230.0)] 
+block=[U1] category=[Tools.Follower] class=[follow_float_simple] valInputs=[(['inFloat'], [1.0], ['outFloat'], ['float'])] RectF=[(-420.0, 109.0, 150.0, 80.0)] 
+loopFor=[F0] inputs=[[[['in0', 'in', 'array_float'], ['in0', 'out', 'list_float']]]] outputs=[[[['out0', 'in', 'list_bool'], ['out0', 'out', 'array_bool']]]] listItems=[['F1']] RectF=[(-176.0, -167.0, 482.0, 338.0)] 
+[execution]
+[]
+['U1', 'F0', 'P0']
+{'U1': ('Tools.Follower', 'follow_float_simple', "(['inFloat'], [1.0], ['outFloat'], ['float'])"), 'P0': ('array_bool', 'Value', 'F0:out0')}
+['F0:out0', 'U1:outFloat']
+{}
+[]
+[loopfor F0]
+['F0:in0=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]']
+['F1']
+{}
+['F1:out0', 'F0:in0']
+{}
+['F0:out0=F1:out0']
+[loopfor F1]
+['F1:in0=F0:in0']
+['U0']
+{'U0': ('Tools.Boolean_operations', 'x_Equal_y', "(['x', 'y'], ['F1:in0', 'U1:outFloat'], ['out'], ['bool'])")}
+['U0:out', 'F1:in0']
+{}
+['F1:out0=U0:out']
+[interlinks]
+['U1:outFloat', 'U0:out']

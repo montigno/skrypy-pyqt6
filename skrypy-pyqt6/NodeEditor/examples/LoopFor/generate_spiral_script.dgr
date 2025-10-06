@@ -1,0 +1,47 @@
+[diagram]
+link=[N6] node=[S0:y4#Node#U0:x]
+link=[N33] node=[A15:#Node#U7:xmin]
+link=[N32] node=[A17:#Node#U7:xmax]
+link=[N31] node=[A16:#Node#U7:delta_x]
+link=[N0] node=[U7:outAbscissa#Node#S0:X]
+link=[N1] node=[A0:#Node#U0:plot_linestyle]
+link=[N2] node=[A1:#Node#U0:plot_color]
+link=[N3] node=[A3:#Node#U0:plot_linewidth]
+link=[N4] node=[A2:#Node#U0:style_use]
+link=[N5] node=[S0:y3#Node#U0:y_data]
+constant=[A17] value=[(-100000.0, 15000.0, 100000.0)] format=[float] label=[xmax] RectF=[(-888.65, -87.81, 152.0, 29.0)] 
+constant=[A16] value=[(-100000.0, 90.0, 100000.0)] format=[float] label=[delta_x] RectF=[(-887.03, -24.080000000000002, 152.0, 29.0)] 
+constant=[A15] value=[(-100000.0, 45.0, 100000.0)] format=[float] label=[xmin] RectF=[(-890.27, -145.07, 152.0, 29.0)] 
+constant=[A0] value=['solid'] format=[enumerate(('solid', 'dotted', 'dashed', 'dashdot'))] label=[plot_linestyle] RectF=[(328.28000000000003, 135.58, 101.0, 32.0)] 
+constant=[A1] value=['blue'] format=[enumerate(('green', 'blue', 'red', 'black', 'yellow', 'cyan', 'magenta'))] label=[plot_color] RectF=[(464.43, 91.32000000000001, 103.0, 32.0)] 
+constant=[A2] value=['bmh'] format=[enumerate(('default', 'classic', 'bmh', 'fast', 'ggplot'))] label=[style_use] RectF=[(465.08, 10.66, 94.0, 32.0)] 
+constant=[A3] value=[(-100000.0, 1.0, 100000.0)] format=[float] label=[plot_linewidth] RectF=[(296.6, 51.83, 152.0, 29.0)] 
+block=[U7] category=[Signals.Generator] class=[gen_abscissa] valInputs=[(['xmin', 'xmax', 'delta_x'], ['Node(N33)', 'Node(N32)', 'Node(N31)'], ['outAbscissa'], ['list_float'])] RectF=[(-661.29, -103.36, 168.56, 82.0)] 
+script=[S0] title=[Script_editor] inputs=[['X', 'in', 'list_float']] outputs=[['y3', 'out', 'list_float'], ['y4', 'out', 'list_float']] code=[your code] RectF=[(-393.18, -188.3, 646.0, 252.0)]
+block=[U0] category=[Matplotlib.Plots] class=[matplotlib_plot] valInputs=[(['y_data', 'x', 'style_use', 'plot_linewidth', 'plot_color', 'plot_linestyle'], ['Node(N5)', 'Node(N6)', 'Node(N4)', 'Node(N3)', 'Node(N2)', 'Node(N1)'], [], [])] RectF=[(598.8000000000001, -102.73, 247.65, 295.2)] 
+[source S0]
+['X=U7:outAbscissa']
+from NodeEditor.modules.Numpy.Functions_trigo import numpy_trigonometry
+from NodeEditor.modules.Tools.Float import float_operations_dyn
+import numpy as np
+
+y3, y4 = [], []
+
+for x in X:
+    y1 = numpy_trigonometry(x, 'cos', 'radian').res()
+    y2 = numpy_trigonometry(x, 'sin', 'radian').res()
+    y3.append(float_operations_dyn('mul', y1, list_float_in_0=x).out_result())
+    y4.append(float_operations_dyn('mul', y2, list_float_in_0=x).out_result())
+
+['S0:y3', 'S0:y4']
+[/source S0]
+
+[execution]
+[]
+['U7', 'S0', 'U0']
+{'U7': ('Signals.Generator', 'gen_abscissa', "(['xmin', 'xmax', 'delta_x'], [45.0, 15000.0, 90.0], ['outAbscissa'], ['list_float'])"), 'U0': ('Matplotlib.Plots', 'matplotlib_plot', "(['y_data', 'x', 'style_use', 'plot_linewidth', 'plot_color', 'plot_linestyle'], ['S0:y3', 'S0:y4', 'bmh', 1.0, 'blue', 'solid'], [], [])")}
+['S0:y4', 'U7:outAbscissa', 'S0:y3']
+{}
+[]
+[interlinks]
+[]

@@ -1,0 +1,4 @@
+dicomifier_diffusion_scheme_mrtrix:
+  --verbosity: enumerate(('warning', 'info', 'debug')) # Verbosity level (warning, info, or debug)
+dicomifier_diffusion_scheme_fsl:
+  --verbosity: enumerate(('warning', 'info', 'debug')) # Verbosity level (warning, info, or debug)

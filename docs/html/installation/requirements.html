@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Requirements &mdash; Skrypy Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b42915cc" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to install Skrypy" href="install_skrypy.html" />
+    <link rel="prev" title="Welcome to the Skrypy documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Skrypy Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#miniconda">Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sshpass">SSHPass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install_skrypy.html">How to install Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_install.html">How to install Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_dependencies.html">How to install dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster.html">Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_skrypy.html">How to upgrade Skrypy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blocks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../blocks/create_blocks.html">How to create a block</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/preinstalled_packages_list.html">List of pre-installed Python packages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Skrypy Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Requirements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/installation/requirements.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h1>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>First of all, you should carefully select the correct Python 3 version (3.6 to 3.12) to install the Skrypy virtual environment. <br />
+If you plan to use <a class="reference external" href="https://www.mathworks.com/help/matlab/matlab-engine-for-python.html">the Matlab engine</a>, you should check <a class="reference external" href="https://fr.mathworks.com/support/requirements/python-compatibility.html">the supported versions</a>. <br />
+Otherwise it is recommended to use at least Python3.12 version.</p>
+</div>
+<p>If you don’t have Python3 or not the right version, you can try this method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">deadsnakes</span><span class="o">/</span><span class="n">ppa</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">.</span><span class="n">x</span> <span class="c1"># x the chosen version between 6 and 12</span>
+</pre></div>
+</div>
+</section>
+<section id="miniconda">
+<h2>Miniconda<a class="headerlink" href="#miniconda" title="Link to this heading"></a></h2>
+<p>Some dependencies require miniconda to be installed.</p>
+<ol class="arabic">
+<li><p>To install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">Applications</span>
+<span class="n">mkdir</span> <span class="n">miniconda3</span>
+<span class="n">cd</span> <span class="n">miniconda3</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p>Close your terminal and reopen it</p></li>
+<li><p>To test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="nb">list</span>
+<span class="n">conda</span> <span class="n">init</span> <span class="n">fish</span>
+</pre></div>
+</div>
+</li>
+<li><p>To update:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">update</span> <span class="n">conda</span>
+</pre></div>
+</div>
+</li>
+<li><p>To activate conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span>
+</pre></div>
+</div>
+</li>
+<li><p>To deactivate conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="sshpass">
+<h2>SSHPass<a class="headerlink" href="#sshpass" title="Link to this heading"></a></h2>
+<p>SSHPass is an utility which allows to provide the ssh password non-interactivly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">sshpass</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to the Skrypy documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install_skrypy.html" class="btn btn-neutral float-right" title="How to install Skrypy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, olivier MONTIGON (IRMaGe).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+ants_AI:
+  dimension: 2
+  verbose: False
+  fixed_image_mask: 'path'
+  moving_image_mask: 'path'
+  transform: ('Affine', 0.1)
+  principal_axes: False
+  search_factor: (20, 0.12)
+  search_grid: (0.0, 0.0, 0.0)
+  convergence: (10, 1e-06, 10)
+  output_transform: 'path'
+  num_threads: 1
+  args: ''
+  environ: {}
+ants_ANTS:
+  affine_gradient_descent_option: [0.0]
+  args: ''
+  delta_time: 0.0
+  dimension: 2
+  environ: {}
+  gradient_step_length: 0.0
+  mi_option: [0]
+  num_threads: 1
+  number_of_affine_iterations: [0]
+  number_of_iterations: [0]
+  number_of_time_steps: 0
+  regularization: enumerate(('Gauss','DMFFD'))
+  regularization_gradient_field_sigma: 0.0
+  regularization_deformation_field_sigma: 0.0
+  smoothing_sigmas: [0]
+  subsampling_factors: [0]
+  symmetry_type: 0.0
+  use_histogram_matching: True # (a boolean, nipype default value: True) argument: ``%s``
+ants_AffineInitializer:
+  args: '' 
+  dimension: 3 
+  out_file: 'path' 
+  search_factor: 15.0 
+  radian_fraction: 0.1 
+  principal_axes: False 
+  local_search: 10
+  num_threads: 1
+ants_AverageAffineTransform:
+  args: ''
+  environ: {}
+  num_threads: 1
+ants_AverageImages:
+  args: ''
+  environ: {}
+  num_threads: 1
+  output_average_image: 'path'
+ants_MeasureImageSimilarity:
+  args: ''
+  dimension: 2
+  environ: {}
+  fixed_image_mask: 'path'
+  metric_weight: 1.0
+  moving_image_mask: 'path'
+  num_threads: 1
+  sampling_strategy: enumerate(('None', 'Regular', 'Random'))
+ants_MultiplyImages:
+  args: ''
+  environ: {}
+  num_threads: 1
+ants_Registration:
+  args: ''
+  collapse_output_transforms: True
+  convergence_threshold: [1.e-8, 1.e-9]
+  convergence_window_size: [10]
+  dimension: 3
+  environ: {}
+  fixed_image_mask: 'path'
+  fixed_image_masks: ['path']
+  float: False
+  initial_moving_transform: ['path']
+  initial_moving_transform_com: 0
+  initialize_transforms_per_stage: False
+  interpolation: enumerate(('Linear', 'NearestNeighbor', 'CosineWindowedSinc', 'WelchWindowedSinc', 'HammingWindowedSinc', 'LanczosWindowedSinc', 'BSpline', 'MultiLabel', 'Gaussian'))
+  interpolation_parameters: (1.0, 1.0)
+  invert_initial_moving_transform: [False, False]
+  metric_item_trait: enumerate(('CC', 'MeanSquares', 'Demons', 'GC', 'MI', 'Mattes'))
+  metric_stage_trait: enumerate(('CC', 'MeanSquares', 'Demons', 'GC', 'MI', 'Mattes'))
+  metric_weight_item_trait: 1.0
+  metric_weight_stage_trait: [0.0]
+  moving_image_mask: 'path'
+  moving_image_masks: ['path']
+  num_threads: 1
+  number_of_iterations: [[1500, 200], [100, 50, 30]]
+  output_inverse_warped_image: 'path'
+  output_transform_prefix: ''
+  output_warped_image: 'path'
+  radius_bins_item_trait: 5
+  radius_bins_stage_trait: [0]
+  radius_or_number_of_bins: [5]
+  restore_state: 'path'
+  restrict_deformation: [[0,1]]
+  sampling_percentage: [0.05, [0.05, 0.10]]
+  sampling_percentage_item_trait: 0.0
+  sampling_percentage_stage_trait: [0.0]
+  sampling_strategy: ['Random', None]
+  sampling_strategy_item_trait: enumerate(('None', 'Regular', 'Random'))
+  sampling_strategy_stage_trait: enumerate(('None', 'Regular', 'Random'))
+  save_state: 'path'
+  sigma_units: ['vox', 'mm']
+  transform_parameters: [(2.0, 0.0), (0.25, 3.0, 0.0)]
+  use_estimate_learning_rate_once: [True, True]
+  use_histogram_matching: [True, True]
+  verbose: False
+  winsorize_lower_quantile: 0.0
+  winsorize_upper_quantile: 1.0
+  write_composite_transform: False
+ants_RegistrationSynQuick:
+  args: ''
+  dimension: 3
+  environ: {}
+  histogram_bins: 32
+  num_threads: 1
+  output_prefix: ''
+  precision_type: enumerate(('double', 'float'))
+  spline_distance: 26
+  transform_type: enumerate(('s', 't', 'r', 'a', 'sr', 'b', 'br'))
+  use_histogram_matching: False
+ants_ApplyTransforms:
+  args: ''
+  default_value: 0.0
+  dimension: 2
+  environ: {}
+  float: False
+  input_image_type: 0
+  interpolation: enumerate(('Linear', 'NearestNeighbor', 'CosineWindowedSinc', 'WelchWindowedSinc', 'HammingWindowedSinc', 'LanczosWindowedSinc', 'MultiLabel', 'Gaussian', 'BSpline'))
+  interpolation_parameters: (0.0, 0.0)
+  invert_transform_flags: [False, False]
+  num_threads: 1
+  out_postfix: ''
+  output_image: ''
+  print_out_composite_warp_file: False
+ants_ApplyTransformsToPoints:
+  args: ''
+  dimension: 3
+  environ: {}
+  invert_transform_flags: [False]
+  num_threads: 1
+  output_file: 'path'
+ants_WarpImageMultiTransform:
+  args: ''
+  dimension: 2
+  environ: {}
+  invert_affine: [1, 4, 5]
+  num_threads: 1
+  out_postfix: 'path'
+  output_image: 'path'
+  reference_image: 'path'
+  reslice_by_header: False
+  tightest_box: False
+  use_bspline: False
+  use_nearest: False
+ants_WarpTimeSeriesImageMultiTransform:
+  args: ''
+  dimension: 3
+  environ: {}
+  invert_affine: [1, 4, 5]
+  num_threads: 1
+  out_postfix: 'path'
+  reference_image: 'path'
+  reslice_by_header: False
+  tightest_box: False
+  use_bspline: False
+  use_nearest: False
+ants_BrainExtraction:
+  args: ''
+  debug: False
+  dimension: 3
+  environ: {}
+  extraction_registration_mask: 'path'
+  image_suffix: 'nii.gz'
+  keep_temporary_files: 0
+  num_threads: 1
+  out_prefix: 'highres001'
+  terminal_output: enumerate(('stream', 'allatonce', 'file', 'none'))
+  use_floatingpoint_precision: 0
+  use_random_seeding: 1
+ants_AntsJointFusion:
+  alpha: 0.1
+  args: ''
+  beta: 2.0
+  constrain_nonnegative: False
+  dimension: enumerate(('2','3','4'))
+  environ: {}
+  exclusion_image: ['path']
+  exclusion_image_label: ['']
+  mask_image: 'path'
+  num_threads: 1
+  out_atlas_voting_weight_name_format: ''
+  out_intensity_fusion_name_format: ''
+  out_label_fusion: 'path'
+  out_label_post_prob_name_format: ''
+  patch_metric: enumerate(('PC','MSQ'))
+  patch_radius: [2,2,2]
+  retain_atlas_voting_images: False
+  retain_label_posterior_images: False
+  search_radius: [3,3,3]
+  verbose: False
+ants_Atropos:
+  args: ''
+  convergence_threshold: 1.0
+  dimension: 3
+  environ: {}
+  icm_use_synchronous_update: False
+  kmeans_init_centers: [0.0]
+  likelihood_model: ''
+  maximum_number_of_icm_terations: 1
+  mrf_radius: [1]
+  mrf_smoothing_factor: 1.0
+  n_iterations: 10
+  num_threads: 1
+  out_classified_image_name: 'path'
+  output_posteriors_name_template: 'POSTERIOR_%02d.nii.gz'
+  posterior_formulation: ''
+  prior_image: 'path'
+  prior_probability_threshold: 1.0
+  prior_weighting: 1.0
+  save_posteriors: False
+  use_mixture_model_proportions: False
+  use_random_seed: True
+ants_CorticalThickness:
+  args: ''
+  b_spline_smoothing: False
+  cortical_label_image: 'path'
+  debug: False
+  dimension: 2
+  environ: {}
+  extraction_registration_mask: 'path'
+  image_suffix: 'nii.gz'
+  keep_temporary_files: 0
+  label_propagation: ''
+  max_iterations: 1
+  num_threads: 1
+  out_prefix: 'antsCT'
+  posterior_formulation: 'Socrates[1]'
+  prior_segmentation_weight: 0.0
+  quick_registration: False
+  segmentation_iterations: 3
+  use_floatingpoint_precision: 0
+  use_random_seeding: 1
+ants_DenoiseImage:
+  args: ''
+  dimension: 3
+  environ: {}
+  noise_image: 'path'
+  noise_model: enumerate(('Gaussian', 'Rician'))
+  num_threads: 1
+  output_image: 'path'
+  shrink_factor: 1
+  verbose: False
+ants_JointFusion:
+  alpha: 0.0
+  args: ''
+  beta: 2.0
+  constrain_nonnegative: False
+  dimension: 3
+  environ: {}
+  exclusion_image: 'path'
+  exclusion_image_label: ['']
+  mask_image: 'path'
+  num_threads: 1
+  out_atlas_voting_weight_name_format: 'path'
+  out_intensity_fusion_name_format: 'path'
+  out_label_fusion: 'path'
+  out_label_post_prob_name_format: 'path'
+  patch_metric: enumerate(('PC','MSQ'))
+  patch_radius: '2x2x2'
+  retain_atlas_voting_images: False
+  retain_label_posterior_images: False
+  search_radius: [3, 3, 3]
+  verbose: True
+ants_KellyKapowski:
+  args: ''
+  convergence: '[50,0.001,10]'
+  cortical_thickness: 'path'
+  dimension: 2
+  environ: {}
+  gradient_step: 0.025
+  gray_matter_label: 2
+  gray_matter_prob_image: 'path'
+  max_invert_displacement_field_iters: 20
+  num_threads: 1
+  number_integration_points: 10
+  smoothing_variance: 1.0
+  smoothing_velocity_field: 1.5
+  thickness_prior_estimate: 10.0 
+  thickness_prior_image: 'path'
+  use_bspline_smoothing: False
+  warped_white_matter: 'path'
+  white_matter_label: 3
+  white_matter_prob_image: 'path'
+ants_LaplacianThickness:
+  args: ''
+  dT: 0.01
+  environ: {}
+  num_threads: 1
+  output_image: ''
+  prior_thickness: 500.0
+  smooth_param: 1.0
+  sulcus_prior: 0.15
+  tolerance: 0.001
+ants_N4BiasFieldCorrection:
+  args: ''
+  bias_image: 'path'
+  bspline_fitting_distance: 0.0
+  bspline_order: 0
+  convergence_threshold: 0.0
+  dimension: 3
+  environ: {}
+  histogram_sharpening: (0.1, 1.0, 1)
+  mask_image: 'path'
+  n_iterations: [0]
+  num_threads: 1
+  output_image: 'path'
+  rescale_intensities: False
+  shrink_factor: 0
+  weight_image: 'path'
+ants_ThresholdImage:
+  args: ''
+  dimension: 3
+  environ: {}
+  input_mask: 'path'
+  inside_value: 1.0
+  mode: "enumerate(('Otsu', 'Kmeans'))"
+  num_threads: 1
+  num_thresholds: 1
+  output_image: 'path'
+  outside_value: 0.0
+  th_high: 0.5
+  th_low: 1.0

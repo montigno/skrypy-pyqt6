@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cluster (HPC) &mdash; Skrypy Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b42915cc" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to upgrade Skrypy" href="update_skrypy.html" />
+    <link rel="prev" title="How to install dependencies" href="install_dependencies.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Skrypy Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_skrypy.html">How to install Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_install.html">How to install Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_dependencies.html">How to install dependencies</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cluster (HPC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clusters-configuration">Clusters configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update_skrypy.html">How to upgrade Skrypy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blocks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../blocks/create_blocks.html">How to create a block</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/preinstalled_packages_list.html">List of pre-installed Python packages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Skrypy Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cluster (HPC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/installation/cluster.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cluster-hpc">
+<h1>Cluster (HPC)<a class="headerlink" href="#cluster-hpc" title="Link to this heading"></a></h1>
+<p>The procedure for installing Skrypy and its dependencies on a cluster is the same as for a local installation.
+See with the cluster administrator.</p>
+<section id="clusters-configuration">
+<h2>Clusters configuration<a class="headerlink" href="#clusters-configuration" title="Link to this heading"></a></h2>
+<blockquote>
+<div></div></blockquote>
+<p>You can put several clusters in the list. <br />
+(Configuration to be done on your PC, not on the cluster)</p>
+<p>1. Go to the <cite>Configuration -&gt; Clusters configuration</cite> menu:<br />
+<a class="reference internal" href="../_images/menu_config_clusters.png"><img alt="(skrypy buttons)" src="../_images/menu_config_clusters.png" style="width: 50%;" /></a></p>
+<p>2. A window opens:<br />
+<a class="reference internal" href="../_images/cluster_config.png"><img alt="(cluster config)" src="../_images/cluster_config.png" style="width: 60%;" /></a></p>
+<ol class="arabic simple" start="3">
+<li><p>Fill in the fields</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">name</span></code>: user&#64;hostname</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Password</span></code>: your password to access the cluster.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Skrypy</span> <span class="pre">directory</span> <span class="pre">on</span> <span class="pre">this</span> <span class="pre">cluster</span></code>: specifies the path where Skrypy is installed on the cluster</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Workspace</span> <span class="pre">on</span> <span class="pre">this</span> <span class="pre">cluster</span></code>: specifies the workspace on the cluster. This allows you to transfer your diagrams to be run on the cluster and can also (optional) be used to transfer your data to be processed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cpus</span> <span class="pre">to</span> <span class="pre">use</span></code>: maximum number of CPUs to use for your multiprocessing mode treatments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X11</span> <span class="pre">forwarding</span></code>: check this box if display returns (image or curves) are expected.</p></li>
+</ul>
+<blockquote>
+<div><div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Depending on the cluster’s graphics management capability, the result is not guaranteed.</p>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Pre-execution</span> <span class="pre">command</span></code>: this field allows you to enter shell-like instructions to be executed before your diagrams run. <br /></dt><dd><p>The example in the figure allows you to activate a conda RSS environment. You should clearly specify the conda source of the cluster.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<ol class="arabic" start="4">
+<li><p>Registration</p>
+<p><code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">As</span> <span class="pre">...</span></code> for a new cluster name  or <code class="docutils literal notranslate"><span class="pre">Save</span></code> for modification</p>
+</li>
+<li><p>Test</p>
+<p><code class="docutils literal notranslate"><span class="pre">Test</span></code>: allows you to perform connection tests, and checks if the paths exist.
+<a class="reference internal" href="../_images/cluster_config_test.png"><img alt="(cluster config)" src="../_images/cluster_config_test.png" style="width: 60%;" /></a></p>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install_dependencies.html" class="btn btn-neutral float-left" title="How to install dependencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="update_skrypy.html" class="btn btn-neutral float-right" title="How to upgrade Skrypy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, olivier MONTIGON (IRMaGe).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

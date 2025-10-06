@@ -1,0 +1,33 @@
+[diagram]
+link=[N0] node=[A0:#Node#S0:data_base_db]
+link=[N1] node=[S0:table_list#Node#P0:Value]
+constant=[A0] value=['path'] format=[path] label=[data_base_pp] RectF=[(250.0, 300.0, 57.0, 33.0)] 
+probe=[P0] label=[Value] format=[list_str] RectF=[(1450.0, 300.0, 70, 24)] 
+script=[S0] title=[Script_editor] inputs=[['data_base_db', 'in', 'path']] outputs=[['table_list', 'out', 'list_str']] code=[your code] RectF=[(450.0, 150.0, 872.0, 281.0)]
+[source S0]
+["data_base_db='path'"]
+import sqlite3
+
+con = sqlite3.connect(data_base_db)
+# creating cursor
+cur = con.cursor()
+
+# reading all table names
+table_list = [a for a in cur.execute("SELECT name FROM sqlite_master WHERE type = 'table'")]
+# here is you table list
+print(table_list)
+
+# Be sure to close the connection
+con.close()
+['S0:table_list']
+[/source S0]
+
+[execution]
+[]
+['S0', 'P0']
+{'P0': ('list_str', 'Value', 'S0:table_list')}
+['S0:table_list']
+{}
+[]
+[interlinks]
+[]

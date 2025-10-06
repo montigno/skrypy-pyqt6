@@ -1,0 +1,5 @@
+MP3_BVf:
+  output_name: 'BVf'
+  B0: 4.7 #
+  Gamma: 2.675
+  deltaxi_CA: 0.1867

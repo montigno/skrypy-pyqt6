@@ -1,0 +1,10 @@
+brkraw_tonii:
+  -o: 'path' # OUTPUT
+  -s: '' # SCANID
+  -r: '' # RECOID
+  -t: '' # SUBJECTTYPE
+  -p: '' # POSITION
+  --ignore-slope: '' #
+  --ignore-offset: '' #
+  --ignore-rescale: '' #
+  --ignore-localizer: '' #

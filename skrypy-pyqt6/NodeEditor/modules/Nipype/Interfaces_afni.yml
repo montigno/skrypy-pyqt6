@@ -1,0 +1,99 @@
+afni_Autobox:
+  padding: 0 
+  out_file: 'path'
+  no_clustering: True
+  num_threads: 1
+  outputtype: enumerate(('NIFTI','AFNI','NIFTI_GZ'))
+  args: ''
+afni_Automask:
+  args: ''
+  brain_file: 'path'
+  clfrac: 0.1
+  dilate: 1
+  environ: {}
+  erode: 1
+  num_threads: 1
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI','AFNI','NIFTI_GZ'))
+afni_Calc:
+  args: ''
+  environ: {}
+  ignore_exception: False
+  in_file_b: 'path'
+  in_file_c: 'path'
+  other: 'path'
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI_GZ', 'AFNI', 'NIFTI'))
+  single_idx: 0
+  start_idx: 0
+  stop_idx: 0
+  terminal_output: enumerate(('stream', 'allatonce', 'file', 'none'))
+afni_Despike:
+  args: ''
+  environ: {}
+  num_threads: 1
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI','AFNI','NIFTI_GZ'))
+afni_Seg:
+  args: ''
+  bias_classes: ''
+  bias_fwhm: 0.0
+  blur_meth: enumerate(('BFT','BIM'))
+  bmrf: 0.0
+  classes: ''
+  environ: {}
+  ignore_exception: False
+  main_N: 0
+  mixfloor: 0.0
+  mixfrac: ''
+  prefix: ''
+  terminal_output: enumerate(('stream','allatonce','file','none'))
+afni_SkullStrip:
+  args: ''
+  environ: {}
+  ignore_exception: False
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI_GZ', 'AFNI', 'NIFTI'))
+  terminal_output: enumerate(('stream', 'allatonce', 'file', 'none'))
+afni_Fourier:
+  args: ''
+  environ: {}
+  ignore_exception: False
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI', 'AFNI', 'NIFTI_GZ'))
+  terminal_output: enumerate(('stream', 'allatonce', 'file', 'none'))
+afni_Resample:
+  args: ''
+  environ: {}
+  master: 'path'
+  num_threads: 1
+  orientation: ''
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI', 'AFNI', 'NIFTI_GZ'))
+  resample_mode: enumerate(('NN', 'Li', 'Cu', 'Bk'))
+  voxel_size: (0.0, 0.0, 0.0)
+afni_Unifize:
+  args: ''
+  cl_frac: 0.0
+  environ: {}
+  epi: True
+  gm: True
+  no_duplo: True
+  num_threads: 1
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI_GZ', 'AFNI', 'NIFTI'))
+  quiet: True
+  rbt: (18.3, 70.0, 80.0)
+  scale_file: 'path'
+  t2: True
+  t2_up: 98.5
+  urad: 18.3
+afni_ZCutUp:
+  args: ''
+  environ: {}
+  ignore_exception: False
+  keep: '0 10'
+  out_file: 'path'
+  outputtype: enumerate(('NIFTI_GZ', 'AFNI', 'NIFTI'))
+  terminal_output: enumerate(('stream', 'allatonce', 'file', 'none'))
+ 

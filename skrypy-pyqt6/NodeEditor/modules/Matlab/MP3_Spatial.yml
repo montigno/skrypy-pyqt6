@@ -1,0 +1,21 @@
+MP3_Brain_Mask_PCNN3D:
+  Radius: 5.0
+  Min_BrainSize: 1200.0
+  Max_BrainSize: 4400.0
+MP3_Arithmetic:
+  Output_orientation: enumerate(('First input', 'Second input'))
+  Operation: enumerate(('Addition', 'Subtraction', 'Multiplication (Between Scans)', 'Division', 'Percentage', 'Union', 'Intersection', 'Moyenne temporelle' ))
+  Constant: 1
+MP3_Reshape:
+  Dimenssion_to_reduce: '4'
+  Index_to_keep: '3 4'
+MP3_MICO_BIAS_Estimation:
+  iterNum_outer: 8
+  iterCM: 2
+  iter_b: 1
+  q: 1.5
+  th_bg: 0.0
+  N_regions: 3
+  tissueLabel: '1 2 3'
+  Segmentation: 'No'
+  

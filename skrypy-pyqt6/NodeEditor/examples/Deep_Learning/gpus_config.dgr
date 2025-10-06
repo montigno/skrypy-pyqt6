@@ -1,0 +1,13 @@
+[diagram]
+link=[N0] node=[U0:gpus_status#Node#U1:in_String]
+block=[U1] category=[Tools.Print] class=[Print_str] valInputs=[(['comment', 'in_String'], ['', 'Node(N0)'], [], [])] RectF=[(169.09343682286018, -40.81565716413866, 150.0, 80.0)] 
+block=[U0] category=[DeepLearn.Tensorflow] class=[tensorflow_gpus_config] valInputs=[([], [], ['gpus_status'], ['list_str'])] RectF=[(-76.0, -27.0, 150.0, 80.0)] 
+[execution]
+[]
+['U0', 'U1']
+{'U0': ('DeepLearn.Tensorflow', 'tensorflow_gpus_config', "([], [], ['gpus_status'], ['list_str'])"), 'U1': ('Tools.Print', 'Print_str', "(['comment', 'in_String'], ['', 'U0:gpus_status'], [], [])")}
+['U0:gpus_status']
+{}
+[]
+[interlinks]
+[]

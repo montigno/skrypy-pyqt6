@@ -1,0 +1,32 @@
+[diagram]
+link=[N3] node=[S0:const4#Node#P3:Value]
+link=[N2] node=[S0:const3#Node#P2:Value]
+link=[N1] node=[S0:const2#Node#P1:Value]
+link=[N0] node=[S0:const1#Node#P0:Value]
+probe=[P3] label=[Value] format=[list_str] RectF=[(430.18, 66.98, 70, 24)] 
+probe=[P2] label=[Value] format=[str] RectF=[(430.18, -8.02, 70, 24)] 
+probe=[P1] label=[Value] format=[list_int] RectF=[(430.18, -83.02, 70, 24)] 
+probe=[P0] label=[Value] format=[array_float] RectF=[(430.18, -158.02, 70, 24)] 
+script=[S0] title=[Script_python] inputs=[] outputs=[['const1', 'out', 'array_float'], ['const2', 'out', 'list_int'], ['const3', 'out', 'str'], ['const4', 'out', 'list_str']] code=[your code] RectF=[(-137.26, -217.92000000000002, 488.0, 372.0)]
+[source S0]
+[]
+const1 = [[0.0, 0.1, 0.2], [1.0, 1.1, 1.2], [2.0, 2.1, 2.2]]
+
+const2 = [1, 2, -6, 5, 8, -10]
+
+const3 = 'Hello world'
+
+const4 = ['a', 'b', 'c', 'd']
+
+['S0:const1', 'S0:const2', 'S0:const3', 'S0:const4']
+[/source S0]
+
+[execution]
+[]
+['S0', 'P0', 'P1', 'P2', 'P3']
+{'P0': ('array_float', 'Value', 'S0:const1'), 'P1': ('list_int', 'Value', 'S0:const2'), 'P2': ('str', 'Value', 'S0:const3'), 'P3': ('list_str', 'Value', 'S0:const4')}
+['S0:const4', 'S0:const3', 'S0:const2', 'S0:const1']
+{}
+[]
+[interlinks]
+[]

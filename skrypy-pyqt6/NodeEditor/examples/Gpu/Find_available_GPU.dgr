@@ -1,0 +1,35 @@
+[diagram]
+link=[N3] node=[S0:listGPU#Node#P3:Value]
+probe=[P3] label=[Value] format=[list_str] RectF=[(323.2, 155.37, 70, 24)] 
+link=[N1] node=[S0:use_cuda#Node#P1:Value]
+link=[N0] node=[S0:pf#Node#P0:Value]
+link=[N2] node=[S0:version_cuda#Node#P2:Value]
+probe=[P2] label=[Value] format=[str] RectF=[(324.75, 93.77, 70, 24)] 
+probe=[P1] label=[Value] format=[bool] RectF=[(321.33, 15.36, 70, 24)] 
+probe=[P0] label=[Value] format=[str] RectF=[(317.91, -45.29, 70, 24)] 
+script=[S0] title=[Script_python] inputs=[] outputs=[['pf', 'out', 'str'], ['use_cuda', 'out', 'bool'], ['version_cuda', 'out', 'str'], ['listGPU', 'out', 'list_str']] code=[your code] RectF=[(-88.92, -70.01, 256.0, 274.0)]
+[source S0]
+[]
+import GPUtil
+import torch
+import platform
+
+pf = platform.processor()
+use_cuda = torch.cuda.is_available()
+version_cuda = torch.version.cuda
+listGPU = GPUtil.getAvailable()
+
+
+
+['S0:pf', 'S0:use_cuda', 'S0:version_cuda', 'S0:listGPU']
+[/source S0]
+
+[execution]
+[]
+['S0', 'P0', 'P1', 'P2', 'P3']
+{'P0': ('str', 'Value', 'S0:pf'), 'P1': ('bool', 'Value', 'S0:use_cuda'), 'P2': ('str', 'Value', 'S0:version_cuda'), 'P3': ('list_str', 'Value', 'S0:listGPU')}
+['S0:listGPU', 'S0:use_cuda', 'S0:pf', 'S0:version_cuda']
+{}
+[]
+[interlinks]
+[]

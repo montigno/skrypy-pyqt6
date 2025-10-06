@@ -1,0 +1,290 @@
+class spm_ApplyTransform():
+    def __init__(self, in_file='path', mat='path', **options):
+        import nipype.interfaces.spm.utils as spmu
+        applymat = spmu.ApplyTransform()
+        applymat.inputs.in_file = in_file
+        applymat.inputs.mat = mat
+        applymat.run()
+        for ef in options:
+            setattr(applymat.inputs, ef, options[ef])
+        self.res.run()
+
+    def mesh_file(self: 'path'):
+        return self.res.outputs.out_file
+
+##################################################################
+
+
+class spm_Coregister():
+    """
+    Note:
+        dependencies: Nipype, SPM
+        GUI: no
+        link_web: (click Ctrl + U)
+    """
+    def __init__(self, target='path', source='path', **options):
+        import nipype.interfaces.spm as spm
+        coreg = spm.Coregister()
+        coreg.inputs.target = target
+        coreg.inputs.source = source
+        for ef in options:
+            setattr(coreg.inputs, ef, options[ef])
+        self.res = coreg.run()
+
+    def coregistered_source(self: 'list_path'):
+        return self.res.outputs.coregistered_source
+
+    def coregistered_files(self: 'list_path'):
+        return self.res.outputs.coregistered_files
+
+##################################################################
+
+
+class spm_Normalize():
+    """
+    Note:
+        dependencies: Nipype, SPM
+        GUI: no
+        link_web: (click Ctrl + U)
+    """
+    def __init__(self, parameter_file='path', source=['path'],
+                 template='path', **options):
+        import nipype.interfaces.spm as spm
+        norm = spm.Normalize()
+        norm.inputs.parameter_file = parameter_file
+        norm.inputs.source = source
+        norm.inputs.template = template
+        for ef in options:
+            setattr(norm.inputs, ef, options[ef])
+        self.res = norm.run()
+
+    def normalization_parameters(self: 'path'):
+        return self.res.outputs.normalization_parameters
+
+    def normalized_files(self: 'path'):
+        return self.res.outputs.normalized_files
+
+    def normalized_source(self: 'path'):
+        return self.res.outputs.normalized_source
+
+##################################################################
+
+
+class spm_Normalize12():
+
+    def __init__(self, deformation_file='path', image_to_align='path', **options):
+        import nipype.interfaces.spm as spm
+        norm12 = spm.Normalize12()
+        norm12.inputs.deformation_file = deformation_file
+        norm12.inputs.image_to_align = image_to_align
+        for ef in options:
+            setattr(norm12.inputs, ef, options[ef])
+        self.res = norm12.run()
+
+    def deformation_field(self: 'path'):
+        return self.res.outputs.deformation_field
+
+    def normalized_files(self: 'path'):
+        return self.res.outputs.normalized_files
+
+    def normalized_image(self: 'path'):
+        return self.res.outputs.normalized_image
+
+##################################################################
+
+
+class spm_NewSegment():
+    """
+    Note:
+        dependencies: Nipype, SPM
+        GUI: no
+        link_web: (click Ctrl + U)
+    """
+    def __init__(self, channel_files=['path'], **options):
+        import nipype.interfaces.spm as spm
+        seg = spm.NewSegment()
+        seg.inputs.channel_files = channel_files
+        for ef in options:
+            setattr(seg.inputs, ef, options[ef])
+        self.res = seg.run()
+
+    def native_class_images(self: 'array_path'):
+        return self.res.outputs.native_class_images
+
+    def forward_deformation_field(self: 'list_path'):
+        return self.res.outputs.forward_deformation_field
+
+    def dartel_input_images(self: 'array_path'):
+        return self.res.outputs.dartel_input_images
+
+    def inverse_deformation_field(self: 'list_path'):
+        return self.res.outputs.inverse_deformation_field
+
+    def bias_field_images(self: 'list_path'):
+        return self.res.outputs.bias_field_images
+
+    def normalized_class_images(self: 'array_path'):
+        return self.res.outputs.normalized_class_images
+
+    def transformation_mat(self: 'list_path'):
+        return self.res.outputs.inverse_transformation_mat
+
+    def modulated_class_images(self: 'array_path'):
+        return self.res.outputs.modulated_class_images
+
+    def bias_corrected_images(self: 'list_path'):
+        return self.res.outputs.bias_corrected_images
+
+##################################################################
+
+
+class spm_Realign():
+    def __init__(self, in_files=['path'], **options):
+        import nipype.interfaces.spm as spm
+        realign = spm.Realign()
+        realign.inputs.in_files = in_files
+        for ef in options:
+            setattr(realign.inputs, ef, options[ef])
+        self.res = realign.run()
+
+    def mean_image(self: 'path'):
+        return self.res.outputs.mean_image
+
+    def modified_in_files(self: 'list_path'):
+        return self.res.outputs.modified_in_files
+
+    def realigned_files(self: 'list_path'):
+        return self.res.outputs.realigned_files
+
+    def realignment_parameters(self: 'path'):
+        return self.res.outputs.realignment_parameters
+
+##################################################################
+
+
+class spm_Reslice():
+    def __init__(self, in_file='path', space_defining='path', **options):
+        import nipype.interfaces.spm.utils as spmu
+        reslice = spmu.Reslice()
+        reslice.inputs.in_file = in_file
+        for ef in options:
+            setattr(reslice.inputs, ef, options[ef])
+        self.res = reslice.run()
+
+    def out_file(self: 'path'):
+        return self.res.outputs.out_file
+
+##################################################################
+
+
+class spm_ResliceToReference():
+    def __init__(self, in_files=['path'], **options):
+        import nipype.interfaces.spm.utils as spmu
+        r2ref = spmu.ResliceToReference()
+        r2ref.inputs.in_files = in_files
+        for ef in options:
+            setattr(r2ref.inputs, ef, options[ef])
+        self.res = r2ref.run()
+
+    def out_files(self: 'list_path'):
+        return self.res.outputs.out_file
+
+##################################################################
+
+
+class spm_Segment():
+    def __init__(self, data=['path'], **options):
+        import nipype.interfaces.spm as spm
+        seg = spm.Segment()
+        seg.inputs.data = data
+        for ef in options:
+            setattr(seg.inputs, ef, options[ef])
+        self.res = seg.run()
+
+    def native_gm_image(self: 'path'):
+        return self.res.outputs.native_gm_image
+
+    def normalized_gm_image(self: 'path'):
+        return self.res.outputs.normalized_gm_image
+
+    def modulated_gm_image(self: 'path'):
+        return self.res.outputs.normalized_gm_image
+
+    def native_wm_image(self: 'path'):
+        return self.res.outputs.native_wm_image
+
+    def normalized_wm_image(self: 'path'):
+        return self.res.outputs.normalized_wm_image
+
+    def modulated_wm_image(self: 'path'):
+        return self.res.outputs.modulated_wm_image
+
+    def native_csf_image(self: 'path'):
+        return self.res.outputs.native_csf_image
+
+    def normalized_csf_image(self: 'path'):
+        return self.res.outputs.normalized_csf_image
+
+    def modulated_csf_image(self: 'path'):
+        return self.res.outputs.modulated_csf_image
+
+    def modulated_input_image(self: 'path'):
+        return self.res.outputs.modulated_input_image
+
+    def bias_corrected_image(self: 'path'):
+        return self.res.outputs.bias_corrected_image
+
+    def transformation_mat(self: 'path'):
+        return self.res.outputs.transformation_mat
+
+    def inverse_transformation_mat(self: 'path'):
+        return self.res.outputs.inverse_transformation_mat
+
+##################################################################
+
+
+class spm_SliceTiming():
+    """
+    Note:
+        dependencies: Nipype, SPM
+        GUI: no
+        link_web: (click Ctrl + U)
+    """
+    def __init__(self, in_files=['path'], num_slices=1, ref_slice=1, slice_order=[0], time_acquisition=1.0, time_repetition=1.0, **options):
+        from nipype.interfaces.spm import SliceTiming
+        st = SliceTiming()
+        st.inputs.in_files = in_files
+        st.inputs.num_slices = num_slices
+        st.inputs.ref_slice = ref_slice
+        st.inputs.slice_order = slice_order
+        st.inputs.time_acquisition = time_acquisition
+        st.inputs.time_repetition = time_repetition
+        for ef in options:
+            setattr(st.inputs, ef, options[ef])
+        self.res = st.run()
+
+    def timecorrected_files(self: 'list_path'):
+        return self.res.outputs.timecorrected_files
+
+##################################################################
+
+
+class spm_Smooth():
+    """
+    Note:
+        dependencies: Nipype, SPM
+        GUI: no
+        link_web: (click Ctrl + U)
+    """
+    def __init__(self, in_files=['path'], **options):
+        import nipype.interfaces.spm as spm
+        smooth = spm.Smooth()
+        smooth.inputs.in_files = in_files
+        for ef in options:
+            setattr(smooth.inputs, ef, options[ef])
+        self.res = smooth.run()
+
+    def smoothed_files(self: 'list_path'):
+        return self.res.outputs.smoothed_files
+
+##############################################################################

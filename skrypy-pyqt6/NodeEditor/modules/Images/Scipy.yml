@@ -1,0 +1,57 @@
+scipy_binary_opening:
+  structure: [[0]]
+  iterations: 1
+  output: [[0]]
+  origin: 0
+  mask: [[0]]
+  border_value: 0
+  brute_force: False
+scipy_binary_closing:
+  structure: [[0]]
+  iterations: 1
+  output: [[0]]
+  origin: 0
+  mask: [[0]]
+  border_value: 0
+  brute_force: False
+scipy_binary_propagation:
+  structure: [[0]]
+  mask: [[0]]
+  output: [[0]]
+  border_value: 0
+  origin: 0
+scipy_binary_fill_holes:
+  structure: [[0]]
+  output: [[0]]
+  origin: 0
+scipy_convolve2d:
+  mode: enumerate(('full','valid','same'))
+  boundary: enumerate(('fill','wrap','symm'))
+  fillvalue : 0
+scipy_filter_Gaussian:
+  order: 0
+  output: [['']]
+  mode: enumerate(('reflect','constant','nearest','mirror','wrap'))
+  cval: 0.0
+  truncate: 4.0
+scipy_filter_Laplace:
+  output: [['']]
+  mode: enumerate(('reflect','constant','nearest','mirror','wrap'))
+  cval: 0.0
+scipy_filter_Median:
+  labels: [[0]]
+  index: [[0]]
+scipy_filter_Prewitt:
+  axis: -1
+  output: [['']]
+  mode: enumerate(('reflect','constant','nearest','mirror','wrap'))
+  cval: 0.0
+scipy_filter_Sobel:
+  axis: -1
+  output: [['']]
+  mode: enumerate(('reflect','constant','nearest','mirror','wrap'))
+  cval: 0.0
+scipy_filter_Gaussian_laplace:
+  output: [['']]
+  mode: enumerate(('reflect','constant','nearest','mirror','wrap'))
+  cval: 0.0

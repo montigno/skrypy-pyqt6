@@ -1,0 +1,5 @@
+nifti_save_file:
+  mode: enumerate(('r', 'w'))
+  header: ''
+  print_header: True
+  out_type: enumerate(('nii','nii.gz'))

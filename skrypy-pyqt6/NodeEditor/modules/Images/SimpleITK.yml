@@ -1,0 +1,30 @@
+simpleITK_ReadImage:
+  imageIO: enumerate(('BMPImageIO', 'BioRadImageIO','Bruker2dseqImageIO', 'GDCMImageIO', 'GE4ImageIO', 'GE5ImageIO', 'GiplImageIO', 'HDF5ImageIO', 'JPEGImageIO', 'LSMImageIO', 'MINCImageIO', 'MRCImageIO', 'MetaImageIO', 'NiftiImageIO', 'NrrdImageIO', 'PNGImageIO', 'StimulateImageIO', 'TIFFImageIO', 'VTKImageIO')) #   
+                                                                                   # specify the image type :
+                                                                                   # BMPImageIO ( *.bmp, *.BMP )
+                                                                                   # BioRadImageIO ( *.PIC, *.pic )
+                                                                                   # Bruker2dseqImageIO
+                                                                                   # GDCMImageIO
+                                                                                   # GE4ImageIO
+                                                                                   # GE5ImageIO
+                                                                                   # GiplImageIO ( *.gipl *.gipl.gz)
+                                                                                   # HDF5ImageIO
+                                                                                   # JPEGImageIO ( *.jpg, *.JPG, *.jpeg, *.JPEG )
+                                                                                   # LSMImageIO ( *.tif, *.TIF, *.tiff, *.TIFF, *.lsm, *.LSM )
+                                                                                   # MINCImageIO ( *.mnc, *.MNC )
+                                                                                   # MRCImageIO ( *.mrc, *.rec )
+                                                                                   # MetaImageIO ( *.mha, *.mhd )
+                                                                                   # NiftiImageIO ( *.nia, *.nii, *.nii.gz, *.hdr, *.img, *.img.gz )
+                                                                                   # NrrdImageIO ( *.nrrd, *.nhdr )
+                                                                                   # PNGImageIO ( *.png, *.PNG )
+                                                                                   # StimulateImageIO
+                                                                                   # TIFFImageIO ( *.tif, *.TIF, *.tiff, *.TIFF )
+                                                                                   # VTKImageIO ( *.vtk )
+                                                                                   # 
+                                                                                   # If it's omitted, SimpleITK would determine which IO to use automatically, based on the file name’s suffix and/or the file’s header
+                                                                                   
+                                                                                   
+  
+
+
+  

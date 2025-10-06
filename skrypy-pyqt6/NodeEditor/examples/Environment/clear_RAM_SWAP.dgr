@@ -1,0 +1,17 @@
+[diagram]
+link=[N2] node=[A0:#Node#U2:message]
+constant=[A0] value=['enter your password sudo'] format=[str] label=[message] RectF=[(-871.0600000000001, -40.18, 173.0, 35.0)] 
+link=[N0] node=[U2:passwd#Node#U1:sudo_password]
+link=[N1] node=[U2:passwd#Node#U0:sudo_password]
+block=[U2] category=[Environment.authentification] class=[passwd_dialog] valInputs=[(['message'], ['Node(N2)'], ['passwd'], ['str'])] RectF=[(-620.0, -57.42, 150.0, 80.0)] 
+block=[U0] category=[Environment.memory] class=[clean_RAM] valInputs=[(['sudo_password'], ['Node(N1)'], ['stdout'], ['str'])] RectF=[(-303.0, -135.0, 184.48, 80.0)] 
+block=[U1] category=[Environment.memory] class=[clean_SWAP] valInputs=[(['sudo_password'], ['Node(N0)'], ['stdout'], ['str'])] RectF=[(-307.0, 9.0, 184.48, 80.0)] 
+[execution]
+[]
+['U2', 'U0', 'U1']
+{'U2': ('Environment.authentification', 'passwd_dialog', "(['message'], ['enter your password sudo'], ['passwd'], ['str'])"), 'U0': ('Environment.memory', 'clean_RAM', "(['sudo_password'], ['U2:passwd'], ['stdout'], ['str'])"), 'U1': ('Environment.memory', 'clean_SWAP', "(['sudo_password'], ['U2:passwd'], ['stdout'], ['str'])")}
+['U2:passwd', 'U2:passwd']
+{}
+[]
+[interlinks]
+[]

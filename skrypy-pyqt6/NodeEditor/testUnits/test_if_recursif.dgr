@@ -1,0 +1,54 @@
+[diagram]
+link=[N0] node=[I0:in0#Node#I1:in0]
+link=[N1] node=[I1:in0#Node#P0:Value]
+link=[N2] node=[I1:in0#Node#P1:Type]
+link=[N3] node=[A0:#Node#I0:in0]
+link=[N4] node=[I0:in0#Node#P2:Length]
+link=[N5] node=[A1:#Node#I0:val]
+link=[N6] node=[A2:#Node#I0:in1]
+link=[N7] node=[I0:in1#Node#I1:val]
+probe=[P0] label=[Value] format=[array_float] RectF=[(52.86, 4.13, 70, 24)] 
+probe=[P1] label=[Type] format=[array_float] RectF=[(53.86, 8.13, 70, 24)] 
+cluster=[A0] value=[(-100.0, [[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]], 100.0)] format=[array_float] label=[in0] RectF=[(-512.5, 7.0, 219.0, 89.0)] 
+constant=[A1] value=['True'] format=[bool] label=[val] RectF=[(-337.5, -158.5, 78.0, 32.0)] 
+constant=[A2] value=['False'] format=[bool] label=[val] RectF=[(-355.5, 150.5, 78.0, 32.0)] 
+loopIf=[I1] inputs=[[[['in0', 'in', 'array_float'], ['in0', 'out', 'array_float']]]] outputs=[[]] listItems=[[['P0'], ['P1']]] RectF=[(-36.64, -99.87, 218.0, 237.0)] 
+probe=[P2] label=[Length] format=[array_float] RectF=[(-14.14, 12.13, 70, 24)] 
+loopIf=[I0] inputs=[[[['in0', 'in', 'array_float'], ['in0', 'out', 'array_float']], [['in1', 'in', 'bool'], ['in1', 'out', 'bool']]]] outputs=[[]] listItems=[[['N0', 'I1', 'N7'], ['P2']]] RectF=[(-118.64, -174.87, 359.0, 389.0)] 
+[execution]
+[]
+['I0']
+{}
+[]
+{}
+[]
+[loopif I0 True]
+['I0:in0=[[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]', 'I0:val=True', 'I0:in1=False']
+['ThreadOn', 'I1', 'ThreadOff']
+{}
+['I0:in0', 'I0:in1']
+{}
+[]
+[loopif I1 True]
+['I1:in0=I0:in0', 'I1:val=I0:in1']
+['P0']
+{'P0': ('array_float', 'Value', 'I1:in0')}
+['I1:in0']
+{}
+[]
+[loopif I1 False]
+['I1:in0=I0:in0', 'I1:val=I0:in1']
+['P1']
+{'P1': ('array_float', 'Type', 'I1:in0')}
+['I1:in0']
+{}
+[]
+[loopif I0 False]
+['I0:in0=[[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]', 'I0:val=True', 'I0:in1=False']
+['P2']
+{'P2': ('array_float', 'Length', 'I0:in0')}
+['I0:in0']
+{}
+[]
+[interlinks]
+[]

@@ -1,0 +1,45 @@
+MP3_T2map:
+  threshold: 5.0  # the threshold in %
+  output_filename_ext: 'T2map' # default name for output file
+
+MP3_DeltaR2:
+  NbEchoUsed: 3
+  Output_orientation: enumerate(('First input','Second input'))
+  output_filename_ext: 'DeltaR2' # default name for output file
+
+MP3_DeltaR2Star:
+  Output_orientation: enumerate(('First input','Second input'))
+  output_filename_ext: 'DeltaR2' # default name for output file
+
+MP3_Fit_T2_T2star:
+  output_filename_ext: '_Fit_T2_T2star' # default name for output file
+  trash_below: 0
+  trash_after: 'inf'
+  threshold: 5
+
+MP3_T1map_MultiAngles:
+  threshold: 5.0 # the threshold in %
+  output_filename_ext: 'T1map' # default name for output file
+
+MP3_MGE2Dfrom3D:
+  first_slice: 4 #
+  number_of_slices: 4
+  echo_to_trash: 'end'
+  OutputResolution: enumerate(('64', '128', '256'))
+  output_filename_ext: 'MGE2Dfrom3D'
+
+MP3_T1map_MIT:
+  threshold: 5.0 # the threshold in %
+  output_filename: 'T1map'
+  folder_out: ''
+  first_scan: 1
+  M0_map: enumerate(('No', 'Yes'))
+  IE_map: enumerate(('No', 'Yes'))
+
+MP3_Slice_Sum:
+  first_slice: 3
+  NbToAdd: 1
+  echo_to_trash: 'end'
+  MakeAverage: enumerate(('No', 'Yes'))
+  OutputResolution: enumerate(('64', '128', '256'))
+  output_filename_ext: 'Summed' # default name for output file

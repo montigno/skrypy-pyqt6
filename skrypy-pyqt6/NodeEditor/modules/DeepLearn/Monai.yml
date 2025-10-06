@@ -1,0 +1,27 @@
+monai_transforms_LoadImaged:
+  reader: '' # (Union[Type[ImageReader], str, None]) – reader to load image file and metadata - if reader is None, a default set of SUPPORTED_READERS will be used. - if reader is a string, it’s treated as a class name or dotted path (such as "monai.data.ITKReader"), the supported built-in reader classes are "ITKReader", "NibabelReader", "NumpyReader". a reader instance will be constructed with the *args and **kwargs parameters. - if reader is a reader class/instance, it will be registered to this loader accordingly.
+  dtype: '' #(Union[dtype, type, str, None]) – if not None, convert the loaded image data to this data type.
+  meta_keys: '' # (Union[Collection[Hashable], Hashable, None]) – explicitly indicate the key to store the corresponding metadata dictionary. the metadata is a dictionary object which contains: filename, original_shape, etc. it can be a sequence of string, map to the keys. if None, will try to construct meta_keys by key_{meta_key_postfix}.
+  meta_key_postfix: '' # (str) – if meta_keys is None, use key_{postfix} to store the metadata of the nifti image, default is meta_dict. The metadata is a dictionary object. For example, load nifti file for image, store the metadata into image_meta_dict.
+  overwriting: False # (bool) – whether allow overwriting existing metadata of same key. default is False, which will raise exception if encountering existing key.
+  image_only: True # (bool) – if True return dictionary containing just only the image volumes, otherwise return dictionary containing image data array and header dict per input key.
+  ensure_channel_first: False # (bool) – if True and loaded both image array and metadata, automatically convert the image array shape to channel first. default to False.
+  simple_keys: False # (bool) – whether to remove redundant metadata keys, default to False for backward compatibility.
+  prune_meta_pattern: [''] # (Optional[str]) – combined with prune_meta_sep, a regular expression used to match and prune keys in the metadata (nested dictionary), default to None, no key deletion.
+  prune_meta_sep: "." # (str) – combined with prune_meta_pattern, used to match and prune keys in the metadata (nested dictionary). default is “.”, see also monai.transforms.DeleteItemsd. e.g. prune_meta_pattern=".*_code$", prune_meta_sep=" " removes meta keys that ends with "_code".
+  allow_missing_keys: False # (bool) – don’t raise exception if key is missing.
+monai_transforms_compose:
+  map_items: True # (bool) – whether to apply transform to each item in the input data if data is a list or tuple. defaults to True.
+  unpack_items: False # (bool) – whether to unpack input data with * as parameters for the callable function of transform. defaults to False.
+  log_stats: False # (bool) – whether to log the detailed information of data and applied transform when error happened, for NumPy array and PyTorch Tensor, log the data shape and value range, for other metadata, log the values directly. default to False.
+monai_transforms_EnsureChannelFirstd:
+  meta_keys: None # (Union[Collection[Hashable], Hashable, None]) – explicitly indicate the key of the corresponding metadata dictionary. used to store the computed statistics to the meta dict. for example, for data with key image, the metadata by default is in image_meta_dict. the metadata is a dictionary object which contains: filename, original_shape, etc. it can be a sequence of string, map to the keys. if None, will try to construct meta_keys by key_{meta_key_postfix}.
+  meta_key_postfix: 'meta_dict' # (str) – if meta_keys is None, use key_{postfix} to fetch the metadata according to the key data, default is meta_dict, the metadata is a dictionary object. used to store the computed statistics to the meta dict.
+  strict_check: True # (bool) – whether to raise an error when the meta information is insufficient.
+  allow_missing_keys: False # (bool) – don’t raise exception if key is missing.
+  channel_dim: None # This argument can be used to specify the original channel dimension (integer) of the input array. It overrides the original_channel_dim from provided MetaTensor input. If the input array doesn’t have a channel dim, this value should be 'no_channel'. If this is set to None, this class relies on img or meta_dict to provide the channel dimension.
+monai_utils_set_determinism:
+  seed: 0 # (Optional[int]) – the random seed to use, default is np.iinfo(np.int32).max. It is recommended to set a large seed, i.e. a number that has a good balance of 0 and 1 bits. Avoid having many 0 bits in the seed. if set to None, will disable deterministic training.
+  use_deterministic_algorithms: True # (Optional[bool]) – Set whether PyTorch operations must use “deterministic” algorithms.
+  additional_settings: None # (Union[Sequence[Callable[[int], Any]], Callable[[int], Any], None]) – additional settings that need to set random seed.
+ 

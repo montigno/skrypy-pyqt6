@@ -1,0 +1,40 @@
+[diagram]
+link=[N7] node=[S0:const4#Node#U3:data]
+link=[N5] node=[S0:const3#Node#U2:data]
+link=[N3] node=[S0:const2#Node#U1:data]
+link=[N1] node=[A1:#Node#U1:memoryName]
+link=[N0] node=[A0:#Node#U0:memoryName]
+link=[N2] node=[S0:const1#Node#U0:data]
+link=[N4] node=[A2:#Node#U2:memoryName]
+link=[N6] node=[A3:#Node#U3:memoryName]
+constant=[A1] value=['myList1'] format=[str] label=[memoryName] RectF=[(505.66, -194.63, 81.0, 38.0)] 
+constant=[A0] value=['myArray1'] format=[str] label=[memoryName] RectF=[(424.95, -375.37, 94.0, 38.0)] 
+constant=[A2] value=['myWords'] format=[str] label=[memoryName] RectF=[(797.1800000000001, -39.14, 93.0, 38.0)] 
+constant=[A3] value=['myList2'] format=[str] label=[memoryName] RectF=[(552.84, 134.74, 81.0, 38.0)] 
+block=[U1] category=[Environment.shared_memory] class=[SharedMemory_create] valInputs=[(['memoryName', 'data'], ['Node(N1)', 'Node(N3)'], [], [])] RectF=[(662.66, -186.82, 154.0, 84.0)] 
+block=[U0] category=[Environment.shared_memory] class=[SharedMemory_create] valInputs=[(['memoryName', 'data'], ['Node(N0)', 'Node(N2)'], [], [])] RectF=[(564.5600000000001, -387.0, 152.0, 82.0)] 
+script=[S0] title=[Script_python] inputs=[] outputs=[['const1', 'out', 'array_float'], ['const2', 'out', 'list_int'], ['const3', 'out', 'str'], ['const4', 'out', 'list_str']] code=[your code] RectF=[(-187.52, -229.23000000000002, 477.0, 433.0)]
+block=[U2] category=[Environment.shared_memory] class=[SharedMemory_create] valInputs=[(['memoryName', 'data'], ['Node(N4)', 'Node(N5)'], [], [])] RectF=[(954.1800000000001, -31.330000000000002, 156.0, 86.0)] 
+block=[U3] category=[Environment.shared_memory] class=[SharedMemory_create] valInputs=[(['memoryName', 'data'], ['Node(N6)', 'Node(N7)'], [], [])] RectF=[(708.33, 177.23, 156.0, 86.0)] 
+[source S0]
+[]
+const1 = [[0.0, 0.1, 0.2], [1.0, 1.1, 1.2], [2.0, 2.1, 2.2]]
+
+const2 = [1, 2, -6, 5, 8, -10]
+
+const3 = 'Hello world'
+
+const4 = ['a', 'b', 'c', 'd']
+
+['S0:const1', 'S0:const2', 'S0:const3', 'S0:const4']
+[/source S0]
+
+[execution]
+[]
+['S0', 'U0', 'U1', 'U2', 'U3']
+{'U0': ('Environment.shared_memory', 'SharedMemory_create', "(['memoryName', 'data'], ['myArray1', 'S0:const1'], [], [])"), 'U1': ('Environment.shared_memory', 'SharedMemory_create', "(['memoryName', 'data'], ['myList1', 'S0:const2'], [], [])"), 'U2': ('Environment.shared_memory', 'SharedMemory_create', "(['memoryName', 'data'], ['myWords', 'S0:const3'], [], [])"), 'U3': ('Environment.shared_memory', 'SharedMemory_create', "(['memoryName', 'data'], ['myList2', 'S0:const4'], [], [])")}
+['S0:const4', 'S0:const3', 'S0:const2', 'S0:const1']
+{}
+[]
+[interlinks]
+[]

@@ -1,0 +1,8 @@
+only_options:
+  option1: False # boolean
+  option2: enumerate(('case1', 'case2', 'case3')) # combobox
+  option3: 128.18 # floating
+  option4: 5 # integer
+  option5: 'comments' # string
+comboBox_example:
+  input3: enumerate(('Linux', 'MacOS', 'Windows', 'Android'))

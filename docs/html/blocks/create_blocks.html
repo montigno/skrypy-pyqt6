@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to create a block &mdash; Skrypy Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b42915cc" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="List of pre-installed Python packages" href="../reference/preinstalled_packages_list.html" />
+    <link rel="prev" title="Shared memory for inter-process" href="../start/shared_memory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Skrypy Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/install_skrypy.html">How to install Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/package_install.html">How to install Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/install_dependencies.html">How to install dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/cluster.html">Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/update_skrypy.html">How to upgrade Skrypy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blocks</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to create a block</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-source-codes">The source codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-parameters">Function parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-return-types">Function return types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-options">The options</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/preinstalled_packages_list.html">List of pre-installed Python packages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Skrypy Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">How to create a block</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/blocks/create_blocks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-create-a-block">
+<h1>How to create a block<a class="headerlink" href="#how-to-create-a-block" title="Link to this heading"></a></h1>
+<p>This page explains how to create a new block in the library.</p>
+<blockquote>
+<div></div></blockquote>
+<section id="the-source-codes">
+<h2>The source codes<a class="headerlink" href="#the-source-codes" title="Link to this heading"></a></h2>
+<p>All blocks in the library are written in Python and are located in the ‘root_of_skrypy_venv/skrypy/NodeEditor/modules’ folder. <br /></p>
+<p><a class="reference internal" href="../_images/explorer_modules.png"><img alt="(skrypy buttons)" src="../_images/explorer_modules.png" style="width: 30%;" /></a> ‘ ‘ <a class="reference internal" href="../_images/Blocks_library_sum.png"><img alt="(arrow)" src="../_images/Blocks_library_sum.png" style="width: 20%;" /></a></p>
+<p><a class="reference internal" href="../_images/explorer_modules_pcnn.png"><img alt="(order processes)" src="../_images/explorer_modules_pcnn.png" style="width: 30%;" /></a> ‘ ‘ <a class="reference internal" href="../_images/Blocks_library_spat.png"><img alt="(order processes cluster)" src="../_images/Blocks_library_spat.png" style="width: 20%;" /></a> ‘ ‘ <a class="reference internal" href="../_images/Blocks_library_pcnn.png"><img alt="(order processes cluster)" src="../_images/Blocks_library_pcnn.png" style="width: 20%;" /></a></p>
+<p>If you open a .py file, you find a list of classes. <br />
+A block corresponds to a simple Python class. <br /></p>
+<p><a class="reference internal" href="../_images/block_explain1.jpg"><img alt="(skrypy buttons)" src="../_images/block_explain1.jpg" style="width: 60%;" /></a>
+<a class="reference internal" href="../_images/block_explain2.jpg"><img alt="(arrow)" src="../_images/block_explain2.jpg" style="width: 60%;" /></a></p>
+</section>
+<section id="function-parameters">
+<h2>Function parameters<a class="headerlink" href="#function-parameters" title="Link to this heading"></a></h2>
+<p>You must define default values ​​for parameters in the function definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.55</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">img</span><span class="o">=</span><span class="s2">&quot;path&quot;</span><span class="p">):</span>
+<span class="n">The</span> <span class="n">term</span> <span class="s1">&#39;path&#39;</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">that</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span> <span class="n">path</span><span class="p">,</span> <span class="ow">and</span> <span class="n">also</span> <span class="n">represents</span> <span class="n">a</span> <span class="n">null</span> <span class="n">value</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="function-return-types">
+<h2>Function return types<a class="headerlink" href="#function-return-types" title="Link to this heading"></a></h2>
+<p>For function returns, it is necessary to add annotations and specify the type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="s2">&quot;array_float&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span>
+</pre></div>
+</div>
+<p>Here is the list of types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;tuple&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;list_int&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;list_float&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;list_str&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;list_bool&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;list_path&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;array_int&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;array_float&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;array_str&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;array_bool&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">out_result</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;array_path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="the-options">
+<h2>The options<a class="headerlink" href="#the-options" title="Link to this heading"></a></h2>
+<p>Options are stored in joint yaml files</p>
+<p><a class="reference internal" href="../_images/explorer_modules_pcnn_options.png"><img alt="(arrow)" src="../_images/explorer_modules_pcnn_options.png" style="width: 30%;" /></a></p>
+<p>If you open the .yaml file, you find a list of options with default values. <br />
+You can also add comments (except for Nipype modules, in which case the comments are taken directly from the help()). <br /></p>
+<p>Options are managed in the block source codes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">myfunction</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.55</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../start/shared_memory.html" class="btn btn-neutral float-left" title="Shared memory for inter-process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reference/preinstalled_packages_list.html" class="btn btn-neutral float-right" title="List of pre-installed Python packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, olivier MONTIGON (IRMaGe).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

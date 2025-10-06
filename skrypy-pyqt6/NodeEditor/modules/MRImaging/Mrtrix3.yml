@@ -1,0 +1,391 @@
+mrtrix3_deGibbs3D:
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: 0 # use this number of threads in multi-threaded applications (set to 0 to disable multi-threading)
+  config: '' # key value  (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwi2fod:
+  grad: '' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: '' # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  shells: '' # b-values specify one or more b-values to use during processing, as a comma-separated list of the desired approximate b-values (b-values are clustered to allow for small deviations). Note that some commands are incompatible with multiple b-values, and will report an error if more than one b-value is provided. WARNING: note that, even though the b=0 volumes are never referred to as shells in the literature, they still have to be explicitly included in the list of b-values as provided to the -shell option! Several algorithms which include the b=0 volumes in their computations may otherwise return an undesired result.
+  directions: '' # file specify the directions over which to apply the non-negativity constraint (by default, the built-in 300 direction set is used). These should be supplied as a text file containing [ az el ] pairs for the directions.
+  lmax: '' # order the maximum spherical harmonic order for the output FOD(s).For algorithms with multiple outputs, this should be provided as a comma-separated list of integers, one for each output image; for single-output algorithms, only a single integer should be provided. If omitted, the command will use the lmax of the corresponding response function (i.e based on its number of coefficients), up to a maximum of 8.
+  mask: '' # image only perform computation within the specified binary brain mask image.
+  filter: '' # spec the linear frequency filtering parameters used for the initial linear spherical deconvolution step (default = [ 1 1 1 0 0 ]). These should be supplied as a text file containing the filtering coefficients for each even harmonic order.
+  neg_lambda: '' # value the regularisation parameter lambda that controls the strength of the non-negativity constraint (default = 1).
+  norm_lambda: '' # value the regularisation parameter lambda that controls the strength of the constraint on the norm of the solution (default = 1).
+  threshold: '' # value the threshold below which the amplitude of the FOD is assumed to be zero, expressed as an absolute amplitude (default = 0).
+  niter: '' # number the maximum number of iterations to perform for each voxel (default = 50). Use '-niter' 0 for a linear unconstrained spherical deconvolution.
+  predicted_signal: '' # image output the predicted dwi image.
+  strides: '' # spec specify the strides of the output data in memory; either as a comma-separated list of (signed) integers, or as a template image from which the strides shall be extracted and used. The actual strides produced will depend on whether the output image format can support it.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwi2mask:
+  clean_scale: '' # value the maximum scale used to cut bridges. A certain maximum scale cuts bridges up to a width (in voxels) of 2x the provided scale. Setting this to 0 disables the mask cleaning step. (Default: 2)
+  grad: '' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: '' # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwidenoise:
+  mask: '' # image Only process voxels within the specified binary brain mask image.
+  extent: '' # window Set the patch size of the denoising filter. By default, the command will select the smallest isotropic patch size that exceeds the number of DW images in the input data, e.g., 5x5x5 for data with <= 125 DWI volumes, 7x7x7 for data with <= 343 DWI volumes, etc.
+  noise: '' # level The output noise map, i.e., the estimated noise level ‘sigma’ in the data. Note that on complex input data, this will be the total noise level across real and imaginary channels, so a scale factor sqrt(2) applies.
+  datatype: '' # float32/float64 Datatype for the eigenvalue decomposition (single or double precision). For complex input data, this will select complex float32 or complex float64 datatypes.
+  estimator: '' # Exp1/Exp2 Select the noise level estimator (default = Exp2), either: * Exp1: the original estimator used in Veraart et al. (2016), or * Exp2: the improved estimator introduced in Cordero-Grande et al. (2019).
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwi2response:
+  erode: '' # (dhollander option) Number of erosion passes to apply to initial (whole brain) mask. Set to 0 to not erode the brain mask. (default: 3)
+            # (fa option) Number of brain mask erosion steps to apply prior to threshold (not used if mask is provided manually)
+  fa: '' # (dhollander option) FA threshold for crude WM versus GM-CSF separation. (default: 0.2)
+         # msmt_5tt option) Upper fractional anisotropy threshold for GM and CSF voxel selection (default: 0.2)
+  sfwm: '' # (dhollander option) Final number of single-fibre WM voxels to select, as a percentage of refined WM. (default: 0.5 per cent)
+  gm: '' # (dhollander option) Final number of GM voxels to select, as a percentage of refined GM. (default: 2 per cent)
+  csf: '' # (dhollander option) Final number of CSF voxels to select, as a percentage of refined CSF. (default: 10 per cent)
+  wm_algo: '' # (dhollander option) algorithm Use external dwi2response algorithm for WM single-fibre voxel selection (options: fa, tax, tournier) (default: built-in Dhollander 2019)
+  number: '' # (fa option) The number of highest-FA voxels to use
+             # (tournier option) Number of single-fibre voxels to use when calculating response function
+  threshold: '' # (fa option) Apply a hard FA threshold, rather than selecting the top voxels
+  dirs: '' # (manual or msmt_5tt option) Manually provide the fibre direction in each voxel (a tensor fit will be used otherwise)
+  pvf: '' # (msmt_5tt option) Partial volume fraction threshold for tissue voxel selection (default: 0.95)
+  peak_ratio: '' # (tax option) Second-to-first-peak amplitude ratio threshold
+  max_iters: '' # (tax option) Maximum number of iterations (set to 0 to force convergence)
+  convergence: '' # (tax option) Percentile change in any RF coefficient required to continue iterating
+  sfwm_fa_threshold: '' # (msmt_5tt option) Sets -wm_algo to fa and allows to specify a hard FA threshold for single-fibre WM voxels, which is passed to the -threshold option of the fa algorithm (warning: overrides -wm_algo option)
+  dilate: '' # (tournier option) Number of mask dilation steps to apply when deriving voxel mask to test in the next iteration.
+  grad: '' # Provide the diffusion gradient table in MRtrix format
+  fslgrad: '' # bvecs bvals Provide the diffusion gradient table in FSL bvecs/bvals format
+  mask: '' # Provide an initial mask for response voxel selection
+  voxels: '' # Output an image showing the final voxel selection(s)
+  shells: '' # The b-value(s) to use in response function estimation (comma-separated list in case of multiple b-values, b=0 must be included explicitly)
+  lmax: '' # The maximum harmonic degree(s) for response function estimation (comma-separated list in case of multiple b-values)
+  nocleanup: '' # do not delete intermediate files during script execution, and do not delete scratch directory at script completion.
+  scratch: '' # /path/to/scratch/ manually specify the path in which to generate the scratch directory.
+  continue: '' # <ScratchDir> <LastFile> continue the script from a previous execution; must provide the scratch directory path, and the name of the last successfully-generated file.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status. Alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files.
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwi2tensor:
+  ols: '' # perform initial fit using an ordinary least-squares (OLS) fit (see Description).
+  mask: '' # image only perform computation within the specified binary brain mask image.
+  b0: '' # image the output b0 image.
+  dkt: '' # image the output dkt image.
+  iter: '' # integer number of iterative reweightings for IWLS algorithm (default: 2) (see Description).
+  predicted: '' #_signal image the predicted dwi image.
+  grad: '' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: '' # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_dwi2tensor2:
+  ols: '' # perform initial fit using an ordinary least-squares (OLS) fit (see Description).
+  mask: '' # image only perform computation within the specified binary brain mask image.
+  b0: '' # image the output b0 image.
+  dkt: '' # image the output dkt image.
+  iter: '' # integer number of iterative reweightings for IWLS algorithm (default: 2) (see Description).
+  predicted: '' #_signal image the predicted dwi image.
+  grad: '' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: '' # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_mrcalc:
+  abs: '' # (multiple uses permitted) |%1| : return absolute value (magnitude) of real or complex number
+  neg: '' # (multiple uses permitted) -%1 : negative value
+  add: '' # (multiple uses permitted) (%1 + %2) : add values
+  subtract: '' # (multiple uses permitted) (%1 - %2) : subtract nth operand from (n-1)th
+  multiply : '' #(multiple uses permitted) (%1 * %2) : multiply values
+  divide: '' # (multiple uses permitted) (%1 / %2) : divide (n-1)th operand by nth
+  min: '' # (multiple uses permitted) min (%1, %2) : smallest of last two operands
+  max: '' # (multiple uses permitted) max (%1, %2) : greatest of last two operands
+  lt: '' # (multiple uses permitted) (%1 < %2) : less-than operator (true=1, false=0)
+  gt: '' # (multiple uses permitted) (%1 > %2) : greater-than operator (true=1, false=0)
+  le: '' # (multiple uses permitted) (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0)
+  ge: '' # (multiple uses permitted) (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0)
+  eq: '' # (multiple uses permitted) (%1 == %2) : equal-to operator (true=1, false=0)
+  neq: '' # (multiple uses permitted) (%1 != %2) : not-equal-to operator (true=1, false=0)
+  if: '' # (multiple uses permitted) (%1 ? %2 ':' %3) : if first operand is true (non-zero), return second operand, otherwise return third operand
+  replace: '' # (multiple uses permitted) (%1, %2 -> %3) : Wherever first operand is equal to the second operand, replace with third operand
+  sqrt: '' # (multiple uses permitted) sqrt (%1) : square root
+  pow: '' # (multiple uses permitted) %1^%2 : raise (n-1)th operand to nth power
+  round: '' # (multiple uses permitted) round (%1) : round to nearest integer
+  ceil: '' # (multiple uses permitted) ceil (%1) : round up to nearest integer
+  floor : '' #(multiple uses permitted) floor (%1) : round down to nearest integer
+  not: '' # (multiple uses permitted) !%1 : NOT operator: true (1) if operand is false (i.e. zero)
+  and: '' # (multiple uses permitted) (%1 && %2) : AND operator: true (1) if both operands are true (i.e. non-zero)
+  or: '' # (multiple uses permitted) (%1 || %2) : OR operator: true (1) if either operand is true (i.e. non-zero)
+  xor: '' # (multiple uses permitted) (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is true (i.e. non-zero)
+  isnan: '' # (multiple uses permitted) isnan (%1) : true (1) if operand is not-a-number (NaN)
+  isinf: '' # (multiple uses permitted) isinf (%1) : true (1) if operand is infinite (Inf)
+  finite: '' # (multiple uses permitted) finite (%1) : true (1) if operand is finite (i.e. not NaN or Inf)
+  complex: '' # (multiple uses permitted) (%1 + %2 i) : create complex number using the last two operands as real,imaginary components
+  polar: '' # (multiple uses permitted) (%1 /_ %2) : create complex number using the last two operands as magnitude,phase components (phase in radians)
+  real: '' # (multiple uses permitted) real (%1) : real part of complex number
+  imag: '' # (multiple uses permitted) imag (%1) : imaginary part of complex number
+  phase: '' # (multiple uses permitted) phase (%1) : phase of complex number (use -abs for magnitude)
+  conj: '' # (multiple uses permitted) conj (%1) : complex conjugate
+  proj: '' # (multiple uses permitted) proj (%1) : projection onto the Riemann sphere
+  exp: '' # (multiple uses permitted) exp (%1) : exponential function
+  log: '' # (multiple uses permitted) log (%1) : natural logarithm
+  log10: '' # (multiple uses permitted) log10 (%1) : common logarithm
+  cos: '' # (multiple uses permitted) cos (%1) : cosine
+  sin: '' # (multiple uses permitted) sin (%1) : sine
+  tan: '' # (multiple uses permitted) tan (%1) : tangent
+  acos: '' # (multiple uses permitted) acos (%1) : inverse cosine
+  asin: '' # (multiple uses permitted) asin (%1) : inverse sine
+  atan: '' # (multiple uses permitted) atan (%1) : inverse tangent
+  cosh: '' # (multiple uses permitted) cosh (%1) : hyperbolic cosine
+  sinh: '' # (multiple uses permitted) sinh (%1) : hyperbolic sine
+  tanh: '' # (multiple uses permitted) tanh (%1) : hyperbolic tangent
+  acosh: '' # (multiple uses permitted) acosh (%1) : inverse hyperbolic cosine
+  asinh: '' # (multiple uses permitted) asinh (%1) : inverse hyperbolic sine
+  atanh: '' # (multiple uses permitted) atanh (%1) : inverse hyperbolic tangent
+  datatype: '' # spec specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_mrconvert:
+  coord: '' # axis selection (multiple uses permitted) retain data from the input image only at the coordinates specified in the selection along the specified axis. The selection argument expects a number sequence, which can also include the ‘end’ keyword.
+  vox: '' # sizes change the voxel dimensions reported in the output image header
+  axes: '' # axes specify the axes from the input image that will be used to form the output image
+  scaling: '' # values specify the data scaling parameters used to rescale the intensity values
+  json_import: '' # file import data from a JSON file into header key-value pairs
+  json_export: '' # file export data from an image header key-value pairs into a JSON file
+  clear_property: '' # key (multiple uses permitted) remove the specified key from the image header altogether.
+  set_property: '' # key value (multiple uses permitted) set the value of the specified key in the image header.
+  append_property: '' # key value (multiple uses permitted) append the given value to the specified key in the image header (this adds the value specified as a new line in the header value).
+  copy_properties: '' # source clear all generic properties and replace with the properties from the image / file specified.
+  strides: '' # spec specify the strides of the output data in memory; either as a comma-separated list of (signed) integers, or as a template image from which the strides shall be extracted and used. The actual strides produced will depend on whether the output image format can support it.
+  datatype: '' # spec specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.
+  grad: '' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: ['path'] # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  bvalue_scaling: '' # mode enable or disable scaling of diffusion b-values by the square of the corresponding DW gradient norm (see Desciption). Valid choices are yes/no, true/false, 0/1 (default: automatic).
+  export_grad_mrtrix: '' # path export the diffusion-weighted gradient table to file in MRtrix format
+  export_grad_fsl: '' # bvecs_path bvals_path export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format
+  import_pe_table: '' # file import a phase-encoding table from file
+  import_pe_eddy: '' # config indices import phase-encoding information from an EDDY-style config / index file pair
+  export_pe_table: '' # file export phase-encoding table to file
+  export_pe_eddy: '' # config indices export phase-encoding information to an EDDY-style config / index file pair
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_mrdegibbs:
+  axes: '' # list select the slice axes (default: 0,1 - i.e. x-y).
+  nshifts: '' # value discretization of subpixel spacing (default: 20).
+  minW: '' # value left border of window used for TV computation (default: 1).
+  maxW: '' # value right border of window used for TV computation (default: 3).
+  datatype: '' # spec specify output image data type. Valid choices are: float32, float32le, float32be, float64, float64le, float64be, int64, uint64, int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le, int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be, cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be, int8, uint8, bit.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_mrinfo:
+  all: '' #  print all properties, rather than the first and last 2 of each.
+  name: '' # print the file system path of the image
+  format: '' # image file format
+  ndim: '' # number of image dimensions
+  size: '' # image size along each axis
+  spacing: '' # voxel spacing along each image dimension
+  datatype: '' # data type used for image data storage
+  strides: '' # data strides i.e. order and direction of axes data layout
+  offset: '' # image intensity offset
+  multiplier: '' # image intensity multiplier
+  transform: '' # the transformation from image coordinates [mm] to scanner / real world coordinates [mm]
+mrtrix3_mrview:
+  mode: '' # index (multiple uses permitted) Switch to view mode specified by the integer index, as per the view menu.
+  load: '' # image (multiple uses permitted) Load image specified and make it current.
+  reset: '' # (multiple uses permitted) Reset the view according to current image. This resets the FOV, projection and focus.
+  fov: '' # value (multiple uses permitted) Set the field of view, in mm.
+  focus: '' # x,y,z or boolean (multiple uses permitted) Either set the position of the crosshairs in scanner coordinates, with the new position supplied as a comma-separated list of floating-point values or show or hide the focus cross hair using a boolean value as argument.
+  target: '' # x,y,z (multiple uses permitted) Set the target location for the viewing window (the scanner coordinate that will appear at the centre of the viewing window
+  voxel: '' # x,y,z (multiple uses permitted) Set the position of the crosshairs in voxel coordinates, relative the image currently displayed. The new position should be supplied as a comma-separated list of floating-point values.
+  volume: '' # idx (multiple uses permitted) Set the volume index for the image displayed, as a comma-separated list of integers.
+  plane: '' # index (multiple uses permitted) Set the viewing plane, according to the mappping 0: sagittal; 1: coronal; 2: axial.
+  lock: '' # yesno (multiple uses permitted) Set whether view is locked to image axes (0: no, 1: yes).
+  select: '' #_image index (multiple uses permitted) Switch to image number specified, with reference to the list of currently loaded images.
+  autoscale: '' # (multiple uses permitted) Reset the image scaling to automatically determined range.
+  interpolation: '' # boolean (multiple uses permitted) Enable or disable image interpolation in main image.
+  colourmap: '' # index (multiple uses permitted) Switch the image colourmap to that specified, as per the colourmap menu.
+  noannotations: '' # (multiple uses permitted) Hide all image annotation overlays
+  comments: '' # boolean (multiple uses permitted) Show or hide image comments overlay.
+  voxelinfo: '' # boolean (multiple uses permitted) Show or hide voxel information overlay.
+  orientationlabel: '' # boolean (multiple uses permitted) Show or hide orientation label overlay.
+  colourbar: '' # boolean (multiple uses permitted) Show or hide colourbar overlay.
+  imagevisible: '' # boolean (multiple uses permitted) Show or hide the main image.
+  intensity_range: '' # min,max (multiple uses permitted) Set the image intensity range to that specified.
+  size: '' # width,height (multiple uses permitted) Set the size of the view area, in pixel units.
+  position: '' # x,y (multiple uses permitted) Set the position of the main window, in pixel units.
+  fullscreen: '' # Start fullscreen.
+  tractography.load: '' # tracks (multiple uses permitted) Load the specified tracks file into the tractography tool.
+  tractography.thickness: '' # value (multiple uses permitted) Line thickness of tractography display, [-1.0, 1.0], default is 0.0.
+  tractography.geometry: '' # value (multiple uses permitted) The geometry type to use when rendering tractograms (options are: pseudotubes, lines, points)
+  tractography.opacity: '' # value (multiple uses permitted) Opacity of tractography display, [0.0, 1.0], default is 1.0.
+  tractography.slab: '' # value (multiple uses permitted) Slab thickness of tractography display, in mm. -1 to turn off crop to slab.
+  tractography.lighting: '' # value (multiple uses permitted) Toggle the use of lighting of tractogram geometry
+  tractography.colour: '' # R,G,B (multiple uses permitted) Specify a manual colour for the tractogram, as three comma-separated values
+  tractography.tsf_load tsf : '' #(multiple uses permitted) Load the specified tractography scalar file.
+  tractography.tsf_range: '' # RangeMin,RangeMax (multiple uses permitted) Set range for the tractography scalar file. Requires -tractography.tsf_load already provided.
+  tractography.tsf_thresh: '' # ThresholdMin,ThesholdMax (multiple uses permitted) Set thresholds for the tractography scalar file. Requires -tractography.tsf_load already provided.
+  tractography.tsf_colourmap: '' # index (multiple uses permitted) Sets the colourmap of the .tsf file as indexed in the tsf colourmap dropdown menu. Requires -tractography.tsf_load already.
+mrtrix3_mtnormalise:
+  mask: '' # image the mask defines the data used to compute the intensity normalisation. This option is mandatory.
+  order: '' # number the maximum order of the polynomial basis used to fit the normalisation field in the log-domain. An order of 0 is equivalent to not allowing spatial variance of the intensity normalisation factor. (default: 3)
+  niter: '' # number set the number of iterations. The first (and potentially only) entry applies to the main loop. If supplied as a comma-separated list of integers, the second entry applies to the inner loop to update the balance factors (default: 15,7).
+  reference: '' # number specify the (positive) reference value to which the summed tissue compartments will be normalised. (default: 0.282095, SH DC term for unit angular integral)
+  balanced: '' # incorporate the per-tissue balancing factors into scaling of the output images (NOTE: use of this option has critical consequences for AFD intensity normalisation; should not be used unless these consequences are fully understood)
+  check_norm: '' # image output the final estimated spatially varying intensity level that is used for normalisation.
+  check_mask: '' # image output the final mask used to compute the normalisation. This mask excludes regions identified as outliers by the optimisation process.
+  check_factors: '' # file output the tissue balance factors computed during normalisation.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_tckgen:
+  algorithm: enumerate(('FACT', 'iFOD1', 'iFOD2', 'Nulldist1', 'Nulldist2', 'SD_Stream', 'Seedtest', 'Tensor_Det', 'Tensor_Prob')) # (name) specify the tractography algorithm to use. Valid choices are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest, Tensor_Det, Tensor_Prob (default: iFOD2).
+  select: 5000 # (number) set the desired number of streamlines to be selected by tckgen, after all selection criteria have been applied (i.e. inclusion/exclusion ROIs, min/max length, etc). tckgen will keep seeding streamlines until this number of streamlines have been selected, or the maximum allowed number of seeds has been exceeded (see -seeds option). By default, 5000 streamlines are to be selected. Set to zero to disable, which will result in streamlines being seeded until the number specified by -seeds has been reached.
+  step: 0.1 # (size) set the step size of the algorithm in mm (defaults: for first-order algorithms, 0.1 x voxelsize; if using RK4, 0.25 x voxelsize; for iFOD2: 0.5 x voxelsize).
+  angle: 45 # (theta) set the maximum angle in degrees between successive steps (defaults: 60 for deterministic algorithms; 15 for iFOD1 / nulldist1; 45 for iFOD2 / nulldist2)
+  minlength: 0.1 # (value) set the minimum length of any track in mm (defaults: without ACT, 5 x voxelsize; with ACT, 2 x voxelsize).
+  maxlength: 100 # (value) set the maximum length of any track in mm (default: 100 x voxelsize).
+  cutoff: 0.1 # (value) set the FOD amplitude / fixel size / tensor FA cutoff for terminating tracks (defaults: 0.1 for FOD-based algorithms; 0.1 for fixel-based algorithms; 0.1 for tensor-based algorithms; threshold multiplied by 0.5 when using ACT).
+  trials: 1000 # (number) set the maximum number of sampling trials at each point (only used for iFOD1 / iFOD2) (default: 1000).
+  noprecomputed: True # do NOT pre-compute legendre polynomial values. Warning: this will slow down the algorithm by a factor of approximately 4.
+  rk4: True # use 4th-order Runge-Kutta integration (slower, but eliminates curvature overshoot in 1st-order deterministic methods)
+  stop: True # stop propagating a streamline once it has traversed all include regions
+  downsample: 'samples-1' # factor downsample the generated streamlines to reduce output file size (default is (samples-1) for iFOD2, no downsampling for all other algorithms)
+  seed_image: 'path' # image (multiple uses permitted) seed streamlines entirely at random within a mask image
+  seed_sphere: '80, 100, 70, 10' # spec (multiple uses permitted) spherical seed as four comma-separated values (XYZ position and radius)
+  seed_random_per_voxel: 'path' # image num_per_voxel (multiple uses permitted) seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel
+  seed_grid_per_voxel: 'path' # image grid_size (multiple uses permitted) seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)
+  seed_rejection: 'path' # image (multiple uses permitted) seed from an image using rejection sampling (higher values = more probable to seed from)
+  seed_gmwmi: 'path' # image (multiple uses permitted) seed from the grey matter - white matter interface (only valid if using ACT framework). Input image should be a 3D seeding volume; seeds drawn within this image will be optimised to the interface using the 5TT image provided using the -act option.
+  seed_dynamic: 'path' # fod_image determine seed points dynamically using the SIFT model (must not provide any other seeding mechanism). Note that while this seeding mechanism improves the distribution of reconstructed streamlines density, it should NOT be used as a substitute for the SIFT method itself.
+  seeds: 1000 # (number) set the number of seeds that tckgen will attempt to track from. If this option is NOT provided, the default number of seeds is set to 1000× the number of selected streamlines. If -select is NOT also specified, tckgen will continue tracking until this number of seeds has been attempted. However, if -select is also specified, tckgen will stop when the number of seeds attempted reaches the number specified here, OR when the number of streamlines selected reaches the number requested with the -select option. This can be used to prevent the program from running indefinitely when no or very few streamlines can be found that match the selection criteria. Setting this to zero will cause tckgen to keep attempting seeds until the number specified by -select has been reached.
+  max_attempts_per_seed: 1000 # (number) set the maximum number of times that the tracking algorithm should attempt to find an appropriate tracking direction from a given seed point. This should be set high enough to ensure that an actual plausible seed point is not discarded prematurely as being unable to initiate tracking from. Higher settings may affect performance if many seeds are genuinely impossible to track from, as many attempts will still be made in vain for such seeds. (default: 1000)
+  seed_cutoff: 0.1 # (value) set the minimum FA or FOD amplitude for seeding tracks (default is the same as the normal -cutoff).
+  seed_unidirectional: True # track from the seed point in one direction only (default is to track in both directions).
+  seed_direction: '1, 0, 0' # dir specify a seeding direction for the tracking (this should be supplied as a vector of 3 comma-separated values.
+  output_seeds: 'path' # path output the seed location of all successful streamlines to a file
+  include: 'path' # spec (multiple uses permitted) specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.
+  include_ordered: 'path' # image (multiple uses permitted) specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.
+  exclude: 'path' # spec (multiple uses permitted) specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.
+  mask: 'path' # spec (multiple uses permitted) specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.
+  act: 'path' # image use the Anatomically-Constrained Tractography framework during tracking; provided image must be in the 5TT (five-tissue-type) format
+  backtrack: True # allow tracks to be truncated and re-tracked if a poor structural termination is encountered
+  crop_at_gmwmi: True # crop streamline endpoints more precisely as they cross the GM-WM interface
+  power: 1.0 # (value) raise the FOD to the power specified (defaults are: 1.0 for iFOD1; 1.0/nsamples for iFOD2).
+  samples: 4 # (number) set the number of FOD samples to take per step (Default: 4).
+  grad: 'path' # file Provide the diffusion-weighted gradient scheme used in the acquisition in a text file. This should be supplied as a 4xN text file with each line is in the format [ X Y Z b ], where [ X Y Z ] describe the direction of the applied gradient, and b gives the b-value in units of s/mm^2. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  fslgrad: ['path', 'path'] # bvecs bvals Provide the diffusion-weighted gradient scheme used in the acquisition in FSL bvecs/bvals format files. If a diffusion gradient scheme is present in the input image header, the data provided with this option will be instead used.
+  info: True # display information messages.
+  quiet: True # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: True # display debugging messages.
+  force: True # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: 0 # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config:  0 # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: True # display this information page and exit.
+  version: True # display version information and exit.
+mrtrix3_mrtransform:
+  linear: '' # transform specify a linear transform to apply, in the form of a 3x4 or 4x4 ascii file. Note the standard ‘reverse’ convention is used, where the transform maps points in the template image to the moving image. Note that the reverse convention is still assumed even if no -template image is supplied
+  flip: '' # axes flip the specified axes, provided as a comma-separated list of indices (0:x, 1:y, 2:z).
+  inverse: True # apply the inverse transformation
+  half: True # apply the matrix square root of the transformation. This can be combined with the inverse option.
+  replace: 'path' # file replace the linear transform of the original image by that specified, rather than applying it to the original image. The specified transform can be either a template image, or a 3x4 or 4x4 ascii file.
+  identity: True # set the header transform of the image to the identity matrix
+  strides: '' # spec specify the strides of the output data in memory; either as a comma-separated list of (signed) integers, or as a template image from which the strides shall be extracted and used. The actual strides produced will depend on whether the output image format can support it.
+mrtrix3_tensor2metric:
+  adc: '' # image compute the mean apparent diffusion coefficient (ADC) of the diffusion tensor. (sometimes also referred to as the mean diffusivity (MD))
+  fa: '' # image compute the fractional anisotropy (FA) of the diffusion tensor.
+  ad: '' # image compute the axial diffusivity (AD) of the diffusion tensor. (equivalent to the principal eigenvalue)
+  rd: '' # image compute the radial diffusivity (RD) of the diffusion tensor. (equivalent to the mean of the two non-principal eigenvalues)
+  cl: '' # image compute the linearity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  cp: '' # image compute the planarity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  cs: '' # image compute the sphericity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  value: '' # image compute the selected eigenvalue(s) of the diffusion tensor.
+  vector : '' #image compute the selected eigenvector(s) of the diffusion tensor.
+  num: '' # sequence specify the desired eigenvalue/eigenvector(s). Note that several eigenvalues can be specified as a number sequence. For example, ‘1,3’ specifies the principal (1) and minor (3) eigenvalues/eigenvectors (default = 1).
+  modulate: '' # choice specify how to modulate the magnitude of the eigenvectors. Valid choices are: none, FA, eigval (default = FA).
+  mask: '' # image only perform computation within the specified binary brain mask image.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.
+mrtrix3_tensor2metric2:
+  adc: '' # image compute the mean apparent diffusion coefficient (ADC) of the diffusion tensor. (sometimes also referred to as the mean diffusivity (MD))
+  fa: '' # image compute the fractional anisotropy (FA) of the diffusion tensor.
+  ad: '' # image compute the axial diffusivity (AD) of the diffusion tensor. (equivalent to the principal eigenvalue)
+  rd: '' # image compute the radial diffusivity (RD) of the diffusion tensor. (equivalent to the mean of the two non-principal eigenvalues)
+  cl: '' # image compute the linearity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  cp: '' # image compute the planarity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  cs: '' # image compute the sphericity metric of the diffusion tensor. (one of the three Westin shape metrics)
+  value: '' # image compute the selected eigenvalue(s) of the diffusion tensor.
+  vector : '' #image compute the selected eigenvector(s) of the diffusion tensor.
+  num: '' # sequence specify the desired eigenvalue/eigenvector(s). Note that several eigenvalues can be specified as a number sequence. For example, ‘1,3’ specifies the principal (1) and minor (3) eigenvalues/eigenvectors (default = 1).
+  modulate: '' # choice specify how to modulate the magnitude of the eigenvectors. Valid choices are: none, FA, eigval (default = FA).
+  mask: '' # image only perform computation within the specified binary brain mask image.
+  info: '' # display information messages.
+  quiet: '' # do not display information messages or progress status; alternatively, this can be achieved by setting the MRTRIX_QUIET environment variable to a non-empty string.
+  debug: '' # display debugging messages.
+  force: '' # force overwrite of output files (caution: using the same file as input and output might cause unexpected behaviour).
+  nthreads: '' # number use this number of threads in multi-threaded applications (set to 0 to disable multi-threading).
+  config: '' # key value (multiple uses permitted) temporarily set the value of an MRtrix config file entry.
+  help: '' # display this information page and exit.
+  version: '' # display version information and exit.

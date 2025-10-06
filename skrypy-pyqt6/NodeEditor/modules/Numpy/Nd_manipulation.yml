@@ -1,0 +1,6 @@
+numpy_unique:
+  return_index: True # bool, optional. If True, also return the indices of ar (along the specified axis, if provided, or in the flattened array) that result in the unique array.
+  return_inverse: True # bool, optional. If True, also return the indices of the unique array (for the specified axis, if provided) that can be used to reconstruct ar.
+  return_counts: True # bool, optional. If True, also return the number of times each unique item appears in ar.
+  axis: 1 # int or None, optional. The axis to operate on. If None, ar will be flattened. If an integer, the subarrays indexed by the given axis will be flattened and treated as the elements of a 1-D array with the dimension of the given axis, see the notes for more details. Object arrays or structured arrays that contain objects are not supported if the axis kwarg is used. The default is None.
+  equal_nan: True # bool, optional. If True, collapses multiple NaN values in the return array into one.

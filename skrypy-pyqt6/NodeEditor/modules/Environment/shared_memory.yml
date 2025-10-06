@@ -1,0 +1,4 @@
+SharedMemory_create:
+  overwrite: False
+SharedMemory_read:
+  cleanup: False

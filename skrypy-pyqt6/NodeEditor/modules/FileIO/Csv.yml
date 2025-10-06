@@ -1,0 +1,21 @@
+csv_open_file:
+  delimiter: ','
+  doublequote: True
+  escapechar: ''
+  lineterminator: '\r\n'
+  quotechar: '"'
+  quoting: enumerate(('csv.QUOTE_ALL','csv.QUOTE_MINIMAL','csv.QUOTE_NONE','csv.QUOTE_NONNUMERIC'))
+  skipinitialspace: True
+  strict: False
+csv_reader_text:
+  delimiter: ','
+  doublequote: True
+  escapechar: ''
+  lineterminator: '\r\n'
+  quotechar: '"'
+  quoting: enumerate(('csv.QUOTE_ALL','csv.QUOTE_MINIMAL','csv.QUOTE_NONE','csv.QUOTE_NONNUMERIC'))
+  skipinitialspace: True
+  strict: False
+csv_save_file:
+  transpose: True
+  delimiter: ','

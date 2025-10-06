@@ -1,0 +1,4 @@
+numpy_array_str:
+  max_line_width : 75 #[int, optional] Inserts newlines if text is longer than max_line_width. The default is, indirectly, 75.
+  precision : 8 # [int, optional] Floating point precision. Default is the current printing precision(generally 8).
+  suppress_small : True # [bool, optional] It represent very small numbers as zero, default is False. Very small number is defined by precision, if the precision is 8 then numbers smaller than 5e-9 are represented as zero.

@@ -1,0 +1,65 @@
+[diagram]
+link=[N2] node=[A0:#Node#U4:title]
+link=[N0] node=[U4:filesPath#Node#S0:list_files]
+link=[N8] node=[A4:#Node#U3:comment]
+link=[N7] node=[A3:#Node#U2:comment]
+link=[N6] node=[A2:#Node#U1:comment]
+link=[N3] node=[S0:TE_files#Node#U1:inPath]
+link=[N4] node=[S0:TI_files#Node#U3:inPath]
+link=[N5] node=[S0:TR_files#Node#U2:inPath]
+link=[N1] node=[A1:#Node#U4:extension]
+constant=[A4] value=['list of sequences with multiple Inversion times  '] format=[str] label=[comment] RectF=[(425.0, 100.0, 346.0, 33.0)] 
+constant=[A3] value=['list of sequences with multiple Repetition times  '] format=[str] label=[comment] RectF=[(425.0, -25.0, 356.0, 33.0)] 
+constant=[A2] value=['list of sequences with multiple Echo times  '] format=[str] label=[comment] RectF=[(450.0, -200.0, 317.0, 33.0)] 
+constant=[A0] value=['Choose nifti files'] format=[str] label=[title] RectF=[(-625.0, 75.0, 140.0, 33.0)] 
+constant=[A1] value=['*.nii'] format=[str] label=[extension] RectF=[(-550.0, 0.0, 53.0, 33.0)] 
+block=[U4] category=[FileIO.Tools] class=[box_dialog_files] valInputs=[(['filesDefault', 'extension', 'title'], ['path', 'Node(N1)', 'Node(N2)'], ['filesPath', 'numberOfFiles'], ['list_path', 'int'])] RectF=[(-350.0, 0.0, 225.0, 75.0)] 
+block=[U3] category=[Tools.Print] class=[Print_path] valInputs=[(['comment', 'inPath'], ['Node(N8)', 'Node(N4)'], [], [])] RectF=[(850.0, 125.0, 150.0, 100.0)] 
+script=[S0] title=[Script_editor] inputs=[['list_files', 'in', 'list_path']] outputs=[['TE_files', 'out', 'list_path'], ['TR_files', 'out', 'list_path'], ['TI_files', 'out', 'list_path']] code=[your code] RectF=[(-25.0, -250.0, 412.0, 557.0)]
+block=[U1] category=[Tools.Print] class=[Print_path] valInputs=[(['comment', 'inPath'], ['Node(N6)', 'Node(N3)'], [], [])] RectF=[(850.0, -175.0, 150.0, 75.0)] 
+block=[U2] category=[Tools.Print] class=[Print_path] valInputs=[(['comment', 'inPath'], ['Node(N7)', 'Node(N5)'], [], [])] RectF=[(850.0, 0.0, 150.0, 75.0)] 
+[source S0]
+['list_files=U4:filesPath']
+import os
+import json
+import ast
+
+TE_files, TR_files, TI_files= [], [], []
+
+for fs in list_files:
+    tmp = fs.replace('.nii','.json')
+    if os.path.exists(tmp):
+        try:
+            with open(tmp) as f0:
+                data = json.load(f0)["EchoTime"]['value']
+                if len(data) > 2:
+                    TE_files.append(fs)
+        except:
+            pass
+        try:
+            with open(tmp) as f1:
+                data = json.load(f1)["RepetitionTime"]['value']
+                if len(data) > 2:
+                    TR_files.append(fs)
+        except:
+            pass
+        try:
+            with open(tmp) as f2:
+                data = json.load(f2)["InversionTime"]['value']
+                if len(data) > 2:
+                    TI_files.append(fs)
+        except:
+            pass
+
+['S0:TE_files', 'S0:TR_files', 'S0:TI_files']
+[/source S0]
+
+[execution]
+[]
+['U4', 'S0', 'U1', 'U2', 'U3']
+{'U4': ('FileIO.Tools', 'box_dialog_files', "(['filesDefault', 'extension', 'title'], ['path', '*.nii', 'Choose nifti files'], ['filesPath', 'numberOfFiles'], ['list_path', 'int'])"), 'U1': ('Tools.Print', 'Print_path', "(['comment', 'inPath'], ['list of sequences with multiple Echo times  ', 'S0:TE_files'], [], [])"), 'U2': ('Tools.Print', 'Print_path', "(['comment', 'inPath'], ['list of sequences with multiple Repetition times  ', 'S0:TR_files'], [], [])"), 'U3': ('Tools.Print', 'Print_path', "(['comment', 'inPath'], ['list of sequences with multiple Inversion times  ', 'S0:TI_files'], [], [])")}
+['U4:filesPath', 'S0:TE_files', 'S0:TI_files', 'S0:TR_files']
+{}
+[]
+[interlinks]
+[]

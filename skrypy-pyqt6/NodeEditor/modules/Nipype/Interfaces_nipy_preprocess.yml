@@ -1,0 +1,20 @@
+nipy_FmriRealign4d:
+  between_loops: [5]
+  ignore_exception: False
+  loops: [5]
+  slice_order: [0]
+  speedup: [5]
+  start: 0.0
+  time_interp: True
+  tr_slices: 0.0
+nipy_SpaceTimeRealigner:
+  ignore_exception: False
+  slice_info: 2
+  slice_times: enumerate(('asc_alt_2', 'asc_alt_2_1', 'asc_alt_half', 'asc_alt_siemens', 'ascending', 'desc_alt_2', 'desc_alt_half', 'descending'))
+  tr: 1.0
+nipy_Trim:
+  begin_index: 0
+  end_index: 0
+  ignore_exception: False
+  out_file: 'path'
+  suffix: '_trim'

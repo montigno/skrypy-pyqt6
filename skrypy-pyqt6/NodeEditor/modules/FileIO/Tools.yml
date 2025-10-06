@@ -1,0 +1,6 @@
+wait_file_exists:
+  timeout: 300.0 # (float) in second
+rename_file_options:
+  add_suffix: '_suf' # suffix character string
+  add_prefix: '_pref' # prefix character string
+  extension_number : 1 # indicates the number of file extensions (1 or 2)

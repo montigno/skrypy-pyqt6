@@ -1,0 +1,73 @@
+[diagram]
+script=[S0] title=[Script_python] inputs=[] outputs=[] code=[your code] RectF=[(-253.0, -72.0, 760.0, 1170.0)]
+[source S0]
+[]
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QMainWindow, QGraphicsScene, QGraphicsView, QGraphicsItem
+from PyQt5.QtGui import QPen, QBrush
+from PyQt5.Qt import Qt
+import sys
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # Window properties
+        self.title = "Codeloop.org - PyQt5 QGraphicsView"
+        self.top = 200
+        self.left = 500
+        self.width = 600
+        self.height = 500
+
+        self.InitWindow()
+
+    def InitWindow(self):
+        # Set window icon and properties
+        self.setWindowIcon(QtGui.QIcon("codeloop.png"))
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
+
+        # Create the QGraphicsView
+        self.createGraphicView()
+
+        self.show()
+
+    def createGraphicView(self):
+        # Create a QGraphicsScene and define brushes and pen
+        self.scene = QGraphicsScene()
+        self.greenBrush = QBrush(Qt.green)
+        self.grayBrush = QBrush(Qt.gray)
+        self.pen = QPen(Qt.red)
+
+        # Create QGraphicsView and set its geometry
+        graphicView = QGraphicsView(self.scene, self)
+        graphicView.setGeometry(0, 0, 600, 500)
+
+        # Add shapes to the scene
+        self.shapes()
+
+    def shapes(self):
+        # Add ellipse and rectangle to the scene
+        ellipse = self.scene.addEllipse(20, 20, 200, 200, self.pen, self.greenBrush)
+        rect = self.scene.addRect(-100, -100, 200, 200, self.pen, self.grayBrush)
+
+        # Set flags for moving and selecting items
+        ellipse.setFlag(QGraphicsItem.ItemIsMovable)
+        rect.setFlag(QGraphicsItem.ItemIsMovable)
+        ellipse.setFlag(QGraphicsItem.ItemIsSelectable)
+
+# Initialize the application
+window = Window()
+
+[]
+[/source S0]
+
+[execution]
+[]
+['S0']
+{}
+[]
+{}
+[]
+[interlinks]
+[]

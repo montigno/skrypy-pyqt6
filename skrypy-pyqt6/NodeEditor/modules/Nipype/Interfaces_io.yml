@@ -1,0 +1,20 @@
+io_S3DataGrabber:
+  anon: True
+  bucket_path: ""
+  local_directory: 'path'
+  raise_on_empty: True
+  region: "us-east-1"
+  template_args: {}
+io_DataSink:
+  _outputs: {}
+  base_directory: 'path'
+  bucket: ""
+  container: 'path'
+  creds_path: 'path'
+  encrypt_bucket_keys: False
+  local_copy: 'path'
+  parameterization: True
+  regexp_substitutions: ("", "")
+  remove_dest_dir: False
+  strip_dir: 'path'
+  substitutions: ("", "")

@@ -1,0 +1,10 @@
+Bru2Nii:
+  actual_size: False # (a boolean) – Keep actual size - otherwise x10 scale so animals match human. Maps to a command-line argument: -a.
+  append_protocol_name: False # (a boolean) – Append protocol name to output filename. Maps to a command-line argument: -p.
+  args: '' # (a string) – Additional parameters to the command. Maps to a command-line argument: %s.
+  compress: True # (a boolean) – Gz compress images (“.nii.gz”). Maps to a command-line argument: -z.
+  environ: {} # (a dictionary with keys which are a bytes or None or a value of class ‘str’ and with values which are a bytes or None or a value of class ‘str’) – Environment variables. (Nipype default value: {})
+  force_conversion: False # (a boolean) – Force conversion of localizers images (multiple slice orientations). Maps to a command-line argument: -f.
+  output_filename: 'path' # (a string) – Output filename (“.nii” will be appended, or “.nii.gz” if the “-z” compress option is selected). Maps to a command-line argument: -o %s.
+
+  

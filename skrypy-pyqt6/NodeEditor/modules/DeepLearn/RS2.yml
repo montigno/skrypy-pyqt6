@@ -1,0 +1,16 @@
+RS2_predict:
+  device: enumerate(('cuda', 'cpu', 'mps')) #Use this to set the device the inference should run with. Available options are 'cuda' (GPU), 'cpu' (CPU), and 'mps' (Apple M1/M2). Do NOT use this to set which GPU ID! Use CUDA_VISIBLE_DEVICES=X RS2_predict [...] instead.
+  step_size: 0.5 # Step size for sliding window prediction. The larger it is, the faster but less accurate the prediction. Default: 0.5. Cannot be larger than 1. We recommend the default.
+  verbose: False # Set this if you like being talked to. You will have to be a good listener/reader.
+  save_probabilities: False # Set this to export predicted class "probabilities". Required if you want to ensemble multiple configurations.
+  continue_prediction: False # Continue an aborted previous prediction (will not overwrite existing files).
+  npp: 3 # Number of processes used for preprocessing. More is not always better. Beware of out-of-RAM issues. Default: 3.
+  nps: 3 # Number of processes used for segmentation export. More is not always better. Beware of out-of-RAM issues. Default: 3.
+RS2_predict_datamanagement:
+    device: enumerate(('cuda', 'cpu', 'mps')) #Use this to set the device the inference should run with. Available options are 'cuda' (GPU), 'cpu' (CPU), and 'mps' (Apple M1/M2). Do NOT use this to set which GPU ID! Use CUDA_VISIBLE_DEVICES=X RS2_predict [...] instead.
+    step_size: 0.5 # Step size for sliding window prediction. The larger it is, the faster but less accurate the prediction. Default: 0.5. Cannot be larger than 1. We recommend the default.
+    verbose: False # Set this if you like being talked to. You will have to be a good listener/reader.
+    save_probabilities: False # Set this to export predicted class "probabilities". Required if you want to ensemble multiple configurations.
+    continue_prediction: False # Continue an aborted previous prediction (will not overwrite existing files).
+    npp: 3 # Number of processes used for preprocessing. More is not always better. Beware of out-of-RAM issues. Default: 3.
+    nps: 3 # Number of processes used for segmentation export. More is not always better. Beware of out-of-RAM issues. Default: 3.

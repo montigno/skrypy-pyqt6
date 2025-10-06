@@ -1,0 +1,84 @@
+mrtrix3_DWIDenoise:
+  args: ''
+  bval_scale: enumerate(('yes','no'))
+  environ: {}
+  extent: (5, 5, 5)
+  grad_file: 'path'
+  grad_fsl: 'path'
+  in_bval: 'path'
+  in_bvec: 'path'
+  mask: 'path'
+  noise: 'path'
+  nthreads: 0
+  out_file: 'path'
+mrtrix3_Tractography:
+  sph_trait: 0.0
+  algorithm: enumerate(('iFOD2','FACT','iFOD1','Nulldist','SD_Stream','Tensor_Det','Tensor_Prob'))
+  roi_incl: 'path'
+  roi_excl: 'path'
+  roi_mask: 'path'
+  step_size: 0.0
+  angle: 0.0
+  n_tracks: 0
+  select: 0
+  max_tracks: 0
+  max_length: 0.0
+  min_length: 0.0
+  cutoff: 0.0
+  cutoff_init: 0.0
+  n_trials: 0
+  unidirectional: True
+  init_dir: 0.0
+  noprecompt: True
+  power: 0
+  n_samples: 0
+  use_rk4: True
+  stop: True
+  downsample: 0.0
+  act_file: 'path'
+  backtrack: True
+  crop_at_gmwmi: True
+  seed_sphere: 0.0
+  seed_image: 'path'
+  seed_rnd_voxel: 'path'
+  seed_grid_voxel: 'path'
+  seed_rejection: 'path'
+  seed_gmwmi: 'path'
+  seed_dynamic: 'path'
+  max_seed_attempts: 0
+  out_seeds: 'path'
+  nthreads: 0
+  grad_file: 'path'
+  grad_fsl: 'path'
+  bval_scale: enumerate(('yes','no'))
+  in_bvec: 'path'
+  in_bval: 'path'
+  out_bvec: 'path'
+  out_bval: 'path'
+  args: {}
+mrtrix3_DWIExtract:
+  bzero: True
+  nobzero: True
+  singleshell: True
+  shell: [0.0]
+  nthreads: 0
+  grad_file: 'path'
+  grad_fsl: ('bvecs', 'bvals')
+  bval_scale: enumerate(('yes', 'no'))
+  in_bvec: 'path'
+  in_bval: 'path'
+  args: ''
+  environ: {}
+mrtrix3_MRConvert:
+  coord: [0.0]
+  vox: [0.0]
+  axes: ([0]
+  scaling: [0.0]
+  nthreads: 0
+  grad_file: 'path'
+  grad_fsl: ('bvecs', 'bvals')
+  bval_scale: enumerate(('yes', 'no'))
+  in_bvec: 'path'
+  in_bval: 'path'
+  args: ''
+  environ: {}

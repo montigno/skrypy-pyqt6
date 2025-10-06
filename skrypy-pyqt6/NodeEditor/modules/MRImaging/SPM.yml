@@ -1,0 +1,12 @@
+spm_imcalc:
+  dmtx: 0 #	Read images into data matrix? [defaults (missing or empty) to 0 - no]
+  mask: 0 # implicit zero mask? [defaults (missing or empty) to 0] ( negative value implies NaNs should be zeroed )
+  interp: 0.0 # interpolation hold [defaults (missing or empty) to 0 - nearest neighbour]. 0: Zero-order hold (nearest neighbour), 1: First-order hold (trilinear interpolation), 2->127: Higher order Lagrange (polynomial) interpolation using different holds (second-order upwards), -127 - -1 : Different orders of sinc interpolation dtype
+  dtype: 4 # data type for output image [defaults (missing or empty) to 4 - 16 bit signed shorts]. 2: 'unint8', 4: 'int16', 8: 'int32', 16: 'float32', 64: 'float64', 256: 'int8', 512: 'uint16', 768: 'uint32'
+spm_reslice:
+  mask: True # 
+  mean: True #
+  interp: 1 #
+  which: 2 #
+  wrap: '[1 1 0]' #
+  prefix: 'r' #

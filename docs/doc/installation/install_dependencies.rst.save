@@ -1,0 +1,39 @@
+Download and install dependencies
+=================================
+
+ANTs
+----
+
+
+
+Matlab engine
+-------------
+
+
+1. For MATLAB < R2022b::
+
+	source root/skrypy_venv/bin/activate
+
+	cd matlabroot/MATLAB/R2021a/extern/engines/python
+
+	python3 setup.py build --build-base ~/Applications/skrypy_venv/build install
+
+	exit
+
+2. For MATLAB >= R2022b::
+
+        source root/skrypy_venv/bin/activate
+
+	export LD_LIBRARY_PATH=<matlabroot>/MATLAB/R2024b/bin/glnxa64/
+
+	python3 -m pip install matlabengine==24.2.2
+
+	exit	
+
+
+RS2
+---
+
+see https://github.com/VitoLin21/Rodent-Skull-Stripping
+
+Download RS2 `here <https://github.com/VitoLin21/Rodent-Skull-Stripping/archive/refs/heads/main.zip>`__

@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to install dependencies &mdash; Skrypy Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b42915cc" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cluster (HPC)" href="cluster.html" />
+    <link rel="prev" title="How to install Python packages" href="package_install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Skrypy Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_skrypy.html">How to install Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_install.html">How to install Python packages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to install dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ants">ANTs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#afni">AFNI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fsl">FSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagej">ImageJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab">Matlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-engine">Matlab engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mrtrix3">MRTrix3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rs2">RS2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spm-requires-matlab">SPM (requires MATLAB)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-example">Configuration example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cluster.html">Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_skrypy.html">How to upgrade Skrypy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blocks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../blocks/create_blocks.html">How to create a block</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/preinstalled_packages_list.html">List of pre-installed Python packages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Skrypy Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">How to install dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/installation/install_dependencies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-install-dependencies">
+<h1>How to install dependencies<a class="headerlink" href="#how-to-install-dependencies" title="Link to this heading"></a></h1>
+<section id="environment-variables">
+<h2>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Skrypy needs to point programs to specific versions of dependencies. <br />
+The .bashrc file is in principle sufficient, but it has been found that when processing on a cluster, it does not always load. <br />
+The best solution is to edit the file <strong>‘env_parameters.txt’</strong> which is located in the hidden folder <strong>/home/username/.skrypy/</strong>. <br />
+Skrypy takes care of concatenating the ‘PATH’ variable.</p>
+</div>
+</section>
+<section id="ants">
+<h2><a class="reference external" href="https://github.com/ANTsX/ANTs">ANTs</a><a class="headerlink" href="#ants" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Download from the <a class="reference external" href="https://github.com/ANTsX/ANTs/releases">site</a> (choose according to your OS version)</p></li>
+<li><p>Decompress in a folder (e.g /home/user/Applications/)</p></li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ANTs</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">ants_root</span><span class="o">/</span><span class="n">ants</span><span class="o">-</span><span class="mf">2.5.0</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">export</span> <span class="n">ANTSPATH</span><span class="o">=</span><span class="n">ants_root</span><span class="o">/</span><span class="n">ants</span><span class="o">-</span><span class="mf">2.5.0</span><span class="o">/</span><span class="nb">bin</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="afni">
+<h2><a class="reference external" href="https://afni.nimh.nih.gov/">AFNI</a><a class="headerlink" href="#afni" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>See <a class="reference external" href="https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/index.html">install</a></p></li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#fsl</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">afni_root</span><span class="o">/</span><span class="n">abin</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="fsl">
+<h2><a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fsl/docs/#/">FSL</a><a class="headerlink" href="#fsl" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>See <a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation">install</a></p></li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#FSL</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">fsl_root</span><span class="o">/</span><span class="n">fsl</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">sh</span> <span class="n">fsl_root</span><span class="o">/</span><span class="n">fsl</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fslconf</span><span class="o">/</span><span class="n">fsl</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="imagej">
+<h2><a class="reference external" href="https://imagej.net/ij/">ImageJ</a><a class="headerlink" href="#imagej" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Download ImageJ <a class="reference external" href="https://imagej.net/ij/download.html">here</a></p></li>
+<li><p>Unzip and put in a directory (eg /home/user/Applications)</p></li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ImageJ</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">imagej_root</span><span class="o">/</span><span class="n">ImageJ</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="matlab">
+<h2><a class="reference external" href="https://www.mathworks.com/products/matlab.html">Matlab</a><a class="headerlink" href="#matlab" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">matlabroot</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">export</span> <span class="n">MATLABCMD</span><span class="o">=</span><span class="n">matlabroot</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">glnxa64</span><span class="o">/</span><span class="n">MATLAB</span>
+<span class="n">export</span> <span class="n">MATLABPATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span> <span class="o">*</span>
+
+<span class="o">*</span> <span class="n">directory</span> <span class="n">where</span> <span class="n">your</span> <span class="n">pathdef</span><span class="o">.</span><span class="n">m</span> <span class="p">(</span><span class="n">user</span><span class="o">-</span><span class="n">specific</span><span class="p">)</span> <span class="ow">is</span> <span class="n">located</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="matlab-engine">
+<h2><a class="reference external" href="https://www.mathworks.com/help/matlab/matlab-engine-for-python.html">Matlab engine</a><a class="headerlink" href="#matlab-engine" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>For MATLAB &lt; R2022b:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">skrypy_root</span><span class="o">/</span><span class="n">skrypy_venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">cd</span> <span class="n">matlabroot</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2021a</span><span class="o">/</span><span class="n">extern</span><span class="o">/</span><span class="n">engines</span><span class="o">/</span><span class="n">python</span>
+<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">base</span> <span class="o">~/</span><span class="n">Applications</span><span class="o">/</span><span class="n">skrypy_venv</span><span class="o">/</span><span class="n">build</span> <span class="n">install</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</li>
+<li><p>For MATLAB &gt;= R2022b:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">skrypy_root</span><span class="o">/</span><span class="n">skrypy_venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=&lt;</span><span class="n">matlabroot</span><span class="o">&gt;/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">glnxa64</span><span class="o">/</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">matlabengine</span><span class="o">==</span><span class="mf">24.2.2</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="mrtrix3">
+<h2><a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/installation/build_from_source.html">MRTrix3</a><a class="headerlink" href="#mrtrix3" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Required dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span> <span class="n">g</span><span class="o">++</span> <span class="n">python</span> <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5opengl5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5svg5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgl1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">libfftw3</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtiff5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpng</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</li>
+<li><p>Choose or create a directory where MRTrix3 will be installed (eg /home/user/Applications):</p></li>
+<li><p>In this directory, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MRtrix3</span><span class="o">/</span><span class="n">mrtrix3</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">mrtrix3</span>
+<span class="o">./</span><span class="n">configure</span>
+<span class="o">./</span><span class="n">build</span>
+<span class="o">./</span><span class="n">set_path</span>
+</pre></div>
+</div>
+</li>
+<li><p>Close the terminal and start another one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrview</span>
+</pre></div>
+</div>
+</li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># MRtrix3</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">mrtrix_root</span><span class="o">/</span><span class="n">mrtrix3</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="n">mrtrix_root</span><span class="o">/</span><span class="n">mrtrix3</span><span class="o">/</span><span class="n">mrdegibbs3D</span><span class="o">/</span><span class="nb">bin</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="rs2">
+<h2><a class="reference external" href="https://github.com/VitoLin21/Rodent-Skull-Stripping">RS2</a><a class="headerlink" href="#rs2" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Download RS2 <a class="reference external" href="https://github.com/VitoLin21/Rodent-Skull-Stripping/archive/refs/heads/main.zip">here</a></p></li>
+<li><p>Save it in a temporary folder</p></li>
+<li><p>In terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">rss</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">rss</span>
+<span class="c1"># CUDA 11.7</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.15.0</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">cuda</span><span class="o">=</span><span class="mf">11.7</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span>
+<span class="c1"># CUDA 11.8</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.15.0</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">cuda</span><span class="o">=</span><span class="mf">11.8</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span>
+<span class="c1"># CPU Only</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.15.0</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">2.0.0</span> <span class="n">cpuonly</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+<span class="n">cd</span> <span class="o">&lt;</span><span class="n">your_temporary_folder</span><span class="o">&gt;</span>
+<span class="n">unzip</span> <span class="n">Rodent</span><span class="o">-</span><span class="n">Skull</span><span class="o">-</span><span class="n">Stripping</span><span class="o">-</span><span class="n">main</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">Rodent</span><span class="o">-</span><span class="n">Skull</span><span class="o">-</span><span class="n">Stripping</span><span class="o">-</span><span class="n">main</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">blosc2</span>
+</pre></div>
+</div>
+</li>
+<li><p>copy all the files from “Rodent-Skull-Stripping-main/RS2/jsons” to “your_conda_path/envs/rss/lib/python3.9/site-packages/RS2-1.0-py3.9.egg/RS2/jsons”</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="spm-requires-matlab">
+<h2><a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/">SPM (requires MATLAB)</a><a class="headerlink" href="#spm-requires-matlab" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Download SPM12 <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/docs/installation/">here</a></p></li>
+<li><p>Uncompress the zip file and put the directory ‘SPM12’ in the ‘toolbox’ folder of your Matlab (eg /usr/local/MATLAB/R2024b/toolbox/)</p></li>
+<li><p>In terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">matlab_root</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="n">toolbox</span><span class="o">/</span><span class="n">local</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="n">pathdef</span><span class="o">.</span><span class="n">m</span>
+</pre></div>
+</div>
+</li>
+<li><p>find the line %%% BEGIN ENTRIES %%% and add to the line below: matlabroot,’/toolbox/spm12:’, …:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%%</span> <span class="n">BEGIN</span> <span class="n">ENTRIES</span> <span class="o">%%%</span>
+<span class="n">matlabroot</span><span class="p">,</span><span class="s1">&#39;/toolbox/spm12:&#39;</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save it</p></li>
+<li><p>Edit <strong>‘env_parameters.txt’</strong> and add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SPM12</span>
+<span class="n">export</span> <span class="n">SPM_PATH</span><span class="o">=</span><span class="n">matlab_root</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="n">toolbox</span><span class="o">/</span><span class="n">spm12</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="configuration-example">
+<h2>Configuration example<a class="headerlink" href="#configuration-example" title="Link to this heading"></a></h2>
+<p>To give an idea, here is a configuration of env_parameters.txt file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ImageJ</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">ImageJ</span><span class="o">/</span>
+
+<span class="c1">#Matlab</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">Apps</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">export</span> <span class="n">MATLABCMD</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">Apps</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2024b</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">glnxa64</span><span class="o">/</span><span class="n">MATLAB</span>
+<span class="n">export</span> <span class="n">MATLABPATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span>
+
+<span class="c1">#FSL</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">fsl</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">sh</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">fsl</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fslconf</span><span class="o">/</span><span class="n">fsl</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="c1">#ANTs</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">ants</span><span class="o">-</span><span class="mf">2.5.0</span>
+<span class="n">export</span> <span class="n">ANTSPATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">ants</span><span class="o">-</span><span class="mf">2.5.0</span>
+
+<span class="c1">#MRTrix3</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">mrtrix3</span><span class="o">/</span><span class="nb">bin</span>
+
+<span class="c1">#FreeSurfer</span>
+<span class="n">export</span> <span class="n">FREESURFER_HOME</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">freesurfer</span>
+
+<span class="c1">#AFNI</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">abin</span>
+
+<span class="c1">#SPM</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2020a</span><span class="o">/</span><span class="n">toolbox</span><span class="o">/</span><span class="n">spm12</span>
+
+<span class="c1">#mri_conv</span>
+<span class="n">export</span> <span class="n">MRIFilePATH</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">olivier</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Java</span><span class="o">/</span><span class="n">mri_conv</span><span class="o">/</span><span class="n">MRIFileManager</span><span class="o">/</span><span class="n">MRIManager</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="package_install.html" class="btn btn-neutral float-left" title="How to install Python packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cluster.html" class="btn btn-neutral float-right" title="Cluster (HPC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, olivier MONTIGON (IRMaGe).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

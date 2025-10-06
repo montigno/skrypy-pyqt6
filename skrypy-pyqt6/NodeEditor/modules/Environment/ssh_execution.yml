@@ -1,0 +1,4 @@
+ssh_diagram_execution:
+  cpu_number: 1
+  pre_exec: ''
+  X11_forwarding: False

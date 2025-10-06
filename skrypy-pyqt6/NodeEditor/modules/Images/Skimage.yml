@@ -1,0 +1,64 @@
+skimage_active_contour:
+  alpha: 0.0 # Snake length shape parameter. Higher values makes snake contract faster.
+  beta: 0.0 # Snake smoothness shape parameter. Higher values makes snake smoother.
+  w_line: 0.0 # Controls attraction to brightness. Use negative values to attract toward dark regions.
+  w_edge: 0.0 # Controls attraction to edges. Use negative values to repel snake from edges.
+  gamma: 0.0 # Explicit time stepping parameter.
+  max_px_move: 0.0 # Maximum pixel distance to move per iteration.
+  max_iterations: 0 # Maximum iterations to optimize snake shape.
+  convergence: 0.0 # Convergence criteria.
+  boundary_condition: enumerate(('periodic', 'free', 'fixed', 'free-fixed', 'fixed-free')) # Boundary conditions for the contour.Can be one of ‘periodic’, ‘free’, ‘fixed’, ‘free-fixed’, or ‘fixed-free’. ‘periodic’ attaches the two ends of the snake, ‘fixed’ holds the end-points in place, and ‘free’ allows free movement of the ends. ‘fixed’ and ‘free’ can be combined by parsing ‘fixed-free’, ‘free-fixed’. Parsing ‘fixed-fixed’ or ‘free-free’ yields same behaviour as ‘fixed’ and ‘free’, respectively.
+  coordinates: {‘rc’} # This option remains for compatibility purpose only and has no effect. It was introduced in 0.16 with the 'xy' option, but since 0.18, only the 'rc' option is valid. Coordinates must be set in a row-column format.
+skimage_erosion:
+  footprint: [[0.0]] # (ndarray) The neighborhood expressed as an array of 1’s and 0’s. If None, use cross-shaped structuring element (connectivity=1).
+  out: [[0.0]] # (ndarrays) The array to store the result of the morphology. If None is passed, a new array will be allocated.
+  shift_x: False # (bool) shift structuring element about center point. This only affects eccentric structuring elements (i.e. selem with even numbered sides).
+  shift_y: False # (bool) shift structuring element about center point. This only affects eccentric structuring elements (i.e. selem with even numbered sides).
+skimage_dilation:
+  footprint: [[0.0]] # (ndarray) The neighborhood expressed as a 2-D array of 1’s and 0’s. If None, use cross-shaped structuring element (connectivity=1).
+  out: [[0.0]] # (ndarray) The array to store the result of the morphology. If None, is passed, a new array will be allocated.
+  mode: '' # (str) The mode parameter determines how the array borders are handled. Valid modes are: ‘reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’, ‘max’, ‘min’, or ‘ignore’. If ‘min’ or ‘ignore’, pixels outside the image domain are assumed to be the maximum for the image’s dtype, which causes them to not influence the result. Default is ‘reflect’.
+  cvalscalar: 0.0 # Value to fill past edges of input if mode is ‘constant’. Default is 0.0.
+skimage_white_tophat:
+  selem: [[0.0]] # (ndarray) The neighborhood expressed as an array of 1’s and 0’s. If None, use cross-shaped structuring element (connectivity=1).
+  out: [[0.0]] # (ndarray) The array to store the result of the morphology. If None is passed, a new array will be allocated.
+skimage_black_tophat:
+  selem: [[0.0]] # (ndarray) The neighborhood expressed as a 2-D array of 1’s and 0’s. If None, use cross-shaped structuring element (connectivity=1).
+  out: [[0.0]] # (ndarray) The array to store the result of the morphology. If None is passed, a new array will be allocated.
+skimage_opening:
+  selem: [[0.0]] # (ndarray) The neighborhood expressed as an array of 1’s and 0’s. If None, use cross-shaped structuring element (connectivity=1).
+  out: [[0.0]] # (ndarray) The array to store the result of the morphology. If None is passed, a new array will be allocated.
+skimage_closing:
+  selem: [[0.0]]
+  out: [[0.0]]
+skimage_remove_small_objects:
+  min_size: 64 # int, optional (default: 64). The smallest allowable object size.
+  connectivity: 1 # int, {1, 2, …, ar.ndim}, optional (default: 1). The connectivity defining the neighborhood of a pixel. Used during labelling if ar is bool.
+  out: [[0.0]] # (ndarray) Array of the same shape as ar, into which the output is placed. By default, a new array is created.
+skimage_remove_small_holes:
+  area_threshold: 64 # int, optional (default: 64). The maximum area, in pixels, of a contiguous hole that will be filled. Replaces min_size.
+  out: [[0.0]] # Array of the same shape as ar and bool dtype, into which the output is placed. By default, a new array is created.
+  connectivity: 1 # int, {1, 2, …, ar.ndim}, optional (default: 1). The connectivity defining the neighborhood of a pixel.
+skimage_convex_hull_image:
+  offset_coordinates: False # If True, a pixel at coordinate, e.g., (4, 7) will be represented by coordinates (3.5, 7), (4.5, 7), (4, 6.5), and (4, 7.5). This adds some “extent” to a pixel when computing the hull.
+  tolerance: 0.0 # Tolerance when determining whether a point is inside the hull. Due to numerical floating point errors, a tolerance of 0 can result in some points erroneously being classified as being outside the hull.
+  include_borders: False # If False, vertices/edges are excluded from the final hull mask.
+skimage_threshold_multiotsu:
+  classes: 0 # (int) Number of classes to be thresholded, i.e. the number of resulting regions.
+  nbins: 0 # (int) Number of bins used to calculate the histogram. This value is ignored for integer arrays.
+skimage_resize:
+  order: 0
+  mode: enumerate(('constant', 'edge', 'symmetric', 'reflect', 'wrap'))
+  cval: 0.0
+  clip: True
+  preserve_range: True
+  anti_aliasing: True
+  anti_aliasing_sigma: (0.0,0.1)
+skimage_Canny_Edge:
+  sigma: 1.0 # float, optional. Standard deviation of the Gaussian filter.
+  low_threshold: 1.0 # float, optional. Lower bound for hysteresis thresholding (linking edges). If None, low_threshold is set to 10% of dtype’s max.
+  high_threshold: 2.0 # float, optional. Upper bound for hysteresis thresholding (linking edges). If None, high_threshold is set to 20% of dtype’s max.
+  mask: [False] # array, dtype=bool, optional. Mask to limit the application of Canny to a certain area.
+  use_quantiles: False # bool, optional. If True then treat low_threshold and high_threshold as quantiles of the edge magnitude image, rather than absolute edge magnitude values. If True then the thresholds must be in the range [0, 1].
+  mode: enumerate(('reflect', 'constant', 'nearest', 'mirror', 'wrap')) # str. The mode parameter determines how the array borders are handled during Gaussian filtering, where cval is the value when mode is equal to ‘constant’.
+  cval: 1.0 # float, optional. Value to fill past edges of input if mode is ‘constant’.

@@ -1,0 +1,14 @@
+dcmstack_CopyMeta:
+  include_classes: [""]
+  exclude_classes: [""]
+dcmstack_MergeNifti:
+  sort_order: ""
+  merge_dim: 0
+  out_format: ""
+  out_ext: ".nii.gz"
+  out_path: 'path'
+dcmstack_SplitNifti:
+  out_ext: '.nii.gz'
+  out_format: ''
+  out_path: 'path'
+  split_dim: 2

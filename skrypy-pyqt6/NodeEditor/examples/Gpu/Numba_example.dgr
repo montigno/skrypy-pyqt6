@@ -1,0 +1,50 @@
+[diagram]
+link=[N0] node=[S0:NoGPU#Node#P0:Value]
+link=[N1] node=[S0:WithGPU#Node#P1:Value]
+probe=[P0] label=[Value] format=[float] RectF=[(222.18, -35.0, 70, 24)] 
+probe=[P1] label=[Value] format=[float] RectF=[(222.18, 150.66, 70, 24)] 
+script=[S0] title=[Script_python] inputs=[] outputs=[['NoGPU', 'out', 'float'], ['WithGPU', 'out', 'float']] code=[your code] RectF=[(-305.32, -213.17000000000002, 424.0, 557.0)]
+[source S0]
+[]
+# see https://www.geeksforgeeks.org/running-python-script-on-gpu/
+
+from numba import jit, cuda 
+import numpy as np 
+# to measure exec time 
+from timeit import default_timer as timer    
+  
+# normal function to run on cpu 
+def func(a, n):                                 
+    for i in range(n): 
+        a[i]+= 1      
+
+# function optimized to run on gpu  
+@jit(nopython=True)                          
+def func2(a, n): 
+    for i in range(n): 
+        a[i]+= 1
+n = 50000000                            
+a = np.ones(n, dtype = np.float64) 
+
+start = timer() 
+func(a, n) 
+NoGPU = timer()-start
+print('Without GPU:', NoGPU)
+
+start = timer() 
+func2(a, n)
+WithGPU =  timer()-start
+print('With GPU:', WithGPU)
+
+['S0:NoGPU', 'S0:WithGPU']
+[/source S0]
+
+[execution]
+[]
+['S0', 'P0', 'P1']
+{'P0': ('float', 'Value', 'S0:NoGPU'), 'P1': ('float', 'Value', 'S0:WithGPU')}
+['S0:NoGPU', 'S0:WithGPU']
+{}
+[]
+[interlinks]
+[]

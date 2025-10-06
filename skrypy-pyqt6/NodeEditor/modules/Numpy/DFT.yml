@@ -1,0 +1,8 @@
+numpy_fft_1d:
+  n: 1000 # int, optional. Length of the transformed axis of the output. If n is smaller than the length of the input, the input is cropped. If it is larger, the input is padded with zeros. If n is not given, the length of the input along the axis specified by axis is used.
+  axis: -1 # int, optional. Axis over which to compute the FFT. If not given, the last axis is used.
+  norm: enumerate(('backward', 'ortho', 'forward')) # {“backward”, “ortho”, “forward”}, optional. Normalization mode (see numpy.fft). Default is “backward”. Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.
+numpy_ifft_1d:
+  n: 1000 # int, optional. Length of the transformed axis of the output. If n is smaller than the length of the input, the input is cropped. If it is larger, the input is padded with zeros. If n is not given, the length of the input along the axis specified by axis is used. See notes about padding issues.
+  axis: -1 # int, optional. Axis over which to compute the inverse DFT. If not given, the last axis is used.
+  norm: enumerate(('backward', 'ortho', 'forward')) # {“backward”, “ortho”, “forward”}, optional. Normalization mode (see numpy.fft). Default is “backward”. Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.

@@ -1,0 +1,8 @@
+MP3_DCE_phenomeno:
+  output_filename_AUC: '_AUC' #
+  output_filename_Max: '_Max' #
+  output_filename_pc_enhanc: '_pc_enhanc' #
+  output_filename_TTP: '_TTP' #
+  Last_dyn_before_bolus: 'Auto' #
+  End_analysis: 180.0 #
+  Slope_threshold: 'Inf' #

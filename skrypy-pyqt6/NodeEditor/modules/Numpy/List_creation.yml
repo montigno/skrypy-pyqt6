@@ -1,0 +1,3 @@
+numpy_arange:
+  dtype: 'int' # dtype, optional. The type of the output array. If dtype is not given, infer the data type from the other input arguments.
+  like: 'None' # array_like, optional. Reference object to allow the creation of arrays which are not NumPy arrays. If an array-like passed in as like supports the __array_function__ protocol, the result will be defined by it. In this case, it ensures the creation of an array object compatible with that passed in via this argument.

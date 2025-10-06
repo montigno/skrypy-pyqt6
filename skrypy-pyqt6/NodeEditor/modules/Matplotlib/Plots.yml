@@ -1,0 +1,52 @@
+matplotlib_plot:
+  style_use: enumerate(('default', 'classic', 'bmh', 'fast', 'ggplot')) # window style (default, classic, bmh, fast, gplot)
+  dot_style: enumerate(('o', 'r^', 'rs', 'bs')) # type of dot (o, rs, bs ...)
+  plot_marker: enumerate(('x', '+', ',', 'o', 'v','*')) # marker style
+  plot_markersize: 12 # integer - marker size
+  plot_linewidth: 2.0 # float - line width
+  plot_color: enumerate(('green', 'blue', 'red', 'black', 'yellow', 'cyan', 'magenta')) # line color
+  plot_linestyle: enumerate(('None', 'solid', 'dotted', 'dashed', 'dashdot')) # Simple linestyles can be defined using the strings "solid", "dotted", "dashed" or "dashdot"
+  set_xlim: (0, 2) # tuple min, max
+  set_ylim: (0, 2) # tuple min, max
+  set_xticks: [1, 2] # to use with numpy arange
+  set_yticks: [1, 2] # to use with numpy arange
+  set_xlabel: 'time (s)'
+  set_ylabel: 'voltage (V)'
+  set_title: 'plotting name'
+  axvline: ((2.0, 'red', 'dashed', 1.0))  # tuple (one marker) or tuple of tuple (multi markers) representing (x_position, linecolor, linetype, linewidth)
+  window_title: 'my Curves'
+matplotlib_multiple_curves:
+  style_use: enumerate(('default', 'classic', 'bmh', 'fast', 'ggplot')) # for all curves
+  dot_style: ('', 'o') # tuple of str (for each curve in order) - type of dot (o, rs, bs ...)
+  plot_marker: ('x', 'o') # tuple of str (for each curve in order) - marker style
+  plot_markersize: (12, 14) # tuple of int (for each curve in order) - marker size
+  plot_linewidth: (2.0, 2.0) # tuple of float (for each curve in order) - line width
+  plot_color: ('green', 'blue') # tuple of string (for each curve in order) -line color
+  plot_linestyle: ('solid', 'dotted') # tuple of string (for each curve in order) - Simple linestyles can be defined using the strings "solid", "dotted", "dashed" or "dashdot"
+  plot_label: ('curve1', 'curve2') # tuple of string (for each curve in order) - label name
+  set_xlim: (0, 2) # tuple min, max (for all curves)
+  set_ylim: (0, 2) # tuple min, max (for all curves)
+  set_xticks: [1, 2] # to use with numpy arange (for all curves)
+  set_yticks: [1, 2] # to use with numpy arange (for all curves)
+  set_xlabel: 'time (s)' # (for all curves)
+  set_ylabel: 'voltage (V)'  # (for all curves)
+  set_title: 'plot 1 name'  # (for all curves)
+  axvline: ((2.0, 'red', 'dashed', 1.0))  # tuple (one marker) or tuple of tuple (multi markers) representing (x_position, linecolor, linetype, linewidth)
+  window_title: 'my Curves'
+matplotlib_multiple_plots:
+  style_use: enumerate(('default', 'classic', 'bmh', 'fast', 'ggplot')) # for all plots
+  plot_marker: ('x', 'o') # tuple of str (for each curve in order) - marker style
+  plot_markersize: (12, 14) # tuple of int (for each curve in order) - marker size
+  plot_linewidth: (2.0, 2.0) # tuple of float (for each plot in order) - line width
+  plot_color: ('green', 'blue') # tuple of string (for each plot in order) -line color
+  plot_linestyle: ('solid', 'dotted') # tuple of string (for each plot in order) - Simple linestyles can be defined using the strings "solid", "dotted", "dashed" or "dashdot"
+  plot_label: ('curve1', 'curve2') # tuple of string (for each plot in order) - label name
+  set_xlim: [(0, 2), (0, 2)] # list of tuple min, max (for each plot in order)
+  set_ylim: [(0, 2), (0, 2)] # list of tuple min, max (for each plot in order)
+  set_xticks: [[1, 2], [1,2]] # list of list to use with numpy arange (for each plot in order)
+  set_yticks: [[1, 2], [1,2]] # to use with numpy arange (for each plot in order)
+  set_xlabel: ['time (s)', 'freq (Hz)'] # list of string (for each plot in order)
+  set_ylabel: ['voltage (V)', 'ampere (A)']  # list of string (for each plot in order)
+  set_title: ['plot 1 name', 'plot 2 name']  # (for each plot in order)
+  axvline: ((2.0, 'red', 'dashed', 1.0))  # tuple (one marker) or tuple of tuple (multi markers) representing (x_position, linecolor, linetype, linewidth)
+  window_title: 'my Curves'
