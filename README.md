@@ -12,5 +12,10 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 <p></p>
 
+	07/10/2025: version 25.10.07b
+	- blocks librarie : Nifti orientations added
+
+<p></p>
+
 	06/10/2025: version 25.10.06b
 	First repository with PyQt6
