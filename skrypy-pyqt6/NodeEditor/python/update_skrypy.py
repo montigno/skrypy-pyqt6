@@ -11,7 +11,7 @@ class skrypy_update(QDialog):
     def __init__(self, parent=None):
         super(skrypy_update, self).__init__(parent)
         self.setWindowTitle("Skrypy Updater")
-        self.setMinimumWidth(300)
+        self.setMinimumWidth(400)
         self.setAutoFillBackground(True)
         self.answer = 'cancel'
         dest = "/tmp/"

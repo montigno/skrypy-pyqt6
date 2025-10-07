@@ -24,5 +24,5 @@ for keypk, valpk in pack.items():
     except Exception as e:
         print('error : ', e)
 
-install('pip3 install --upgrade --force-reinstall pyqt5')
-install('pip3 install --upgrade --force-reinstall pyqt5')
+install('pip3 install --upgrade --force-reinstall pyqt6')
+install('pip3 install --upgrade --force-reinstall pyqt6')

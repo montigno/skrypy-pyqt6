@@ -286,3 +286,39 @@ class Nifti_rawInfo():
 
     def out_structarr(self: 'list_str'):
         return self.str
+
+##############################################################################
+
+
+class Nifti_orientations_aff2axcodes():
+    def __init__(self, nii_image='path', **options):
+        import nibabel as nib
+        img = nib.load(nii_image)
+        self.axcodes = nib.orientations.aff2axcodes(img.affine, **options)
+        
+    def axcodes(self:'tuple'):
+        return self.axcodes
+
+##############################################################################
+
+
+class Nifti_orientations_axcodes2ornt():
+    def __init__(self, axcodes=('F', 'L', 'U'), **options):
+        import nibabel as nib
+        self.ornt = nib.orientations.axcodes2ornt(axcodes, **options)
+        
+    def ornt(self: 'array_float'):
+        return self.ornt
+
+##############################################################################
+
+
+class Nifti_orientations_apply_orientation():
+    def __init__(self, nii_image='path', ornt=[[0.0]]):
+        import nibabel as nib
+        nii_img = nib.load(nii_image)
+        nii_data = nii_img.get_fdata()
+        self.tarr = nib.orientations.apply_orientation(nii_data, ornt)
+        
+    def t_arr(self: 'array_float'):
+        return self.tarr

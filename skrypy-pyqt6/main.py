@@ -75,10 +75,12 @@ class Project_Irmage(QMainWindow):
 
     def closeEvent(self, event):
         msg = QMessageBox(self)
-        msg.setWindowTitle("Exit skrypy...")
+        msg.setWindowTitle("Exit skrypy")
+        msg.setMinimumWidth(400)
+        msg.setMaximumWidth(500)
+        # msg.setFixedSize(400, 200)
         msg.setText("Have you saved your projects ?")
         msg.setIcon(QMessageBox.Icon.Question)
-
         msg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         msg.setDefaultButton(QMessageBox.StandardButton.No)
         cb = QCheckBox("Clear shared memory")

@@ -96,6 +96,12 @@ Table of Contents
 
    reference/preinstalled_packages_list.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Troubleshooting
+
+   troubleshooting/trblsh.rst
+
 .. # define a hard line break for HTML
 .. |br| raw:: html
 

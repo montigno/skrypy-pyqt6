@@ -3,3 +3,8 @@ nifti_save_file:
   header: ''
   print_header: True
   out_type: enumerate(('nii','nii.gz'))
+Nifti_orientations_aff2axcodes:
+  labels: (('L','R'),('B','F'),('D','U')) #optional, None or sequence of (2,) sequences Labels for negative and positive ends of output axes of aff
+  tol: 0.0
+Nifti_orientations_axcodes2ornt:
+  labels: (('L','R'),('P','A'),('I','S')) #optional, None or sequence of (2,) sequences Labels for negative and positive ends of output axes of aff

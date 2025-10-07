@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to upgrade Skrypy &mdash; Skrypy Documentation  documentation</title>
+  <title>Troubleshooting &mdash; Skrypy Documentation  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b42915cc" />
@@ -20,8 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Running Skrypy" href="../start/running_skrypy.html" />
-    <link rel="prev" title="Cluster (HPC)" href="cluster.html" /> 
+    <link rel="prev" title="List of pre-installed Python packages" href="../reference/preinstalled_packages_list.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,13 +43,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Install</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install_skrypy.html">How to install Skrypy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="package_install.html">How to install Python packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install_dependencies.html">How to install dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cluster.html">Cluster (HPC)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to upgrade Skrypy</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/install_skrypy.html">How to install Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/package_install.html">How to install Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/install_dependencies.html">How to install dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/cluster.html">Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/update_skrypy.html">How to upgrade Skrypy</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
@@ -67,8 +66,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/preinstalled_packages_list.html">List of pre-installed Python packages</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/trblsh.html">Troubleshooting</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bugs-with-qt">Bugs with Qt</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -85,9 +87,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">How to upgrade Skrypy</li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/installation/update_skrypy.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/troubleshooting/trblsh.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -95,34 +97,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-upgrade-skrypy">
-<h1>How to upgrade Skrypy<a class="headerlink" href="#how-to-upgrade-skrypy" title="Link to this heading"></a></h1>
-<blockquote>
-<div></div></blockquote>
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<section id="bugs-with-qt">
+<h2>Bugs with Qt<a class="headerlink" href="#bugs-with-qt" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>In the ‘Help’ menu, click on ‘Update Skrypy’</p></li>
+<li><p>Error with “xcb”:</p>
+</li>
 </ol>
+<p><a class="reference internal" href="../_images/Bug_Qt6.png"><img alt="(bug Qt6)" src="../_images/Bug_Qt6.png" style="width: 100%;" /></a></p>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/menu_update_skrypy.png"><img alt="(menu update)" src="../_images/menu_update_skrypy.png" style="width: 50%;" /></a></p>
+<div><p>Solution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">libxcb</span><span class="o">-</span><span class="n">cursor</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
 </div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>A window opens</p></li>
-</ol>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/update_skrypy_dialog.png"><img alt="(dialog update)" src="../_images/update_skrypy_dialog.png" style="width: 30%;" /></a></p>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>Click on YES or NO</p></li>
-<li><p>Restart skrypy if you clicked YES</p></li>
-</ol>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cluster.html" class="btn btn-neutral float-left" title="Cluster (HPC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../start/running_skrypy.html" class="btn btn-neutral float-right" title="Running Skrypy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../reference/preinstalled_packages_list.html" class="btn btn-neutral float-left" title="List of pre-installed Python packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

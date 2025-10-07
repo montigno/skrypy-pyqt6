@@ -36,6 +36,8 @@ packages:
   prompt_toolkit: prompt_toolkit
   psutil: psutil
   pynrrd: pynrrd
+  pyqt5: PyQt5==5.15.7
+  pyqt5-sip: PyQt5-sip==12.15.0
   pyqt6: PyQt6
   pyqt6-sip: PyQt6-sip
   pytest: pytest
@@ -56,4 +58,4 @@ packages:
   traits: traits
   transformers: transformers
   vedo: vedo
-version: 25.10.06b
+version: 25.10.07b
