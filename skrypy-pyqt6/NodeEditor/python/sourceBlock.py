@@ -8,7 +8,7 @@
 
 from NodeEditor.python.syntax import PythonHighlighter
 from PyQt6.QtGui import QFont, QFontMetrics
-from PyQt6.QtWidgets import QVBoxLayout, QLabel, QDialog, QScrollArea, QTextEdit
+from PyQt6.QtWidgets import QHBoxLayout, QLabel, QDialog, QScrollArea, QTextEdit
 import importlib
 import inspect
 
@@ -23,8 +23,12 @@ class seeCode(QDialog):
 
         src = inspect.getsource(MyClass)
 
+        # nb_line = QTextEdit()
+        # txt_nb = [str(x) for x in range(1+len(src.splitlines()))]
+        # nb_line.setText('\n'.join(txt_nb))
+
         self.setWindowTitle('Source code of ' + nameClass)
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
         txt = QTextEdit()
         txt.setReadOnly(True)
         txt.setPlainText(src)
@@ -37,6 +41,7 @@ class seeCode(QDialog):
         txt.setMinimumSize(w, h)
         txt.resize(w, h)
 
+        # layout.addWidget(nb_line)
         layout.addWidget(txt)
         self.setLayout(layout)
         self.setMinimumWidth(w + 50)
