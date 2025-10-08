@@ -37,7 +37,8 @@ QMenuBar::item {
     color: rgb(255,255,255);
 }
 QMenuBar::item::selected {
-    background-color: rgb(30,30,30);
+    background-color: rgb(220, 220, 200);
+    color: rgb(30, 30, 30);
 }
 QMenu {
     background-color: rgb(49,49,49);
@@ -50,4 +51,13 @@ QMenu::item::selected {
 }
 QCheckBox {
 	color: black;
+}
+QDialog {
+	background-color: #eeeeee;
+}
+QAction {
+	background-color: #ffffff;
+}
+QMessageBox QLabel {
+    background-color: transparent;
 }

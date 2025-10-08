@@ -325,11 +325,13 @@ class BlockCreate(QGraphicsRectItem):
         menu.exec(event.screenPos())
 
     def editBlock(self, colorGradient1, colorGradient2, colorPen):
-
+        # self.colorGradient1 = colorGradient1
+        # self.colorGradient2 = colorGradient2
+        # self.colorPen = colorPen
         gradient = QLinearGradient(QPointF(0, 0), QPointF(0, 50))
         gradient.setColorAt(0, colorGradient1)
         gradient.setColorAt(1, colorGradient2)
-
+        
         self.setPen(QPen(colorPen, 4))
         self.setBrush(QBrush(gradient))
 
@@ -552,7 +554,7 @@ class BlockCreate(QGraphicsRectItem):
         c.exec()
 
     def seeCode(self):
-        c = seeCode(self.category, self.name)
+        c = seeCode(self.category, self.name, editor)
         c.exec()
 
     def foncedBlock(self, fcd):
@@ -695,7 +697,7 @@ class BlockCreate(QGraphicsRectItem):
                 dicts = yaml.load(stream, yaml.FullLoader)
             try:
                 dicts[self.name]
-                c = chOptions(pathYml, self.name, lvl[2])
+                c = chOptions(pathYml, self.name, lvl[2], editor)
                 c.exec()
                 if c.getAnswer() == "cancel":
                     return
@@ -949,6 +951,19 @@ class BlockCreate(QGraphicsRectItem):
         except Exception as e:
             editor.editText('Error with some modules/submodules, see in {}'.format(file),
                             10, 600, 'ff0000', False, True)
+            
+    # def paint(self, painter: QPainter, option, widget=None):
+    # #     gradient = QLinearGradient(QPointF(0, 0), QPointF(0, 50))
+    # #     gradient.setColorAt(0, self.colorGradient1)
+    # #     gradient.setColorAt(1, self.colorGradient2)
+    # #
+    # #     self.setPen(QPen(self.colorPen, 4))
+    # #     self.setBrush(QBrush(gradient))
+    # #     # brush = QBrush(QColor("#3498db"))
+    # #     # painter.setBrush(brush)
+    # #     # painter.setPen(self.pen())
+    # #     # Dessine un rectangle avec coins arrondis (rx=10, ry=10)
+    #     painter.drawRoundedRect(self.rect(), 10, 10)
 
 
 class BlocksProjects(QTextEdit):
@@ -4756,7 +4771,7 @@ class Imagebox(QGraphicsRectItem):
 
 class ItemColor(Enum):
     BACKGROUND = QColor(40, 40, 40, 100)
-    PROCESS_TOP = QColor(52, 73, 94, 255)
+    PROCESS_TOP = QColor(62, 83, 104, 255)
     PROCESS_BOT = QColor(44, 62, 80, 255)
     FRAME_PROCESS = QColor(140, 140, 140, 200)
     SUBPROCESS_TOP = QColor(250, 100, 0, 255)
@@ -5506,6 +5521,7 @@ class Menu(QMenuBar):
         last_exist_file = ''
         lst_dgr = Config().getPathDiagrams()
         if lst_dgr:
+            lst_dgr.sort()
             for i, elem in enumerate(lst_dgr):
                 if os.path.exists(elem):
                     f = open(elem, 'r', encoding='utf8')
@@ -9246,12 +9262,28 @@ class SubWindowManager(QMdiSubWindow):
     def closeEvent(self, event):
         title = self.windowTitle()
         if '*' in title:
-            reply = QMessageBox.question(
-                self,
-                'Save diagram',
-                "Save changes in " + title + " ?",
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel
-            )
+            msg = QMessageBox(editor)
+            msg.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Dialog)
+            msg.setText("Save changes in " + title + " ?")
+            # reply = msg.question(
+            #     self,
+            #     'Save diagram',
+            #     "Save changes in " + title + " ?",
+            #     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel
+            # )
+            msg.setIcon(QMessageBox.Icon.Question)
+            msg.setStandardButtons(QMessageBox.StandardButton.Yes |
+                                   QMessageBox.StandardButton.No |
+                                   QMessageBox.StandardButton.Cancel)
+            msg.setDefaultButton(QMessageBox.StandardButton.No)
+            # msg.setWindowFlags(Qt.WindowType.Window |
+            #                    Qt.WindowType.WindowCloseButtonHint |
+            #                    Qt.WindowType.WindowMinimizeButtonHint |
+            #                    Qt.WindowType.WindowMaximizeButtonHint |
+            #                    Qt.WindowType.WindowTitleHint)
+            
+            reply = msg.exec()
+
             if reply == QMessageBox.StandardButton.Yes:
                 answ = editor.menub.btnPressed(QAction('Save Diagram'))
                 if answ == 'yes':

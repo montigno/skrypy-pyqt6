@@ -5,6 +5,7 @@
 # https://cecill.info/licences/Licence_CeCILL_V2-en.html
 # for details.
 ##########################################################################
+from PyQt6.QtCore import Qt
 
 '''
 Created on 06 oct. 2025
@@ -75,14 +76,16 @@ class Project_Irmage(QMainWindow):
 
     def closeEvent(self, event):
         msg = QMessageBox(self)
-        msg.setWindowTitle("Exit skrypy")
-        msg.setMinimumWidth(400)
-        msg.setMaximumWidth(500)
-        # msg.setFixedSize(400, 200)
-        msg.setText("Have you saved your projects ?")
+        msg.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Dialog)
+        # msg.setStyleSheet("background-color: #dddddd;")
+        msg.setText("Have you saved your diagrams ?")
         msg.setIcon(QMessageBox.Icon.Question)
         msg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         msg.setDefaultButton(QMessageBox.StandardButton.No)
+        buttonY = msg.button(QMessageBox.StandardButton.Yes)
+        buttonY.setText('Yes, I can quit')
+        buttonN = msg.button(QMessageBox.StandardButton.No)
+        buttonN.setText('No, I forgot to save')
         cb = QCheckBox("Clear shared memory")
         msg.setCheckBox(cb)
         event.ignore()

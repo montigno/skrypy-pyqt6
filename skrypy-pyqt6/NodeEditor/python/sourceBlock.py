@@ -11,11 +11,15 @@ from PyQt6.QtGui import QFont, QFontMetrics
 from PyQt6.QtWidgets import QHBoxLayout, QLabel, QDialog, QScrollArea, QTextEdit
 import importlib
 import inspect
+from PyQt6.QtCore import Qt
 
 
 class seeCode(QDialog):
     def __init__(self, category, nameClass, parent=None):
         super(seeCode, self).__init__(parent)
+        self.setWindowTitle('Source code of ' + nameClass)
+        self.setObjectName("DialogClose")
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
         imp = importlib.import_module('NodeEditor.modules.' + category)
         importlib.reload(imp)
@@ -23,14 +27,19 @@ class seeCode(QDialog):
 
         src = inspect.getsource(MyClass)
 
-        # nb_line = QTextEdit()
-        # txt_nb = [str(x) for x in range(1+len(src.splitlines()))]
-        # nb_line.setText('\n'.join(txt_nb))
+        nb_line = QTextEdit()
+        nb_line.setFixedWidth(50)
+        nb_line.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        nb_line.setStyleSheet("background: transparent;")
+        nb_line.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)
+        txt_nb = [str(x + 1) for x in range(1+len(src.splitlines()))]
+        nb_line.setText('\n'.join(txt_nb))
 
-        self.setWindowTitle('Source code of ' + nameClass)
         layout = QHBoxLayout()
         txt = QTextEdit()
         txt.setReadOnly(True)
+        txt.setStyleSheet("background: transparent;")
+        txt.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)
         txt.setPlainText(src)
         PythonHighlighter(txt)
         font = txt.document().defaultFont()
@@ -40,8 +49,12 @@ class seeCode(QDialog):
         h = 250
         txt.setMinimumSize(w, h)
         txt.resize(w, h)
+        
+        scroll1 = nb_line.verticalScrollBar()
+        scroll2 = txt.verticalScrollBar()
+        scroll2.valueChanged.connect(scroll1.setValue)
 
-        # layout.addWidget(nb_line)
+        layout.addWidget(nb_line)
         layout.addWidget(txt)
         self.setLayout(layout)
         self.setMinimumWidth(w + 50)

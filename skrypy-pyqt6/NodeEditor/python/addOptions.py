@@ -26,6 +26,12 @@ class chOptions(QDialog):
 
     def __init__(self, pathYaml, nameclass, ports, parent=None):
         super(chOptions, self).__init__(parent)
+
+        self.setWindowTitle(nameclass)
+        # self.setWindowFlags(self.windowFlags() &
+        #                     Qt.WindowType.WindowCloseButtonHint)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+        
         modul = os.path.splitext(os.path.basename(pathYaml))[0]
         doc = "No description"
 
@@ -34,10 +40,6 @@ class chOptions(QDialog):
 
         self.labels_inputs = self.poqs[0]
         self.values_inputs = self.poqs[1]
-
-        self.setWindowTitle(nameclass)
-        self.setWindowFlags(self.windowFlags() &
-                            Qt.WindowType.WindowCloseButtonHint)
 
         menubar = QMenuBar()
         checkAll = QAction('Check all options', self)
@@ -81,6 +83,7 @@ class chOptions(QDialog):
         desc = QTextEdit()
         desc.setPlainText(doc)
         desc.setReadOnly(True)
+        desc.setStyleSheet("background: transparent;")
         desc.setLineWrapMode(QTextEdit.LineWrapMode.WidgetWidth)
 
         font = desc.document().defaultFont()
