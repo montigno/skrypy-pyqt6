@@ -30,6 +30,7 @@ class SubWindow(QDialog):
         layoutDiagram.addWidget(self.diagram_view)
         self.setLayout(layoutDiagram)
         self.showFullScreen()
+        self.middle_mouse_pressed = False
 
     def eventFilter(self, source, event):
         if (source == self.diagram_view.viewport()):
@@ -38,7 +39,7 @@ class SubWindow(QDialog):
                 return True
             elif (event.type() == QEvent.Type.MouseMove):
                 self.mouseMouveDiagram(event)
-                return False
+                # return False
         return False
 
     def handle_wheel_event(self, event):
@@ -62,18 +63,22 @@ class SubWindow(QDialog):
                 self.close()
         except Exception as err:
             pass
+        
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.MouseButton.MiddleButton:
+            self.middle_mouse_pressed = False
+        QDialog.mouseReleaseEvent(self, event)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.MiddleButton:
+            self.middle_mouse_pressed = True
             self.__prevMousePos = event.pos()
-            print(self.__prevMousePos)
         self.diagram_view.horizontalScrollBar().setEnabled(True)
         self.diagram_view.verticalScrollBar().setEnabled(True)
 
     def mouseMouveDiagram(self, event):
-        if event.button() == Qt.MouseButton.MiddleButton:
+        if self.middle_mouse_pressed:
             offset = self.__prevMousePos - event.pos()
-            print(self.__prevMousePos)
             self.__prevMousePos = event.pos()
             self.diagram_view.horizontalScrollBar().setValue(self.diagram_view.horizontalScrollBar().value() + offset.x())
             self.diagram_view.verticalScrollBar().setValue(self.diagram_view.verticalScrollBar().value() + offset.y())

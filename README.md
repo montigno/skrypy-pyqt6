@@ -12,7 +12,7 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 <p></p>
 
-	08/10/2025: version 25.10.08b
+	09/10/2025: version 25.10.09b
 	- improvement of codes
 
 <p></p>
