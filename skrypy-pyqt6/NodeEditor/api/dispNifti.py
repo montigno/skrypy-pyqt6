@@ -45,6 +45,9 @@ class DispNifti(QDialog):
         self.w, self.h = tmpimg.shape
         self.interl = self.w
         self.rx, self.ry = self.w, self.h
+        
+        # self.fovX, self.fovY = self.w * pixdim[0], self.h * pixdim[1]
+        # self.scaleFactor = max(self.fovX, self.fovY) / 400.0
 
         self.scaleFactor = 2
         if self.w >= 512:
@@ -56,7 +59,9 @@ class DispNifti(QDialog):
         elif self.w >= 64:
             self.scaleFactor = round(self.w / 16)
         elif self.w >= 32:
-            self.scaleFactor = round(self.w / 4)
+            self.scaleFactor = round(self.w / 8)
+
+        print(self.scaleFactor, self.w)
 
         if self.w >= self.h:
             if (self.h * pixdim[1] < self.w * pixdim[0]):
@@ -76,28 +81,28 @@ class DispNifti(QDialog):
                 self.rx = self.w
                 self.ry = int(self.h * pixdim[1] / pixdim[0])
                 self.interl = self.w
-               
+
         self.boxSliders() 
         self.enableSliders()
         self.imgqLabel()
         self.navigImage()
-        
+
         self.info = QLabel()
         self.info.setText("<span style=\" \
                           font-size:10pt; \
                           color:#101010;\"> {:.2f}x{:.2f}mm ({}x{})</span>"
                           .format(self.w * pixdim[0], self.h * pixdim[1], self.w, self.h))
-          
+
         self.verticalLayout = QVBoxLayout(self)
         self.verticalLayout.addWidget(self.imageLabel)
         self.verticalLayout.addWidget(self.layoutSlide)
         self.verticalLayout.addWidget(self.info)
-         
+
         self.setWindowTitle(title)
 #         self.resize((10 + self.rx) * self.scaleFactor, (50 + self.ry) * self.scaleFactor)
         self.setLayout(self.verticalLayout)
         self.move(self.pos().x() + 20 * randrange(10), self.pos().y() + 20 * randrange(10))
-        
+
         if del_fil == 'yes':
             try:
                 os.remove(imgf)
@@ -109,7 +114,7 @@ class DispNifti(QDialog):
         self.imageLabel.setBackgroundRole(QPalette.ColorRole.Base)
 #         self.imageLabel.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Ignored)
         self.imageLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        
+
     def navigImage(self):
         self.indexImage()
         self.displayPosValue()
@@ -122,6 +127,9 @@ class DispNifti(QDialog):
         self.pixm = self.pixm.scaled(self.rx * (self.scaleFactor - 1),
                                      self.ry * (self.scaleFactor - 1),
                                      Qt.AspectRatioMode.IgnoreAspectRatio)
+        # self.pixm = self.pixm.scaled(self.fovX / self.scaleFactor,
+        #                              self.fovY / self.scaleFactor,
+        #                              Qt.AspectRatioMode.IgnoreAspectRatio)
         self.imageLabel.setPixmap(self.pixm)
 #         self.imageLabel.adjustSize()
 

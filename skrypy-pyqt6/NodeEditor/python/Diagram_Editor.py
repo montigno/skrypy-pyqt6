@@ -4668,8 +4668,8 @@ class Imagebox(QGraphicsRectItem):
         editor.listImgBox[editor.currentTab][self.unit] = (oImage, self.sh, self.fov, (x_scale, y_scale))
         self.proxyWidget.resize(10, 10)
         self.proxyWidget.updateGeometry()
-        # self.proxyWidget.resize(self.sh[0] / factor, self.sh[1] / (ratio * factor))
-        self.proxyWidget.resize(fov_x / factor, fov_y / (ratio * factor))
+        # self.proxyWidget.resize(fov_x / factor, fov_y / (ratio * factor))
+        self.proxyWidget.resize(fov_x / factor, fov_y / factor)
 
         self.proxyWidget.setWidget(self.elemProxy)
         self.proxyWidget.updateGeometry()
