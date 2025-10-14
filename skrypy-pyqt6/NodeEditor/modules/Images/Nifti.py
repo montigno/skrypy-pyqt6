@@ -220,6 +220,22 @@ class nifti_set_cal_max_min():
 
 ##############################################################################
 
+class nifti_set_affine():
+    def __init__(self, nifti_file='path', matrix=[[1., 0., 0., 0.], [0., 1., 0., 0.], [0., 0., 1., 0.]], outfile='path'):
+        import nibabel as nib
+        import os
+        img = nib.load(nifti_file)
+        hdr = img.header.copy()
+        hdr['srow_x'], hdr['srow_y'], hdr['srow_z'] = matrix[0], matrix[1], matrix[2]
+        new_nifti = nib.Nifti1Image(img.get_fdata().copy(), None, header=hdr)
+        nib.save(new_nifti, outfile)
+        self.outf = outfile
+
+    def outfile(self: 'path'):
+        return self.outf
+
+##############################################################################
+
 
 class nifti_binarize_threshold():
     def __init__(self,
