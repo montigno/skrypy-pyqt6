@@ -45,7 +45,7 @@ class DispNifti(QDialog):
         self.w, self.h = tmpimg.shape
         self.interl = self.w
         self.rx, self.ry = self.w, self.h
-        
+
         # self.fovX, self.fovY = self.w * pixdim[0], self.h * pixdim[1]
         # self.scaleFactor = max(self.fovX, self.fovY) / 400.0
 
@@ -122,7 +122,9 @@ class DispNifti(QDialog):
         bytesPerLine = int(totalBytes / self.interl)
         image = QImage(self.x.data, self.w , self.h, bytesPerLine, QImage.Format.Format_Grayscale8)
         # image = QImage(self.x.repeat(4), self.w, self.h, QImage.Format.Format_RGB32)
-
+        
+        print('rx * factor, ry * factor', self.rx * (self.scaleFactor - 1), self.ry * (self.scaleFactor - 1))
+        
         self.pixm = QPixmap.fromImage(image)
         self.pixm = self.pixm.scaled(self.rx * (self.scaleFactor - 1),
                                      self.ry * (self.scaleFactor - 1),

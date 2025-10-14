@@ -6,7 +6,7 @@
 # for details.
 ##########################################################################
 '''
-Skrypy-pyqt6 25.10.09b   setup   Oct. 09 2025
+Skrypy-pyqt6 25.10.14b   setup   Oct. 14 2025
 
 SYNOPSIS
     Install Skrypy-pyqt6 in a virtual python environment (administration rights required).
