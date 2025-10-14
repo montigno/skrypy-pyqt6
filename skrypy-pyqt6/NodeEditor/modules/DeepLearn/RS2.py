@@ -58,15 +58,16 @@ class RS2_predict_datamanagement():
 
         for cur_file in list_files:
             if cur_file.endswith('.nii'):
-                with open(cur_file, 'rb') as f_in:
-                    print('Processing in progress for {}'.format(cur_file))
-                    tmp = os.path.basename(cur_file)
-                    lsfield = tmp.split('.')
-                    name = ('.').join(tmp.split('.')[:-1])
-                    ext = tmp.split('.')[-1]
-                    new_name_file = os.path.join(tmp_folder, name + '_0000.nii')
-                    with gzip.open(new_name_file + '.gz', 'wb') as f_out:
-                        shutil.copyfileobj(f_in, f_out)
+                if os.path.exists(cur_file):
+                    with open(cur_file, 'rb') as f_in:
+                        print('Processing in progress for {}'.format(cur_file))
+                        tmp = os.path.basename(cur_file)
+                        lsfield = tmp.split('.')
+                        name = ('.').join(tmp.split('.')[:-1])
+                        ext = tmp.split('.')[-1]
+                        new_name_file = os.path.join(tmp_folder, name + '_0000.nii')
+                        with gzip.open(new_name_file + '.gz', 'wb') as f_out:
+                            shutil.copyfileobj(f_in, f_out)
 
         lso = ["RS2_predict", "-i", tmp_folder, '-o', output_folder, '-m', pretrained_model_path]
         for ef, ev in options.items():
