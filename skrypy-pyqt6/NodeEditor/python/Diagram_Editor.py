@@ -6021,7 +6021,7 @@ class Menu(QMenuBar):
             c = skrypy_update(self)
             c.exec()
             if c.getAnswer() == 'YES':
-                msg = QMessageBox()
+                msg = QMessageBox(editor)
                 msg.setWindowTitle("Update done...")
                 msg.setText("Please close and restart Skrypy")
                 msg.setIcon(QMessageBox.Icon.Question)
