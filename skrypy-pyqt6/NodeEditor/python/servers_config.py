@@ -17,6 +17,7 @@ class servers_window(QDialog):
 
     def __init__(self, config, clust, parent=None):
         super(servers_window, self).__init__(parent)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
         self.config = config
         self.clust = clust
         self.server_yml = Config().getServersList()

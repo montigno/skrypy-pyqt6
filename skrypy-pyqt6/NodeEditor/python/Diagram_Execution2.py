@@ -145,8 +145,9 @@ class execution2(QObject):
 
         if progressBar:
             start = time.time()
+            listBl = [x for x in listBlockExecution if x not in ['ThreadOn', 'ThreadOff']]
             i = 0
-            n = len(listBlockExecution)
+            n = len(listBl)
 
         threadcurrent = False
         threads = []
@@ -178,7 +179,7 @@ class execution2(QObject):
                 # progress.setValue(i)
                 if progressBar:
                     self.update_progress.emit(int(i), '[' + ' , '.join(listInThread) + '] running')
-                    i += 100 / n
+                    i += 1
                 [thread.start() for thread in threads]
                 [listDynamicValue.update(thread.join()) for thread in threads]
                 threadcurrent = False
@@ -193,12 +194,12 @@ class execution2(QObject):
             elif progressBar and 'Thread' not in execution and not threadcurrent:
                 QApplication.processEvents()
                 if execution in listBlock:
-                    self.update_progress.emit(int(i), '{} ({}) {}'.format(listBlock[execution][1], execution, 'running'))
+                    self.update_progress.emit(0, str(i) + '/' + str(n) + ' : {} ({}) {}'.format(listBlock[execution][1], execution, 'running'))
                 elif execution in listModul:
-                    self.update_progress.emit(int(i), '{} ({}) {}'.format(listModul[execution][0], execution, 'running'))
+                    self.update_progress.emit(0, str(i) + '/' + str(n) + ' : {} ({}) {}'.format(listModul[execution][0], execution, 'running'))
                 else:
-                    self.update_progress.emit(int(i), '{} {}'.format(execution, 'running'))
-                i += 100 / n
+                    self.update_progress.emit(0, str(i) + '/' + str(n) + ' : {} {}'.format(execution, 'running'))
+                i += 1
 
             if 'U' in execution:
                 outUnit = [lsi for lsi in listNodeValue if execution + ':' in lsi]

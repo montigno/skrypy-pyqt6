@@ -5514,7 +5514,7 @@ class Menu(QMenuBar):
             Config().setPathDiagrams(list_dgr)
 
     def pack_manager(self):
-        c = manage_pck()
+        c = manage_pck(editor)
         c.exec()
 
     def load_previous_diagram(self):
@@ -5633,7 +5633,7 @@ class Menu(QMenuBar):
                         tmpActText == 'Save Diagram As...'):
                     file = QFileDialog\
                                 .getSaveFileName(
-                                    self,
+                                    editor,
                                     "save diagram " + str(editor.currentTab),
                                     editor.currentpathwork, "Diagrams (*.dgr)",
                                     None,
@@ -5676,8 +5676,9 @@ class Menu(QMenuBar):
 
         elif tmpActText == 'Open Diagram':
 
-            dialog = QProgressDialog('Progress', None, 0, 0, self)
+            dialog = QProgressDialog('Progress', None, 0, 0, editor)
             bar = QProgressBar(dialog)
+            bar.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
             bar.setTextVisible(False)
             bar.setMinimum(0)
             bar.setMaximum(100)
@@ -5685,7 +5686,7 @@ class Menu(QMenuBar):
             dialog.show()
 
             filesCh = QFileDialog.getOpenFileNames(
-                                                self,
+                                                editor,
                                                 "Open diagram",
                                                 editor.currentpathwork,
                                                 'Diagrams (*.dgr)',
@@ -6129,7 +6130,7 @@ class Menu(QMenuBar):
             Start_environment(True)
 
         elif tmpActText == 'Clusters configuration':
-            c = servers_window('config', None)
+            c = servers_window('config', None, editor)
             c.exec()
 
         elif os.path.splitext(tmpActText)[1] == '.dgr':
@@ -8154,6 +8155,7 @@ class ProgressBar(QProgressBar):
 
     def __init__(self, *args, **kwargs):
         super(ProgressBar, self).__init__(*args, **kwargs)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
         self.setValue(0)
         if self.minimum() != self.maximum():
             self.timer = QTimer(self, timeout=self.onTimeout)
@@ -9532,7 +9534,10 @@ class ThreadDiagram(QRunnable):
         self.winBar.setWindowFlags(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.label = QLabel()
         self.pbar = QProgressBar(self.winBar)
+        self.pbar.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
         self.pbar.setGeometry(-100, 0, 350, 30)
+        self.pbar.setMinimum(0)
+        self.pbar.setMaximum(0)
         self.pbar.setValue(0)
         # self.button_stop = QPushButton('Stop pipeline')
         # self.button_stop.setCheckable(True)

@@ -178,7 +178,7 @@ ________________________________________________________________
 Configuration example
 ------------------------
 
-To give an idea, here is a configuration of env_parameters.txt file::
+To give an idea, here is a configuration of **env_parameters.txt** file::
 
 	#ImageJ
 	export PATH=/home/olivier/Applications/ImageJ/

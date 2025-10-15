@@ -11,6 +11,7 @@ class manage_pck(QDialog):
 
         super(manage_pck, self).__init__(parent)
         self.setMinimumWidth(800)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
         self.histories = []
 
