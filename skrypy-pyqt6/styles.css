@@ -55,6 +55,9 @@ QCheckBox {
 QDialog {
 	background-color: #eeeeee;
 }
+QDialog QLabel {
+    background-color: transparent;
+}
 QAction {
 	background-color: #ffffff;
 }

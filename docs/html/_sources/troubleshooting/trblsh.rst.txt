@@ -3,7 +3,7 @@ Troubleshooting
 
 
 Bugs with Qt
------------
+------------
 
 1. Error with "xcb":
 

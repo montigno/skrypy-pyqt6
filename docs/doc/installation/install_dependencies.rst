@@ -7,6 +7,7 @@ Environment variables
    Skrypy needs to point programs to specific versions of dependencies. |br|
    The .bashrc file is in principle sufficient, but it has been found that when processing on a cluster, it does not always load. |br|
    The best solution is to edit the file **'env_parameters.txt'** which is located in the hidden folder **/home/username/.skrypy/**. |br|
+   You can edit this file in a terminal (especially for clusters) or in the menu 'Configuration'-'Edit environment variables'. |br|
    Skrypy takes care of concatenating the 'PATH' variable.
 
 `ANTs <https://github.com/ANTsX/ANTs>`__

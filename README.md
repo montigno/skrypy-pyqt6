@@ -9,6 +9,17 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 # Release history
 
+
+<p></p>
+
+	17/10/2025: version 25.10.17b
+	- Added function : text editor for environment variables
+
+<p></p>
+
+	16/10/2025: version 25.10.16b
+	- improvement of appearance
+
 <p></p>
 
 	15/10/2025: version 25.10.15b

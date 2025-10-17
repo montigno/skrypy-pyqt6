@@ -59,7 +59,7 @@ from . import editCombobox, errorHandler
 from . import editParam, editParamLoopFor
 from . import getlistModules, getlistSubModules
 from . import seeCode, getDocString, manage_pck
-from . import setPreferences, setLimits
+from . import setPreferences, setLimits, TextEditor
 
 # report_diagram = False
 # showGrid = True
@@ -5432,6 +5432,7 @@ class Menu(QMenuBar):
 
         self.menuPack = self.addMenu('Configuration')
         self.menuPack.addAction('Packages manager')
+        self.menuPack.addAction('Edit environment variables')
         self.menuPack.addAction('Reload environment variables')
         self.menuPack.addAction('Clusters configuration')
         self.menuPack.triggered[QAction].connect(self.btnPressed)
@@ -6125,6 +6126,11 @@ class Menu(QMenuBar):
 
         elif tmpActText == 'Save project':
             self.save_project()
+            
+        elif tmpActText == 'Edit environment variables':
+            c = TextEditor(editor)
+            c.show()
+            # c.exec_()
 
         elif tmpActText == 'Reload environment variables':
             Start_environment(True)
