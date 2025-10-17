@@ -4709,18 +4709,19 @@ class Imagebox(QGraphicsRectItem):
     #         self.setPos(QPointF(xV, yV))
     #     return QGraphicsRectItem.itemChange(self, *args, **kwargs)
 
-    def contextMenuEvent(self, event):
+    def mousePressEvent(self, event):
         if self.isMod:
-            menu = QMenu()
-            de = menu.addAction('Delete')
-            de.triggered.connect(self.deleteItem)
-            pa = menu.addAction('Change label')
-            pa.triggered.connect(self.changeLabel)
-            li = menu.addAction('Load image')
-            li.triggered.connect(self.mouseDoubleClickEvent)
-            # br = menu.addAction('Display range')
-            # br.triggered.connect(self.displayRange)
-            menu.exec(event.screenPos())
+            if event.button() == Qt.MouseButton.RightButton:
+                menu = QMenu()
+                de = menu.addAction('Delete')
+                de.triggered.connect(self.deleteItem)
+                pa = menu.addAction('Change label')
+                pa.triggered.connect(self.changeLabel)
+                li = menu.addAction('Load image')
+                li.triggered.connect(self.mouseDoubleClickEvent)
+                # br = menu.addAction('Display range')
+                # br.triggered.connect(self.displayRange)
+                menu.exec(event.screenPos())
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Up:
