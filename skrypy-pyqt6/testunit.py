@@ -1,12 +1,14 @@
 from NodeEditor.python.Diagram_Editor import LoadDiagram, Diagram_excution
+
 from PyQt6.QtCore import Qt, QMimeData
 from PyQt6.QtTest import QTest
 from PyQt6.QtWidgets import QApplication
+from PyQt6.QtGui import QDrag
+
 from main import Project_Irmage
 import os
 import sys
 import unittest
-from PyQt6.QtGui import QDrag
 
 
 class mri_worksTest(unittest.TestCase):
@@ -74,28 +76,28 @@ class mri_worksTest(unittest.TestCase):
         # mimeData.setData(index)
         # drag.setMimeData(mimeData)
 
-        # curr_dir_path = os.path.dirname(os.path.realpath(__file__))
-        # rep_test = os.path.join(curr_dir_path,
-        #                         'NodeEditor',
-        #                         'testUnits')
-        # files_test = [os.path.join(rep_test, f) for f in os.listdir(rep_test) if os.path.isfile(os.path.join(rep_test, f))]
-        # for file_test in files_test:
-        #     if file_test.endswith(".dgr"):
-        #         print('test file :', file_test)
-        #         self.ui.addSubWindow(os.path.basename(file_test))
-        #         f = open(file_test, 'r', encoding='utf8')
-        #         txt = f.readlines()
-        #         f.close()
-        #         LoadDiagram(txt)
-        #         self.ui.diagramView[self.ui.currentTab].fitInView(self.ui.diagramScene[self.ui.currentTab].sceneRect(),
-        #                                                           Qt.AspectRatioMode.KeepAspectRatio)
-        #         self.ui.diagramView[self.ui.currentTab].scale(0.8, 0.8)
-        #         self.ui.diagramView[self.ui.currentTab].scene().clearSelection()
-        #         self.ui.currentpathwork = file_test
-        #         Diagram_excution(self.ui.mdi.currentSubWindow().windowTitle(), True)
-        #         # Diagram_excution(self.ui.
-        #         #                  tabsDiagram.
-        #         #                  tabText(self.ui.currentTab), True)
+        curr_dir_path = os.path.dirname(os.path.realpath(__file__))
+        rep_test = os.path.join(curr_dir_path,
+                                'NodeEditor',
+                                'testUnits')
+        files_test = [os.path.join(rep_test, f) for f in os.listdir(rep_test) if os.path.isfile(os.path.join(rep_test, f))]
+        for file_test in files_test:
+            if file_test.endswith(".dgr"):
+                print('test file :', file_test)
+                self.ui.addSubWindow(os.path.basename(file_test))
+                f = open(file_test, 'r', encoding='utf8')
+                txt = f.readlines()
+                f.close()
+                LoadDiagram(txt)
+                self.ui.diagramView[self.ui.currentTab].fitInView(self.ui.diagramScene[self.ui.currentTab].sceneRect(),
+                                                                  Qt.AspectRatioMode.KeepAspectRatio)
+                self.ui.diagramView[self.ui.currentTab].scale(0.8, 0.8)
+                self.ui.diagramView[self.ui.currentTab].scene().clearSelection()
+                self.ui.currentpathwork = file_test
+                Diagram_excution(self.ui.mdi.currentSubWindow().windowTitle(), True)
+                # Diagram_excution(self.ui.
+                #                  tabsDiagram.
+                #                  tabText(self.ui.currentTab), True)
 
 
 if __name__ == "__main__":

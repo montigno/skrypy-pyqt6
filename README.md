@@ -9,6 +9,10 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 # Release history
 
+<p></p>
+
+	21/10/2025: version 25.10.21b
+	- Function removed : 'force stop and restart' button in the control window removed
 
 <p></p>
 

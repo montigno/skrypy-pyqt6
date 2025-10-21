@@ -64,3 +64,6 @@ QAction {
 QMessageBox QLabel {
     background-color: transparent;
 }
+QProgressDialog {
+	background-color: transparent;
+}
