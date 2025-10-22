@@ -9025,10 +9025,10 @@ class ssh_diagram_execution():
         self.mode = mode
         self.cluster = cluster
         if not cluster:
-            c = servers_window('exec', None)
+            c = servers_window('exec', None, editor)
             c.exec()
         else:
-            c = servers_window('exec', cluster)
+            c = servers_window('exec', cluster, editor)
 
         if c.get_params():
             self.execution_ssh(c.get_params())

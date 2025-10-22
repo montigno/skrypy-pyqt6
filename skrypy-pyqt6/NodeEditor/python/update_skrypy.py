@@ -70,6 +70,7 @@ class skrypy_update(QDialog):
         self.setLayout(vbox)
 
     def upgrading(self):
+        shutil.rmtree(self.skrypy_current)
         shutil.copytree(self.skrypy_new, self.skrypy_current, dirs_exist_ok=True)
         self.answer = 'YES'
         self.close()
