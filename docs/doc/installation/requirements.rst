@@ -1,6 +1,11 @@
 Requirements
 ============
 
+.. NOTE::
+   Skrypy is developed and runs on Linux. |br|
+   For Windows, it is under development. |br|
+   It has not yet been tested for macOS.
+
 Python
 ------
 .. important::

@@ -1829,7 +1829,7 @@ class ConnectorItem(QGraphicsPolygonItem):
             xV = round(args[1].x() / gridSize) * gridSize
             yV = round(args[1].y() / gridSize) * gridSize
             self.setPos(QPointF(xV, yV))
-        return QGraphicsRectItem.itemChange(self, *args, **kwargs)
+        return QGraphicsPolygonItem.itemChange(self, *args, **kwargs)
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Up:
@@ -1859,7 +1859,7 @@ class ConnectorItem(QGraphicsPolygonItem):
 
     def changelabel(self):
         oldVal = editor.listConnects[editor.currentTab][self.connct][1]
-        c = changeLabel('Conn', self.connct, oldVal)
+        c = changeLabel('Conn', self.connct, oldVal, editor)
         c.exec()
         listVal = editor.listConnects[editor.currentTab][self.connct]
         try:
@@ -8039,7 +8039,7 @@ class Probes(QGraphicsPolygonItem):
             xV = round(args[1].x() / gridSize) * gridSize
             yV = round(args[1].y() / gridSize) * gridSize
             self.setPos(QPointF(xV, yV))
-        return QGraphicsRectItem.itemChange(self, *args, **kwargs)
+        return QGraphicsPolygonItem.itemChange(self, *args, **kwargs)
 
     def mouseMoveEvent(self, mouseEvent):
         mouseEvent.accept()

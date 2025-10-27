@@ -16,7 +16,7 @@ class changeLabel(QDialog):
         super(changeLabel, self).__init__(parent)
 
         self.setWindowTitle('Change Label')
-#         self.resize(630, 150)
+        self.resize(300, 150)
         self.listVal = oldlab
 
         self.vbox = QVBoxLayout(self)

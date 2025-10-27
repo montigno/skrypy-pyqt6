@@ -11,10 +11,13 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 <p></p>
 
-	22/10/2025: version 25.10.22b
-	- Improved function : software update
+	27/10/2025: version 25.10.27b
+	- Improvement of codes
 
 <p></p>
+
+	22/10/2025: version 25.10.22b
+	- Improved function : software update
 
 <p></p>
 
