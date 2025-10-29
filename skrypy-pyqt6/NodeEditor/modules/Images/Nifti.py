@@ -338,3 +338,145 @@ class Nifti_orientations_apply_orientation():
         
     def t_arr(self: 'array_float'):
         return self.tarr
+
+##############################################################################
+
+
+class Nifti_resize():
+    def __init__(self, nii_image='path', out_image='path', new_size=[128, 128, 32], center_correction=False):
+        import SimpleITK as sitk
+        img = sitk.ReadImage(nii_image)
+        old_spacing = img.GetSpacing()
+        old_size = img.GetSize()
+        # new_spacing = [0.0682, 0.0682, 0.35]
+        new_spacing = [
+            round(osz * ospc / nspc, 4) 
+            for osz, ospc, nspc in zip(old_size, old_spacing, new_size)
+                    ]
+        
+        print('new spacing', new_spacing)
+        old_direction = img.GetDirection()
+        if center_correction:
+            old_origin = img.GetOrigin()
+            
+            old_center = [
+                old_origin[i] + 0.5 * old_spacing[i] * (old_size[i] - 1)
+                for i in range(3)
+            ]
+            
+            new_origin = [
+                old_center[i] - 0.5 * new_spacing[i] * (new_size[i] - 1)
+                for i in range(3)
+            ]
+        else:
+            new_origin = img.GetOrigin()
+
+        resampled = sitk.Resample(
+            img,
+            new_size,
+            sitk.Transform(),
+            sitk.sitkLinear,
+            new_origin,
+            new_spacing,
+            old_direction,
+            0.0,
+            img.GetPixelID(),
+        )
+        
+        sitk.WriteImage(resampled, out_image)
+        self.out_image = out_image
+        
+    def nifti_resized(self: 'path'):
+        return self.out_image
+
+##############################################################################
+
+
+class Nifti_resize_4d():
+    def __init__(self, nii_image='path', out_image='path', new_size=[128, 128, 32, 4], interpolation="enumerate(('linear', 'NearestNeighbor', 'BSpline'))"):
+        import SimpleITK as sitk
+        img = sitk.ReadImage(nii_image)
+
+        orig_size = list(img.GetSize())       # e.g. [110, 60, 23, 4]
+        orig_spacing = list(img.GetSpacing()) # e.g. [sx, sy, sz] ou [sx, sy, sz, st]
+        orig_origin = img.GetOrigin()
+        orig_direction = img.GetDirection()
+
+        print("original size :", orig_size)
+        print("original spacing:", orig_spacing)
+        
+        # --- Dimension check ---
+        is_4d = len(orig_size) >= 4
+        n_timepoints = orig_size[3] if is_4d else 1
+        if is_4d and new_size[3] != n_timepoints:
+            new_size = (new_size[0], new_size[1], new_size[2], n_timepoints)
+        new_spacing = [round((orig_spacing[i] * orig_size[i]) / new_size[i], 10) for i in range(3)]
+        print("New spacing (mm) :", new_spacing)
+        
+        ind = ['linear', 'NearestNeighbor', 'BSpline'].index(interpolation)
+        interp = [sitk.sitkLinear, sitk.sitkNearestNeighbor, sitk.sitkBSpline][ind]
+        
+        def __make_resampler(output_size3, output_spacing3, output_origin, output_direction, interpolator=interp):
+            resampler = sitk.ResampleImageFilter()
+            resampler.SetInterpolator(interpolator)
+            resampler.SetOutputSpacing(output_spacing3)
+            resampler.SetSize(list(output_size3))
+            resampler.SetOutputOrigin(output_origin)
+            resampler.SetOutputDirection(output_direction)
+            resampler.SetDefaultPixelValue(0)
+            return resampler
+
+        resampled_vols = []
+
+        if is_4d:
+            for t in range(n_timepoints):
+                print(f"⏳ Resampling volume {t+1}/{n_timepoints}...")
+                extract_size = [orig_size[0], orig_size[1], orig_size[2], 0]
+                extract_index = [0, 0, 0, t]
+                vol3d = sitk.Extract(img, size=extract_size, index=extract_index)
+        
+                resampler = __make_resampler(new_size[:3], new_spacing,
+                                           vol3d.GetOrigin(), vol3d.GetDirection(),
+                                           interpolator=sitk.sitkBSpline)
+                vol3d_res = resampler.Execute(vol3d)
+                resampled_vols.append(vol3d_res)
+        
+            print("🧩 4D reconstruction...")
+            resampled_img = sitk.JoinSeries(resampled_vols)
+        
+            # --- Création correcte des métadonnées 4D ---
+            vol0 = resampled_vols[0]
+            origin3 = list(vol0.GetOrigin())
+            spacing3 = list(vol0.GetSpacing())
+            direction3 = list(vol0.GetDirection())
+        
+            # Espacement temporel (si dispo sinon 1.0)
+            time_spacing = 1.0
+            if len(orig_spacing) >= 4:
+                time_spacing = orig_spacing[3]
+        
+            origin4 = origin3 + [0.0]
+            spacing4 = spacing3 + [time_spacing]
+            direction4 = [
+                direction3[0], direction3[1], direction3[2], 0.0,
+                direction3[3], direction3[4], direction3[5], 0.0,
+                direction3[6], direction3[7], direction3[8], 0.0,
+                0.0,           0.0,           0.0,           1.0
+            ]
+        
+            resampled_img.SetOrigin(tuple(origin4))
+            resampled_img.SetSpacing(tuple(spacing4))
+            resampled_img.SetDirection(tuple(direction4))
+        
+        else:
+            print("Image 3D detected.")
+            resampler = __make_resampler(new_size[:3], new_spacing,
+                                       img.GetOrigin(), img.GetDirection(),
+                                       interpolator=sitk.sitkBSpline)
+            resampled_img = resampler.Execute(img)
+
+        sitk.WriteImage(resampled_img, out_image)
+        self.out_image = out_image
+        
+    def nifti_resized(self: 'path'):
+        return self.out_image

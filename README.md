@@ -11,6 +11,11 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 <p></p>
 
+	29/10/2025: version 25.10.29b
+	- library : block 'Nifti_resize' added
+
+<p></p>
+
 	27/10/2025: version 25.10.27b
 	- Improvement of codes
 
