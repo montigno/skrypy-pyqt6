@@ -15,7 +15,7 @@ from Config import Config
 from NodeEditor.python.Diagram_Editor import NodeEdit
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, \
-      QLineEdit, QMainWindow, QMessageBox, QCheckBox
+      QLineEdit, QMainWindow, QMessageBox, QCheckBox, QStyleFactory
 from PyQt6.QtCore import Qt
 
 import os
@@ -170,9 +170,9 @@ class ClearSharedMemory():
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    print(sys.argv)
-    with open("styles.css", "r") as file:
-        app.setStyleSheet(file.read())
+    app.setStyle(QStyleFactory.create("Fusion")) # "Fusion", "Windows", "WindowsVista", "Macintosh"
+    # with open("styles.css", "r") as file:
+    #     app.setStyleSheet(file.read())
     self_dir_path = os.path.dirname(os.path.realpath(__file__))
     imageViewer = Project_Irmage(self_dir_path)
     mri_icon = os.path.join(self_dir_path, 'ressources', 'skrypy.png')
