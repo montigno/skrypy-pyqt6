@@ -430,7 +430,7 @@ class Nifti_resize_4d():
 
         if is_4d:
             for t in range(n_timepoints):
-                print(f"⏳ Resampling volume {t+1}/{n_timepoints}...")
+                print(f"Resampling volume {t+1}/{n_timepoints}...")
                 extract_size = [orig_size[0], orig_size[1], orig_size[2], 0]
                 extract_index = [0, 0, 0, t]
                 vol3d = sitk.Extract(img, size=extract_size, index=extract_index)
@@ -441,7 +441,7 @@ class Nifti_resize_4d():
                 vol3d_res = resampler.Execute(vol3d)
                 resampled_vols.append(vol3d_res)
         
-            print("🧩 4D reconstruction...")
+            print("4D reconstruction...")
             resampled_img = sitk.JoinSeries(resampled_vols)
         
             # --- Création correcte des métadonnées 4D ---

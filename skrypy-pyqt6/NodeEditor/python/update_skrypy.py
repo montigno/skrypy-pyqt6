@@ -24,7 +24,7 @@ class skrypy_update(QDialog):
         self.skrypy_current = skrypy_current
         skrypy_new = os.path.join(dest, "skrypy-pyqt6")
         if os.path.exists(skrypy_new):
-            shutil.rmtree(skrypy_new)
+            shutil.rmtree(skrypy_new, onerror=self.remove_readonly)
         try:
             git.Git(dest).clone("https://github.com/montigno/skrypy-pyqt6.git")
             skrypy_new = os.path.join(skrypy_new, "skrypy-pyqt6")
@@ -54,7 +54,7 @@ class skrypy_update(QDialog):
         label3.setWordWrap(True)
 
         buttonCancel = QPushButton('NO', self)
-        buttonCancel.clicked.connect(self.close)
+        buttonCancel.clicked.connect(self.closeDialog)
         buttonOk = QPushButton('YES', self)
         buttonOk.clicked.connect(self.upgrading)
         hbox = QHBoxLayout()
@@ -68,11 +68,21 @@ class skrypy_update(QDialog):
         vbox.addLayout(hbox)
 
         self.setLayout(vbox)
+        
+    def remove_readonly(func, path, _):
+        "Clear the readonly bit and reattempt the removal"
+        os.chmod(path, stat.S_IWRITE)
+        func(path)
 
     def upgrading(self):
-        shutil.rmtree(self.skrypy_current)
+        shutil.rmtree(self.skrypy_current, onerror=self.remove_readonly)
         shutil.copytree(self.skrypy_new, self.skrypy_current, dirs_exist_ok=True)
+        shutil.rmtree(self.skrypy_new, onerror=self.remove_readonly)
         self.answer = 'YES'
+        self.close()
+
+    def closeDialog(self):
+        shutil.rmtree(self.skrypy_new, onerror=self.remove_readonly)
         self.close()
 
     def getAnswer(self):
