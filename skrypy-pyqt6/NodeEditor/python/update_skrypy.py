@@ -68,7 +68,7 @@ class skrypy_update(QDialog):
 
         self.setLayout(vbox)
         
-    def remove_readonly(func, path, _):
+    def remove_readonly(self, func, path, _):
         "Clear the readonly bit and reattempt the removal"
         os.chmod(path, stat.S_IWRITE)
         func(path)
