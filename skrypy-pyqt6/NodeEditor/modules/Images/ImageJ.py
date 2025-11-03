@@ -50,17 +50,20 @@ class ImageJ_atlas():
         import subprocess
         from subprocess import Popen
         import os
+        import tempfile
+        
         scriptfile = 'open("' + atlas_label + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'open("' + atlas_template + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'
         script = 'var lines=split(File.openAsString("' + label_txt + '"), "\\n");\n ij.run("Synchronize Windows"); \n'
         filemacro = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'macros', 'Atlas.txt')
         scriptmacro = open(filemacro, 'r').read()
         script += scriptmacro + '\n'
-
-        file_tmp = open("/tmp/tmp.txt", "w")
+        tmp_folder = tempfile.gettempdir()
+        tmp_file = os.path.join(tmp_folder, 'tmp.txt')
+        file_tmp = open(tmp_file, "w")
         file_tmp.write(script)
         script = 'run("Synchronize Windows");\n'\
-                 'run("Install...", "install=/tmp/tmp.txt");'
+                 'run("Install...", "install=' + tmp_file + '");'
         subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
 
 ##############################################################################
@@ -71,6 +74,8 @@ class ImageJ_atlas_reg():
         import subprocess
         from subprocess import Popen
         import os
+        import tempfile
+
         scriptfile = 'open("' + file_in + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'open("' + atlas_label + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'rename("atlas");\n'\
@@ -88,10 +93,12 @@ class ImageJ_atlas_reg():
         scriptmacro = open(filemacro, 'r').read()
         script += scriptmacro + '\n'
 
-        file_tmp = open("/tmp/tmp.txt", "w")
+        tmp_folder = tempfile.gettempdir()
+        tmp_file = os.path.join(tmp_folder, 'tmp.txt')
+        file_tmp = open(tmp_file, "w")
         file_tmp.write(script)
         script = 'run("Synchronize Windows");\n'\
-                 'run("Install...", "install=/tmp/tmp.txt");'
+                 'run("Install...", "install=' + tmp_file + '");'
         subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
 
 ##############################################################################
@@ -222,6 +229,8 @@ class ImageJ_RelaxationTime_profil():
         import subprocess
         from subprocess import Popen
         import os
+        import tempfile
+
         scriptfile = 'open("' + image + '");run(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'open("' + relax_Time + '");run(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'open("' + Intensity + '");run(\"Enhance Contrast\", \"saturated=0.35\");\n'
@@ -245,8 +254,10 @@ class ImageJ_RelaxationTime_profil():
 
         scriptmacro = open(filemacro, 'r').read()
         script += '\nvar Times=newArray(' + str(ListTime).strip('[]') + ');\n' + scriptmacro + '\n'
-
-        file_tmp = open("/tmp/tmp.txt", "w")
+        
+        tmp_folder = tempfile.gettempdir()
+        tmp_file = os.path.join(tmp_folder, 'tmp.txt')
+        file_tmp = open(tmp_file, "w")
         file_tmp.write(script)
-        script = 'run("Install...", "install=/tmp/tmp.txt");'
+        script = 'run("Install...", "install=' + tmp_file + '");'
         subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)

@@ -593,3 +593,14 @@ class wait_file_exists():
 
     def out_file(self: 'path'):
         return self.out
+
+##############################################################################
+
+
+class get_temporary_folder():
+    def __init__(self):
+        import tempfile
+        self.temp_f = tempfile.gettempdir()
+        
+    def temp_folder(self: 'path'):
+        return self.temp_f
