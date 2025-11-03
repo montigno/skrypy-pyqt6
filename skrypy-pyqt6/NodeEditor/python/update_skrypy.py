@@ -3,6 +3,7 @@ import git
 import shutil
 import yaml
 import  tempfile
+import stat
 
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QTextEdit, QPushButton, \
     QHBoxLayout
