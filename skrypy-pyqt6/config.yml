@@ -41,6 +41,7 @@ packages:
   pyqt6: PyQt6
   pyqt6-sip: PyQt6-sip
   pytest: pytest
+  python-dotenv: python-dotenv
   pytorch-ignite: pytorch-ignite
   pyvista: pyvista
   pyvistaqt: pyvistaqt

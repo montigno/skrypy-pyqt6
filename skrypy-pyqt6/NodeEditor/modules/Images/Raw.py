@@ -18,6 +18,7 @@ class raw_display:
         import subprocess
         import nibabel as nib
         import numpy as np
+        from pathlib import Path
         from datetime import datetime
         import tempfile
 
@@ -29,7 +30,8 @@ class raw_display:
         n_header = img.header
         n_header['xyzt_units'] = 10
         nib.save(img, name_file)
-        current_dir_path = os.path.abspath(os.path.join(__file__, "../../.."))
+        # current_dir_path = os.path.abspath(os.path.join(__file__, "../../.."))
+        current_dir_path = Path(__file__).parents[2]
         source_disp = os.path.join(current_dir_path, 'api', 'dispNifti.py')
         p = subprocess.Popen([sys.executable, source_disp, name_file, title, 'yes'],
                              shell=False,

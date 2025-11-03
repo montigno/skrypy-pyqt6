@@ -23,7 +23,10 @@ class openImageJ():
                         "    Stack.setChannel(channels/2);\n"\
                         "run(\"Enhance Contrast\", \"saturated=0.35\");"\
                         "};"
-        proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        try:
+            proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
 
 ##############################################################################
 
@@ -40,14 +43,16 @@ class openImagej_multiFiles():
                         "open(list[i]);\n"\
                         "run(\"Enhance Contrast\", \"saturated=0.35\");"\
                         "};"
-        proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        try:
+            proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
 
 ##############################################################################
 
 
 class ImageJ_atlas():
     def __init__(self, atlas_template='path', atlas_label='path', label_txt='path'):
-        import subprocess
         from subprocess import Popen
         import os
         import tempfile
@@ -64,14 +69,17 @@ class ImageJ_atlas():
         file_tmp.write(script)
         script = 'run("Synchronize Windows");\n'\
                  'run("Install...", "install=' + tmp_file + '");'
-        subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        try:
+            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
 
 ##############################################################################
 
 
 class ImageJ_atlas_reg():
     def __init__(self, file_in='path', atlas_template='path', atlas_label='path', label_txt='path', other_files=['path']):
-        import subprocess
         from subprocess import Popen
         import os
         import tempfile
@@ -99,7 +107,12 @@ class ImageJ_atlas_reg():
         file_tmp.write(script)
         script = 'run("Synchronize Windows");\n'\
                  'run("Install...", "install=' + tmp_file + '");'
-        subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        try:
+            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
+
 
 ##############################################################################
 
@@ -109,7 +122,11 @@ class ImageJ_macro():
         from subprocess import Popen
         import os
         option = '-macro'
-        Popen(['ImageJ', option, file_macro])
+        # Popen(['ImageJ', option, file_macro])
+        try:
+            proc = Popen(['ImageJ', option, file_macro])
+        except:
+            proc = Popen([os.environ['ImageJ'], option, file_macro])
 
 ##############################################################################
 
@@ -120,7 +137,10 @@ class ImageJ_macrofile():
         import os
         option = '-macro'
 #         subprocess.call(['java','-jar',pathImageJ,pathImage,option,filemacro], shell=False)
-        Popen(['ImageJ', pathImage, option, filemacro])
+        try:
+            proc = Popen(['ImageJ', pathImage, option, filemacro])
+        except:
+            proc = Popen([os.environ['ImageJ'], pathImage, option, filemacro])
 
 ##############################################################################
 
@@ -207,8 +227,13 @@ class ImageJ_get_coord_roi():
 
 class ImageJ_command():
     def __init__(self, command='', verbose=True):
-        import subprocess
-        subprocess.Popen(['ImageJ', '-eval', command], shell=False)
+        from subprocess import Popen
+        # subprocess.Popen(['ImageJ', '-eval', command], shell=False)
+        try:
+            proc = Popen(['ImageJ', '-eval', command], shell=False)
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', command], shell=False)
+        
         if verbose:
             print(command)
 
@@ -226,7 +251,6 @@ class ImageJ_RelaxationTime_profil():
                  time_type="enumerate(('EchoTime',\
                                        'RepetitionTime',\
                                        'InversionTime'))"):
-        import subprocess
         from subprocess import Popen
         import os
         import tempfile
@@ -254,10 +278,14 @@ class ImageJ_RelaxationTime_profil():
 
         scriptmacro = open(filemacro, 'r').read()
         script += '\nvar Times=newArray(' + str(ListTime).strip('[]') + ');\n' + scriptmacro + '\n'
-        
+
         tmp_folder = tempfile.gettempdir()
         tmp_file = os.path.join(tmp_folder, 'tmp.txt')
         file_tmp = open(tmp_file, "w")
         file_tmp.write(script)
         script = 'run("Install...", "install=' + tmp_file + '");'
-        subprocess.Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        try:
+            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except:
+            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)

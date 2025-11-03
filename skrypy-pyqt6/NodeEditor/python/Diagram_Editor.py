@@ -9330,9 +9330,9 @@ class Start_environment():
                 for line in stream:
                     line_str = line.rstrip()
                     if line_str:
-                        if '#' not in line and ('export' in line or 'sh ' in line):
-                            if 'export PATH=' in line:
-                                line_mod = line.replace('export', '').replace('$PATH:', '').replace('PATH=', '').strip()
+                        if '#' not in line and ('export ' in line or 'set ' in line or 'sh ' in line):
+                            if 'export PATH=' in line or 'set PATH=' in line:
+                                line_mod = line.replace('export', '').replace('$PATH:', '').replace('PATH=', '').replace('set', '').strip()
                                 if 'PATH' not in list_env.keys():
                                     list_env['PATH'] = line_mod
                                 else:
@@ -9343,7 +9343,7 @@ class Start_environment():
                             elif '=' in line:
                                 line_mode = line.split('=')
                                 line_mode[0] = line_mode[0].replace('export', '').strip()
-                                list_env[line_mode[0]] = line_mode[1]
+                                list_env[line_mode[0]] = line_mode[1][:-1] if '\n' in line_mode[1] else line_mode[1]
 
             for kenv, venv in list_env.items():
                 if kenv == 'sh':
