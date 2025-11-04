@@ -9342,7 +9342,7 @@ class Start_environment():
                                 list_env['sh'] = line_mod
                             elif '=' in line:
                                 line_mode = line.split('=')
-                                line_mode[0] = line_mode[0].replace('export', '').strip()
+                                line_mode[0] = line_mode[0].replace('export', '').replace('set', '').strip()
                                 list_env[line_mode[0]] = line_mode[1][:-1] if '\n' in line_mode[1] else line_mode[1]
 
             for kenv, venv in list_env.items():

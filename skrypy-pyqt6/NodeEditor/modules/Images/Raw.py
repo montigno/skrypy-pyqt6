@@ -19,13 +19,12 @@ class raw_display:
         import nibabel as nib
         import numpy as np
         from pathlib import Path
-        from datetime import datetime
         import tempfile
 
         image = np.array(image)
         img = nib.Nifti1Image(image, np.eye(4))
         tmp_folder = tempfile.gettempdir()
-        name_file = 'tmpNifti{}.nii'.format(datetime.now())
+        name_file = 'tmpRawNifti.nii'
         name_file = os.path.join(tmp_folder, name_file)
         n_header = img.header
         n_header['xyzt_units'] = 10
