@@ -29,6 +29,7 @@ from NodeEditor.python.multiExecution import multiple_execution
 from NodeEditor.python.multiExecution_altern import multiple_execution_altern
 from NodeEditor.python.packages_manager import manage_pck
 from NodeEditor.python.plugins import Plugin
+from NodeEditor.python.project_archiving import project_archive
 from NodeEditor.python.sourceBlock import seeCode, getDocString
 from NodeEditor.python.syntax import PythonHighlighter
 from NodeEditor.python.systemInfo import diagramInfo
@@ -37,5 +38,5 @@ from NodeEditor.python.tools import DefinitType, ReorderList
 from NodeEditor.python.tools import GetValueInBrackets, SetValueInBrackets
 from NodeEditor.python.tools import set_dph, get_dph
 from NodeEditor.python.servers_config import servers_window
-from NodeEditor.python.update_skrypy import skrypy_update
 from NodeEditor.python.textEditor import TextEditor
+from NodeEditor.python.update_skrypy import skrypy_update

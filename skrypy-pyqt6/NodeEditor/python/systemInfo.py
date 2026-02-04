@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QPlainTextEdit, \
-    QVBoxLayout, QDialog
+    QVBoxLayout, QDialog, QLabel, QStyleFactory
 import sys
+from PyQt6.QtCore import Qt
 
 
 class diagramInfo(QDialog):
@@ -13,6 +14,14 @@ class diagramInfo(QDialog):
         self.height = 600
         self.setWindowTitle(title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setStyleSheet("""
+            QPlainTextEdit {
+                background-color: #505050;
+                color: #dcdcdc;
+                border: 1px solid #555;
+            }
+            """)
+
         vbox = QVBoxLayout(self)
         self.plainText = QPlainTextEdit()
         # self.plainText.setPlaceholderText("This is some text for our plaintextedit")
