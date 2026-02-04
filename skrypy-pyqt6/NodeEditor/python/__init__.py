@@ -29,7 +29,7 @@ from NodeEditor.python.multiExecution import multiple_execution
 from NodeEditor.python.multiExecution_altern import multiple_execution_altern
 from NodeEditor.python.packages_manager import manage_pck
 from NodeEditor.python.plugins import Plugin
-from NodeEditor.python.project_archiving import project_archive
+from NodeEditor.python.prjt_archiving import project_archive
 from NodeEditor.python.sourceBlock import seeCode, getDocString
 from NodeEditor.python.syntax import PythonHighlighter
 from NodeEditor.python.systemInfo import diagramInfo
