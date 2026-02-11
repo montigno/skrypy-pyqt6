@@ -273,6 +273,27 @@ class mrtrix3_mrdegibbs:
 
 ###############################################################################
 
+class mrtrix3_mrgrid:
+    def __init__(self, mif_image='path', mrgrid_out='path', operation="enumerate(('regrid', 'crop', 'pad'))", **options):
+        from subprocess import run
+        list_options = []
+        list_options.append(mif_image)
+        list_options.append(operation)
+        list_options.append(mrgrid_out)
+        for op in options:
+            if options[op]:
+                list_options.append('-' + op)
+                list_options.append(str(options[op]))
+        command = ['mrgrid']
+        command.extend(list_options)
+        result = run(command, shell=False, check=True)
+        self.mrgri = mrgrid_out
+
+    def mrgrid(self: 'path'):
+        return self.mrgri
+
+###############################################################################
+
 
 class mrtrix3_mrinfo:
     def __init__(self, mif_images=['path'], **options):
@@ -286,6 +307,27 @@ class mrtrix3_mrinfo:
         command = ['mrinfo']
         command.extend(list_options)
         proc = Popen(command)
+
+###############################################################################
+
+
+class mrtrix3_mrregister:
+    def __init__(self, image1_moving='path', image2_template='path', **options):
+        from subprocess import run
+        list_options = []
+        list_options.append(image1_moving)
+        list_options.append(image2_template)
+        for op in options:
+            if options[op]:
+                list_options.append('-' + op)
+                list_options.append(str(options[op]))
+        command = ['mrregister']
+        command.extend(list_options)
+        result = run(command, shell=False, check=True)
+        self.mrrg = mrgrid_out
+
+    def mrreg(self: 'path'):
+        return self.mrrg 
 
 ###############################################################################
 
@@ -353,6 +395,27 @@ class mrtrix3_mrtransform:
     def mrtransform(self: 'path'):
         return self.mrtra
 
+
+###############################################################################
+
+class mrtrix3_population_template:
+    def __init__(self, input_dir='path', template='path', **options):
+        from subprocess import run
+        list_options = []
+        list_options.append(input_dir)
+        list_options.append(template)
+        for op in options:
+            if options[op]:
+                list_options.append('-' + op)
+                list_options.append(str(options[op]))
+        command = ['population_template']
+        command.extend(list_options)
+        result = run(command, shell=False, check=True)
+        self.templ = template
+        
+    def outfile_template(self: 'path'):
+        return self.templ
+
 ###############################################################################
 
 
@@ -408,3 +471,24 @@ class mrtrix3_tensor2metric2:
         result = run(command, shell=False, check=True)
 
 ###############################################################################
+
+
+class mrtrix3_warp2metric:
+    def __init__(self, deformation_input='path', **options):
+        from subprocess import run
+        list_options = []
+        list_options.append(deformation_input)
+        for op in options:
+            if options[op]:
+                list_options.append('-' + op)
+                list_options.append(str(options[op]))
+        command = ['warp2metric']
+        command.extend(list_options)
+        result = run(command, shell=False, check=True)
+        self.warp = tensor2metric_out
+
+    def warp2metric(self: 'path'):
+        return self.warp
+
+       
+        

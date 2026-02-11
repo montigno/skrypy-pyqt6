@@ -8,7 +8,7 @@
 
 '''
 Created on 26 December 2023
-Last modification on 07 august 2025
+Last modification on 04 feb. 2026
 @author: Olivier Montigon
 '''
 
@@ -4773,7 +4773,7 @@ class Imagebox(QGraphicsRectItem):
 
 
 class ItemColor(Enum):
-    BACKGROUND = QColor(40, 40, 40, 100)
+    BACKGROUND = QColor(30, 30, 30, 255)
     PROCESS_TOP = QColor(62, 83, 104, 255)
     PROCESS_BOT = QColor(44, 62, 80, 255)
     FRAME_PROCESS = QColor(140, 140, 140, 200)

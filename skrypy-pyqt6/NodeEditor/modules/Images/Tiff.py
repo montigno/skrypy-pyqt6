@@ -17,29 +17,63 @@ class open_tif_file:
 ###############################################################################
 
 
+# class tif_to_nii:
+#     def __init__(self, Tif_file='path', output_nii='path', pixdim=[0.025, 0.025, 0.05]):
+#         from PIL import Image
+#         import nibabel as nib
+#         import numpy as np
+#         imgtif = Image.open(Tif_file)
+#         nb = imgtif.n_frames
+#         imgs = []
+#         for i in range(nb):
+#             imgtif.seek(i)
+#             img = np.asarray(imgtif).astype(np.float32).squeeze()
+#             imgs.append(img)
+#         img = np.stack(imgs)
+#         img = img.transpose(2, 1, 0)
+#
+#         nib.Nifti1Image(img, None).to_filename(output_nii)
+#         hdr = nib.load(output_nii).header
+#         newpixdim = [1.0]
+#         newpixdim.extend(pixdim)
+#         newpixdim.extend([0.0, 0.0, 0.0, 0.0])
+#         hdr['pixdim'] = np.array(newpixdim)
+#         hdr['xyzt_units'] = 10
+#         nib.Nifti1Image(img, None, header=hdr).to_filename(output_nii)
+#         self.out_nii = output_nii
+#
+#     def output_nii(self: 'path'):
+#         return self.out_nii
+
+###############################################################################
+
+
 class tif_to_nii:
     def __init__(self, Tif_file='path', output_nii='path', pixdim=[0.025, 0.025, 0.05]):
-        from PIL import Image
-        import nibabel as nib
         import numpy as np
-        imgtif = Image.open(Tif_file)
-        nb = imgtif.n_frames
-        imgs = []
-        for i in range(nb):
-            imgtif.seek(i)
-            img = np.asarray(imgtif).astype(np.float32).squeeze()
-            imgs.append(img)
-        img = np.stack(imgs)
-        img = img.transpose(2, 1, 0)
+        import tifffile as tiff
+        import nibabel as nib
 
-        nib.Nifti1Image(img, None).to_filename(output_nii)
-        hdr = nib.load(output_nii).header
-        newpixdim = [1.0]
-        newpixdim.extend(pixdim)
-        newpixdim.extend([0.0, 0.0, 0.0, 0.0])
-        hdr['pixdim'] = np.array(newpixdim)
-        hdr['xyzt_units'] = 10
-        nib.Nifti1Image(img, None, header=hdr).to_filename(output_nii)
+        data = tiff.imread(Tif_file)
+
+        assert data.ndim == 3, "TIFF must be 3D"
+
+        data = np.transpose(data, (2, 1, 0))
+
+        # --- Affine NIfTI ---
+        affine = np.array([
+            [pixdim[0], 0, 0, 0],
+            [0, pixdim[1], 0, 0],
+            [0, 0, pixdim[2], 0],
+            [0, 0, 0, 1]
+        ])
+
+        nii = nib.Nifti1Image(data, affine)
+
+        nii.set_qform(affine, code=1)
+        nii.set_sform(affine, code=1)
+
+        nib.save(nii, output_nii)
         self.out_nii = output_nii
 
     def output_nii(self: 'path'):
