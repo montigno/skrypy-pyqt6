@@ -11,6 +11,11 @@ A documentation is available here : [https://montigno.github.io/skrypy](https://
 
 <p></p>
 
+	02/03/2026: version 26.03.02ab
+	- Bug fixed : copy of items with connectors
+
+<p></p>
+
 	03/11/2025: version 25.11.03b
 	- For Windows : Some bugs fixed
 
