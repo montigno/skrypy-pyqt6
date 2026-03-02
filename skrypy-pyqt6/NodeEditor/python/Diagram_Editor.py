@@ -5594,7 +5594,7 @@ class Menu(QMenuBar):
         elif tmpActText == 'Refresh Diagram':
             if len(editor.mdi.subWindowList()) >= 1:
                 editor.diagramView[editor.currentTab].scene().clearFocus()
-                UpdateUndoRedo()
+                # UpdateUndoRedo()
                 ct = editor.currentTab
                 listIf = {}
                 if editor.pointTyping[ct] > 0:
