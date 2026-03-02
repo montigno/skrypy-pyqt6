@@ -1,3 +1,15 @@
+afni_AlignEpiAnatPy:
+  anat2epi: True
+  args: ''
+  environ: {}
+  epi2anat: True
+  epi_strip (‘3dSkullStrip’ or ‘3dAutomask’ or ‘None’) – Method to mask brain in EPI datashould be one of[3dSkullStrip]/3dAutomask/None). Maps to a command-line argument: -epi_strip %s.
+  outputtype: enumerate(('NIFTI','AFNI','NIFTI_GZ'))
+  py27_path: 'path'
+  save_skullstrip: True
+  suffix: “_al”
+  tshift: enumerate(('on','off'))
+  volreg: enumerate(('on','off'))
 afni_Autobox:
   padding: 0 
   out_file: 'path'
