@@ -5594,7 +5594,7 @@ class Menu(QMenuBar):
         elif tmpActText == 'Refresh Diagram':
             if len(editor.mdi.subWindowList()) >= 1:
                 editor.diagramView[editor.currentTab].scene().clearFocus()
-                # UpdateUndoRedo()
+                UpdateUndoRedo()
                 ct = editor.currentTab
                 listIf = {}
                 if editor.pointTyping[ct] > 0:
@@ -10033,17 +10033,28 @@ class UpdateUndoRedo:
             dd = editor.pointTyping[editor.currentTab]
         except Exception as err:
             return
+
+        self.diagram = SaveDiagram().toPlainText()
+
+        try:
+            if self.diagram == editor.undoredoTyping[editor.currentTab][editor.pointTyping[editor.currentTab]]:
+                return
+        except:
+            pass
+
         for i in range(editor.pointTyping[editor.currentTab] + 1,
                        len(editor.undoredoTyping[editor.currentTab])):
             del editor.undoredoTyping[editor.currentTab][i]
+
         editor.pointTyping[editor.currentTab] += 1
-        self.diagram = SaveDiagram().toPlainText()
+
         editor.undoredoTyping[editor.currentTab][editor.pointTyping[editor.currentTab]] = \
             self.diagram
         currentTitle = editor.getSubWindowCurrentTitle()
         self.titlesavetmp = currentTitle
         try:
-            if (currentTitle[-1] != '*' and len(editor.undoredoTyping[editor.currentTab]) > 1):
+            if (currentTitle[-1] != '*') and \
+               (len(editor.undoredoTyping[editor.currentTab]) > 1):
                 currentTitle = '{}{}'.format(currentTitle, '*')
                 editor.setSubWindowCurrentTitle(currentTitle)
         except Exception as err:
