@@ -21,7 +21,7 @@ In particular, it allows you to:
 - execute several different pipelines (shared memory tools allow parameters to be exchanged, even between client-cluster)
 - execute your pipelines locally or on a cluster (HPC), for deep learning for example
 
-It is developed in Python and uses the PyQt5 framework. |br|
+It is developed in Python and uses the PyQt framework (PyQt5 or PyQt6). |br|
 Its installation is done in a virtual environment (virtualenv).
 
 .. image:: ./ressources/Skrypy_interface.png

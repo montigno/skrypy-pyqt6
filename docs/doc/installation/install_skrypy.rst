@@ -6,7 +6,7 @@ Download the installer
 
 Download the latest version of the skrypy installer and save in a temporary folder.
 
-`download skrypy (PyQt5) install <https://github.com/montigno/skrypy/archive/refs/heads/main.zip>`__ |br|
+`download skrypy (PyQt5) install <https://github.com/montigno/skrypy-pyqt5/archive/refs/heads/main.zip>`__ |br|
 `download skrypy (PyQt6) install <https://github.com/montigno/skrypy-pyqt6/archive/refs/heads/main.zip>`__
 
 Install
