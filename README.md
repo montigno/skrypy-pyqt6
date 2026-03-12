@@ -2,7 +2,6 @@
 
 Skrypy is a node editor to easily create your developments in Python. It was initially designed for MRI processing, but its application can also be used for many other processes.
 
-
 # Documentation
 
 A documentation is available here : [https://montigno.github.io/skrypy-pyqt6](https://montigno.github.io/skrypy-pyqt6)
@@ -17,6 +16,12 @@ A documentation is available here : [https://montigno.github.io/skrypy-pyqt6](ht
 		- cleaning up unused variables
 		- more compliant with PEP standards
 		- various bugs resolved
+
+<p></p>
+
+	05/03/2026: version 26.03.05a
+	- Undo/Redo : bug fixed
+	- library : block 'tif_to_nii_4d' added
 
 <p></p>
 
