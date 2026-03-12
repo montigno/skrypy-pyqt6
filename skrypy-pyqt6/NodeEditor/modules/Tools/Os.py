@@ -3,7 +3,7 @@ class os_environ:
         import os
         self.dict_env = os.environ
 
-    def os_environ(self: 'dict'):
+    def os_environ(self) -> dict:
         return self.dict_env
 
 ###############################################################################
@@ -26,7 +26,7 @@ class projet_path:
         self.proj_path = getPathWork().pathWork()
         print("current projet path = ", self.proj_path)
 
-    def projet_path(self: 'path'):
+    def projet_path(self) -> None:
         return self.proj_path
 
 ###############################################################################
@@ -37,5 +37,5 @@ class separator_path:
         import os
         self.separator = os.sep
 
-    def out_sep(self: 'str'):
+    def out_sep(self) -> str:
         return self.separator

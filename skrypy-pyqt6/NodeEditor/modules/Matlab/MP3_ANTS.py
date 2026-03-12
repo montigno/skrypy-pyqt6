@@ -24,11 +24,11 @@ class MP3_Atlas_ANTS():
         self.mat_eng = mat_eng
         self.map = [file_Atlas_name, file_Label_name]
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out1(self: 'path'):
+    def file_out1(self) -> None:
         return self.map[0]
 
-    def file_out2(self: 'path'):
+    def file_out2(self) -> None:
         return self.map[1]

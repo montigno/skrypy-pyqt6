@@ -7,7 +7,7 @@ class float_array_add_column():
         col = np.array(new_column)
         self.out = np.insert(arr, index, col, axis=1)
 
-    def new_array(self: 'array_float'):
+    def new_array(self) -> list[list[float]]:
         return self.out
 
 ##############################################################################
@@ -22,7 +22,7 @@ class float_array_add_row():
         row = np.array(new_row)
         self.out = np.insert(arr, index, row, axis=0)
 
-    def new_array(self: 'array_float'):
+    def new_array(self) -> list[list[float]]:
         return self.out
 
 ##############################################################################
@@ -35,7 +35,7 @@ class float_array_append_dyn():
         for di, vi in dynamicsInputs.items():
             self.arr.append(vi)
 
-    def outArray(self: 'array_float'):
+    def outArray(self) -> list[list[float]]:
         return self.arr
 
 ##############################################################################
@@ -49,7 +49,7 @@ class float_array_concatenate_dyn():
         for di, vi in dynamicsInputs.items():
             self.arr = np.concatenate((self.arr, vi), dtype=float)
 
-    def outArray(self: 'array_float'):
+    def outArray(self) -> list[list[float]]:
         return self.arr
 
 ##############################################################################
@@ -59,10 +59,10 @@ class float_array_get_dimension():
     def __init__(self, array_float_in=[[0.0]]):
         try:
             self.dim = (len(array_float_in[0]), len(array_float_in[0][0]), len(array_float_in))
-        except Exception as err:
+        except Exception:
             self.dim = (len(array_float_in[0]), len(array_float_in))
 
-    def dim_array(self: 'tuple'):
+    def dim_array(self) -> tuple:
         return self.dim
 
 ##############################################################################
@@ -72,7 +72,7 @@ class float_array_getElement():
     def __init__(self, array_float_in=[[0.0]], index1=0, index2=0):
         self.out = array_float_in[index1][index2]
 
-    def outArray(self: 'float'):
+    def outArray(self) -> float:
         return self.out
 
 ##############################################################################
@@ -82,7 +82,7 @@ class float_array_getRow():
     def __init__(self, array_float_in=[[0.0]], row=0):
         self.outList = array_float_in[row]
 
-    def outList(self: 'list_float'):
+    def outList(self) -> list[float]:
         return self.outList
 
 ##############################################################################
@@ -92,7 +92,7 @@ class float_array_getColumn():
     def __init__(self, array_float_in=[[0.0]], column=0):
         self.out = [row[column] for row in array_float_in]
 
-    def outColumn(self: 'list_float'):
+    def outColumn(self) -> list[float]:
         return self.out
 
 ##############################################################################
@@ -102,7 +102,7 @@ class float_array_getSubarray():
     def __init__(self, array_float_in=[[0.0]], row=(0, 1), column=(0, 1)):
         self.out = [i[column[0]:column[1]] for i in array_float_in[row[0]:row[1]]]
 
-    def out_subarray(self: 'array_float'):
+    def out_subarray(self) -> list[list[float]]:
         return self.out
 
 ##############################################################################
@@ -114,7 +114,7 @@ class float_array_mean:
         import numpy as np
         self.result = np.mean(array_float_in)
 
-    def mean(self: 'float'):
+    def mean(self) -> float:
         return self.result
 
 ##############################################################################
@@ -139,7 +139,7 @@ class float_array_nlargest():
         array_float_in = np.array(array_float_in)
         self.result_list = -np.sort(-array_float_in, axis=None)[0:n]
 
-    def listMax(self: 'list_float'):
+    def listMax(self) -> list[float]:
         return self.result_list.tolist()
 
 ##############################################################################
@@ -163,7 +163,7 @@ class float_array_nsmallest():
         import numpy as np
         self.result_list = np.sort(array_float_in, axis=None)[0:n]
 
-    def listMin(self: 'list_float'):
+    def listMin(self) -> list[float]:
         return self.result_list.tolist()
 
 ##############################################################################
@@ -188,7 +188,7 @@ class float_array_operations_dyn():
                 self.result = np.divide(self.result, np.array(vi))
         self.result = self.result.tolist()
 
-    def out_result(self: 'array_float'):
+    def out_result(self) -> list[list[float]]:
         return self.result
 
 ##############################################################################
@@ -198,7 +198,7 @@ class float_array_transpose():
     def __init__(self, array_float_in=[[0.0]]):
         self.out = list(map(list, zip(*array_float_in)))
 
-    def transp_out(self: 'array_float'):
+    def transp_out(self) -> list[list[float]]:
         return self.out
 
 ##############################################################################
@@ -223,7 +223,7 @@ class float_array_to_int_array():
         self.outarrayint = np.array(array_float_in)
         self.outarrayint = self.outarrayint.astype(int)
 
-    def outArrayInt(self: 'array_int'):
+    def outArrayInt(self) -> list[list[int]]:
         return self.outarrayint.tolist()
 
 ##############################################################################
@@ -235,7 +235,7 @@ class float_array_to_negative:
         import numpy as np
         self.result = np.negative(array_float_in)
 
-    def listDiv(self: 'array_float'):
+    def listDiv(self) -> list[list[float]]:
         return self.result.tolist()
 
 ##############################################################################
@@ -247,7 +247,7 @@ class float_array_to_string_array():
         for y in array_float_in:
             self.outStr.append([str(x) for x in y])
 
-    def outString(self: 'array_str'):
+    def outString(self) -> list[list[str]]:
         return self.outStr
 
 ##############################################################################

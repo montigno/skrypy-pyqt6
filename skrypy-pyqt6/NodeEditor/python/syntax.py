@@ -1,11 +1,8 @@
-import sys
-from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QTextEdit
 from PyQt6.QtGui import QTextCharFormat, QSyntaxHighlighter, QFont, QColor, QTextDocument
 from PyQt6.QtCore import QRegularExpression
 
 
-def format(color, style=''):
+def formatColor(color, style=''):
     """Return a QTextCharFormat with the given attributes."""
     _color = QColor()
     _color.setNamedColor(color)
@@ -22,15 +19,15 @@ def format(color, style=''):
 
 # Syntax styles that can be shared by all languages
 STYLES = {
-    'keyword': format('blue'),
-    'operator': format('red'),
-    'brace': format('darkGray'),
-    'defclass': format('black', 'bold'),
-    'string': format('magenta'),
-    'string2': format('darkMagenta'),
-    'comment': format('darkGreen', 'italic'),
-    'self': format('black', 'italic'),
-    'numbers': format('brown'),
+    'keyword': formatColor('blue'),
+    'operator': formatColor('red'),
+    'brace': formatColor('darkGray'),
+    'defclass': formatColor('black', 'bold'),
+    'string': formatColor('magenta'),
+    'string2': formatColor('darkMagenta'),
+    'comment': formatColor('darkGreen', 'italic'),
+    'self': formatColor('black', 'italic'),
+    'numbers': formatColor('brown'),
 }
 
 
@@ -91,7 +88,6 @@ class PythonHighlighter(QSyntaxHighlighter):
                 index = match.capturedStart(nth)
                 length = len(match.captured(nth))
                 self.setFormat(index, length, fmt)
-
 
         self.setCurrentBlockState(0)
 

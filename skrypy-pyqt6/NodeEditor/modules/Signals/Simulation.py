@@ -7,9 +7,9 @@ class signal_PWM:
         sample = len(sig)
         amplitude = max(sig)
         t = np.linspace(0, 1, sample, endpoint=False)
-        self.pwm = amplitude * signal.square(2 * np.pi * frequency * t, duty=((sig / amplitude) + 1)/2)
+        self.pwm = amplitude * signal.square(2 * np.pi * frequency * t, duty=((sig / amplitude) + 1) / 2)
 
-    def out_pwm(self: 'list_float'):
+    def out_pwm(self) -> list[float]:
         return self.pwm
 
 ##############################################################################
@@ -21,7 +21,7 @@ class signal_add_noise:
         x = np.array(x)
         self.noisy_sig = np.add(x, np.random.normal(size=len(x), scale=scale))
 
-    def noisy_signal(self: 'list_float'):
+    def noisy_signal(self) -> list[float]:
         return self.noisy_sig
 
 ##############################################################################

@@ -14,7 +14,7 @@ class fsl_ApplyMask():
             setattr(mf.inputs, ef, options[ef])
         self.res = mf.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -44,7 +44,7 @@ class fsl_BinaryMaths():
             setattr(mf.inputs, ef, options[ef])
         self.res = mf.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -67,7 +67,7 @@ class fsl_EddyCorrect():
         eddyc.cmdline
         self.res = eddyc.run()
 
-    def eddy_corrected(self: 'path'):
+    def eddy_corrected(self) -> None:
         return self.res.outputs.eddy_corrected
 
 ##############################################################################
@@ -89,7 +89,7 @@ class fsl_Threshold():
             setattr(mf.inputs, ef, options[ef])
         self.res = mf.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -118,7 +118,7 @@ class fsl_UnaryMaths():
             setattr(mf.inputs, ef, options[ef])
         self.res = mf.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -140,7 +140,7 @@ class fsl_ApplyWarp:
             setattr(aw.inputs, ef, options[ef])
         self.res = aw.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -162,13 +162,13 @@ class fsl_ApplyXFM:
             setattr(applyxfm.inputs, ef, options[ef])
         self.res = applyxfm.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
-    def out_log(self: 'path'):
+    def out_log(self) -> None:
         return self.res.outputs.out_log
 
-    def out_matrix_file(self: 'path'):
+    def out_matrix_file(self) -> None:
         return self.res.outputs.out_matrix_file
 
 ##############################################################################
@@ -189,37 +189,37 @@ class fsl_BET:
             setattr(btr.inputs, ef, options[ef])
         self.res = btr.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
-    def mask_file(self: 'path'):
+    def mask_file(self) -> None:
         return self.res.outputs.mask_file
 
-    def outline_file(self: 'path'):
+    def outline_file(self) -> None:
         return self.res.outputs.outline_file
 
-    def meshfile(self: 'path'):
+    def meshfile(self) -> None:
         return self.res.outputs.meshfile
 
-    def inskull_mask_file(self: 'path'):
+    def inskull_mask_file(self) -> None:
         return self.res.outputs.inskull_mask_file
 
-    def inskull_mesh_file(self: 'path'):
+    def inskull_mesh_file(self) -> None:
         return self.res.outputs.inskull_mesh_file
 
-    def outskull_mask_file(self: 'path'):
+    def outskull_mask_file(self) -> None:
         return self.res.outputs.outskull_mask_file
 
-    def outskull_mesh_file(self: 'path'):
+    def outskull_mesh_file(self) -> None:
         return self.res.outputs.outskull_mesh_file
 
-    def outskin_mask_file(self: 'path'):
+    def outskin_mask_file(self) -> None:
         return self.res.outputs.outskin_mask_file
 
-    def outskin_mesh_file(self: 'path'):
+    def outskin_mesh_file(self) -> None:
         return self.res.outputs.outskin_mesh_file
 
-    def skull_mask_file(self: 'path'):
+    def skull_mask_file(self) -> None:
         return self.res.outputs.skull_mask_file
 
 ##############################################################################
@@ -240,28 +240,28 @@ class fsl_FAST:
             setattr(fastr.inputs, ef, options[ef])
         self.res = fastr.run()
 
-    def tissue_class_map(self: 'path'):
+    def tissue_class_map(self) -> None:
         return self.res.outputs.tissue_class_map
 
-    def tissue_class_files(self: 'list_path'):
+    def tissue_class_files(self) -> list[None]:
         return self.res.outputs.tissue_class_files
 
-    def restored_image(self: 'list_path'):
+    def restored_image(self) -> list[None]:
         return self.res.outputs.restored_image
 
-    def mixeltype(self: 'path'):
+    def mixeltype(self) -> None:
         return self.res.outputs.mixeltype
 
-    def partial_volume_map(self: 'path'):
+    def partial_volume_map(self) -> None:
         return self.res.outputs.partial_volume_map
 
-    def partial_volume_files(self: 'list_path'):
+    def partial_volume_files(self) -> list[None]:
         return self.res.outputs.partial_volume_files
 
-    def bias_field(self: 'list_path'):
+    def bias_field(self) -> list[None]:
         return self.res.outputs.bias_field
 
-    def probability_maps(self: 'list_path'):
+    def probability_maps(self) -> list[None]:
         return self.res.outputs.probability_maps
 
 ##############################################################################
@@ -283,13 +283,13 @@ class fsl_FLIRT:
             setattr(flt.inputs, ef, options[ef])
         self.res = flt.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
-    def out_log(self: 'path'):
+    def out_log(self) -> None:
         return self.res.outputs.out_log
 
-    def out_matrix_file(self: 'path'):
+    def out_matrix_file(self) -> None:
         return self.res.outputs.out_matrix_file
 
 ##############################################################################
@@ -311,25 +311,25 @@ class fsl_FNIRT:
             setattr(fnt.inputs, ef, options[ef])
         self.res = fnt.run()
 
-    def field_file(self: 'path'):
+    def field_file(self) -> None:
         return self.res.outputs.field_file
 
-    def fieldcoeff_file(self: 'path'):
+    def fieldcoeff_file(self) -> None:
         return self.res.outputs.fieldcoeff_file
 
-    def jacobian_file(self: 'path'):
+    def jacobian_file(self) -> None:
         return self.res.outputs.jacobian_file
 
-    def log_file(self: 'path'):
+    def log_file(self) -> None:
         return self.res.outputs.log_file
 
-    def modulatedref_file(self: 'path'):
+    def modulatedref_file(self) -> None:
         return self.res.outputs.modulatedref_file
 
-    def out_intensitymap_file(self: 'path'):
+    def out_intensitymap_file(self) -> None:
         return self.res.outputs.out_intensitymap_file
 
-    def warped_file(self: 'path'):
+    def warped_file(self) -> None:
         return self.res.outputs.warped_file
 
 ##############################################################################
@@ -350,25 +350,25 @@ class fsl_MCFLIRT:
             setattr(mcflt.inputs, ef, options[ef])
         self.res = mcflt.run()
 
-    def mat_file(self: 'list_path'):
+    def mat_file(self) -> list[None]:
         return self.res.outputs.mat_file
 
-    def mean_img(self: 'path'):
+    def mean_img(self) -> None:
         return self.res.outputs.mean_img
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
-    def par_file(self: 'path'):
+    def par_file(self) -> None:
         return self.res.outputs.par_file
 
-    def rms_files(self: 'list_path'):
+    def rms_files(self) -> list[None]:
         return self.res.outputs.rms_files
 
-    def std_img(self: 'path'):
+    def std_img(self) -> None:
         return self.res.outputs.std_img
 
-    def variance_img(self: 'path'):
+    def variance_img(self) -> None:
         return self.res.outputs.variance_img
 
 ##############################################################################
@@ -389,7 +389,7 @@ class fsl_MeanImage():
             setattr(fu.inputs, ef, options[ef])
         self.res = fu.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -412,7 +412,7 @@ class fsl_Merge():
             setattr(fu.inputs, ef, options[ef])
         self.res = fu.run()
 
-    def merged_file(self: 'path'):
+    def merged_file(self) -> None:
         return self.res.outputs.merged_file
 
 ##############################################################################
@@ -442,7 +442,7 @@ class fsl_Overlay():
             setattr(comb.inputs, ef, options[ef])
         self.res = comb.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -465,7 +465,7 @@ class fsl_SpatialFilter():
             setattr(fu.inputs, ef, options[ef])
         self.res = fu.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 ##############################################################################
 
@@ -487,7 +487,7 @@ class fsl_Split():
             setattr(fu.inputs, ef, options[ef])
         self.res = fu.run()
 
-    def out_files(self: 'list_path'):
+    def out_files(self) -> list[None]:
         return self.res.outputs.out_files
 
 ##############################################################################
@@ -509,7 +509,7 @@ class fsl_SwapDimensions():
             setattr(fu.inputs, ef, options[ef])
         self.res = fu.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -530,7 +530,7 @@ class fsl_ExtractROI():
             setattr(fslroi.inputs, ef, options[ef])
         self.res = fslroi.run()
 
-    def roi_file(self: 'path'):
+    def roi_file(self) -> None:
         return self.res.outputs.roi_file
 
 ##############################################################################
@@ -551,7 +551,7 @@ class fsl_ImageMaths():
             setattr(fslmaths.inputs, ef, options[ef])
         self.res = fslmaths.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -572,7 +572,7 @@ class fsl_Smooth():
             setattr(sm.inputs, ef, options[ef])
         self.res = sm.run()
 
-    def smoothed_file(self: 'path'):
+    def smoothed_file(self) -> None:
         return self.res.outputs.smoothed_file
 
 ##############################################################################

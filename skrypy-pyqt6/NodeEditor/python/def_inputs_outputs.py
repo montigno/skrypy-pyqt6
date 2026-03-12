@@ -29,12 +29,12 @@ class define_inputs_outputs(QDialog):
             if prts.name == defaultName:
                 currentFormat = prts.format
 
-        dim, format = '', 'int'
+        dim, form = '', 'int'
         if '_' in currentFormat:
             dim = currentFormat[0:currentFormat.index('_')]
-            format = currentFormat[currentFormat.index('_')+1:]
+            form = currentFormat[currentFormat.index('_')+1:]
         elif currentFormat:
-            format = currentFormat
+            form = currentFormat
 
         self.vbox = QVBoxLayout(self)
 
@@ -56,7 +56,7 @@ class define_inputs_outputs(QDialog):
         hbox3 = QHBoxLayout()
         self.comboFormat = QComboBox(self)
         self.comboFormat.addItems(listformat)
-        self.comboFormat.setCurrentText(format)
+        self.comboFormat.setCurrentText(form)
         self.comboDim = QComboBox(self)
         self.comboDim.addItems(listdim)
         self.comboDim.setCurrentText(dim)

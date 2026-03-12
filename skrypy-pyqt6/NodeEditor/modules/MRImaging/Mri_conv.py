@@ -4,8 +4,6 @@ class mri_conv_bruker_to_nifti:
                  naming='PatientName/StudyName/CreationDate-SeqNumber-Protocol-SequenceName-AcquisitionTime',
                  path_export='path',
                  bvals_bvecs=False):
-        import os
-        import sys
         from subprocess import Popen, PIPE
 
         self.output = []
@@ -20,15 +18,15 @@ class mri_conv_bruker_to_nifti:
                       ' [ExportOptions]' + options_export
             print('Bruker : ', command)
             p = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-            txt, error = p.communicate()
-            rc = p.returncode
+            txt, _ = p.communicate()
+            # rc = p.returncode
             txt = txt.decode("utf-8")
             print(txt)
             txt = txt[txt.index("export to ") + 10:]
             for val in txt.split("export to "):
                 self.output.append(val[6:val.index("\n")])
 
-    def list_files_exported(self: 'list_path'):
+    def list_files_exported(self) -> list[None]:
         return self.output
 
 ############################################################################################################################
@@ -40,8 +38,6 @@ class mri_conv_philips_to_nifti:
                  naming='PatientName/StudyName/CreationDate-SeqNumber-Protocol-SequenceName-AcquisitionTime',
                  path_export='path',
                  bvals_bvecs=False):
-        import os
-        import sys
         from subprocess import Popen, PIPE
 
         self.output = []
@@ -62,14 +58,14 @@ class mri_conv_philips_to_nifti:
                       ' [ExportOptions]' + options_export
             print('Philips : ', command)
             p = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-            txt, error = p.communicate()
-            rc = p.returncode
+            txt, _ = p.communicate()
+            # rc = p.returncode
             txt = txt.decode("utf-8")
             txt = txt[txt.index("export to ") + 10:]
             for val in txt.split("export to "):
                 self.output.append(val[6:val.index("\n")])
 
-    def list_files_exported(self: 'list_path'):
+    def list_files_exported(self) -> list[None]:
         return self.output
 
 ############################################################################################################################
@@ -81,8 +77,6 @@ class mri_conv_bids_to_nifti:
                  naming='PatientName/StudyName/CreationDate-SeqNumber-Protocol-SequenceName-AcquisitionTime',
                  path_export='path',
                  bvals_bvecs=False):
-        import os
-        import sys
         from subprocess import Popen, PIPE
 
         self.output = []
@@ -101,14 +95,14 @@ class mri_conv_bids_to_nifti:
                       ' [ExportOptions]' + options_export
             print('BIDS : ', command)
             p = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-            txt, error = p.communicate()
-            rc = p.returncode
+            txt, _ = p.communicate()
+            # rc = p.returncode
             txt = txt.decode("utf-8")
             txt = txt[txt.index("export to ") + 10:]
             for val in txt.split("export to "):
                 self.output.append(val[6:val.index("\n")])
 
-    def list_files_exported(self: 'list_path'):
+    def list_files_exported(self) -> list[None]:
         return self.output
 
 ############################################################################################################################
@@ -120,8 +114,6 @@ class mri_conv_dicom_to_nifti:
                  naming='PatientName/StudyName/CreationDate-SeqNumber-Protocol-SequenceName-AcquisitionTime',
                  path_export='path',
                  bvals_bvecs=False):
-        import os
-        import sys
         from subprocess import Popen, PIPE
 
         self.output = []
@@ -140,15 +132,15 @@ class mri_conv_dicom_to_nifti:
                       ' [ExportOptions]' + options_export
             print('Dicom : ', command)
             p = Popen(command, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-            txt, error = p.communicate()
-            rc = p.returncode
+            txt, _ = p.communicate()
+            # rc = p.returncode
             txt = txt.decode("utf-8")
             print(txt)
             txt = txt[txt.index("export to ") + 10:]
             for val in txt.split("export to "):
                 self.output.append(val[6:val.index("\n")])
 
-    def list_files_exported(self: 'list_path'):
+    def list_files_exported(self) -> list[None]:
         return self.output
 
 ############################################################################################################################
@@ -158,7 +150,6 @@ class mri_conv_GUI:
     def __init__(self, export_path='path', nifti_naming='PatientName/StudyName/Protocol-SerialNumber-SequenceName'):
         import subprocess
         import os
-        import pathlib
         from glob import glob
 
         command = ['java', '-Xms512m', '-Xmx4096m', '-jar', os.environ['MRIFilePATH'], '[ExportNifti] ' + export_path]
@@ -171,5 +162,5 @@ class mri_conv_GUI:
         print(lastfile)
         self.outRep = export_path
 
-    def export_path(self: 'path'):
+    def export_path(self) -> None:
         return self.outRep

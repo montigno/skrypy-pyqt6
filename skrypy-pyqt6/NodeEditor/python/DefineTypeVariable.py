@@ -8,7 +8,7 @@ class DefineTypeVariable:
         self.var = var
         try:
             self.var = ast.literal_eval(var)
-        except Exception as e:
+        except Exception:
             pass
 
     def returntype(self):

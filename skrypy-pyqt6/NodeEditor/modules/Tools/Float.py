@@ -15,7 +15,7 @@ class float_operations_dyn():
             for di, vi in dynamicsInputs.items():
                 self.result = self.result / vi
 
-    def out_result(self: 'float'):
+    def out_result(self) -> float:
         return self.result
 
 #############################################################################
@@ -27,7 +27,7 @@ class float_to_list_dyn():
         for di in dynamicsInputs:
             self.out.append(dynamicsInputs[di])
 
-    def list_float(self: 'list_float'):
+    def list_float(self) -> list[float]:
         return self.out
 
 #############################################################################
@@ -50,7 +50,7 @@ class float_to_int():
     def __init__(self, float_in=0.0):
         self.outint = int(float_in)
 
-    def outInt(self: 'int'):
+    def outInt(self) -> int:
         return self.outint
 
 ###############################################################################
@@ -73,5 +73,5 @@ class float_to_string():
     def __init__(self, float_in=0.0):
         self.outStr = str(float_in)
 
-    def outString(self: 'str'):
+    def outString(self) -> str:
         return self.outStr

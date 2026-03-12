@@ -1,6 +1,6 @@
 from PyQt6.QtCore import Qt, QEvent, QPoint
 from PyQt6.QtGui import QColor, QPainter
-from PyQt6.QtWidgets import QVBoxLayout, QGraphicsView, QLabel, QDialog
+from PyQt6.QtWidgets import QVBoxLayout, QLabel, QDialog, QGraphicsView
 
 
 class SubWindow(QDialog):
@@ -17,6 +17,7 @@ class SubWindow(QDialog):
         self.diagram_view.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
         self.diagram_scene.setSceneRect(self.diagram_scene.itemsBoundingRect())
         self.diagram_view.centerOn(0, 0)
+        self.diagram_view.setDragMode(QGraphicsView.DragMode.RubberBandDrag)
         self.diagram_view\
             .fitInView(self.diagram_scene.sceneRect(), Qt.AspectRatioMode.KeepAspectRatio)
         self.diagram_view.viewport().installEventFilter(self)
@@ -39,7 +40,10 @@ class SubWindow(QDialog):
                 return True
             elif (event.type() == QEvent.Type.MouseMove):
                 self.mouseMouveDiagram(event)
-                # return False
+            elif (event.type() == QEvent.Type.MouseButtonPress):
+                self.mousePressEvent(event)
+            elif (event.type() == QEvent.Type.MouseButtonRelease):
+                self.mouseReleaseEvent(event)
         return False
 
     def handle_wheel_event(self, event):
@@ -61,9 +65,9 @@ class SubWindow(QDialog):
                 SubWindow.mouseDoubleClickEvent(self, event)
             else:
                 self.close()
-        except Exception as err:
+        except Exception:
             pass
-        
+
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.MouseButton.MiddleButton:
             self.middle_mouse_pressed = False

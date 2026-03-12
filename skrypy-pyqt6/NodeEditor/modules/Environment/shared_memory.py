@@ -11,7 +11,7 @@ class list_SharedMemory():
                 data = yaml.load(file_yml, Loader=yaml.SafeLoader)
                 self.l_shm = list(data.keys())
 
-    def list_shm(self: 'list_str'):
+    def list_shm(self) -> list[str]:
         return self.l_shm
 
 ##############################################################################
@@ -21,6 +21,7 @@ class SharedMemory_create():
     def __init__(self, memoryName='', data='', **options):
         import os
         import yaml
+        import time
 
         memoryName = memoryName.strip()
         shared_data = {}
@@ -74,5 +75,5 @@ class SharedMemory_read():
                     else:
                         os.remove(file_shme)
 
-    def out_data(self: 'str'):
+    def out_data(self) -> str:
         return self.data

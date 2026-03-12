@@ -29,7 +29,7 @@ class csv_open_file:
         if access == 'column':
             self.res = list(map(list, zip(*self.res)))
 
-    def array_csv(self: 'array_str'):
+    def array_csv(self) -> list[list[str]]:
         return self.res
 
 ##############################################################################
@@ -67,7 +67,7 @@ class csv_save_file:
             writer.writerows(data)
         self.out_f = file_output
 
-    def csv_out(self: 'path'):
+    def csv_out(self) -> None:
         return self.out_f
 
 ##############################################################################
@@ -100,7 +100,7 @@ class csv_reader_text:
         for row in reader:
             self.res.append(row)
 
-    def array_csv(self: 'array_str'):
+    def array_csv(self) -> list[list[str]]:
         return self.res
 
 ##############################################################################
@@ -113,5 +113,5 @@ class csv_txt_to_array():
         for row in reader:  # each row is a list
             self.output.append(row)
 
-    def out_array(self: 'array_float'):
+    def out_array(self) -> list[list[float]]:
         return self.output

@@ -11,10 +11,10 @@ class fsl_bet2:
         command = ["bet2"]
         command.extend(list_options)
         print('command : ', command)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.outfile = output_file
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.outfile
 
 ##############################################################################
@@ -32,10 +32,10 @@ class fslsplit():
         command.extend(list_options)
         print('command : ', command)
         result = run(command, shell=False, check=True)
-        self.outfile = glob.glob(output_basename+'*.nii.gz')
+        self.outfile = glob.glob(output_basename + '*.nii.gz')
         self.outfile = sorted(self.outfile, reverse=False)
 
-    def output_file(self: 'list_path'):
+    def output_file(self) -> list[None]:
         return self.outfile
 
 ###############################################################################
@@ -58,7 +58,7 @@ class fslmerge():
         result = run(command, shell=False, check=True)
         self.outfile = output
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.outfile
 
 ###############################################################################

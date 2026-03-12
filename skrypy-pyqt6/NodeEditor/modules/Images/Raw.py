@@ -32,11 +32,11 @@ class raw_display:
         # current_dir_path = os.path.abspath(os.path.join(__file__, "../../.."))
         current_dir_path = Path(__file__).parents[2]
         source_disp = os.path.join(current_dir_path, 'api', 'dispNifti.py')
-        p = subprocess.Popen([sys.executable, source_disp, name_file, title, 'yes'],
-                             shell=False,
-                             stdin=None,
-                             stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE)
+        subprocess.Popen([sys.executable, source_disp, name_file, title, 'yes'],
+                         shell=False,
+                         stdin=None,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
 
 ##############################################################################
 
@@ -66,5 +66,5 @@ class raw_open_image():
         # self.npimg = self.npimg.reshape(tuple(reversed(imageSize)))
         self.npimg = self.npimg.reshape(imageSize, order='F')
 
-    def raw_image(self: 'array_float'):
+    def raw_image(self) -> list[list[float]]:
         return self.npimg

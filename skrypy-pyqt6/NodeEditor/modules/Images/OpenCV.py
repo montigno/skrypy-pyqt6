@@ -7,7 +7,7 @@ class openCV_fastNlMeansDenoising():
             dst = None
         self.dst = cv.fastNlMeansDenoising(src, dst, h, templateWindowSize, searchWindowSize)
 
-    def out_NLM(self: 'array_float'):
+    def out_NLM(self) -> list[list[float]]:
         return self.dst
 
 ##############################################################################
@@ -53,5 +53,5 @@ class openCV_imread():
             flags = getattr(cv2, options['flags'])
         self.out_img = cv2.imread(filename, flags)
 
-    def img_read(self: 'array_float'):
+    def img_read(self) -> list[list[float]]:
         return self.out_img

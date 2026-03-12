@@ -8,8 +8,7 @@
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, \
-    QButtonGroup, QCheckBox, QPushButton, QLineEdit
-import time
+    QButtonGroup, QCheckBox, QPushButton
 
 
 class multiple_execution(QDialog):
@@ -21,7 +20,7 @@ class multiple_execution(QDialog):
         self.adjustSize()
         vbox = QVBoxLayout(self)
         self.zonecombo = []
-        for i, lst in enumerate(listDiagram):
+        for i, _ in enumerate(listDiagram):
             lab = QLabel('Diagram ' + str(i))
             comb = QComboBox(self)
             comb.addItems(listDiagram)

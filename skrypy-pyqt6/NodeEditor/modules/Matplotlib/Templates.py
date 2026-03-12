@@ -14,7 +14,7 @@ class matplotlib_coherence_of_two_signals:
         nse2 = np.random.randn(len(t))  # white noise 2
 
         s1n = s1 + nse1
-        s2n = s2 + nse2
+        sw2n = s2 + nse2
 
         fig, axs = plt.subplots(2, 1, layout='constrained')
         axs[0].plot(t, s1, t, s2)
@@ -26,4 +26,4 @@ class matplotlib_coherence_of_two_signals:
         cxy, f = axs[1].cohere(s1, s2, NFFT=256, Fs=1. / dt)
         axs[1].set_ylabel('Coherence')
 
-        plt.show()
+        plt.show(block=False)

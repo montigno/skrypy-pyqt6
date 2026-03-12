@@ -9,7 +9,7 @@ class path_list_add_element_dyn():
         for di in dynamicsInputs:
             self.newList.append(dynamicsInputs[di])
 
-    def newList_path(self: 'list_path'):
+    def newList_path(self) -> list[None]:
         return self.newList
 
 ###############################################################################
@@ -19,7 +19,7 @@ class path_list_getElement():
     def __init__(self, list_path_in=['path'], index=0):
         self.outPath = list_path_in[index]
 
-    def outPath(self: 'path'):
+    def outPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -29,7 +29,7 @@ class path_list_length():
     def __init__(self, list_path_in=['path']):
         self.file_length = len(list_path_in)
 
-    def file_length(self: 'int'):
+    def file_length(self) -> int:
         return self.file_length
 
 ###############################################################################
@@ -41,7 +41,7 @@ class path_list_to_array_dyn:
         for di in dynamicsInputs:
             self.pathArray.append(dynamicsInputs[di])
 
-    def path_list(self: 'array_path'):
+    def path_list(self) -> list[list[None]]:
         return self.pathArray
 
 ###############################################################################
@@ -51,7 +51,7 @@ class path_list_to_str:
     def __init__(self, list_path_in=['path']):
         self.pathstr = str(list_path_in.copy())
 
-    def path_str(self: 'str'):
+    def path_str(self) -> str:
         return self.pathstr
 
 ###############################################################################
@@ -61,7 +61,7 @@ class path_list_order:
     def __init__(self, list_path_in=['path'], reverse=False):
         self.out_list = sorted(list_path_in, reverse=reverse)
 
-    def list_out(self: 'list_path'):
+    def list_out(self) -> list[None]:
         return self.out_list
 
 ###############################################################################
@@ -73,7 +73,7 @@ class path_list_extend_dyn:
         for di in dynamicsInputs:
             self.pathList.extend(dynamicsInputs[di])
 
-    def path_list(self: 'list_path'):
+    def path_list(self) -> list[None]:
         return self.pathList
 
 ##############################################################################
@@ -83,5 +83,5 @@ class path_list_sublist:
     def __init__(self, list_path_in=['path'], indexes=[0, 1]):
         self.pathList = list_path_in.copy()[indexes[0]:indexes[1]]
 
-    def path_list(self: 'list_path'):
+    def path_list(self) -> list[None]:
         return self.pathList

@@ -30,58 +30,58 @@ class AllTypes():
         self.tup = inTuple
         self.tup2 = inTuple2
 
-    def outInt(self: 'int'):
+    def outInt(self) -> int:
         return self.inInt
 
-    def outFloat(self: 'float'):
+    def outFloat(self) -> float:
         return self.inFloat
 
-    def outString(self: 'str'):
+    def outString(self) -> str:
         return self.inString
 
-    def outBool(self: 'bool'):
+    def outBool(self) -> bool:
         return self.inBool
 
-    def outPath(self: 'path'):
+    def outPath(self) -> None:
         return self.inPath
 
-    def listInt(self: 'list_int'):
+    def listInt(self) -> list[int]:
         return self.listInt
 
-    def listFloat(self: 'list_float'):
+    def listFloat(self) -> list[float]:
         return self.listFloat
 
-    def listString(self: 'list_str'):
+    def listString(self) -> list[str]:
         return self.listString
 
-    def listBool(self: 'list_bool'):
+    def listBool(self) -> list[bool]:
         return self.listBool
 
-    def listPath(self: 'list_path'):
+    def listPath(self) -> list[None]:
         return self.listPath
 
-    def arrayInt(self: 'array_int'):
+    def arrayInt(self) -> list[list[int]]:
         return self.arrayInt
 
-    def arrayFloat(self: 'array_float'):
+    def arrayFloat(self) -> list[list[float]]:
         return self.arrayFloat
 
-    def arrayString(self: 'array_str'):
+    def arrayString(self) -> list[list[str]]:
         return self.arrayString
 
-    def arrayBool(self: 'array_bool'):
+    def arrayBool(self) -> list[list[bool]]:
         return self.arrayBool
 
-    def arrayPath(self: 'array_path'):
+    def arrayPath(self) -> list[list[None]]:
         return self.arrayPath
 
-    def dictionary(self: 'dict'):
+    def dictionary(self) -> dict:
         return self.dict
 
-    def tuple(self: 'tuple_str'):
+    def tuple(self) -> tuple:
         return self.tup
 
-    def tuple2(self: 'tuple_int'):
+    def tuple2(self) -> tuple:
         return self.tup2
 
 #############################################################################
@@ -116,10 +116,10 @@ class Fibonacci:
             self.res = b
             self.res1 = a
 
-    def n_out(self: 'float'):
+    def n_out(self) -> float:
         return self.res
 
-    def n_1_out(self: 'float'):
+    def n_1_out(self) -> float:
         return self.res1
 
 #############################################################################
@@ -133,11 +133,11 @@ class comboBox_example:
         if options:
             self.resp3 = options['input3']
 
-    def out1(self: 'str'):
+    def out1(self) -> str:
         return self.resp1
 
-    def out2(self: 'str'):
+    def out2(self) -> str:
         return self.resp2
 
-    def out3(self: 'str'):
+    def out3(self) -> str:
         return self.resp3

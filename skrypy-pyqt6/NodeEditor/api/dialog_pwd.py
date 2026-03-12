@@ -1,7 +1,7 @@
 import sys
-from PyQt6.QtWidgets import (QMainWindow, QWidget, 
-                             QFormLayout, QLabel, QLineEdit, QPushButton,
-                             QMessageBox, QDialogButtonBox, QApplication)
+from PyQt6.QtWidgets import (QMainWindow, QWidget,
+                             QFormLayout, QLabel, QLineEdit,
+                             QDialogButtonBox, QApplication)
 from PyQt6.QtCore import QPoint
 
 
@@ -31,7 +31,7 @@ class Passwd(QMainWindow):
         password_label = QLabel("Password:")
         self.password_field = QLineEdit()
         self.password_field.setEchoMode(QLineEdit.EchoMode.Password)
-        
+
         buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         buttons.accepted.connect(self._control)
         buttons.rejected.connect(self._reject)
@@ -52,7 +52,7 @@ class Passwd(QMainWindow):
         self.close()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     screen = app.primaryScreen()
     myprogram = Passwd(sys.argv[1], screen)

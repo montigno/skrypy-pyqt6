@@ -2,7 +2,6 @@ import re
 import os
 import ast
 import shutil
-import struct
 import zipfile
 
 from pathlib import Path
@@ -27,8 +26,8 @@ class project_archive():
 
         shutil.copy(diagram_src, archive_tmp)
 
-        fold = os.path.dirname(diagram_src)
-        archive_path = Path(diagram_src).with_suffix(".sky")
+        # fold = os.path.dirname(diagram_src)
+        # archive_path = Path(diagram_src).with_suffix(".sky")
         self.create_archive(archive_tmp)
 
         if remove_src_dgr:

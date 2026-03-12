@@ -3,7 +3,7 @@ class path_root():
         import os
         self.dir = os.path.dirname(os.path.abspath(path_in))
 
-    def root_dir(self: 'path'):
+    def root_dir(self) -> None:
         return self.dir
 
 ###############################################################################
@@ -16,7 +16,7 @@ class path_exists():
         if path_in != 'path':
             self.file_exists = os.path.exists(path_in)
 
-    def file_exists(self: 'bool'):
+    def file_exists(self) -> bool:
         return self.file_exists
 
 ###############################################################################
@@ -32,7 +32,7 @@ class path_get_fileName():
         except Exception as err:
             print("error with path:", err)
 
-    def file_name(self: 'str'):
+    def file_name(self) -> str:
         return self.filename
 
 ###############################################################################
@@ -47,13 +47,13 @@ class path_separate():
         self.name = ('.').join(lst_fd[:-1])
         self.ext = lst_fd[-1]
 
-    def directory(self: 'path'):
+    def directory(self) -> None:
         return self.dir
 
-    def nameFile(self: 'str'):
+    def nameFile(self) -> str:
         return self.name
 
-    def extension(self: 'str'):
+    def extension(self) -> str:
         return self.ext
 
 ###############################################################################
@@ -68,13 +68,13 @@ class path_separate_2ext():
         self.name = ('.').join(lst_fd[:-2])
         self.ext = ('.').join(lst_fd[-2:])
 
-    def directory(self: 'path'):
+    def directory(self) -> None:
         return self.dir
 
-    def nameFile(self: 'str'):
+    def nameFile(self) -> str:
         return self.name
 
-    def extension(self: 'str'):
+    def extension(self) -> str:
         return self.ext
 
 ###############################################################################
@@ -87,7 +87,7 @@ class path_join_dyn():
         for di in dynamicsInputs:
             self.outputFile = os.path.join(self.outputFile, str(dynamicsInputs[di]))
 
-    def outFile(self: 'path'):
+    def outFile(self) -> None:
         return self.outputFile
 
 ###############################################################################
@@ -99,7 +99,7 @@ class path_to_list_dyn():
         for di in dynamicsInputs:
             self.outListPath.append(dynamicsInputs[di])
 
-    def ListPath(self: 'list_path'):
+    def ListPath(self) -> list[None]:
         return self.outListPath
 
 ###############################################################################
@@ -109,7 +109,7 @@ class path_rstrip:
     def __init__(self, path_in='path', chr=''):
         self.outPath = path_in.rstrip(chr)
 
-    def newPath(self: 'path'):
+    def newPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -121,7 +121,7 @@ class path_change_extension:
         pre, ext = os.path.splitext(path_in)
         self.outPath = os.path.join(pre + new_extension)
 
-    def newPath(self: 'path'):
+    def newPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -134,7 +134,7 @@ class path_change_extension_2ext:
         pre, ext2 = os.path.splitext(pre)
         self.outPath = os.path.join(pre + new_extension)
 
-    def newPath(self: 'path'):
+    def newPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -151,11 +151,11 @@ class path_add_suffixprefix:
         name = ('.').join(tmp.split('.')[:-1])
         ext = tmp.split('.')[-1]
         if place == 'suffix':
-            self.outPath = os.path.join(dir, name + new_str + '.'+ext)
+            self.outPath = os.path.join(dir, name + new_str + '.' + ext)
         elif place == 'prefix':
-            self.outPath = os.path.join(dir, new_str + name + '.'+ext)
+            self.outPath = os.path.join(dir, new_str + name + '.' + ext)
 
-    def newPath(self: 'path'):
+    def newPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -173,11 +173,11 @@ class path_add_suffixprefix_2ext:
         name = ('.').join(lsfield[:-2])
         ext = lsfield[-2] + '.' + lsfield[-1]
         if place == 'suffix':
-            self.outPath = os.path.join(dir, name + new_str + '.'+ext)
+            self.outPath = os.path.join(dir, name + new_str + '.' + ext)
         elif place == 'prefix':
-            self.outPath = os.path.join(dir, new_str + name + '.'+ext)
+            self.outPath = os.path.join(dir, new_str + name + '.' + ext)
 
-    def newPath(self: 'path'):
+    def newPath(self) -> None:
         return self.outPath
 
 ###############################################################################
@@ -189,7 +189,7 @@ class path_change_name:
         dir = os.path.dirname(path_in)
         self.newPath = os.path.join(dir, new_name)
 
-    def out_new_file(self: 'path'):
+    def out_new_file(self) -> None:
         return self.newPath
 
 ###############################################################################
@@ -200,5 +200,5 @@ class path_last_path:
         import os
         self.last_path = os.path.basename(os.path.normpath(path_in))
 
-    def last_dir(self: 'path'):
+    def last_dir(self) -> None:
         return self.last_path

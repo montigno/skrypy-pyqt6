@@ -16,7 +16,8 @@ class box_dialog_file:
     def __init__(self, fileDefault='path',
                  extension='*', title='Select a file'):
         import os.path
-        from PyQt6.QtWidgets import QFileDialog, QApplication
+        from PyQt5.QtWidgets import QApplication
+        from PyQt5.Qt import QFileDialog
 
         app = QApplication.instance()
         if app is None:
@@ -26,17 +27,16 @@ class box_dialog_file:
         dirdefault = ''
         if os.path.exists(fileDefault):
             dirdefault = os.path.dirname(fileDefault)
-        fileCh = QFileDialog.getOpenFileName(
-                            None,
-                            title,
-                            dirdefault,
-                            extension,
-                            None,
-                            QFileDialog.Option.DontUseNativeDialog)
+        fileCh = QFileDialog.getOpenFileName(None,
+                                             title,
+                                             dirdefault,
+                                             extension,
+                                             None,
+                                             QFileDialog.DontUseNativeDialog)
         if fileCh[0]:
             self.fileChosen = fileCh[0]
 
-    def filePath(self: 'path'):
+    def filePath(self) -> None:
         return self.fileChosen
 
 ##############################################################################
@@ -49,9 +49,9 @@ class compare_two_files:
         from subprocess import Popen, PIPE
 
         p = Popen(['diff', '--normal', file1, file2], stdout=PIPE)
-        self.output, err = p.communicate()
+        self.output, _ = p.communicate()
 
-    def compare_out(self: 'str'):
+    def compare_out(self) -> str:
         return self.output
 
 ##############################################################################
@@ -76,38 +76,32 @@ class box_dialog_files:
     def __init__(self, filesDefault='path',
                  extension='*', title='Open files'):
         import os.path
-        from PyQt6.QtWidgets import QFileDialog, QApplication
+        from PyQt5.QtWidgets import QApplication
+        from PyQt5.Qt import QFileDialog
 
         app = QApplication.instance()
         if app is None:
             app = QApplication([])
 
         self.filesSource = []
-        filesExists = False
-        # for lf in filesDefault:
-        #     if os.path.exists(lf):
-        #         filesExists = True
-        #     else:
-        #         filesExists = False
-        #         break
+
         dirdefault = ''
         if os.path.exists(filesDefault):
             dirdefault = os.path.dirname(filesDefault)
-        filesCh = QFileDialog.getOpenFileNames(
-                            None,
-                            title,
-                            dirdefault,
-                            extension,
-                            None,
-                            QFileDialog.Option.DontUseNativeDialog)
+        filesCh = QFileDialog.getOpenFileNames(None,
+                                               title,
+                                               dirdefault,
+                                               extension,
+                                               None,
+                                               QFileDialog.DontUseNativeDialog)
         if filesCh[0]:
             self.filesSource = filesCh[0]
         self.nb = len(self.filesSource)
 
-    def filesPath(self: 'list_path'):
+    def filesPath(self) -> list[None]:
         return self.filesSource
 
-    def numberOfFiles(self: 'int'):
+    def numberOfFiles(self) -> int:
         return self.nb
 
 ##############################################################################
@@ -129,7 +123,7 @@ class box_dialog_directory:
     """
     def __init__(self, RepDefault='path', title='Select a directory'):
         import os.path
-        from PyQt6.QtWidgets import QFileDialog, QApplication
+        from PyQt5.QtWidgets import QFileDialog, QApplication
 
         app = QApplication.instance()
         if app is None:
@@ -140,7 +134,7 @@ class box_dialog_directory:
             dirdefault = os.path.dirname(RepDefault)
         self.repChosen = QFileDialog.getExistingDirectory(None, title, dirdefault)
 
-    def filePath(self: 'path'):
+    def filePath(self) -> None:
         return self.repChosen
 
 ##############################################################################
@@ -166,7 +160,7 @@ class copy_file():
         if dest_file != src_file:
             self.cf = copy2(src_file, dest_file)
 
-    def copied_file(self: 'path'):
+    def copied_file(self) -> None:
         return self.cf
 
 ##############################################################################
@@ -180,7 +174,7 @@ class create_directory:
             os.makedirs(dir_in)
         self.dir_out = dir_in
 
-    def out_dir(self: 'path'):
+    def out_dir(self) -> None:
         return self.dir_out
 
 ##############################################################################
@@ -202,7 +196,7 @@ class create_directory_recursive:
             os.makedirs(path)
         self.dir_out = path
 
-    def out_dir(self: 'path'):
+    def out_dir(self) -> None:
         return self.dir_out
 
 ##############################################################################
@@ -292,7 +286,7 @@ class filter_directory_files_pattern:
                 if file not in pattern.strip():
                     self.outfiles.append(os.path.join(directory, file))
 
-    def output_filtered_files(self: 'list_path'):
+    def output_filtered_files(self) -> list[None]:
         return self.outfiles
 
 ##############################################################################
@@ -331,7 +325,7 @@ class filter_input_files_pattern:
                 if file not in pattern.strip():
                     self.outfiles.append(filePath)
 
-    def output_filtered_files(self: 'list_path'):
+    def output_filtered_files(self) -> list[None]:
         return self.outfiles
 
 ##############################################################################
@@ -345,7 +339,7 @@ class filter_files_extension:
             if filePath.endswith(tuple(extension.split(' '))):
                 self.outfiles.append(filePath)
 
-    def output_filtered_files(self: 'list_path'):
+    def output_filtered_files(self) -> list[None]:
         return self.outfiles
 
 ##############################################################################
@@ -360,7 +354,7 @@ class filter_directory_files_extension:
             if filePath.endswith(tuple(extension.split(' '))):
                 self.outfiles.append(filePath)
 
-    def output_filtered_files(self: 'list_path'):
+    def output_filtered_files(self) -> list[None]:
         return self.outfiles
 
 ##############################################################################
@@ -390,7 +384,7 @@ class list_files_in_directory:
                 else:
                     self.lstfiles = [f for f in glob.glob(os.path.join(RepDefault, filter)) if os.path.isfile(f)]
 
-    def listFiles(self: 'list_path'):
+    def listFiles(self) -> list[None]:
         return self.lstfiles
 
 ##############################################################################
@@ -405,7 +399,7 @@ class list_directories_in_directory:
             if os.path.isdir(RepDefault):
                 self.lstdir = [f for f in glob.glob(RepDefault + "/*") if os.path.isdir(f)]
 
-    def listDirectories(self: 'list_path'):
+    def listDirectories(self) -> list[None]:
         return self.lstdir
 
 ##############################################################################
@@ -425,7 +419,7 @@ class move_files:
                 shutil.move(lst, tmp)
                 self.listfiles_moved.append(tmp)
 
-    def outfiles_moved(self: 'list_path'):
+    def outfiles_moved(self) -> list[None]:
         return self.listfiles_moved
 
 ##############################################################################
@@ -435,7 +429,7 @@ class numberOfFiles():
     def __init__(self, list_files=['path']):
         self.nb = len(list_files)
 
-    def number_files(self: 'int'):
+    def number_files(self) -> int:
         return self.nb
 
 ##############################################################################
@@ -445,11 +439,11 @@ class rename_file:
     def __init__(self, file_origin='path', file_new_name=''):
         import shutil
         import os
-        dir = os.path.dirname(file_origin)
-        self.outfile_new = os.path.join(dir, file_new_name)
+        dirt = os.path.dirname(file_origin)
+        self.outfile_new = os.path.join(dirt, file_new_name)
         shutil.move(file_origin, self.outfile_new)
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.outfile_new
 
 ##############################################################################
@@ -471,7 +465,7 @@ class rename_file_options:
     def __init__(self, file_origin='path', **options):
         import shutil
         import os
-        dir = os.path.dirname(file_origin)
+        dirt = os.path.dirname(file_origin)
         tmp = os.path.basename(file_origin)
         name = ('.').join(tmp.split('.')[:-1])
         ext = tmp.split('.')[-1]
@@ -482,13 +476,13 @@ class rename_file_options:
                 ext = lsfield[-2] + '.' + lsfield[-1]
         if 'add_suffix' in options:
             new_str = options['add_suffix']
-            self.outfile_new = os.path.join(dir, name + new_str + '.'+ext)
+            self.outfile_new = os.path.join(dirt, name + new_str + '.' + ext)
         if 'add_prefix' in options:
             new_str = options['add_prefix']
-            self.outfile_new = os.path.join(dir, new_str + name + '.'+ext)
+            self.outfile_new = os.path.join(dirt, new_str + name + '.' + ext)
         shutil.move(file_origin, self.outfile_new)
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.outfile_new
 
 ##############################################################################
@@ -502,12 +496,12 @@ class search_files:
         self.list_f = []
 
         if recursive:
-            for dir, _, _ in os.walk(directory_path):
-                self.list_f.extend(glob(os.path.join(dir, file_to_find)))
+            for dirt, _, _ in os.walk(directory_path):
+                self.list_f.extend(glob(os.path.join(dirt, file_to_find)))
         else:
             self.list_f.extend(glob(os.path.join(directory_path, file_to_find)))
 
-    def list_files(self: 'list_path'):
+    def list_files(self) -> list[None]:
         return self.list_f
 
 ##############################################################################
@@ -516,12 +510,11 @@ class search_files:
 class get_file_most_recently:
     def __init__(self, files_list=['path']):
         import os
-        import glob
 
         files_list.sort(key=lambda x: os.path.getmtime(x))
         self.lastfile = files_list[-1]
 
-    def lastfile(self: 'path'):
+    def lastfile(self) -> None:
         return self.lastfile
 
 ##############################################################################
@@ -529,7 +522,6 @@ class get_file_most_recently:
 
 class search_files_pattern:
     def __init__(self, list_files=['path'], pattern=''):
-        import re
 
         self.list_f = []
 
@@ -537,7 +529,7 @@ class search_files_pattern:
             if pattern in file:
                 self.list_f.append(file)
 
-    def list_files(self: 'list_path'):
+    def list_files(self) -> list[None]:
         return self.list_f
 
 ##############################################################################
@@ -565,7 +557,7 @@ class search_files_patterns_dyn:
                 if all(re.match(compiled_reg, os.path.basename(file)) for compiled_reg in reg_lst):
                     self.list_f.append(file)
 
-    def list_files(self: 'list_path'):
+    def list_files(self) -> list[None]:
         return self.list_f
 
 ##############################################################################
@@ -591,7 +583,7 @@ class wait_file_exists():
         else:
             raise ValueError("%s isn't a file!" % file_in)
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.out
 
 ##############################################################################
@@ -601,6 +593,6 @@ class get_temporary_folder():
     def __init__(self):
         import tempfile
         self.temp_f = tempfile.gettempdir()
-        
-    def temp_folder(self: 'path'):
+
+    def temp_folder(self) -> None:
         return self.temp_f

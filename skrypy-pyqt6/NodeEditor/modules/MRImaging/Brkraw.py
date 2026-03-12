@@ -16,7 +16,6 @@ class brkraw_tonii():
     """
     def __init__(self, raw_data='path', **options):
         import subprocess
-        import os
         lso = ["brkraw tonii"]
         for ef, ev in options.items():
             lso.append(ef)
@@ -30,7 +29,7 @@ class brkraw_tonii():
         for ln_txt in out_txt:
             print(ln_txt)
             if 'NifTi file is generated' in ln_txt:
-                self.out_list.append(ln_txt[ln_txt.find("[")+1:ln_txt.find("]")] + ".nii.gz")
+                self.out_list.append(ln_txt[ln_txt.find("[") + 1:ln_txt.find("]")] + ".nii.gz")
 
-    def out_files(self: 'list_path'):
+    def out_files(self) -> list[None]:
         return self.out_list

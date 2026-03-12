@@ -9,7 +9,6 @@
 from PyQt6.QtWidgets import QApplication
 import cProfile
 from main import Project_Irmage
-import re
 import sys
 
 

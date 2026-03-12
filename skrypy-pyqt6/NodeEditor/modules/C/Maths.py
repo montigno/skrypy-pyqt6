@@ -20,5 +20,5 @@ class fact:
         cal = load_library('lib_fact.so', path_so)
         self.out = cal.fact(enter_int)
 
-    def factorial(self: 'int'):
+    def factorial(self) -> int:
         return self.out

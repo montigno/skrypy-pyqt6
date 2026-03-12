@@ -3,5 +3,5 @@ class reslice():
         import numpy as np
         self.image = np.transpose(image, order)
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image

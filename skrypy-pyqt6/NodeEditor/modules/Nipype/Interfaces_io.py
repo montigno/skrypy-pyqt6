@@ -18,7 +18,7 @@ class io_S3DataGrabber():
             setattr(s3grab.inputs, ef, options[ef])
         self.res = s3grab.run()
 
-    def outfiles(self: 'list_path'):
+    def outfiles(self) -> list[None]:
         return self.res.outputs.outfiles
 
 ##############################################################################
@@ -38,5 +38,5 @@ class io_DataSink():
             setattr(ds.inputs, ef, options[ef])
         self.res = ds.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

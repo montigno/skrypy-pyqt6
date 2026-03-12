@@ -44,7 +44,7 @@ class function_exponential:
         elif function == 'a*(1-2*c*exp(-bx))':
             self.y = amplitude * (1 - 2 * shift * np.exp(-x / decay))
 
-    def outFonction(self: 'list_float'):
+    def outFonction(self) -> list[float]:
         return self.y
 
 ##############################################################################
@@ -96,7 +96,7 @@ class function_trigonometric:
         elif function == 'arctan(x)':
             self.y = np.arctan(x + angle)
 
-    def outFonction(self: 'list_float'):
+    def outFonction(self) -> list[float]:
         return self.y
 
 ##############################################################################
@@ -130,7 +130,7 @@ class function_multiple:
         elif functions == "cosinus":
             self.y = (amplitude / (div + 1)) * (np.cos(2 * np.pi * frequency * t) + div)
 
-    def outRamp(self: 'list_float'):
+    def outRamp(self) -> list[float]:
         return self.y
 
 ##############################################################################

@@ -14,7 +14,7 @@ class clean_RAM():
             p2.communicate()
             print('RAM cleaning done')
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output
 
 ##############################################################################
@@ -39,5 +39,5 @@ class clean_SWAP():
             p4.communicate()
             print('SWAP cleaning done')
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output

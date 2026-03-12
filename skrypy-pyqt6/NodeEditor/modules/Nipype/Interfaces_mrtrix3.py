@@ -12,10 +12,10 @@ class mrtrix3_DWIDenoise():
             setattr(denoise.inputs, ef, options[ef])
         self.res = denoise.run()
 
-    def noise(self: 'path'):
+    def noise(self) -> None:
         return self.res.outputs.noise
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -37,10 +37,10 @@ class mrtrix3_Tractography():
             setattr(tk.inputs, ef, options[ef])
         self.res = tk.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
-    def out_seeds(self: 'path'):
+    def out_seeds(self) -> None:
         return self.res.outputs.out_seeds
 
 ##############################################################################
@@ -62,7 +62,7 @@ class mrtrix3_DWIExtract():
             setattr(dwiextract.inputs, ef, options[ef])
         self.res = dwiextract.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -84,5 +84,5 @@ class mrtrix3_MRConvert():
             setattr(mrconvert.inputs, ef, options[ef])
         self.res = mrconvert.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

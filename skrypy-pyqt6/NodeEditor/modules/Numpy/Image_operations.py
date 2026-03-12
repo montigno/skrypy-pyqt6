@@ -7,7 +7,7 @@ class addImage_dyn():
         for di in dynamicsInputs:
             self.image = np.add(self.image, np.array(dynamicsInputs[di]))
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
 ###############################################################
@@ -22,7 +22,7 @@ class subtractImage_dyn:
         for di in dynamicsInputs:
             self.image = np.subtract(self.image, np.array(dynamicsInputs[di]))
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
 ###############################################################
@@ -37,7 +37,7 @@ class MultiplyImage_dyn:
         for di in dynamicsInputs:
             self.image = np.multiply(self.image, np.array(dynamicsInputs[di]))
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
 ###############################################################
@@ -52,10 +52,10 @@ class DivideImage_dyn:
             self.image = np.divide(image1, image2)
             for di in dynamicsInputs:
                 self.image = np.divide(self.image, np.array(dynamicsInputs[di]))
-        except Exception as e:
+        except Exception:
             self.image = image1
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
 ###############################################################
@@ -66,7 +66,7 @@ class AbsImage:
         import numpy as np
         self.imageAbs = np.absolute(image)
 
-    def abs_image(self: 'array_float'):
+    def abs_image(self) -> list[list[float]]:
         return self.imageAbs
 
 ###############################################################
@@ -77,7 +77,7 @@ class Invert_image:
         import numpy as np
         self.imageInv = -np.array(image)
 
-    def inv_image(self: 'array_float'):
+    def inv_image(self) -> list[list[float]]:
         return self.imageInv
 
 ###############################################################
@@ -94,9 +94,9 @@ class MaxPool3D:
         for k in range(image_depth):
             for i in range(output_height):
                 for j in range(output_width):
-                    self.pool[i, j, k] = np.max(image[i*stride:i*stride+size_filter, j*stride:j*stride+size_filter, k])
+                    self.pool[i, j, k] = np.max(image[i * stride:i * stride + size_filter, j * stride:j * stride + size_filter, k])
 
-    def out_maxpool(self: 'array_float'):
+    def out_maxpool(self) -> list[list[float]]:
         return self.pool
 
 ###############################################################
@@ -109,7 +109,7 @@ class min_max_normalization:
         self.new_img = self.new_img.astype(np.float32)
         min_val = np.min(self.new_img)
         max_val = np.max(self.new_img)
-        self.new_img = (np.asarray(self.new_img).astype(np.float32) - min_val)/(max_val-min_val)
+        self.new_img = (np.asarray(self.new_img).astype(np.float32) - min_val) / (max_val - min_val)
 
-    def image_normalized(self: 'array_float'):
+    def image_normalized(self) -> list[list[float]]:
         return self.new_img

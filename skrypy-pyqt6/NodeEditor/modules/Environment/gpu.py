@@ -6,5 +6,5 @@ class gpu_available():
         else:
             self.gpu_av = False
 
-    def gpu_available(self: 'bool'):
+    def gpu_available(self) -> bool:
         return self.gpu_av

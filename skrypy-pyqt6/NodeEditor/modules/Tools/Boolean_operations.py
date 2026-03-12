@@ -15,7 +15,7 @@ class x_Greater_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x > y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -38,7 +38,7 @@ class x_Equal_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x == y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -61,7 +61,7 @@ class x_Less_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x < y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -84,7 +84,7 @@ class x_Not_Equal_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x != y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -107,7 +107,7 @@ class x_GreaterOrEqual_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x >= y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -130,7 +130,7 @@ class x_LessOrEqual_y:
     def __init__(self, x=0.0, y=0.0):
         self.res = x <= y
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -152,7 +152,7 @@ class x_is_None:
     def __init__(self, x=0):
         self.res = x is None
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -177,7 +177,7 @@ class x_Equal_y_dyn:
         for di in dynamicsInputs:
             self.res = self.res and y == dynamicsInputs[di]
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -199,7 +199,7 @@ class all_iterable:
     def __init__(self, list_bool=[True]):
         self.res = all(list_bool)
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -221,7 +221,7 @@ class any_iterable:
     def __init__(self, list_bool=[True]):
         self.res = any(list_bool)
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -233,7 +233,7 @@ class AND_dyn:
         for di in dynamicsInputs:
             self.res = self.res and dynamicsInputs[di]
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -245,7 +245,7 @@ class OR_dyn:
         for di in dynamicsInputs:
             self.res = self.res or dynamicsInputs[di]
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -255,7 +255,7 @@ class NOT:
     def __init__(self, bool_in=True):
         self.res = not bool_in
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################
@@ -282,7 +282,7 @@ class isinstance_var:
         else:
             self.res = isinstance(var, type_compare)
 
-    def out(self: 'bool'):
+    def out(self) -> bool:
         return self.res
 
 ###############################################################################

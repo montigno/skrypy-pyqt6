@@ -2,7 +2,8 @@ class skimage_contour():
     def __init__(self):
         import numpy as np
         import matplotlib.pyplot as plt
-        from skimage import data, img_as_float
+        from skimage import data
+        from skimage.util import img_as_float
         from skimage.segmentation import (morphological_chan_vese,
                                           morphological_geodesic_active_contour,
                                           inverse_gaussian_gradient,
@@ -105,7 +106,7 @@ class skimage_contour_2():
 
         # Display the image and plot the contour
         fig, ax = plt.subplots()
-        ax.imshow(r, interpolation="nearest", cmap=plt.cm.gray)
+        ax.imshow(r, interpolation="nearest", cmap=plt.gray)
         X, Y = ax.get_xlim(), ax.get_ylim()
         ax.step(contour.T[1], contour.T[0], linewidth=2, c="r")
         ax.set_xlim(X), ax.set_ylim(Y)

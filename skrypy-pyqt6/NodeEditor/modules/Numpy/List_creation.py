@@ -44,7 +44,7 @@ class numpy_arange():
         import numpy as np
         self.arange = np.arange(start, stop, step, **options)
 
-    def arange(self: 'list_float'):
+    def arange(self) -> list[float]:
         return self.arange
 
 ##############################################################################

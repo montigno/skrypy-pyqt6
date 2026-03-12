@@ -9,7 +9,7 @@ class spm_ApplyTransform():
             setattr(applymat.inputs, ef, options[ef])
         self.res.run()
 
-    def mesh_file(self: 'path'):
+    def mesh_file(self) -> None:
         return self.res.outputs.out_file
 
 ##################################################################
@@ -31,10 +31,10 @@ class spm_Coregister():
             setattr(coreg.inputs, ef, options[ef])
         self.res = coreg.run()
 
-    def coregistered_source(self: 'list_path'):
+    def coregistered_source(self) -> list[None]:
         return self.res.outputs.coregistered_source
 
-    def coregistered_files(self: 'list_path'):
+    def coregistered_files(self) -> list[None]:
         return self.res.outputs.coregistered_files
 
 ##################################################################
@@ -58,13 +58,13 @@ class spm_Normalize():
             setattr(norm.inputs, ef, options[ef])
         self.res = norm.run()
 
-    def normalization_parameters(self: 'path'):
+    def normalization_parameters(self) -> None:
         return self.res.outputs.normalization_parameters
 
-    def normalized_files(self: 'path'):
+    def normalized_files(self) -> None:
         return self.res.outputs.normalized_files
 
-    def normalized_source(self: 'path'):
+    def normalized_source(self) -> None:
         return self.res.outputs.normalized_source
 
 ##################################################################
@@ -81,13 +81,13 @@ class spm_Normalize12():
             setattr(norm12.inputs, ef, options[ef])
         self.res = norm12.run()
 
-    def deformation_field(self: 'path'):
+    def deformation_field(self) -> None:
         return self.res.outputs.deformation_field
 
-    def normalized_files(self: 'path'):
+    def normalized_files(self) -> None:
         return self.res.outputs.normalized_files
 
-    def normalized_image(self: 'path'):
+    def normalized_image(self) -> None:
         return self.res.outputs.normalized_image
 
 ##################################################################
@@ -108,31 +108,31 @@ class spm_NewSegment():
             setattr(seg.inputs, ef, options[ef])
         self.res = seg.run()
 
-    def native_class_images(self: 'array_path'):
+    def native_class_images(self) -> list[list[None]]:
         return self.res.outputs.native_class_images
 
-    def forward_deformation_field(self: 'list_path'):
+    def forward_deformation_field(self) -> list[None]:
         return self.res.outputs.forward_deformation_field
 
-    def dartel_input_images(self: 'array_path'):
+    def dartel_input_images(self) -> list[list[None]]:
         return self.res.outputs.dartel_input_images
 
-    def inverse_deformation_field(self: 'list_path'):
+    def inverse_deformation_field(self) -> list[None]:
         return self.res.outputs.inverse_deformation_field
 
-    def bias_field_images(self: 'list_path'):
+    def bias_field_images(self) -> list[None]:
         return self.res.outputs.bias_field_images
 
-    def normalized_class_images(self: 'array_path'):
+    def normalized_class_images(self) -> list[list[None]]:
         return self.res.outputs.normalized_class_images
 
-    def transformation_mat(self: 'list_path'):
+    def transformation_mat(self) -> list[None]:
         return self.res.outputs.inverse_transformation_mat
 
-    def modulated_class_images(self: 'array_path'):
+    def modulated_class_images(self) -> list[list[None]]:
         return self.res.outputs.modulated_class_images
 
-    def bias_corrected_images(self: 'list_path'):
+    def bias_corrected_images(self) -> list[None]:
         return self.res.outputs.bias_corrected_images
 
 ##################################################################
@@ -147,16 +147,16 @@ class spm_Realign():
             setattr(realign.inputs, ef, options[ef])
         self.res = realign.run()
 
-    def mean_image(self: 'path'):
+    def mean_image(self) -> None:
         return self.res.outputs.mean_image
 
-    def modified_in_files(self: 'list_path'):
+    def modified_in_files(self) -> list[None]:
         return self.res.outputs.modified_in_files
 
-    def realigned_files(self: 'list_path'):
+    def realigned_files(self) -> list[None]:
         return self.res.outputs.realigned_files
 
-    def realignment_parameters(self: 'path'):
+    def realignment_parameters(self) -> None:
         return self.res.outputs.realignment_parameters
 
 ##################################################################
@@ -171,7 +171,7 @@ class spm_Reslice():
             setattr(reslice.inputs, ef, options[ef])
         self.res = reslice.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##################################################################
@@ -186,7 +186,7 @@ class spm_ResliceToReference():
             setattr(r2ref.inputs, ef, options[ef])
         self.res = r2ref.run()
 
-    def out_files(self: 'list_path'):
+    def out_files(self) -> list[None]:
         return self.res.outputs.out_file
 
 ##################################################################
@@ -201,43 +201,43 @@ class spm_Segment():
             setattr(seg.inputs, ef, options[ef])
         self.res = seg.run()
 
-    def native_gm_image(self: 'path'):
+    def native_gm_image(self) -> None:
         return self.res.outputs.native_gm_image
 
-    def normalized_gm_image(self: 'path'):
+    def normalized_gm_image(self) -> None:
         return self.res.outputs.normalized_gm_image
 
-    def modulated_gm_image(self: 'path'):
+    def modulated_gm_image(self) -> None:
         return self.res.outputs.normalized_gm_image
 
-    def native_wm_image(self: 'path'):
+    def native_wm_image(self) -> None:
         return self.res.outputs.native_wm_image
 
-    def normalized_wm_image(self: 'path'):
+    def normalized_wm_image(self) -> None:
         return self.res.outputs.normalized_wm_image
 
-    def modulated_wm_image(self: 'path'):
+    def modulated_wm_image(self) -> None:
         return self.res.outputs.modulated_wm_image
 
-    def native_csf_image(self: 'path'):
+    def native_csf_image(self) -> None:
         return self.res.outputs.native_csf_image
 
-    def normalized_csf_image(self: 'path'):
+    def normalized_csf_image(self) -> None:
         return self.res.outputs.normalized_csf_image
 
-    def modulated_csf_image(self: 'path'):
+    def modulated_csf_image(self) -> None:
         return self.res.outputs.modulated_csf_image
 
-    def modulated_input_image(self: 'path'):
+    def modulated_input_image(self) -> None:
         return self.res.outputs.modulated_input_image
 
-    def bias_corrected_image(self: 'path'):
+    def bias_corrected_image(self) -> None:
         return self.res.outputs.bias_corrected_image
 
-    def transformation_mat(self: 'path'):
+    def transformation_mat(self) -> None:
         return self.res.outputs.transformation_mat
 
-    def inverse_transformation_mat(self: 'path'):
+    def inverse_transformation_mat(self) -> None:
         return self.res.outputs.inverse_transformation_mat
 
 ##################################################################
@@ -263,7 +263,7 @@ class spm_SliceTiming():
             setattr(st.inputs, ef, options[ef])
         self.res = st.run()
 
-    def timecorrected_files(self: 'list_path'):
+    def timecorrected_files(self) -> list[None]:
         return self.res.outputs.timecorrected_files
 
 ##################################################################
@@ -284,7 +284,7 @@ class spm_Smooth():
             setattr(smooth.inputs, ef, options[ef])
         self.res = smooth.run()
 
-    def smoothed_files(self: 'list_path'):
+    def smoothed_files(self) -> list[None]:
         return self.res.outputs.smoothed_files
 
 ##############################################################################

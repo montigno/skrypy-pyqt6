@@ -5,7 +5,7 @@ class int_list_add_element_dyn:
         for di in dynamicsInputs:
             self.outList.append(dynamicsInputs[di])
 
-    def out_list(self: 'list_int'):
+    def out_list(self) -> list[int]:
         return self.outList
 
 ###############################################################################
@@ -17,7 +17,7 @@ class int_list_extend_dyn():
         for di in dynamicsInputs:
             self.listConcat.append(dynamicsInputs[di].copy())
 
-    def list_concat(self: 'list_int'):
+    def list_concat(self) -> list[int]:
         return self.listConcat
 
 #####################################################################
@@ -27,7 +27,7 @@ class int_list_getElement:
     def __init__(self, list_int_in=[0], index=0):
         self.outVal = list_int_in[index]
 
-    def out_list_indexed(self: 'int'):
+    def out_list_indexed(self) -> int:
         return self.outVal
 
 ###############################################################################
@@ -37,7 +37,7 @@ class int_list_length():
     def __init__(self, list_int_in=[0]):
         self.len = len(list_int_in)
 
-    def length(self: 'int'):
+    def length(self) -> int:
         return self.len
 
 ###############################################################################
@@ -50,22 +50,22 @@ class int_list_operations_dyn():
         self.remain = [0 for i in self.result]
         if operation == 'add':
             for di, vi in dynamicsInputs.items():
-                self.result = [x+y for x, y in zip(self.result, vi)]
+                self.result = [x + y for x, y in zip(self.result, vi)]
         elif operation == 'sub':
             for di, vi in dynamicsInputs.items():
-                self.result = [x-y for x, y in zip(self.result, vi)]
+                self.result = [x - y for x, y in zip(self.result, vi)]
         elif operation == 'mul':
             for di, vi in dynamicsInputs.items():
-                self.result = [x*y for x, y in zip(self.result, vi)]
+                self.result = [x * y for x, y in zip(self.result, vi)]
         elif operation == 'div':
             for di, vi in dynamicsInputs.items():
-                self.remain = [x%y for x, y in zip(self.result, vi)]
-                self.result = [x//y for x, y in zip(self.result, vi)]
+                self.remain = [x % y for x, y in zip(self.result, vi)]
+                self.result = [x // y for x, y in zip(self.result, vi)]
 
-    def out_result(self: 'list_int'):
+    def out_result(self) -> list[int]:
         return self.result
 
-    def out_remainder(self: 'list_int'):
+    def out_remainder(self) -> list[int]:
         return self.remain
 
 ##############################################################################
@@ -75,7 +75,7 @@ class int_list_reverse():
     def __init__(self, list_int_in=[0]):
         self.rev = list(reversed(list_int_in))
 
-    def list_reversed(self: 'list_int'):
+    def list_reversed(self) -> list[int]:
         return self.rev
 
 ##############################################################################
@@ -98,5 +98,5 @@ class int_list_to_float_list():
     def __init__(self, list_int_in=[0]):
         self.outlistfloat = [float(i) for i in list_int_in]
 
-    def outListFloat(self: 'list_float'):
+    def outListFloat(self) -> list[float]:
         return self.outlistfloat

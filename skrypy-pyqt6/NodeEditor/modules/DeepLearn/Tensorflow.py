@@ -3,7 +3,7 @@ class tensorflow_to_numpy():
         import tensorflow as tf
         self.nump = tensor_in.numpy()
 
-    def out_numpy(self: 'array_float'):
+    def out_numpy(self) -> list[list[float]]:
         return self.nump
 
 ###############################################################################
@@ -26,7 +26,7 @@ class tensorflow_gpus_config:
         else:
             self.gpus = ['']
 
-    def gpus_status(self: 'list_str'):
+    def gpus_status(self) -> list[str]:
         return self.gpus
 
 ###############################################################################
@@ -37,5 +37,5 @@ class tensorflow_nn_conv3d():
         import tensorflow as tf
         self.conv = tf.nn.conv3d(input, filters, strides, padding, **options)
 
-    def conv3d(self: 'array_float'):
+    def conv3d(self) -> list[list[float]]:
         return self.conv

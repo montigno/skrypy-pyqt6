@@ -17,7 +17,7 @@ class int_array_to_float_array():
         self.outarrayfloat = np.array(array_int_in)
         self.outarrayfloat = self.outarrayfloat.astype(float)
 
-    def outArrayFloat(self: 'array_float'):
+    def outArrayFloat(self) -> list[list[float]]:
         return self.outarrayfloat.tolist()
 
 

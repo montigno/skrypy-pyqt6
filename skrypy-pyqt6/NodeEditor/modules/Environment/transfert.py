@@ -68,10 +68,10 @@ class scp_transfert():
             if len(self.out_pt) == 1:
                 self.out_pt = self.out_pt[0]
 
-    def out_path(self: 'list_path'):
+    def out_path(self) -> list[None]:
         return self.out_pt
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output
 
 ##############################################################################
@@ -121,7 +121,7 @@ class scp_transfert_via_bastion():
                 dest = "{}:{}".format(host_name, host_path)
                 self.out_pt = os.path.join(host_path, os.path.basename(local_path))
             p1 = Popen(['echo', host_password], stdout=PIPE, stderr=PIPE)
-            
+
             if data_type == 'directory':
                 # cmd = ['sshpass', '-p', host_password, 'scp', '-r', source, dest]
                 cmd_base = ['sshpass', '-p', host_password.strip(), 'scp', '-r']
@@ -141,10 +141,10 @@ class scp_transfert_via_bastion():
             else:
                 print('transfert error !!, code ' + str(p2.returncode))
 
-    def out_path(self: 'path'):
+    def out_path(self) -> None:
         return self.out_pt
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output
 
 ##############################################################################
@@ -212,10 +212,10 @@ class scp_transfert_multifiles():
                 else:
                     print('transfert error !!, code ' + str(p2.returncode))
 
-    def out_path(self: 'path'):
+    def out_path(self) -> None:
         return self.out_pt
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output
 
 ##############################################################################
@@ -245,7 +245,7 @@ class rsync_network():
             p2.wait()
             print('synchronization done')
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output
 
 ##############################################################################
@@ -263,5 +263,5 @@ class rsync_local():
         p2.wait()
         print('synchronization done')
 
-    def stdout(self: 'str'):
+    def stdout(self) -> str:
         return self.output

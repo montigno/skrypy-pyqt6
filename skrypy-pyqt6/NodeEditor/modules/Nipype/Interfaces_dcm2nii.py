@@ -8,17 +8,17 @@ class dcm2nii_Dcm2nii():
             setattr(self.converter.inputs, ef, options[ef])
         self.converter.run()
 
-    def converted_files(self: 'list_path'):
+    def converted_files(self) -> list[None]:
         return self.converter.outputs.converted_files
 
-    def reoriented_files(self: 'list_path'):
+    def reoriented_files(self) -> list[None]:
         return self.converter.outputs.reoriented_files
 
-    def reoriented_and_cropped_files(self: 'list_path'):
+    def reoriented_and_cropped_files(self) -> list[None]:
         return self.converter.outputs.reoriented_and_cropped_files
 
-    def bvecs(self: 'list_path'):
+    def bvecs(self) -> list[None]:
         return self.converter.outputs.bvecs
 
-    def bvals(self: 'list_path'):
+    def bvals(self) -> list[None]:
         return self.converter.outputs.bvals

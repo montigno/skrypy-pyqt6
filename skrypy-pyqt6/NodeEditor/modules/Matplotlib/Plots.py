@@ -1,7 +1,7 @@
 class matplotlib_plot():
     def __init__(self, y_data=[0.0], x=[0.0], **options):
         import matplotlib.pyplot as plt
-        from PyQt6.QtWidgets import QApplication
+        from PyQt5.QtWidgets import QApplication
 
         app = QApplication.instance()
         if app is not None:
@@ -32,7 +32,7 @@ class matplotlib_plot():
         if 'window_title' in options.keys():
             plt.get_current_fig_manager().set_window_title(options['window_title'])
         plt.tight_layout()
-        plt.show()
+        plt.show(block=False)
 
 ##############################################################################
 
@@ -40,7 +40,7 @@ class matplotlib_plot():
 class matplotlib_multiple_curves():
     def __init__(self, y_data=[[0.0]], x=[[0.0]], **options):
         import matplotlib.pyplot as plt
-        from PyQt6.QtWidgets import QApplication
+        from PyQt5.QtWidgets import QApplication
 
         app = QApplication.instance()
         if app is not None:
@@ -81,7 +81,7 @@ class matplotlib_multiple_curves():
         if 'window_title' in options.keys():
             plt.get_current_fig_manager().set_window_title(options['window_title'])
         plt.tight_layout()
-        plt.show()
+        plt.show(block=False)
 
 ##############################################################################
 
@@ -89,7 +89,7 @@ class matplotlib_multiple_curves():
 class matplotlib_multiple_plots():
     def __init__(self, y_data=[[0.0]], x=[[0.0]], **options):
         import matplotlib.pyplot as plt
-        from PyQt6.QtWidgets import QApplication
+        from PyQt5.QtWidgets import QApplication
 
         app = QApplication.instance()
         if app is not None:
@@ -126,4 +126,4 @@ class matplotlib_multiple_plots():
         if 'window_title' in options.keys():
             plt.get_current_fig_manager().set_window_title(options['window_title'])
         plt.tight_layout()
-        plt.show()
+        plt.show(block=False)

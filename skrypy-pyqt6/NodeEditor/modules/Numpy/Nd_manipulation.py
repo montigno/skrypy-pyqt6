@@ -5,7 +5,7 @@ class numpy_append_dyn():
         for di in dynamicsInputs:
             self.res = np.append(self.res, dynamicsInputs[di])
 
-    def res(self: 'list_float'):
+    def res(self) -> list[float]:
         return self.res
 
 ##############################################################################
@@ -16,7 +16,7 @@ class numpy_arange():
         import numpy as np
         self.res = np.arange(x[0], x[1])
 
-    def res(self: 'list_int'):
+    def res(self) -> list[int]:
         return self.res
 
 ##############################################################################
@@ -27,7 +27,7 @@ class numpy_interp():
         import numpy as np
         self.value = np.interp(x, xp, yp)
 
-    def value_out(self: 'float'):
+    def value_out(self) -> float:
         return self.value
 
 ##############################################################################
@@ -38,7 +38,7 @@ class numpy_transpose():
         import numpy as np
         self.p = np.transpose(a)
 
-    def np_transpose(self: 'array_float'):
+    def np_transpose(self) -> list[list[float]]:
         return self.p
 
 ##############################################################################
@@ -105,14 +105,14 @@ class numpy_unique():
             elif (self.counts):
                 self.unique, self.counts = self.unique
 
-    def np_unique(self: 'array_float'):
+    def np_unique(self) -> list[list[float]]:
         return self.unique
 
-    def np_indices(self: 'array_float'):
+    def np_indices(self) -> list[list[float]]:
         return self.indices
 
-    def np_inverse(self: 'array_float'):
+    def np_inverse(self) -> list[list[float]]:
         return self.inverse
 
-    def np_counts(self: 'array_float'):
+    def np_counts(self) -> list[list[float]]:
         return self.counts

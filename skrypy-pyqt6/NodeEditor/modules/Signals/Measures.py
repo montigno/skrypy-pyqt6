@@ -7,5 +7,5 @@ class signal_rms():
         ms = ms / len(y)
         self.__rms = math.sqrt(ms)
 
-    def rms(self: 'float'):
+    def rms(self) -> float:
         return self.__rms

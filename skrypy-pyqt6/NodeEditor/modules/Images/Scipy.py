@@ -4,7 +4,7 @@ class scipy_binary_opening:
         import numpy as np
         self.img_op = ndimage.binary_opening(np.array(image), **options)
 
-    def image_opening(self: 'array_float'):
+    def image_opening(self) -> list[list[float]]:
         return self.img_op
 
 ###############################################################################
@@ -16,7 +16,7 @@ class scipy_binary_closing:
         import numpy as np
         self.img_cl = ndimage.binary_closing(np.array(image), **options)
 
-    def image_closing(self: 'array_float'):
+    def image_closing(self) -> list[list[float]]:
         return self.img_cl
 
 ###############################################################################
@@ -28,7 +28,7 @@ class scipy_binary_propagation:
         import numpy as np
         self.img_pr = ndimage.binary_propagation(np.array(image), **options)
 
-    def image_propagation(self: 'array_float'):
+    def image_propagation(self) -> list[list[float]]:
         return self.img_pr
 
 ###############################################################################
@@ -40,7 +40,7 @@ class scipy_binary_fill_holes:
         import numpy as np
         self.img_fh = ndimage.binary_fill_holes(np.array(image), **options)
 
-    def image_holes_filled(self: 'array_float'):
+    def image_holes_filled(self) -> list[list[float]]:
         return self.img_fh
 
 ##############################################################################
@@ -71,7 +71,7 @@ class scipy_convolve2d():
                     for sl3 in range(image.shape[4]):
                         self.img[:, :, sl1, sl2, sl3] = signal.convolve2d(img[:, :, sl1, sl2, sl3], kern, **options)
 
-    def Convol2d(self: 'array_float'):
+    def Convol2d(self) -> list[list[float]]:
         return self.img
 
 ##############################################################################
@@ -93,7 +93,7 @@ class scipy_convolve3d():
 
         self.img = out
 
-    def Convol3d(self: 'array_float'):
+    def Convol3d(self) -> list[list[float]]:
         return self.img
 
 ##############################################################################
@@ -104,7 +104,7 @@ class scipy_fft():
         from scipy import fft
         self.y = fft(x)
 
-    def fft(self: 'list_float'):
+    def fft(self) -> list[float]:
         return self.y
 
 ##############################################################################
@@ -115,7 +115,7 @@ class scipy_filter_Sobel():
         from scipy import ndimage
         self.ax = ndimage.sobel(image, **options)
 
-    def Sobel(self: 'array_float'):
+    def Sobel(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -126,7 +126,7 @@ class scipy_filter_Prewitt():
         from scipy import ndimage
         self.ax = ndimage.prewitt(image, **options)
 
-    def Prewitt(self: 'array_float'):
+    def Prewitt(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -137,7 +137,7 @@ class scipy_filter_Median():
         from scipy import ndimage
         self.ax = ndimage.median_filter(image, size, **options)
 
-    def Median(self: 'array_float'):
+    def Median(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -148,7 +148,7 @@ class scipy_filter_Laplace():
         from scipy import ndimage
         self.ax = ndimage.laplace(image, **options)
 
-    def Laplace(self: 'array_float'):
+    def Laplace(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -159,7 +159,7 @@ class scipy_filter_Gaussian():
         from scipy import ndimage
         self.ax = ndimage.gaussian_filter(image, sigma=sigma, **options)
 
-    def Gaussian(self: 'array_float'):
+    def Gaussian(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -170,7 +170,7 @@ class scipy_filter_Gaussian_laplace():
         from scipy import ndimage
         self.ax = ndimage.gaussian_laplace(image, sigma=sigma, **options)
 
-    def Gaussian(self: 'array_float'):
+    def Gaussian(self) -> list[list[float]]:
         return self.ax
 
 ##############################################################################
@@ -181,5 +181,5 @@ class scipy_rotate():
         from scipy import ndimage
         self.rot_img = ndimage.rotate(image, angle)
 
-    def rotate_img(self: 'array_float'):
+    def rotate_img(self) -> list[list[float]]:
         return self.rot_img

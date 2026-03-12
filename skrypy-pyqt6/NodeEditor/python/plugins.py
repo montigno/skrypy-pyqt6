@@ -1,7 +1,6 @@
 import importlib
 import inspect
 import os
-import sys
 
 
 class Plugin():
@@ -12,14 +11,14 @@ class Plugin():
 
     def plugins_load(self):
         list_imp = {}
-        for (dirpath, dirs, files) in os.walk(self.path):
+        for (_, _, files) in os.walk(self.path):
             for file in files:
                 (name, ext) = os.path.splitext(file)
                 if ext == ".py" and name != '__init__':
                     filePy = 'Plugins' + '.' + str(name)
                     imp = importlib.import_module(filePy)
                     importlib.reload(imp)
-                    for nameClass, obj in inspect.getmembers(imp):
+                    for _, obj in inspect.getmembers(imp):
                         if inspect.isclass(obj):
                             if obj.__name__.lower() in imp.__name__.lower():
                                 list_imp[obj.__name__] = imp.__name__

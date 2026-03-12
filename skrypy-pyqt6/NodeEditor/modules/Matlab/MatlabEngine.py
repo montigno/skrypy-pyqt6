@@ -3,7 +3,7 @@ class start_matlab():
         import matlab.engine
         self.eng = matlab.engine.start_matlab(option)
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.eng
 
 ##############################################################################

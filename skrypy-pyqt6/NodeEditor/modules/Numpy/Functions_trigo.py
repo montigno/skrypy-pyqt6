@@ -13,7 +13,7 @@ class numpy_trigonometry():
             if angle_type == 'degree':
                 self.reslt = np.rad2deg(self.reslt)
 
-    def res(self: 'float'):
+    def res(self) -> float:
         return self.reslt
 
 ##############################################################################
@@ -24,7 +24,7 @@ class numpy_sinc():
         import numpy as np
         self.sc = np.sinc(x)
 
-    def sinc(self: 'list_float'):
+    def sinc(self) -> list[float]:
         return self.sc
 
 ##############################################################################

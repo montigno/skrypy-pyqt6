@@ -208,10 +208,10 @@ class execution2(QObject):
                 MyClass = getattr(module, classes)
                 enters = eval(listBlock[execution][2])
                 enters_name, enters_val, *rs = enters
-                for id, vl in enumerate(enters_val):
+                for idk, vl in enumerate(enters_val):
                     if type(vl).__name__ == 'str':
                         try:
-                            enters_val[id] = listDynamicValue[vl]
+                            enters_val[idk] = listDynamicValue[vl]
                             if vl in listOut:
                                 listOut.remove(vl)
                                 if vl not in listOut and ':in' not in vl:
@@ -280,10 +280,10 @@ class execution2(QObject):
                 Dyn_Enters = {}
                 enters = eval(listModul[execution][2])
                 enters_name, enters_val, *rs = enters
-                for id, vl in enumerate(enters_val):
+                for idk, vl in enumerate(enters_val):
                     if type(vl).__name__ == 'str':
                         try:
-                            enters_val[id] = listDynamicValue[vl]
+                            enters_val[idk] = listDynamicValue[vl]
                         except Exception as err:
                             pass
                         # try:
@@ -729,12 +729,11 @@ class ThreadClass(threading.Thread):
             a = self.classs()
         if self.outp:
             for el in self.outp:
-                unit = el[0:el.index(':')]
                 val = el[el.index(':') + 1:len(el)]
                 value = getattr(a, val)
                 try:
                     self._return[el] = value()
-                except Exception as e:
+                except Exception:
                     self._return[el] = value
 
     def join(self, *args):
@@ -787,12 +786,12 @@ class ThreadSubMod(threading.Thread):
 class Data_analyse():
 
     def __init__(self, item, data_out):
-        type = DefinitType(data_out).returntype()
+        dftype = DefinitType(data_out).returntype()
 
-        if 'list' not in type and 'array' not in type and 'ndarray' not in type:
-            print(item, type, data_out)
+        if 'list' not in dftype and 'array' not in dftype and 'ndarray' not in dftype:
+            print(item, dftype, data_out)
         else:
-            if 'ndarray' in type:
-                print(item, type, data_out.shape)
+            if 'ndarray' in dftype:
+                print(item, dftype, data_out.shape)
             else:
-                print(item, type, len(data_out))
+                print(item, dftype, len(data_out))

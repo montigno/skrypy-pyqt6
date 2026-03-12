@@ -6,7 +6,7 @@
 # for details.
 ##########################################################################
 
-from tools import GetValueInBrackets, ReorderList, eval_type
+from NodeEditor.ssh.tools import GetValueInBrackets, ReorderList, eval_type
 import ast
 import os
 
@@ -29,9 +29,6 @@ class analyze2:
         self.listCt, self.listBl, self.listSm = {}, {}, {}
         self.listPr, self.listSt, self.list_loop_recursive = {}, {}, {}
         self.interlinks_node = {}
-        insource = False
-        tmpKeyScript = ''
-        tmpValScript = ''
 
         for line in self.diagram:
             if line[0:5] == 'probe' and 'RectF' in line:
@@ -85,8 +82,8 @@ class analyze2:
 
             elif line[0:6] == 'script' and "RectF" in line:
                 args = ["script", "title", "inputs", "outputs", "code", "RectF"]
-                unit, tit, inp, outp, code, pos = GetValueInBrackets(line, args).getValues()
-                inp, outp = "["+inp+"]", "["+outp+"]"
+                unit, _, inp, outp, _, pos = GetValueInBrackets(line, args).getValues()
+                inp, outp = "[" + inp + "]", "[" + outp + "]"
                 listIt.append(unit)
 
             elif line[0:4] == 'link' and 'node' in line:
@@ -105,7 +102,7 @@ class analyze2:
 
             elif line[0:8] == 'constant' and 'RectF' in line:
                 args = ["constant", "value", "format", "label", "RectF"]
-                unit, vout, fort, lab, pos = GetValueInBrackets(line, args).getValues()
+                unit, vout, fort, _, pos = GetValueInBrackets(line, args).getValues()
                 if fort == 'list_str':
                     vout = eval(vout)
                     tmp = []
@@ -122,7 +119,7 @@ class analyze2:
 
             elif line[0:7] == 'cluster' and 'RectF' in line:
                 args = ["cluster", "value", "format", "label", "RectF"]
-                unit, vout, fort, lab, pos = GetValueInBrackets(line, args).getValues()
+                unit, vout, fort, _, pos = GetValueInBrackets(line, args).getValues()
                 vout = eval_type(vout, fort).getVout()
                 self.listCt[unit] = (vout, fort)
 
@@ -151,7 +148,7 @@ class analyze2:
 
     def assign_variables(self):
         for klan, vlan in self.listNd.items():
-            tmp_klan = 'Node('+klan+')'
+            tmp_klan = 'Node(' + klan + ')'
             if 'U' in vlan[2] or 'M' in vlan[2]:
                 if 'A' in vlan[0]:
                     tmp_val = self.listCt[vlan[0]][0]
@@ -199,7 +196,7 @@ class analyze2:
     def connection_loopfor(self, unit):
 
         tunnel_in, tunnel_out = [], []
-        for klan, vlan in self.listNd.items():
+        for _, vlan in self.listNd.items():
             if unit == vlan[2]:
                 if 'A' in vlan[0]:
                     if 'in' in vlan[3]:
@@ -242,7 +239,7 @@ class analyze2:
 
             startBlocks, endBlocks, centralBlocks = [], [], []
 
-            for key_Nd, val_Nd in listNd.items():
+            for _, val_Nd in listNd.items():
                 if 'A' in val_Nd[0] or 'C' in val_Nd[0]:
                     pass
                 elif 'C' in val_Nd[2]:
@@ -329,7 +326,7 @@ class analyze2:
             tasks_list.extend(startBlocks)
 
             if len(centralBlocks) > 1:
-                for key_Nd, val_Nd in listNd.items():
+                for _, val_Nd in listNd.items():
                     if 'A' not in val_Nd[0] and 'C' not in val_Nd[0] and val_Nd[0] != val_Nd[2]:
                         if val_Nd[0] in startBlocks or val_Nd[0] in centralBlocks:
                             if val_Nd[2] in centralBlocks:
@@ -376,7 +373,7 @@ class analyze2:
         tasks_list = [x for x in tasks_list if "N" not in x]
 
         outs_list = []
-        for klan, vlan in self.listNd.items():
+        for _, vlan in self.listNd.items():
             if 'F' not in vlan[0] and 'I' not in vlan[0]:
                 if vlan[0] in tasks_list:
                     outs_list.append(vlan[0] + ':' + vlan[1])
@@ -399,7 +396,7 @@ class analyze2:
             if 'U' in lst or 'P' in lst:
                 try:
                     dict_bl[lst] = self.listBl[lst]
-                except Exception as err:
+                except Exception:
                     dict_bl[lst] = self.listPr[lst]
             if 'M' in lst:
                 dict_sm[lst] = self.listBl[lst]
@@ -420,7 +417,7 @@ class analyze2:
                 self.textExecution += ('[loopfor {}]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_loopfor(lst_bl)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+": ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + ": ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'
@@ -439,7 +436,7 @@ class analyze2:
                 self.textExecution += ('[loopif {} True]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_if(lst_bl, tmp_it)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+" True: ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + " True: ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'
@@ -458,7 +455,7 @@ class analyze2:
                 self.textExecution += ('[loopif {} False]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_if(lst_bl, tmp_it)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+" False: ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + " False: ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'
@@ -475,10 +472,10 @@ class analyze2:
             listConnctIn = ast.literal_eval(txt_splitline[0])
             listConnctOut = ast.literal_eval(txt_splitline[5])
             list_in_out = eval(self.listBl[k_Sm][2])
-            for input in list_in_out[0]:
-                idx = [listConnctIn.index(x) for x in listConnctIn if input in x][0]
+            for inp in list_in_out[0]:
+                idx = [listConnctIn.index(x) for x in listConnctIn if inp in x][0]
                 listConnctIn[idx] = listConnctIn[idx] + str(list_in_out[1][idx])
-            for i, ouput in enumerate(listConnctOut):
+            for i, _ in enumerate(listConnctOut):
                 listConnctOut[i] = k_Sm + listConnctOut[i][listConnctOut[i].index(':'):]
             txt_submod += '[submod {}]\n'.format(k_Sm)
             txt_submod += str(listConnctIn) + '\n'
@@ -489,7 +486,7 @@ class analyze2:
     def get_inter_link(self):
         list_outs_inter = []
         list_blocks_loop_interconnected = {}
-        for klan, vlan in self.listNd.items():
+        for _, vlan in self.listNd.items():
             # print('klan, vlan : ', klan, vlan)
             # if ('A' not in vlan[0] and
             #     'F' not in vlan[0] and
@@ -503,7 +500,7 @@ class analyze2:
                             try:
                                 if elem not in self.list_loop_recursive[kfor]:
                                     self.list_loop_recursive[kfor].append(elem)
-                            except Exception as err:
+                            except Exception:
                                 self.list_loop_recursive[kfor] = [elem]
                     if vlan[0] in vfor[3] and vlan[2] in vfor[3]:
                         pass
@@ -524,7 +521,7 @@ class analyze2:
                             try:
                                 if elem not in self.list_loop_recursive[kfor]:
                                     self.list_loop_recursive[kfor].append(elem)
-                            except Exception as err:
+                            except Exception:
                                 self.list_loop_recursive[kfor] = [elem]
                     if vlan[0] in vfor[0] and vlan[2] not in vfor[3]:
                         list_outs_inter.append(vlan[0] + ':' + vlan[1])

@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QSize, Qt, pyqtSignal
-from PyQt6.QtGui import QIcon, QColor
-from PyQt6.QtWidgets import (QApplication, QGridLayout, QPushButton,
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import (QGridLayout, QPushButton,
                              QWidget, QLabel, QVBoxLayout, QFrame, QSizePolicy)
 
 
@@ -62,7 +62,7 @@ class buildLibrary(QWidget):
                         # vbox.addWidget(Separator)
                     # vbox.insertSpacing(50, 5)
                     glayout.addLayout(vbox, i, j)
-                except Exception as err:
+                except Exception:
                     pass
         self.setFixedHeight(row_number*100)
         self.setLayout(glayout)

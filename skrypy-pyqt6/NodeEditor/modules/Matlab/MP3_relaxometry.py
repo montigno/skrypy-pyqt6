@@ -15,10 +15,10 @@ class MP3_DeltaR2():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -41,10 +41,10 @@ class MP3_DeltaR2Star():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -65,10 +65,10 @@ class MP3_Fit_T2_T2star():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -85,10 +85,10 @@ class MP3_MGE2Dfrom3D():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -105,10 +105,10 @@ class MP3_Slice_Sum():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -125,10 +125,10 @@ class MP3_T1map_MIT():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -149,10 +149,10 @@ class MP3_T1map_MultiAngles():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -188,10 +188,10 @@ class MP3_T2map():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################

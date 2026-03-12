@@ -3,7 +3,7 @@ class skimage_active_contour():
         from skimage.segmentation import active_contour
         self.a = active_contour(image, snake, **options)
 
-    def act_contour(self: 'array_float'):
+    def act_contour(self) -> list[list[float]]:
         return self.a
 
 ##############################################################################
@@ -14,7 +14,7 @@ class skimage_ball:
         from skimage.morphology import ball
         self.ball = ball(radius)
 
-    def sk_ball(self: 'array_float'):
+    def sk_ball(self) -> list[list[float]]:
         return self.ball
 
 ##############################################################################
@@ -39,7 +39,7 @@ class skimage_Canny_Edge():
                     for sl3 in range(image.shape[4]):
                         self.img[:, :, sl1, sl2, sl3] = feature.canny(self.img[:, :, sl1, sl2, sl3], **options)
 
-    def canny_edge(self: 'array_float'):
+    def canny_edge(self) -> list[list[float]]:
         return self.img
 
 ##############################################################################
@@ -51,7 +51,7 @@ class skimage_closing:
         import numpy as np
         self.cl = closing(np.array(image), **options)
 
-    def sk_closing(self: 'array_float'):
+    def sk_closing(self) -> list[list[float]]:
         return self.cl
 
 ##############################################################################
@@ -81,7 +81,7 @@ class skimage_convex_hull_image:
         import numpy as np
         self.ch = convex_hull_image(image, **options)
 
-    def sk_convex(self: 'array_bool'):
+    def sk_convex(self) -> list[list[bool]]:
         return self.ch
 
 ##############################################################################
@@ -95,7 +95,7 @@ class skimage_remove_small_holes:
         for sl1 in range(self.a.shape[2]):
             self.a[:, :, sl1] = morphology.remove_small_holes(self.a[:, :, sl1], **options)
 
-    def image_cln(self: 'array_int'):
+    def image_cln(self) -> list[list[int]]:
         return self.a.astype(int)
 
 ##############################################################################
@@ -109,7 +109,7 @@ class skimage_remove_small_objects:
         for sl1 in range(self.a.shape[2]):
             self.a[:, :, sl1] = morphology.remove_small_objects(self.a[:, :, sl1], **options)
 
-    def image_cln(self: 'array_int'):
+    def image_cln(self) -> list[list[int]]:
         return self.a.astype(int)
 
 ##############################################################################
@@ -139,7 +139,7 @@ class skimage_erosion:
         import numpy as np
         self.eroded = erosion(np.array(image), **options)
 
-    def sk_erosion(self: 'array_float'):
+    def sk_erosion(self) -> list[list[float]]:
         return self.eroded
 
 ##############################################################################
@@ -169,7 +169,7 @@ class skimage_dilation:
         import numpy as np
         self.dilated = dilation(np.array(image), **options)
 
-    def sk_dilation(self: 'array_float'):
+    def sk_dilation(self) -> list[list[float]]:
         return self.dilated
 
 ##############################################################################
@@ -200,7 +200,7 @@ class skimage_white_tophat:
         import numpy as np
         self.wt = white_tophat(np.array(image), **options)
 
-    def sk_white_tophat(self: 'array_float'):
+    def sk_white_tophat(self) -> list[list[float]]:
         return self.wt
 
 ##############################################################################
@@ -233,7 +233,7 @@ class skimage_black_tophat:
         import numpy as np
         self.bt = black_tophat(np.array(image), **options)
 
-    def sk_black_tophat(self: 'array_float'):
+    def sk_black_tophat(self) -> list[list[float]]:
         return self.bt
 
 ##############################################################################
@@ -245,7 +245,7 @@ class skimage_opening:
         import numpy as np
         self.op = opening(np.array(image), **options)
 
-    def sk_opening(self: 'array_float'):
+    def sk_opening(self) -> list[list[float]]:
         return self.op
 
 ##############################################################################
@@ -256,7 +256,7 @@ class skimage_threshold_multiotsu:
         from skimage.filters import threshold_multiotsu
         self.thresholds = threshold_multiotsu(image)
 
-    def multi_otsu(self: 'list_float'):
+    def multi_otsu(self) -> list[float]:
         return self.thresholds
 
 ##############################################################################
@@ -267,7 +267,7 @@ class skimage_resize():
         from skimage import transform
         self.a = transform.resize(image, output_shape, **options)
 
-    def image_resize(self: 'array_float'):
+    def image_resize(self) -> list[list[float]]:
         return self.a
 
 ##############################################################################
@@ -278,5 +278,5 @@ class skimage_resize():
 #         from skimage import feature
 #         self.a = feature.canny(image, **options)
 #
-#     def canny_edge(self: 'array_float'):
+#     def canny_edge(self) -> list[list[float]]:
 #         return self.a

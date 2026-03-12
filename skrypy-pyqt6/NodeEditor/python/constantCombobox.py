@@ -8,8 +8,8 @@
 
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QDialog, QTextEdit, QVBoxLayout, QWidget, \
-    QScrollArea, QHBoxLayout, QPushButton
+from PyQt6.QtWidgets import QDialog, QTextEdit, QVBoxLayout, \
+    QHBoxLayout, QPushButton
 
 
 class editCombobox(QDialog):

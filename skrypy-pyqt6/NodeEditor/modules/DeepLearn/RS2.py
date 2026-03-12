@@ -28,7 +28,7 @@ class RS2_predict():
                 self.out_list.append("{}/{}{}".format(output_folder, ln_txt[10:], "_0000.nii.gz"))
                 # self.out_list.append(ln_txt[10:] + "_0000.nii.gz")
 
-    def output_files(self: 'list_path'):
+    def output_files(self) -> list[None]:
         return self.out_list
 
 ##############################################################################
@@ -62,9 +62,7 @@ class RS2_predict_datamanagement():
                     with open(cur_file, 'rb') as f_in:
                         print('Processing in progress for {}'.format(cur_file))
                         tmp = os.path.basename(cur_file)
-                        lsfield = tmp.split('.')
                         name = ('.').join(tmp.split('.')[:-1])
-                        ext = tmp.split('.')[-1]
                         new_name_file = os.path.join(tmp_folder, name + '_0000.nii')
                         with gzip.open(new_name_file + '.gz', 'wb') as f_out:
                             shutil.copyfileobj(f_in, f_out)
@@ -89,5 +87,5 @@ class RS2_predict_datamanagement():
                 # self.out_list.append(ln_txt[10:] + "_0000.nii.gz")
         shutil.rmtree(tmp_folder)
 
-    def output_files(self: 'list_path'):
+    def output_files(self) -> list[None]:
         return self.out_list

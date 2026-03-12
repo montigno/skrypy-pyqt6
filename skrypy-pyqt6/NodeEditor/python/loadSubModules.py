@@ -19,7 +19,6 @@ class getlistSubModules:
         submodules = os.path.join(dir_path, 'submodules')
 
         self.category = []
-        list_dir = []
         self.listSubMod = {}
         self.lstdir = {}
 
@@ -36,7 +35,7 @@ class getlistSubModules:
                     tmpv.append(submod_name)
             self.lstdir[dir_alone] = tmpv
 
-    def readFile(self, file, dir):
+    def readFile(self, file, dirt):
 
         f = open(file, 'r')
         txt = f.readlines()
@@ -64,7 +63,7 @@ class getlistSubModules:
                 try:
                     line = line[line.index('valOut=') + 8:len(line)]
                     Vinput = line[0:line.index('] ')]
-                except Exception as e:
+                except Exception:
                     Vinput = ''
                 line = line[line.index('RectF=') + 7:len(line)]
                 line = line[line.index(',') + 2:len(line)]
@@ -89,7 +88,7 @@ class getlistSubModules:
                 else:
                     try:
                         listVal.append(eval(tmpVal[elem[0]]))
-                    except Exception as e:
+                    except Exception:
                         listVal.append(tmpVal[elem[0]])
 
         if tmpOut:
@@ -99,7 +98,7 @@ class getlistSubModules:
                 listlabelOut.append(tmpOut[elem[0]])
                 listForm.append(tmpForm[elem[0]])
 
-        listg = (listlabelIn, listVal, listlabelOut, listForm, dir)
+        listg = (listlabelIn, listVal, listlabelOut, listForm, dirt)
         return listg
 
     def listSubModules(self):

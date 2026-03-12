@@ -14,7 +14,7 @@ class dcmstack_CopyMeta:
             setattr(copmeta.inputs, ef, options[ef])
         self.res = copmeta.run()
 
-    def dest_file(self: 'path'):
+    def dest_file(self) -> None:
         return self.res.outputs.dest_file
 
 ##############################################################################
@@ -29,7 +29,7 @@ class dcmstack_MergeNifti:
             setattr(mergeNif.inputs, ef, options[ef])
         self.res = mergeNif.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -44,5 +44,5 @@ class dcmstack_SplitNifti():
             setattr(split.inputs, ef, options[ef])
         self.res = split.run()
 
-    def out_list(self: 'list_path'):
+    def out_list(self) -> list[None]:
         return self.res.outputs.out_list

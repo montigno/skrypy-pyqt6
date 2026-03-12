@@ -21,16 +21,16 @@ class bruker_search_value():
                 tmp = ''
                 try:
                     tmp = txt[txt.index(param):]
-                except Exception as e:
+                except Exception:
                     pass
             if tmp:
                 try:
                     tmp = tmp[0:tmp.index('##')]
-                except Exception as e:
+                except Exception:
                     pass
                 try:
                     tmp = tmp[0:tmp.index('$$')]
-                except Exception as e:
+                except Exception:
                     pass
                 if '(' in tmp:
                     tmp = tmp[tmp.index('\n') + 1:]
@@ -43,7 +43,7 @@ class bruker_search_value():
         else:
             self.value = 'file not found\n'
 
-    def value(self: 'str'):
+    def value(self) -> str:
         return self.value
 
 ##############################################################################
@@ -90,16 +90,16 @@ class bruker_get_value():
                 tmp0 = ''
                 try:
                     tmp0 = txt[txt.index(param):]
-                except Exception as e:
+                except Exception:
                     pass
             if tmp0:
                 try:
                     tmp0 = tmp0[0:tmp0.index('##')]
-                except Exception as e:
+                except Exception:
                     pass
                 try:
                     tmp0 = tmp0[0:tmp0.index('$$')]
-                except Exception as e:
+                except Exception:
                     pass
                 if '(' in tmp0:
                     dim = eval(tmp0[tmp0.index('('): tmp0.index(')') + 1])
@@ -112,7 +112,7 @@ class bruker_get_value():
                 tmp = np.array(tmp)
                 try:
                     tp = type(eval(tmp[0])).__name__
-                except Exception as err:
+                except Exception:
                     tp = 'str'
                 if tp == 'int' and '.' not in tmp0:
                     tmp = tmp.astype(np.int32)
@@ -136,25 +136,25 @@ class bruker_get_value():
                     else:
                         self.str_value = ' '.join(tmp)
 
-    def float_array_values(self: 'array_float'):
+    def float_array_values(self) -> list[list[float]]:
         return self.float_array_value
 
-    def float_list_values(self: 'list_float'):
+    def float_list_values(self) -> list[float]:
         return self.float_list_value
 
-    def float_value(self: 'float'):
+    def float_value(self) -> float:
         return self.float_value
 
-    def int_array_values(self: 'array_int'):
+    def int_array_values(self) -> list[list[int]]:
         return self.int_array_value
 
-    def int_list_values(self: 'list_int'):
+    def int_list_values(self) -> list[int]:
         return self.int_list_value
 
-    def int_value(self: 'int'):
+    def int_value(self) -> int:
         return self.int_value
 
-    def str_value(self: 'str'):
+    def str_value(self) -> str:
         return self.str_value
 
 ##############################################################################
@@ -163,11 +163,9 @@ class bruker_get_value():
 class bruker_get_value2():
     def __init__(self, file='path', param=''):
         import os
-        import numpy as np
 
         if '=' not in param:
             param += '='
-        dim = 1
         self.float_array_value = None
         self.float_list_value = None
         self.float_value = None
@@ -182,19 +180,18 @@ class bruker_get_value2():
                 tmp = ''
                 try:
                     tmp = txt[txt.index(param):]
-                except Exception as e:
+                except Exception:
                     pass
             if tmp:
                 try:
                     tmp = tmp[0:tmp.index('##')]
-                except Exception as e:
+                except Exception:
                     pass
                 try:
                     tmp = tmp[0:tmp.index('$$')]
-                except Exception as e:
+                except Exception:
                     pass
                 if '(' in tmp:
-                    dim = eval(tmp[tmp.index('('): tmp.index(')') + 1])
                     tmp = tmp[tmp.index('\n') + 1:]
                 else:
                     tmp = tmp[tmp.index('=') + 1:]
@@ -202,7 +199,7 @@ class bruker_get_value2():
                 tmp = tmp.replace('\n', '')
                 self.str_value = tmp
 
-    def str_value(self: 'str'):
+    def str_value(self) -> str:
         return self.str_value
 
 ##############################################################################
@@ -247,7 +244,7 @@ class bruker_normalize_image:
         else:
             self.img_norm = [[0.0]]
 
-    def image_normalized(self: 'array_float'):
+    def image_normalized(self) -> list[list[float]]:
         return self.img_norm
 
 ##############################################################################
@@ -272,38 +269,38 @@ class bruker_get_metadata_files:
     def __init__(self, bruker_file='path'):
         import os
         if bruker_file.endswith('2dseq'):
-            dir = os.path.dirname(bruker_file)
-            self.visupars_file = os.path.join(dir, 'visu_pars')
+            dirt = os.path.dirname(bruker_file)
+            self.visupars_file = os.path.join(dirt, 'visu_pars')
             if not os.path.exists(self.visupars_file):
                 self.visupars_file = ''
-            self.reco_file = os.path.join(dir, 'reco')
+            self.reco_file = os.path.join(dirt, 'reco')
             if not os.path.exists(self.reco_file):
                 self.reco_file = ''
-            dir = os.path.dirname(os.path.dirname(dir))
-            self.acqp_file = os.path.join(dir, 'acqp')
+            dirt = os.path.dirname(os.path.dirname(dirt))
+            self.acqp_file = os.path.join(dirt, 'acqp')
             if not os.path.exists(self.acqp_file):
                 self.acqp_file = ''
-            self.method_file = os.path.join(dir, 'method')
+            self.method_file = os.path.join(dirt, 'method')
             if not os.path.exists(self.method_file):
                 self.method_file = ''
-            dir = os.path.dirname(dir)
-            self.subject_file = os.path.join(dir, 'subject')
+            dirt = os.path.dirname(dirt)
+            self.subject_file = os.path.join(dirt, 'subject')
             if not os.path.exists(self.subject_file):
                 self.subject_file = ''
 
-    def subject_file(self: 'path'):
+    def subject_file(self) -> None:
         return self.subject_file
 
-    def visupars_file(self: 'path'):
+    def visupars_file(self) -> None:
         return self.visupars_file
 
-    def reco_file(self: 'path'):
+    def reco_file(self) -> None:
         return self.reco_file
 
-    def method_file(self: 'path'):
+    def method_file(self) -> None:
         return self.method_file
 
-    def acqp_file(self: 'path'):
+    def acqp_file(self) -> None:
         return self.acqp_file
 
 ##############################################################################

@@ -15,7 +15,7 @@ from Config import Config
 from NodeEditor.python.Diagram_Editor import NodeEdit
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QApplication, QVBoxLayout, \
-      QLineEdit, QMainWindow, QMessageBox, QCheckBox, QStyleFactory
+    QLineEdit, QMainWindow, QMessageBox, QCheckBox, QStyleFactory
 from PyQt6.QtCore import Qt
 
 import os
@@ -103,7 +103,7 @@ class Project_Irmage(QMainWindow):
     def __del__(self):
         try:
             shutil.rmtree(self.tmp_dir)
-        except Exception as err:
+        except Exception:
             pass
 
 
@@ -170,7 +170,7 @@ class ClearSharedMemory():
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    app.setStyle(QStyleFactory.create("Fusion")) # "Fusion", "Windows", "WindowsVista", "Macintosh"
+    app.setStyle(QStyleFactory.create("Fusion"))  # "Fusion", "Windows", "WindowsVista", "Macintosh"
     with open("styles.css", "r") as file:
         app.setStyleSheet(file.read())
     self_dir_path = os.path.dirname(os.path.realpath(__file__))

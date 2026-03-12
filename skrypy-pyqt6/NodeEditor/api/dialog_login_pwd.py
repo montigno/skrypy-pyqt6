@@ -1,7 +1,7 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, 
-                             QFormLayout, QLabel, QLineEdit, QPushButton,
-                             QMessageBox, QDialogButtonBox)
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget,
+                             QFormLayout, QLabel, QLineEdit,
+                             QDialogButtonBox)
 from PyQt6.QtCore import QPoint
 
 
@@ -9,9 +9,9 @@ class LoginPasswd(QMainWindow):
     def __init__(self, titl, screen, parent=None):
         super(LoginPasswd, self).__init__(parent)
         self.start(titl, screen)
-        
+
     def start(self, titl, screen):
-       
+
         # Set the window properties (title and initial size)
         self.setWindowTitle(titl)
         qtRectangle = self.frameGeometry()
@@ -57,8 +57,8 @@ class LoginPasswd(QMainWindow):
         print(None, None)
         self.close()
 
-    
-if __name__=="__main__":
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     screen = app.primaryScreen()
     myprogram = LoginPasswd(sys.argv[1], screen)

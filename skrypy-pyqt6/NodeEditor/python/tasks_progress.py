@@ -1,7 +1,6 @@
-from PyQt6.QtCore import QThread, pyqtSlot, Qt, QObject
+from PyQt6.QtCore import QThread, Qt
 from PyQt6.QtWidgets import QProgressBar, QVBoxLayout, QHBoxLayout, QPushButton, \
-    QApplication, QWidget, QLabel
-import sys
+    QWidget, QLabel
 import time
 
 

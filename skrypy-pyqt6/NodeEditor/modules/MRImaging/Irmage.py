@@ -94,13 +94,13 @@ class T1Map_LevenbergM():
 
         ray.shutdown()
 
-    def T1map(self: 'array_float'):
+    def T1map(self) -> list[list[float]]:
         return self.t1
 
-    def magnitude(self: 'array_float'):
+    def magnitude(self) -> list[list[float]]:
         return self.magn
 
-    def shift(self: 'array_float'):
+    def shift(self) -> list[list[float]]:
         return self.shift
 
 ##############################################################################
@@ -206,13 +206,13 @@ class T2Map_LevenbergM():
 
         ray.shutdown()
 
-    def T2map(self: 'array_float'):
+    def T2map(self) -> list[list[float]]:
         return self.t2
 
-    def magnitude(self: 'array_float'):
+    def magnitude(self) -> list[list[float]]:
         return self.magn
 
-    def shift(self: 'array_float'):
+    def shift(self) -> list[list[float]]:
         return self.shift
 
 ##############################################################################
@@ -338,19 +338,19 @@ class T2Map_LevenbergM_stderr():
 
         ray.shutdown()
 
-    def T2map(self: 'array_float'):
+    def T2map(self) -> list[list[float]]:
         return self.t2
 
-    def T2map_stderr(self: 'array_float'):
+    def T2map_stderr(self) -> list[list[float]]:
         return self.t2_stderr
 
-    def magnitude(self: 'array_float'):
+    def magnitude(self) -> list[list[float]]:
         return self.magn
 
-    def magnitude_stderr(self: 'array_float'):
+    def magnitude_stderr(self) -> list[list[float]]:
         return self.magn_stderr
 
-    def shift(self: 'array_float'):
+    def shift(self) -> list[list[float]]:
         return self.shift
 
 ##############################################################################
@@ -449,13 +449,13 @@ class TIMap_LevenbergM():
 
         ray.shutdown()
 
-    def TImap(self: 'array_float'):
+    def TImap(self) -> list[list[float]]:
         return self.ti
 
-    def magnitude(self: 'array_float'):
+    def magnitude(self) -> list[list[float]]:
         return self.magn
 
-    def shift(self: 'array_float'):
+    def shift(self) -> list[list[float]]:
         return self.shift
 
 ##############################################################################
@@ -522,19 +522,19 @@ class CEST():
         self.asym = asym
         self.out_map = np.mean(sublist_asym)
 
-    def out_xspectra(self: 'list_float'):
+    def out_xspectra(self) -> list[float]:
         return self.xspectr
 
-    def out_zspectra(self: 'list_float'):
+    def out_zspectra(self) -> list[float]:
         return self.zpectr
 
-    def out_xasym(self: 'list_float'):
+    def out_xasym(self) -> list[float]:
         return self.xasym
 
-    def out_asym(self: 'list_float'):
+    def out_asym(self) -> list[float]:
         return self.asym
 
-    def out_mapping(self: 'float'):
+    def out_mapping(self) -> float:
         return self.out_map
 
 ##############################################################################
@@ -602,19 +602,19 @@ class CEST_2():
         self.asym = asym
         self.out_map = np.mean(sublist_asym)
 
-    def out_xspectra(self: 'list_float'):
+    def out_xspectra(self) -> list[float]:
         return self.xspectr
 
-    def out_zspectra(self: 'list_float'):
+    def out_zspectra(self) -> list[float]:
         return self.zpectr
 
-    def out_xasym(self: 'list_float'):
+    def out_xasym(self) -> list[float]:
         return self.xasym
 
-    def out_asym(self: 'list_float'):
+    def out_asym(self) -> list[float]:
         return self.asym
 
-    def out_mapping(self: 'float'):
+    def out_mapping(self) -> float:
         return self.out_map
 
 ##############################################################################
@@ -635,7 +635,7 @@ class WASSR():
 
         f_interp = interp1d(x, y, kind='cubic', bounds_error=False, fill_value=(y[0], y[-1]))
         # (c_), q_ = opt.curve_fit(f, x, y, bounds=(0., 1.))
-        (c_), q_ = opt.curve_fit(self._f,  x,  y,  c)
+        (c_), __ = opt.curve_fit(self._f, x, y, c)
         n_interpol = 100
         xnew = np.linspace(x[0], x[-1], n_interpol * (len(x) - 1) + len(x), endpoint=True)
         y_fit = self._f(xnew, c_)
@@ -647,10 +647,10 @@ class WASSR():
         x_arr = 2 * c - xd
         return f_interp(x_arr)
 
-    def estimated_center_freq(self: 'float'):
+    def estimated_center_freq(self) -> float:
         return self.center
 
-    def center_wassr(self: 'float'):
+    def center_wassr(self) -> float:
         return self.center_wass
 
 ##############################################################################
@@ -707,13 +707,13 @@ class Linear_registration_multiple_images:
             self.list_out_files.append(resa.outputs.out_file)
             i += 1
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.outfile
 
-    def out_matrix_file(self: 'path'):
+    def out_matrix_file(self) -> None:
         return self.outmtrx
 
-    def out_other_files(self: 'list_path'):
+    def out_other_files(self) -> list[None]:
         return self.list_out_files
 
 ##############################################################################
@@ -759,6 +759,7 @@ class Non_linear_registration_for_Atlases:
                                        'TVMSQC'))",
                  **options):
         import ants
+        from NodeEditor.modules.Tools.Path import path_add_suffixprefix
         img_fi = ants.image_read(image_fixed)
         atlas_temp_mo = ants.image_read(atlas_template_moved)
         atlas_lab_mo = ants.image_read(atlas_label_moved)
@@ -770,13 +771,19 @@ class Non_linear_registration_for_Atlases:
                                                  interpolator=interpolator)
         ants.image_write(warpedmoveout['warpedmovout'], output_template_name)
         ants.image_write(imagetransformed, output_label_name)
+        if 'create_warped_grid' in options:
+            wg = ants.create_warped_grid(atlas_temp_mo)
+            warpedgrid = ants.create_warped_grid(wg, grid_width=1, grid_directions=(True, True),
+                                                 transform=warpedmoveout['fwdtransforms'],
+                                                 fixed_reference_image=img_fi, foreground=1, background=0)
+            ants.image_write(warpedgrid, path_add_suffixprefix(atlas_template_moved, '_warpedgrid', 'suffix').newPath())
         self.temp_reg = output_template_name
         self.lab_reg = output_label_name
 
-    def out_template_registred(self: 'path'):
+    def out_template_registred(self) -> None:
         return self.temp_reg
 
-    def out_label_registred(self: 'path'):
+    def out_label_registred(self) -> None:
         return self.lab_reg
 
 ##############################################################################
@@ -827,7 +834,7 @@ class Non_linear_registration:
         ants.image_write(warpedmoveout['warpedmovout'], out_file)
         self.img_reg = out_file
 
-    def out_image_registred(self: 'path'):
+    def out_image_registred(self) -> None:
         return self.img_reg
 
 ##############################################################################
@@ -900,13 +907,13 @@ class Non_linear_registration_multiple_images:
         file_mat.close()
         self.img_reg = output_moved_name
 
-    def out_image_registred(self: 'path'):
+    def out_image_registred(self) -> None:
         return self.img_reg
 
-    def out_image_transformed(self: 'list_path'):
+    def out_image_transformed(self) -> list[None]:
         return self.img_tra
 
-    def out_matrix_file(self: 'path'):
+    def out_matrix_file(self) -> None:
         return self.matrix
 
 ##############################################################################
@@ -947,5 +954,5 @@ class Seg_conv3D:
         hdr = nifti_get_header(file_in).nii_hdr()
         self.out_file = nifti_save_file(imgtmp, file_out_name, header=hdr, out_type='nii').pathFile()
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.out_file

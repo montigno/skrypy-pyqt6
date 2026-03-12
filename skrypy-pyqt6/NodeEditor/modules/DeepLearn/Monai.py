@@ -11,7 +11,7 @@ class monai_transforms_LoadImaged():
         from monai.transforms import LoadImaged
         self.loadImg = LoadImaged(keys, **options)
 
-    def out_loadimaged(self: 'str'):
+    def out_loadimaged(self) -> str:
         return self.loadImg
 
 ##############################################################################
@@ -72,7 +72,7 @@ class monai_transforms_compose():
         from monai.transforms import compose
         self.comp = compose(*transforms, **options)
 
-    def out_compose(self: 'str'):
+    def out_compose(self) -> str:
         return self.comp
 
 ##############################################################################
@@ -99,7 +99,7 @@ class monai_transforms_EnsureChannelFirstd():
         from monai.transforms import EnsureChannelFirstd
         self.ens = EnsureChannelFirstd(keys, **options)
 
-    def out_ensureChannelFirstd(self: 'str'):
+    def out_ensureChannelFirstd(self) -> str:
         return self.ens
 
 ##############################################################################

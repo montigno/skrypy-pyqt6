@@ -5,7 +5,7 @@ import yaml
 import tempfile
 import stat
 
-from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QTextEdit, QPushButton, \
+from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, \
     QHBoxLayout
 
 
@@ -34,7 +34,7 @@ class skrypy_update(QDialog):
                 dicts = yaml.load(stream, yaml.FullLoader)
                 self.version_new = dicts['version']
             self.confirmation_dialog()
-        except Exception as err:
+        except Exception:
             self.error_message()
 
     def error_message(self):
@@ -68,7 +68,7 @@ class skrypy_update(QDialog):
         vbox.addLayout(hbox)
 
         self.setLayout(vbox)
-        
+
     def remove_readonly(self, func, path, _):
         "Clear the readonly bit and reattempt the removal"
         os.chmod(path, stat.S_IWRITE)

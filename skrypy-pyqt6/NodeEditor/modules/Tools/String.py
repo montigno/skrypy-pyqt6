@@ -6,9 +6,9 @@ class string_compare:
         if type_compare == 'equal':
             self.res = in_string == compareTo
         else:
-            self.res = in_string in compareTo
+            self.res = compareTo in in_string
 
-    def compare_res(self: 'bool'):
+    def compare_res(self) -> bool:
         return self.res
 
 ##############################################################################
@@ -21,7 +21,7 @@ class string_concatenat_dyn:
         for di in dynamicsInputs:
             self.stringConc += str(dynamicsInputs[di])
 
-    def str_conc(self: 'str'):
+    def str_conc(self) -> str:
         return self.stringConc
 
 ##############################################################################
@@ -31,7 +31,7 @@ class string_replace:
     def __init__(self, string_in='', charactToreplace='', newCharact=''):
         self.newString = string_in.replace(charactToreplace, newCharact)
 
-    def newString(self: 'str'):
+    def newString(self) -> str:
         return self.newString
 
 ##############################################################################
@@ -41,7 +41,7 @@ class string_split:
     def __init__(self, in_string='', expr=''):
         self.listString = in_string.split(expr)
 
-    def list_string(self: 'list_str'):
+    def list_string(self) -> list[str]:
         return self.listString
 
 ##############################################################################
@@ -54,7 +54,7 @@ class string_substring:
         else:
             self.substr = in_string[start:end + 1]
 
-    def substring(self: 'str'):
+    def substring(self) -> str:
         return self.substr
 
 ##############################################################################
@@ -66,7 +66,7 @@ class string_substring_2:
         tmp = tmp[tmp.index(begin):]
         self.substr = tmp[0:tmp.index(end)]
 
-    def substring(self: 'str'):
+    def substring(self) -> str:
         return self.substr
 
 ##############################################################################
@@ -79,7 +79,7 @@ class string_to_float_list():
         tmp = tmp.astype(np.float64)
         self.outval = tmp
 
-    def outListFloat(self: 'list_float'):
+    def outListFloat(self) -> list[float]:
         return self.outval
 
 ##############################################################################
@@ -94,7 +94,7 @@ class string_to_float_array():
         else:
             self.outval = None
 
-    def outArrayFloat(self: 'array_float'):
+    def outArrayFloat(self) -> list[list[float]]:
         return self.outval
 
 ##############################################################################
@@ -109,7 +109,7 @@ class string_to_int():
         else:
             self.outval = None
 
-    def outInt(self: 'int'):
+    def outInt(self) -> int:
         return self.outval
 
 ##############################################################################
@@ -122,7 +122,7 @@ class string_to_int_list():
         tmp = tmp.astype(np.int64)
         self.outval = tmp
 
-    def outInt(self: 'list_int'):
+    def outInt(self) -> list[int]:
         return self.outval
 
 ##############################################################################
@@ -137,7 +137,7 @@ class string_to_int_array():
         else:
             self.outval = None
 
-    def outInt(self: 'array_int'):
+    def outInt(self) -> list[list[int]]:
         return self.outval
 
 ##############################################################################
@@ -149,7 +149,7 @@ class string_to_list_dyn:
         for di in dynamicsInputs:
             self.stringList.append(dynamicsInputs[di])
 
-    def list_str(self: 'list_str'):
+    def list_str(self) -> list[str]:
         return self.stringList
 
 ##############################################################################
@@ -159,7 +159,7 @@ class string_to_float():
     def __init__(self, inString=''):
         self.outval = float(inString)
 
-    def outFloat(self: 'float'):
+    def outFloat(self) -> float:
         return self.outval
 
 ##############################################################################
@@ -174,7 +174,7 @@ class string_to_boolean():
         else:
             self.outval = None
 
-    def outBool(self: 'bool'):
+    def outBool(self) -> bool:
         return self.outval
 
 ##############################################################################
@@ -189,7 +189,7 @@ class string_to_boolean_list():
         else:
             self.outval = None
 
-    def outListBool(self: 'list_bool'):
+    def outListBool(self) -> list[bool]:
         return self.outval
 
 ##############################################################################
@@ -204,7 +204,7 @@ class string_to_boolean_array():
         else:
             self.outval = None
 
-    def outArrayBool(self: 'array_bool'):
+    def outArrayBool(self) -> list[list[bool]]:
         return self.outval
 
 ##############################################################################
@@ -219,7 +219,7 @@ class string_to_path():
         else:
             self.outval = None
 
-    def outPath(self: 'path'):
+    def outPath(self) -> None:
         return self.outval
 
 ##############################################################################
@@ -229,7 +229,7 @@ class string_to_path_list():
     def __init__(self, inString=''):
         self.outval = eval(inString)
 
-    def outPath(self: 'list_path'):
+    def outPath(self) -> list[None]:
         return self.outval
 
 ##############################################################################
@@ -244,7 +244,7 @@ class string_to_path_array():
         else:
             self.outval = None
 
-    def outPath(self: 'array_path'):
+    def outPath(self) -> list[list[None]]:
         return self.outval
 
 ##############################################################################
@@ -259,7 +259,7 @@ class string_to_dict():
         else:
             self.outval = None
 
-    def outInt(self: 'dict'):
+    def outInt(self) -> dict:
         return self.outval
 
 ##############################################################################
@@ -271,7 +271,7 @@ class string_to_tuple_dyn:
         for di in dynamicsInputs:
             self.tupleAppen = (*self.tupleAppen, dynamicsInputs[di])
 
-    def out_tuple(self: 'tuple'):
+    def out_tuple(self) -> tuple:
         return self.tupleAppen
 
 ##############################################################################
@@ -303,50 +303,50 @@ class String_eval():
         ind = listType.index(typ)
         self.listVar[ind] = val
 
-    def Float(self: 'float'):
+    def Float(self) -> float:
         return self.listVar[0]
 
-    def Int(self: 'int'):
+    def Int(self) -> int:
         return self.listVar[1]
 
-    def String(self: 'str'):
+    def String(self) -> str:
         return self.listVar[2]
 
-    def Boolean(self: 'bool'):
+    def Boolean(self) -> bool:
         return self.listVar[3]
 
-    def Path(self: 'path'):
+    def Path(self) -> None:
         return self.listVar[4]
 
-    def List_Float(self: 'list_float'):
+    def List_Float(self) -> list[float]:
         return self.listVar[5]
 
-    def List_Int(self: 'list_int'):
+    def List_Int(self) -> list[int]:
         return self.listVar[6]
 
-    def List_String(self: 'list_str'):
+    def List_String(self) -> list[str]:
         return self.listVar[7]
 
-    def List_Boolean(self: 'list_bool'):
+    def List_Boolean(self) -> list[bool]:
         return self.listVar[8]
 
-    def List_Path(self: 'list_path'):
+    def List_Path(self) -> list[None]:
         return self.listVar[9]
 
-    def Array_Float(self: 'array_float'):
+    def Array_Float(self) -> list[list[float]]:
         return self.listVar[10]
 
-    def Array_Int(self: 'array_int'):
+    def Array_Int(self) -> list[list[int]]:
         return self.listVar[11]
 
-    def Array_String(self: 'array_str'):
+    def Array_String(self) -> list[list[str]]:
         return self.listVar[12]
 
-    def Array_Boolean(self: 'array_bool'):
+    def Array_Boolean(self) -> list[list[bool]]:
         return self.listVar[13]
 
-    def Array_Path(self: 'array_path'):
+    def Array_Path(self) -> list[list[None]]:
         return self.listVar[14]
 
-    def Tuple(self: 'tuple'):
+    def Tuple(self) -> tuple:
         return self.listVar[15]

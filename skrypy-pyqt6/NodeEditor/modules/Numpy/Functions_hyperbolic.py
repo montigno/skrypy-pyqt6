@@ -4,7 +4,7 @@ class numpy_hyperbolic():
         x = np.array(x)
         self.res = getattr(np, op)(x)
 
-    def res(self: 'list_float'):
+    def res(self) -> list[float]:
         return self.res
 
 ##############################################################################

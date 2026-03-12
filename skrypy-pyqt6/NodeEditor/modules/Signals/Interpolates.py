@@ -6,10 +6,10 @@ class interpolate_cubic_spline():
         self.x_new = np.linspace(x[0], x[-1], n)
         self.cs = f(self.x_new)
 
-    def spline_cubic(self: 'list_float'):
+    def spline_cubic(self) -> list[float]:
         return self.cs
 
-    def x_new(self: 'list_float'):
+    def x_new(self) -> list[float]:
         return self.x_new
 
 ##############################################################################
@@ -23,16 +23,16 @@ class interpolate_polynomial():
         self.xn = np.linspace(x[0], x[-1], n)
         self.intpol = yn(self.xn)
         self.coeff = []
-        for i in range(deg+1):
+        for i in range(deg + 1):
             self.coeff.append(yn[i])
 
-    def polyn_interp(self: 'list_float'):
+    def polyn_interp(self) -> list[float]:
         return self.intpol
 
-    def x_new(self: 'list_float'):
+    def x_new(self) -> list[float]:
         return self.xn
 
-    def coefficients(self: 'list_float'):
+    def coefficients(self) -> list[float]:
         return self.coeff
 
 ##############################################################################
@@ -43,5 +43,5 @@ class interpolate_interp1d():
         from scipy import interpolate
         self.ax = interpolate.interp1d(x, y, **options)
 
-    def interp1d(self: 'list_float'):
+    def interp1d(self) -> list[float]:
         return self.ax

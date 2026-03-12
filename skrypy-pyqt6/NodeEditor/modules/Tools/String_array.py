@@ -4,7 +4,7 @@ class string_array_to_float_array():
         array_string_in = np.array(array_string_in)
         self.outarrayfloat = array_string_in.astype(float)
 
-    def outArrayFloat(self: 'array_float'):
+    def outArrayFloat(self) -> list[list[float]]:
         return self.outarrayfloat.tolist()
 
 ###############################################################################
@@ -17,7 +17,7 @@ class string_array_concatenat_dyn:
         for di in dynamicsInputs:
             self.stringArray.extend(dynamicsInputs[di])
 
-    def out_array(self: 'array_str'):
+    def out_array(self) -> list[list[str]]:
         return self.stringArray
 
 ##############################################################################
@@ -27,7 +27,7 @@ class string_array_getElement():
     def __init__(self, array_string_in=[['']], row=0, column=0):
         self.out = array_string_in[row][column]
 
-    def out_subarray(self: 'str'):
+    def out_subarray(self) -> str:
         return self.out
 
 #############################################################################
@@ -37,7 +37,7 @@ class string_array_getSubarray():
     def __init__(self, array_string_in=[['']], row=(0, 1), column=(0, 1)):
         self.out = [i[column[0]:column[1]] for i in array_string_in[row[0]:row[1]]]
 
-    def out_subarray(self: 'array_str'):
+    def out_subarray(self) -> list[list[str]]:
         return self.out
 
 #############################################################################
@@ -54,7 +54,7 @@ class string_array_merge_dyn:
                 rowList.extend(dynamicsInputs[di][i])
             self.stringArray.append(rowList)
 
-    def out_array(self: 'array_str'):
+    def out_array(self) -> list[list[str]]:
         return self.stringArray
 
 ##############################################################################
@@ -67,7 +67,7 @@ class string_array_index:
         else:
             self.res = array_string_in[index_start:index_end]
 
-    def out_subarray(self: 'array_str'):
+    def out_subarray(self) -> list[list[str]]:
         return self.res
 
 ###############################################################################
@@ -77,7 +77,7 @@ class string_array_getcolumn:
     def __init__(self, array_string_in=[['']], index_column=0):
         self.res = [row[index_column] for row in array_string_in]
 
-    def out_column(self: 'list_str'):
+    def out_column(self) -> list[str]:
         return self.res
 
 ###############################################################################
@@ -88,7 +88,7 @@ class string_array_remove_column:
         import numpy as np
         self.out = np.delete(array_string_in, index_column, axis=1)
 
-    def new_array(self: 'array_str'):
+    def new_array(self) -> list[list[str]]:
         return self.out
 
 ###############################################################################
@@ -99,5 +99,5 @@ class string_array_remove_row:
         import numpy as np
         self.out = np.delete(array_string_in, index_row, axis=0)
 
-    def new_array(self: 'array_str'):
+    def new_array(self) -> list[list[str]]:
         return self.out

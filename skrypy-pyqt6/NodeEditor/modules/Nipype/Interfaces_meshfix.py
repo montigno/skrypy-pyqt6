@@ -13,5 +13,5 @@ class meshfix_MeshFix():
             setattr(self.fix.inputs, ef, options[ef])
         self.fix.run()
 
-    def mesh_file(self: 'path'):
+    def mesh_file(self) -> None:
         return self.fix._outputs.mesh_file

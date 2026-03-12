@@ -58,5 +58,6 @@ packages:
   torchvision: torchvision
   traits: traits
   transformers: transformers
+  typing_inspect: typing_inspect
   vedo: vedo
-version: 26.03.05a
+version: 26.03.11a

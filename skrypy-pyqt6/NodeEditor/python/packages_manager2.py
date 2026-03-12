@@ -1,8 +1,8 @@
-from PyQt6.Qt import pyqtSlot, QProcess, QTextCodec
-from PyQt6.QtCore import pyqtSignal
+# from PyQt6.Qt import pyqtSlot, QProcess, QTextCodec
+from PyQt6.QtCore import pyqtSignal, QProcess, pyqtSlot
 from PyQt6.QtGui import QFont, QTextCursor
 from PyQt6.QtWidgets import QDialog, QPlainTextEdit, QHBoxLayout, QPushButton, \
-    QGridLayout, QTextEdit, QLineEdit, QVBoxLayout
+    QLineEdit, QVBoxLayout
 
 
 class manage_pck(QDialog):

@@ -9,5 +9,5 @@ class numpy_threshold():
             self.img[self.img < threshold] = 0.0
             self.img[self.img >= threshold] = 1.0
 
-    def img_threshold(self: 'array_float'):
+    def img_threshold(self) -> list[list[float]]:
         return self.img

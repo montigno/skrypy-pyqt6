@@ -4,7 +4,7 @@ class bool_to_list_dyn():
         for di in dynamicsInputs:
             self.out.append(dynamicsInputs[di])
 
-    def list_bool(self: 'list_bool'):
+    def list_bool(self) -> list[bool]:
         return self.out
 
 #############################################################################

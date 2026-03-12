@@ -24,9 +24,9 @@ class openImageJ():
                         "run(\"Enhance Contrast\", \"saturated=0.35\");"\
                         "};"
         try:
-            proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
+            Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
 
 ##############################################################################
 
@@ -44,9 +44,9 @@ class openImagej_multiFiles():
                         "run(\"Enhance Contrast\", \"saturated=0.35\");"\
                         "};"
         try:
-            proc = Popen(['ImageJ', '-eval', script_macro1 + script_macro])
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
+            Popen(['ImageJ', '-eval', script_macro1 + script_macro])
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', script_macro1 + script_macro])
 
 ##############################################################################
 
@@ -56,7 +56,7 @@ class ImageJ_atlas():
         from subprocess import Popen
         import os
         import tempfile
-        
+
         scriptfile = 'open("' + atlas_label + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'\
                      'open("' + atlas_template + '");\nrun(\"Enhance Contrast\", \"saturated=0.35\");\n'
         script = 'var lines=split(File.openAsString("' + label_txt + '"), "\\n");\n ij.run("Synchronize Windows"); \n'
@@ -71,9 +71,9 @@ class ImageJ_atlas():
                  'run("Install...", "install=' + tmp_file + '");'
         # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
         try:
-            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
+            Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
 
 ##############################################################################
 
@@ -109,9 +109,9 @@ class ImageJ_atlas_reg():
                  'run("Install...", "install=' + tmp_file + '");'
         # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
         try:
-            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
+            Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
 
 
 ##############################################################################
@@ -124,9 +124,9 @@ class ImageJ_macro():
         option = '-macro'
         # Popen(['ImageJ', option, file_macro])
         try:
-            proc = Popen(['ImageJ', option, file_macro])
-        except:
-            proc = Popen([os.environ['ImageJ'], option, file_macro])
+            Popen(['ImageJ', option, file_macro])
+        except Exception:
+            Popen([os.environ['ImageJ'], option, file_macro])
 
 ##############################################################################
 
@@ -138,9 +138,9 @@ class ImageJ_macrofile():
         option = '-macro'
 #         subprocess.call(['java','-jar',pathImageJ,pathImage,option,filemacro], shell=False)
         try:
-            proc = Popen(['ImageJ', pathImage, option, filemacro])
-        except:
-            proc = Popen([os.environ['ImageJ'], pathImage, option, filemacro])
+            Popen(['ImageJ', pathImage, option, filemsacro])
+        except Exception:
+            Popen([os.environ['ImageJ'], pathImage, option, filemsacro])
 
 ##############################################################################
 
@@ -154,7 +154,7 @@ class ImageJ_read_roi():
         elif roiIJ_file.endswith('.zip'):
             self.list_rois = read_roi.read_roi_zip(roiIJ_file)
 
-    def list_Rois(self: 'dict'):
+    def list_Rois(self) -> dict:
         return self.list_rois
 
 ##############################################################################
@@ -168,7 +168,7 @@ class ImageJ_get_pixels_in_roi():
 
         try:
             nx, ny, ns, nt = image_in.shape
-        except Exception as err:
+        except Exception:
             nx, ny, ns = image_in.shape
 
         xq, yq = np.mgrid[:nx, :ny]
@@ -191,7 +191,7 @@ class ImageJ_get_pixels_in_roi():
                 self.coord_masks = np.array(self.coord_masks)
                 break
 
-    def coord_mask(self: 'array_float'):
+    def coord_mask(self) -> list[list[float]]:
         return self.coord_masks
 
 ##############################################################################
@@ -219,7 +219,7 @@ class ImageJ_get_coord_roi():
                 self.coord_masks = ref.mask_coord()
                 break
 
-    def coord_roi(self: 'list_float'):
+    def coord_roi(self) -> list[float]:
         return self.coord_masks
 
 ##############################################################################
@@ -228,12 +228,13 @@ class ImageJ_get_coord_roi():
 class ImageJ_command():
     def __init__(self, command='', verbose=True):
         from subprocess import Popen
+        import os
         # subprocess.Popen(['ImageJ', '-eval', command], shell=False)
         try:
-            proc = Popen(['ImageJ', '-eval', command], shell=False)
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', command], shell=False)
-        
+            Popen(['ImageJ', '-eval', command], shell=False)
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', command], shell=False)
+
         if verbose:
             print(command)
 
@@ -286,6 +287,6 @@ class ImageJ_RelaxationTime_profil():
         script = 'run("Install...", "install=' + tmp_file + '");'
         # Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
         try:
-            proc = Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
-        except:
-            proc = Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)
+            Popen(['ImageJ', '-eval', scriptfile, '-eval', script], shell=False)
+        except Exception:
+            Popen([os.environ['ImageJ'], '-eval', scriptfile, '-eval', script], shell=False)

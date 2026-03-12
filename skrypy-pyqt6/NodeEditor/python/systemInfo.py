@@ -1,7 +1,6 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QPlainTextEdit, \
-    QVBoxLayout, QDialog, QLabel, QStyleFactory
+from PyQt6.QtWidgets import QApplication, QPlainTextEdit, \
+    QVBoxLayout, QDialog
 import sys
-from PyQt6.QtCore import Qt
 
 
 class diagramInfo(QDialog):

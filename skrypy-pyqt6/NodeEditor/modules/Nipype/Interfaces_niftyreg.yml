@@ -1,0 +1,13 @@
+niftyreg_RegResample:
+  args: ''
+  environ: {} 
+  inter_val: enumerate(('NN','LIN','CUB','SINC'))
+  omp_core_val: 1
+  out_file: 'path'
+  pad_val: 0.0
+  psf_alg: 0
+  psf_flag: True
+  tensor_flag: True
+  trans_file: 'path'
+  type: enumerate(('res', 'blank'))
+  verbosity_off_flag: True

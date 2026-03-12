@@ -5,7 +5,7 @@ class tuple_sub_tuple:
         else:
             self.sub = tuple_in[index_start:index_end]
 
-    def sub_tuple(self: 'tuple'):
+    def sub_tuple(self) -> tuple:
         return self.sub
 
 #####################################################################
@@ -18,7 +18,7 @@ class tuple_concatenat_dyn:
             self.tupleList.extend(list(dynamicsInputs[di]))
         self.tupleList = tuple(self.tupleList)
 
-    def tuple_list(self: 'list_tuple'):
+    def tuple_list(self) -> list[tuple]:
         return self.tupleList
 
 #############################################################################
@@ -28,7 +28,7 @@ class tuple_getElement():
     def __init__(self, tuple_in=(0,), index=0):
         self.out_tup = tuple_in[index]
 
-    def tup_value_to_index(self: 'float'):
+    def tup_value_to_index(self) -> float:
         return self.out_tup
 
 #############################################################################
@@ -38,7 +38,7 @@ class tuple_length():
     def __init__(self, tuple_in=(0,)):
         self.len = len(tuple_in)
 
-    def out_len(self: 'int'):
+    def out_len(self) -> int:
         return self.len
 
 ############################################################################
@@ -51,5 +51,5 @@ class tuple_create_dyn():
             elem_tuple.append(vi)
         self.out_tup = tuple(elem_tuple)
 
-    def out_tuple(self: 'tuple'):
+    def out_tuple(self) -> tuple:
         return self.out_tup

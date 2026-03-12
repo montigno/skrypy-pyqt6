@@ -15,7 +15,7 @@ class numpy_array_str():
         import numpy as np
         self.out = np.array_str(arr, **options)
 
-    def out_array_str(self: 'str'):
+    def out_array_str(self) -> str:
         return self.out
 
 ##############################################################################
@@ -35,10 +35,9 @@ class numpy_array_bool_to_array_int():
         GUI: no
     """
     def __init__(self, array_bool=[[True]]):
-        import numpy as np
         self.output = array_bool.astype(int)
 
-    def out_ndarray(self: 'array_int'):
+    def out_ndarray(self) -> list[list[int]]:
         return self.output
 
 ##############################################################################
@@ -61,7 +60,7 @@ class numpy_array_float_to_ndarray():
         import numpy as np
         self.output = np.array(array_float)
 
-    def out_ndarray(self: 'array_float'):
+    def out_ndarray(self) -> list[list[float]]:
         return self.output
 
 ##############################################################################
@@ -71,7 +70,7 @@ class numpy_ndarray_to_float_list():
     def __init__(self, ndarray_list=[0.0]):
         self.out = list(ndarray_list)
 
-    def outList(self: 'list_float'):
+    def outList(self) -> list[float]:
         return self.out
 
 ##############################################################################
@@ -81,7 +80,7 @@ class numpy_ndarray_to_float_array():
     def __init__(self, array_in=[[0.0]]):
         self.out_array = array_in.tolist()
 
-    def out_array(self: 'array_float'):
+    def out_array(self) -> list[list[float]]:
         return self.out_array
 
 ##############################################################################
@@ -93,7 +92,7 @@ class numpy_str_list_to_float_Array():
         x = np.array(list_str)
         self.output = x.astype(np.float)
 
-    def outArray(self: 'array_float'):
+    def outArray(self) -> list[list[float]]:
         return self.output
 
 ##############################################################################
@@ -104,7 +103,7 @@ class numpy_float_list_to_ndarray():
         import numpy as np
         self.output = np.array(list_float)
 
-    def outArray(self: 'list_float'):
+    def outArray(self) -> list[float]:
         return self.output
 
 ##############################################################################
@@ -115,7 +114,7 @@ class numpy_float_list_to_array():
         import numpy as np
         self.output = np.reshape(list_float, (x, y))
 
-    def outArray(self: 'array_float'):
+    def outArray(self) -> list[list[float]]:
         return self.output
 
 ##############################################################################
@@ -149,7 +148,7 @@ class numpy_flatten():
         a = np.array(array_in)
         self.output = a.flatten(order)
 
-    def outArray(self: 'list_float'):
+    def outArray(self) -> list[float]:
         return self.output
 
 ##############################################################################
@@ -163,7 +162,7 @@ class numpy_ravel():
         a = np.array(array_in)
         self.output = a.ravel(order)
 
-    def outArray(self: 'list_float'):
+    def outArray(self) -> list[float]:
         return self.output
 
 ##############################################################################
@@ -174,7 +173,7 @@ class numpy_new_axis():
         import numpy as np
         self.new_img = image_nd_array[:, :, np.newaxis]
 
-    def newAxis(self: 'array_float'):
+    def newAxis(self) -> list[list[float]]:
         return self.new_img
 
 ##############################################################################
@@ -184,5 +183,5 @@ class numpy_reshape():
     def __init__(self, a=[[0.0]], newshape=(3,)):
         self.reshaped_arr = a.reshape(newshape)
 
-    def reshaped(self: 'array_float'):
+    def reshaped(self) -> list[list[float]]:
         return self.reshaped_arr

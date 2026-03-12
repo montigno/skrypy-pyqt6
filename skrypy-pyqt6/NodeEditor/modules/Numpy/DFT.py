@@ -25,7 +25,7 @@ class numpy_fft_1d():
         import numpy as np
         self.out = np.fft.fft(data, **options)
 
-    def fft_1d(self: 'list_float'):
+    def fft_1d(self) -> list[float]:
         return self.out
 
 ###############################################################################
@@ -68,7 +68,7 @@ class numpy_ifft_1d():
         import numpy as np
         self.out = np.fft.ifft(data, **options)
 
-    def ifft_1d(self: 'list_float'):
+    def ifft_1d(self) -> list[float]:
         return self.out
 
 ###############################################################################
@@ -79,7 +79,7 @@ class numpy_fft_freq():
         import numpy as np
         self.out = np.fft.fftfreq(n, d)
 
-    def fft_freq(self: 'list_float'):
+    def fft_freq(self) -> list[float]:
         return self.out
 
 ###############################################################################
@@ -90,5 +90,5 @@ class numpy_fft_shift():
         import numpy as np
         self.out = np.fft.fftshift(array_like)
 
-    def fft_shift(self: 'array_float'):
+    def fft_shift(self) -> list[list[float]]:
         return self.out

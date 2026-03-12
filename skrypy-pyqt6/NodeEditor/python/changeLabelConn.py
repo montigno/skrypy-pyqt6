@@ -8,7 +8,7 @@
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QLabel, \
-    QPushButton, QWidget, QGroupBox, QLineEdit
+    QPushButton, QLineEdit
 
 
 class changeLabel(QDialog):

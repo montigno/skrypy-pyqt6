@@ -19,12 +19,12 @@ class get_mask():
             self.fll = (roi_x, roi_y)
         elif roi['type'] == 'rectangle':
             roi_coord = np.array([roi['left'],
-                   roi['top'],
-                   roi['width'],
-                   roi['height']])
+                                 roi['top'],
+                                 roi['width'],
+                                 roi['height']])
             self.msk = self.create_rectangle_mask(h, w,
-                                             (roi_coord[0], roi_coord[1]),
-                                             (roi_coord[2], roi_coord[3]))
+                                                  (roi_coord[0], roi_coord[1]),
+                                                  (roi_coord[2], roi_coord[3]))
             self.ptch = self.patch_rect(roi_coord[0], roi_coord[1],
                                         roi_coord[2], roi_coord[3])
         elif roi['type'] == 'oval':
@@ -39,7 +39,7 @@ class get_mask():
             self.ptch = self.patch_ellipse(oval_xcenter, oval_ycenter, oval_width, oval_height)
         elif roi['type'] == 'line':
             roi_coord = np.array([roi['x1'], roi['x2'], roi['y1'], roi['y2']])
-            
+
             roi_array = np.array([[roi['x1'], roi['x1'], roi['x2'], roi['x2']],
                                   [roi['y1'] + 0.5, roi['y1'] - 0.5, roi['y2'] - 0.5, roi['y2'] + 0.5]])
             roi_array = np.transpose(roi_array)
@@ -50,7 +50,7 @@ class get_mask():
             self.plt = ([roi['x'], roi['y']])
 
     def create_line_mask(self, nx, ny, coord):
-        x, y = np.mgrid[:ny,:nx]
+        x, y = np.mgrid[:ny, :nx]
         coors = np.hstack((x.reshape(-1, 1), y.reshape(-1, 1)))
         line_path = Path(coord)
         mask = line_path.contains_points(coors)
@@ -59,7 +59,7 @@ class get_mask():
         return mask
 
     def create_poly_mask(self, nx, ny, coord):
-        x, y = np.mgrid[:ny,:nx]
+        x, y = np.mgrid[:ny, :nx]
         coors = np.hstack((x.reshape(-1, 1), y.reshape(-1, 1)))
         poly_path = Path(coord)
         mask = poly_path.contains_points(coors)
@@ -72,7 +72,7 @@ class get_mask():
             center = (int(w / 2), int(h / 2))
         if radius is None:  # use the smallest distance between the center and image walls
             radius = (int(w / 2), int(h / 2))
-        Y, X = np.ogrid[:h,:w]
+        Y, X = np.ogrid[:h, :w]
         dist_from_center = ((X - center[0]) / radius[0]) ** 2 + ((Y - center[1]) / radius[1]) ** 2
         return dist_from_center <= 1
 
@@ -97,17 +97,17 @@ class get_mask():
 
     def patch_ellipse(self, oval_xcenter, oval_ycenter, oval_width, oval_height):
         p = patches.Ellipse((oval_xcenter, oval_ycenter), oval_width, oval_height,
-                         angle=0.0, linewidth=1, fill=False, edgecolor=self.color, zorder=1)
+                            angle=0.0, linewidth=1, fill=False, edgecolor=self.color, zorder=1)
         return p
 
     def patch_rect(self, rect_left, rect_top, rect_width, rect_height):
         p = patches.Rectangle((rect_left - self.shift_coord, rect_top - self.shift_coord), rect_width, rect_height,
-                           angle=0.0, linewidth=1, fill=False, edgecolor=self.color, zorder=1)
+                              angle=0.0, linewidth=1, fill=False, edgecolor=self.color, zorder=1)
         return p
 
     def mask(self):
         return self.msk
-    
+
     def mask_coord(self):
         return np.argwhere(self.msk)
 
@@ -116,6 +116,6 @@ class get_mask():
 
     def patch(self):
         return self.ptch
-    
+
     def plot(self):
         return self.plt

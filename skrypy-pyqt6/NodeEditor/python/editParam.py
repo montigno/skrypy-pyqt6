@@ -10,7 +10,7 @@ from NodeEditor.python.tools import DefinitType
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont, QPalette
 from PyQt6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QLabel, \
-    QPushButton, QWidget, QGroupBox, QComboBox, QScrollArea, QLineEdit
+    QPushButton, QWidget, QComboBox, QScrollArea, QLineEdit
 import os
 
 
@@ -29,7 +29,7 @@ class editParam(QDialog):
         for i in range(0, nIn):
             try:
                 self.listField[inout[0][i]] = DefinitType(eval(valInit[i])).returntype()
-            except Exception as err:
+            except Exception:
                 self.listField[inout[0][i]] = DefinitType(valInit[i]).returntype()
 
         vbox = QVBoxLayout(self)

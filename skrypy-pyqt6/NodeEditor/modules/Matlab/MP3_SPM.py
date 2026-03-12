@@ -13,10 +13,10 @@ class MP3_SPM_reorient():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -45,8 +45,8 @@ class MP3_SPM_Coreg_Est_Res():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map

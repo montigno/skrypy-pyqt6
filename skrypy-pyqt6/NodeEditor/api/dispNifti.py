@@ -27,7 +27,7 @@ class DispNifti(QDialog):
 
         try:
             img[np.isnan(img)] = 0.0
-        except:
+        except Exception:
             pass
 
         self.img = np.array(img)
@@ -38,7 +38,7 @@ class DispNifti(QDialog):
         elif (self.dim == 3):
             tmpimg = self.img[:, :, 0].copy()
         elif (self.dim == 4):
-            tmpimg = self.img[:, :, 0, 0].copy()       
+            tmpimg = self.img[:, :, 0, 0].copy()
         elif (self.dim == 5):
             tmpimg = self.img[:, :, 0, 0, 0].copy()
 
@@ -82,7 +82,7 @@ class DispNifti(QDialog):
                 self.ry = int(self.h * pixdim[1] / pixdim[0])
                 self.interl = self.w
 
-        self.boxSliders() 
+        self.boxSliders()
         self.enableSliders()
         self.imgqLabel()
         self.navigImage()
@@ -107,7 +107,7 @@ class DispNifti(QDialog):
             try:
                 os.remove(imgf)
             except OSError as e:
-                print("Error : %s : %s" % (input_file, e.strerror))
+                print("Error : %s : %s" % (imgf, e.strerror))
 
     def imgqLabel(self):
         self.imageLabel = QLabel()
@@ -120,11 +120,11 @@ class DispNifti(QDialog):
         self.displayPosValue()
         totalBytes = self.x.data.nbytes
         bytesPerLine = int(totalBytes / self.interl)
-        image = QImage(self.x.data, self.w , self.h, bytesPerLine, QImage.Format.Format_Grayscale8)
+        image = QImage(self.x.data, self.w, self.h, bytesPerLine, QImage.Format.Format_Grayscale8)
         # image = QImage(self.x.repeat(4), self.w, self.h, QImage.Format.Format_RGB32)
-        
+
         print('rx * factor, ry * factor', self.rx * (self.scaleFactor - 1), self.ry * (self.scaleFactor - 1))
-        
+
         self.pixm = QPixmap.fromImage(image)
         self.pixm = self.pixm.scaled(self.rx * (self.scaleFactor - 1),
                                      self.ry * (self.scaleFactor - 1),
@@ -162,7 +162,7 @@ class DispNifti(QDialog):
         x = rotate(x, -90, reshape=True)
         x = np.uint8((x - x.min()) / np.ptp(x) * 255.0)
         self.x = x
-        
+
     def displayPosValue(self):
         self.txta1.setText(str(self.a1.value() + 1) + ' / ' + str(self.a1.maximum() + 1))
         self.txta2.setText(str(self.a2.value() + 1) + ' / ' + str(self.a2.maximum() + 1))
@@ -172,19 +172,19 @@ class DispNifti(QDialog):
         self.k1 = QLabel('Sl 1    ')
         self.k2 = QLabel('Sl 2')
         self.k3 = QLabel('Sl 3')
- 
+
         self.a1 = self.createSlider(0, 0, 0)
         self.a2 = self.createSlider(0, 0, 0)
         self.a3 = self.createSlider(0, 0, 0)
- 
+
         self.a1.valueChanged.connect(self.changePosValue)
         self.a2.valueChanged.connect(self.changePosValue)
         self.a3.valueChanged.connect(self.changePosValue)
- 
+
         self.txta1 = self.createFieldValue()
         self.txta2 = self.createFieldValue()
         self.txta3 = self.createFieldValue()
- 
+
         self.controlsGroup = QGroupBox('Slice Controls')
         gridCtrl = QGridLayout()
         gridCtrl.addWidget(self.k1, 0, 0)
@@ -197,18 +197,18 @@ class DispNifti(QDialog):
         gridCtrl.addWidget(self.a3, 2, 1)
         gridCtrl.addWidget(self.txta3, 2, 2)
         self.controlsGroup.setLayout(gridCtrl)
-         
+
         self.layoutSliders = QVBoxLayout()
         self.layoutSliders.addWidget(self.controlsGroup)
- 
+
         self.layoutSlide = QWidget()
         self.layoutSlide.setLayout(self.layoutSliders)
-        
+
     def enableSliders(self):
         self.a1.setEnabled(True)
         self.a2.setEnabled(True)
         self.a3.setEnabled(True)
-         
+
     def createSlider(self, maxm=0, minm=0, pos=0):
         slider = QSlider(Qt.Orientation.Horizontal)
         slider.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
@@ -220,17 +220,17 @@ class DispNifti(QDialog):
         slider.setValue(pos)
         slider.setEnabled(False)
         return slider
-     
+
     def createFieldValue(self):
         fieldValue = QLineEdit()
         fieldValue.setEnabled(False)
         fieldValue.setFixedWidth(80)
         fieldValue.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         return fieldValue
-     
+
     def changePosValue(self):
         self.navigImage()
-        
+
     def keyPressEvent(self, event):
         if (QKeySequence(event.key() + int(event.modifiers())) ==
                 QKeySequence("Ctrl+W")):
@@ -255,16 +255,16 @@ class Open_Nifti:
         else:
             print('no Nifti file')
 
-    def image(self: 'array_float'):
+    def image(self):
         return self.img
 
-    def dim(self: 'int'):
+    def dim(self):
         return self.dim
 
-    def pixdim(self: 'list_float'):
+    def pixdim(self):
         return self.pxd
 
-    def filePath(self: 'path'):
+    def filePath(self):
         return self.fileSource
 
 

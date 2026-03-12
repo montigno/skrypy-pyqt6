@@ -2,10 +2,6 @@ class BrukerInformationParser():
 
     def __init__(self, methodFileName='path', acqpFileName='path', visuParsFileName='path',
                  applyVisuCoreTransformation=True):
-
-        import os
-        import sys
-        import shutil
         import math
 
         global math
@@ -158,8 +154,8 @@ class BrukerInformationParser():
                 r[i] += A[i][j] * b[j]
         return r
 
-    def getDiffusionGradientOrientations(self: 'array_float'):
+    def getDiffusionGradientOrientations(self) -> list[list[float]]:
         return self.diffusionGradientOrientations
 
-    def getBValues(self: 'list_float'):
+    def getBValues(self) -> list[float]:
         return self.dwEffBValues

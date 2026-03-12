@@ -10,3 +10,4 @@ Non_linear_registration_for_Atlases:
   aff_iterations: (2100, 1200, 1200, 10) # (list/tuple of python:integers) – vector of iterations for low-dimensional (translation, rigid, affine) registration.
   aff_shrink_factors: (6, 4, 2, 1) # (list/tuple of python:integers) – vector of multi-resolution shrink factors for low-dimensional (translation, rigid, affine) registration.
   aff_smoothing_sigmas: (3, 2, 1, 0) # (list/tuple of python:integers) – vector of multi-resolution smoothing factors for low-dimensional (translation, rigid, affine) registration.
+  create_warped_grid: False # (boolean) - create a file with grid to visualize a deformation field. The file will contain '_warpedgrid' as a suffix

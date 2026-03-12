@@ -7,7 +7,7 @@ class DefineTypeVariable:
         self.var = var
         try:
             self.var = ast.literal_eval(var)
-        except Exception as e:
+        except Exception:
             pass
 
     def returntype(self):
@@ -31,7 +31,7 @@ class DefineTypeVariable:
             typVar = 'tuple'
             typVal = ''
             # typVal = self._isPath(self.var[0])
-        return typVar+typVal, self.var
+        return typVar + typVal, self.var
 
     def _isPath(self, varble):
         if type(varble).__name__ == 'str':

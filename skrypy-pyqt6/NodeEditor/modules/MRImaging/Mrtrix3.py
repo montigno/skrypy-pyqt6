@@ -10,10 +10,10 @@ class mrtrix3_deGibbs3D:
                 list_options.append(str(options[op]))
         command = ['deGibbs3D']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.deG3D = outImg
 
-    def deGibbs3D(self: 'path'):
+    def deGibbs3D(self) -> None:
         return self.deG3D
 
 ###############################################################################
@@ -39,10 +39,10 @@ class mrtrix3_dwi2fod:
                 list_options.append(str(options[op]))
         command = ['dwi2fod']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwi2f = odf
 
-    def dwi2fod(self: 'path'):
+    def dwi2fod(self) -> None:
         return self.dwi2f
 
 ###############################################################################
@@ -60,10 +60,10 @@ class mrtrix3_dwi2mask:
                 list_options.append(str(options[op]))
         command = ['dwi2mask']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwi2m = dwi2mask_out
 
-    def dwi2mask(self: 'path'):
+    def dwi2mask(self) -> None:
         return self.dwi2m
 
 ###############################################################################
@@ -99,10 +99,10 @@ class mrtrix3_dwi2response:
                 list_options.append(str(options[op]))
         command = ['dwi2response']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwi2r = outputs
 
-    def dwi2response(self: 'list_path'):
+    def dwi2response(self) -> list[None]:
         return self.dwi2r
 
 ###############################################################################
@@ -122,10 +122,10 @@ class mrtrix3_dwi2tensor:
                     list_options.append(str(options[op]))
         command = ['dwi2tensor']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwi2t = dwi2tensor_out
 
-    def dwi2tensor(self: 'path'):
+    def dwi2tensor(self) -> None:
         return self.dwi2t
 
 ###############################################################################
@@ -147,10 +147,10 @@ class mrtrix3_dwi2tensor2:
                     list_options.append(str(options[op]))
         command = ['dwi2tensor']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwi2t = dwi2tensor_out
 
-    def dwi2tensor(self: 'path'):
+    def dwi2tensor(self) -> None:
         return self.dwi2t
 
 ###############################################################################
@@ -168,10 +168,10 @@ class mrtrix3_dwidenoise:
                 list_options.append(str(options[op]))
         command = ['dwidenoise']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.dwiden = dwi_out
 
-    def dwidenoise(self: 'path'):
+    def dwidenoise(self) -> None:
         return self.dwiden
 
 ###############################################################################
@@ -193,8 +193,8 @@ class mrtrix3_lmax:
         elif number_DWI_volumes > 91:
             self.lmax = 12
 
-    def lmax(self: 'int'):
-        return sel.lmax
+    def lmax(self) -> int:
+        return self.lmax
 
 ###############################################################################
 
@@ -216,10 +216,10 @@ class mrtrix3_mrcalc:
                 list_options.append(str(options[op]))
         command = ['mrcalc']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.mrc = mrcalc_out
 
-    def mrcalc(self: 'path'):
+    def mrcalc(self) -> None:
         return self.mrc
 
 ###############################################################################
@@ -244,10 +244,10 @@ class mrtrix3_mrconvert:
         command = ["mrconvert"]
         command.extend(list_options)
         print('MrTrix3 command : ', command)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.outfile = output
 
-    def output_file(self: 'path'):
+    def output_file(self) -> None:
         return self.outfile
 
 ###############################################################################
@@ -265,13 +265,14 @@ class mrtrix3_mrdegibbs:
                 list_options.append(str(options[op]))
         command = ['mrdegibbs']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.mrdeg = mrdegibbs_out
 
-    def mrdegibbs(self: 'path'):
+    def mrdegibbs(self) -> None:
         return self.mrdeg
 
 ###############################################################################
+
 
 class mrtrix3_mrgrid:
     def __init__(self, mif_image='path', mrgrid_out='path', operation="enumerate(('regrid', 'crop', 'pad'))", **options):
@@ -286,10 +287,10 @@ class mrtrix3_mrgrid:
                 list_options.append(str(options[op]))
         command = ['mrgrid']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.mrgri = mrgrid_out
 
-    def mrgrid(self: 'path'):
+    def mrgrid(self) -> None:
         return self.mrgri
 
 ###############################################################################
@@ -323,11 +324,11 @@ class mrtrix3_mrregister:
                 list_options.append(str(options[op]))
         command = ['mrregister']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
-        self.mrrg = mrgrid_out
+        run(command, shell=False, check=True)
+        self.mrrg = ""  # to complete !
 
-    def mrreg(self: 'path'):
-        return self.mrrg 
+    def mrreg(self) -> None:
+        return self.mrrg
 
 ###############################################################################
 
@@ -368,10 +369,10 @@ class mrtrix3_mtnormalise:
                 list_options.append(str(options[op]))
         command = ['mtnormalise']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.mtn = outputs
 
-    def mrcalc(self: 'list_path'):
+    def mrcalc(self) -> list[None]:
         return self.mtn
 
 ###############################################################################
@@ -389,10 +390,10 @@ class mrtrix3_mrtransform:
                 list_options.append(str(options[op]))
         command = ['mrtransform']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.mrtra = output
 
-    def mrtransform(self: 'path'):
+    def mrtransform(self) -> None:
         return self.mrtra
 
 
@@ -410,17 +411,17 @@ class mrtrix3_population_template:
                 list_options.append(str(options[op]))
         command = ['population_template']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.templ = template
-        
-    def outfile_template(self: 'path'):
+
+    def outfile_template(self) -> None:
         return self.templ
 
 ###############################################################################
 
 
 class mrtrix3_tckgen:
-    def __init__(self, source='path', tracks='path', **options):
+    def __init__(self, mif_image='path', tracks='path', **options):
         from subprocess import run
         list_options = []
         list_options.append(mif_image)
@@ -428,10 +429,10 @@ class mrtrix3_tckgen:
             list_options.append(str(options[op]))
         command = ['tckgen']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.tracks = tracks
 
-    def outfile_tracks(self: 'path'):
+    def outfile_tracks(self) -> None:
         return self.tracks
 
 ###############################################################################
@@ -448,10 +449,10 @@ class mrtrix3_tensor2metric:
                 list_options.append(str(options[op]))
         command = ['tensor2metric']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
         self.tens = tensor2metric_out
 
-    def tensor2metric(self: 'path'):
+    def tensor2metric(self) -> None:
         return self.tens
 
 ###############################################################################
@@ -468,7 +469,7 @@ class mrtrix3_tensor2metric2:
                 list_options.append(str(options[op]))
         command = ['tensor2metric']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
+        run(command, shell=False, check=True)
 
 ###############################################################################
 
@@ -484,11 +485,8 @@ class mrtrix3_warp2metric:
                 list_options.append(str(options[op]))
         command = ['warp2metric']
         command.extend(list_options)
-        result = run(command, shell=False, check=True)
-        self.warp = tensor2metric_out
+        run(command, shell=False, check=True)
+        self.warp = ""  # to complete !
 
-    def warp2metric(self: 'path'):
+    def warp2metric(self) -> None:
         return self.warp
-
-       
-        

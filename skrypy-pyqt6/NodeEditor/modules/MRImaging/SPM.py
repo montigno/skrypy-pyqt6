@@ -9,10 +9,10 @@ class spm_imcalc():
         self.Vo = mat_eng.spm_imcalc(Vi, Vo, f, options)
         self.mat_eng = mat_eng
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def Vo(self: 'dict'):
+    def Vo(self) -> dict:
         return self.Vo
 
 ##################################################################
@@ -24,7 +24,7 @@ class spm_reslice():
         mat_eng.spm_reslice(P, options)
         self.mat_eng = mat_eng
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
 ##################################################################

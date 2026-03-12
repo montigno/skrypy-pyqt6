@@ -8,7 +8,7 @@ class dcm2niix():
             listRep1 = os.listdir(sourcedir)
         list_options = []
         for op in options:
-            list_options.append('-'+op)
+            list_options.append('-' + op)
             list_options.append(options[op])
         command = ['dcm2niix']
         command.extend(list_options)
@@ -20,5 +20,5 @@ class dcm2niix():
             listRep2 = os.listdir(sourcedir)
         self.listfiles = [os.path.join(options['o'], item) for item in listRep2 if item not in listRep1]
 
-    def list_files(self: 'list_path'):
+    def list_files(self) -> list[None]:
         return self.listfiles

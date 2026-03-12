@@ -16,34 +16,34 @@ class afni_AlignEpiAnatPy:
         al_ea.cmdline
         self.res = al_ea.run()
 
-    def anat_al_mat(self: 'path'):
+    def anat_al_mat(self) -> None:
         return self.res.outputs.anat_al_mat
 
-    def anat_al_orig(self: 'path'):
+    def anat_al_orig(self) -> None:
         return self.res.outputs.anat_al_orig
 
-    def epi_al_mat(self: 'path'):
+    def epi_al_mat(self) -> None:
         return self.res.outputs.epi_al_mat
 
-    def epi_al_orig(self: 'path'):
+    def epi_al_orig(self) -> None:
         return self.res.outputs.epi_al_orig
 
-    def epi_al_tlrc_mat(self: 'path'):
+    def epi_al_tlrc_mat(self) -> None:
         return self.res.outputs.epi_al_tlrc_mat
 
-    def epi_reg_al_mat(self: 'path'):
+    def epi_reg_al_mat(self) -> None:
         return self.res.outputs.epi_reg_al_mat
 
-    def epi_tlrc_al(self: 'path'):
+    def epi_tlrc_al(self) -> None:
         return self.res.outputs.epi_tlrc_al
 
-    def epi_vr_al_mat(self: 'path'):
+    def epi_vr_al_mat(self) -> None:
         return self.res.outputs.epi_vr_al_mat
 
-    def epi_vr_motion(self: 'path'):
+    def epi_vr_motion(self) -> None:
         return self.res.outputs.epi_vr_motion
 
-    def skullstrip(self: 'path'):
+    def skullstrip(self) -> None:
         return self.res.outputs.skullstrip
 
 ##############################################################################
@@ -64,25 +64,25 @@ class afni_Autobox:
             setattr(at.inputs, ef, options[ef])
         self.res = at.run()
 
-    def x_min(self: "int"):
+    def x_min(self) -> int:
         return self.res.outputs.x_min
 
-    def x_max(self: "int"):
+    def x_max(self) -> int:
         return self.res.outputs.x_max
 
-    def y_min(self: "int"):
+    def y_min(self) -> int:
         return self.res.outputs.y_min
 
-    def y_max(self: "int"):
+    def y_max(self) -> int:
         return self.res.outputs.y_max
 
-    def z_min(self: "int"):
+    def z_min(self) -> int:
         return self.res.outputs.z_min
 
-    def z_max(self: "int"):
+    def z_max(self) -> int:
         return self.res.outputs.z_max
 
-    def out_file(self: "path"):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -103,10 +103,10 @@ class afni_Automask():
             setattr(automask.inputs, ef, options[ef])
         self.res = automask.run()
 
-    def brain_file(self: 'path'):
+    def brain_file(self) -> None:
         return self.res.outputs.brain_file
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -128,7 +128,7 @@ class afni_Calc():
             setattr(calc.inputs, ef, options[ef])
         self.res = calc.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -149,7 +149,7 @@ class afni_Despike():
             setattr(despike.inputs, ef, options[ef])
         self.res = despike.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -172,7 +172,7 @@ class afni_Fourier():
             setattr(fourier.inputs, ef, options[ef])
         self.res = fourier.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -193,7 +193,7 @@ class afni_Resample():
             setattr(at.inputs, ef, options[ef])
         self.res = at.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -215,7 +215,7 @@ class afni_Seg():
             setattr(seg.inputs, ef, options[ef])
         self.res = seg.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -237,7 +237,7 @@ class afni_SkullStrip():
         skullstrip.cmdline
         self.res = skullstrip.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -258,10 +258,10 @@ class afni_Unifize():
             setattr(unifize.inputs, ef, options[ef])
         self.res = unifize.run()
 
-    def scale_file(self: 'path'):
+    def scale_file(self) -> None:
         return self.res.outputs.scale_file
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -282,5 +282,5 @@ class afni_ZCutUp():
             setattr(zcutup.inputs, ef, options[ef])
         self.res = zcutup.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

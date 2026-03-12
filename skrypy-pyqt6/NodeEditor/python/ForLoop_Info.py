@@ -27,7 +27,7 @@ class ForLoopInfo:
                 ln = ln.replace('\\', '\\\\')
                 try:
                     self.listConnctIn.append(ast.literal_eval(ln))
-                except Exception as e:
+                except Exception:
                     self.listConnctIn.append(ln)
                 self.listConnctIn = self.listConnctIn[0]
             if i == 1:
@@ -46,7 +46,7 @@ class ForLoopInfo:
             if i == 6:
                 break
 
-        listNodeValue = list(set(self.listOut))
+        # listNodeValue = list(set(self.listOut))
 
         self.txt = ''
         self.listModulExecution = {}

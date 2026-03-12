@@ -33,7 +33,7 @@ class keras_to_numpy():
         sess = backend.get_session()
         self.nump = sess.run(tensor_in)
 
-    def out_numpy(self: 'array_float'):
+    def out_numpy(self) -> list[list[float]]:
         return self.nump
 
 ##############################################################################
@@ -45,16 +45,16 @@ class keras_datasets_mnist():
         from keras.datasets import mnist
         (self.X_train, self.Y_train), (self.X_test, self.Y_test) = mnist.load_data()
 
-    def X_train(self: 'array_float'):
+    def X_train(self) -> list[list[float]]:
         return self.X_train
 
-    def Y_train(self: 'array_float'):
+    def Y_train(self) -> list[list[float]]:
         return self.Y_train
 
-    def X_test(self: 'array_float'):
+    def X_test(self) -> list[list[float]]:
         return self.X_test
 
-    def Y_test(self: 'array_float'):
+    def Y_test(self) -> list[list[float]]:
         return self.Y_test
 
 ###############################################################################
@@ -78,7 +78,7 @@ class keras_layers_Activation():
         from tensorflow.keras.layers import Activation
         self.act = Activation(**options)(tensorflow_in)
 
-    def out_Activation(self: 'array_float'):
+    def out_Activation(self) -> list[list[float]]:
         return self.act
 
 ###############################################################################
@@ -112,7 +112,7 @@ class keras_layers_Input():
         from tensorflow.keras.layers import Input
         self.lay_input = Input(shape, **options)
 
-    def input(self: 'array_float'):
+    def input(self) -> list[list[float]]:
         return self.lay_input
 
 ###############################################################################
@@ -152,7 +152,7 @@ class keras_layers_Conv3D():
         from tensorflow.keras.layers import Conv3D
         self.tf_out = Conv3D(filters, kernel_size, **options)(tensorflow_in)
 
-    def out_Conv3D(self: 'array_float'):
+    def out_Conv3D(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -195,7 +195,7 @@ class keras_layers_Conv3DTranspose():
         from tensorflow.keras.layers import Conv3DTranspose
         self.tf_out = Conv3DTranspose(filters, kernel_size, **options)(tensorflow_in)
 
-    def out_Conv3DTranspose(self: 'array_float'):
+    def out_Conv3DTranspose(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -236,7 +236,7 @@ class keras_layers_Dense():
         self.tf_out = Dense(units, **options)
         print('dense : ', self.tf_out)
 
-    def out_Dense(self: 'str'):
+    def out_Dense(self) -> str:
         return self.tf_out
 
 ###############################################################################
@@ -277,7 +277,7 @@ class keras_layers_MaxPooling3D():
         from tensorflow.keras.layers import MaxPooling3D
         self.tf_out = MaxPooling3D(pool_size, **options)(tensorflow_in)
 
-    def out_MaxPooling3D(self: 'array_float'):
+    def out_MaxPooling3D(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -289,7 +289,7 @@ class keras_layers_Concatenate():
         self.tf_out = concatenate([tf_in1, tf_in2], axis=axis)
         # self.tf_out = Concatenate(axis=axis)([tf_in1, tf_in2])
 
-    def out_concatenate(self: 'array_float'):
+    def out_concatenate(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -326,7 +326,7 @@ class keras_layers_AveragePooling3D():
         from tensorflow.keras.layers import AveragePooling3D
         self.tf_out = AveragePooling3D(pool_size, **options)(tensorflow_in)
 
-    def out_AveragePooling3D(self: 'array_float'):
+    def out_AveragePooling3D(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -374,7 +374,7 @@ class keras_layers_ZeroPadding3D():
         from tensorflow.keras.layers import ZeroPadding3D
         self.tf_out = ZeroPadding3D(padding, **options)(tensorflow_in)
 
-    def out_ZeroPadding3D(self: 'array_float'):
+    def out_ZeroPadding3D(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -403,7 +403,7 @@ class keras_layers_BatchNormalization():
         from tensorflow.keras.layers import BatchNormalization
         self.tf_out = BatchNormalization(**options)(tensorflow_in)
 
-    def out_BatchNormalization(self: 'array_float'):
+    def out_BatchNormalization(self) -> list[list[float]]:
         return self.tf_out
 
 ###############################################################################
@@ -414,7 +414,7 @@ class keras_layers_UpSampling3D():
         from tensorflow.keras.layers import UpSampling3D
         self.upSamp = UpSampling3D(**options)(tensorflow_in)
 
-    def out_UpSAmpling3D(self: 'array_float'):
+    def out_UpSAmpling3D(self) -> list[list[float]]:
         return self.upSamp
 
 ###############################################################################
@@ -441,7 +441,7 @@ class keras_models_Model():
         from tensorflow.keras.models import Model
         self.model = Model(inputs=[inputs], outputs=[outputs], **options)
 
-    def model_out(self: 'array_float'):
+    def model_out(self) -> list[list[float]]:
         return self.model
 
 ###############################################################################
@@ -467,10 +467,10 @@ class keras_models_Model_compile():
         self.model_comp = model_in.compile(**options)
         self.model = model_in
 
-    def model_compile(self: 'array_float'):
+    def model_compile(self) -> list[list[float]]:
         return self.model_comp
 
-    def model_out(self: 'array_float'):
+    def model_out(self) -> list[list[float]]:
         return self.model
 
 ###############################################################################
@@ -495,7 +495,7 @@ class keras_models_Model_summary():
         from tensorflow.keras.models import Model
         self.model = model_in.summary(**options)
 
-    def model_out(self: 'array_float'):
+    def model_out(self) -> list[list[float]]:
         return self.model
 
 ###############################################################################
@@ -543,7 +543,7 @@ class keras_models_Model_predict():
         # from keras.models import Model
         self.pred = model_in.predict(np.array(x), batch_size, verbose)
 
-    def predict_out(self: 'array_float'):
+    def predict_out(self) -> list[list[float]]:
         return self.pred
 
 ###############################################################################
@@ -595,10 +595,10 @@ class keras_models_Model_fit():
         self.fit = model_in.fit(x, y, **options)
         self.model = model_in
 
-    def model_fit(self: 'array_float'):
+    def model_fit(self) -> list[list[float]]:
         return self.fit
 
-    def model_out(self: 'array_float'):
+    def model_out(self) -> list[list[float]]:
         return self.model
 
 ###############################################################################
@@ -609,7 +609,7 @@ class keras_models_Model_load_model():
         from keras.models import load_model
         self.loaded_model = load_model(filepath, **options)
 
-    def model_out(self: 'array_float'):
+    def model_out(self) -> list[list[float]]:
         return self.loaded_model
 
 ###############################################################################
@@ -639,7 +639,7 @@ class keras_Sequential_dyn():
         print('list_layer :', list_layer)
         self.model = Sequential(list_layer)
 
-    def out_Sequential(self: 'array_float'):
+    def out_Sequential(self) -> list[list[float]]:
         return self.model
 
 ###############################################################################
@@ -669,7 +669,7 @@ class keras_optimizers_Adam():
         from keras.optimizers import Adam
         self.adam = Adam(lr=learning_rate, **options)
 
-    def adam_out(self: 'array_float'):
+    def adam_out(self) -> list[list[float]]:
         return self.adam
 
 ###############################################################################
@@ -680,5 +680,5 @@ class keras_utils_to_categorical():
         from tensorflow.keras.utils import to_categorical
         self.to_cat = to_categorical(y, **options)
 
-    def to_categorical(self: 'array_float'):
+    def to_categorical(self) -> list[list[float]]:
         return self.to_cat

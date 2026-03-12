@@ -9,7 +9,7 @@ class Bru2Nii:
             setattr(converter.inputs, ef, options[ef])
         self.res = converter.run()
 
-    def nii_file(self: 'path'):
+    def nii_file(self) -> None:
         return self.res.outputs.nii_file
 
 ##############################################################################
@@ -25,5 +25,5 @@ class Dcm2nii:
         converter.cmdline
         converter.run()
 
-    def dicom_file(self: 'path'):
+    def dicom_file(self) -> None:
         return self.outfile

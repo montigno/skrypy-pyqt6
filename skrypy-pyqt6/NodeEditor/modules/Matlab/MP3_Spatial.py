@@ -13,10 +13,10 @@ class MP3_Brain_Mask_PCNN3D():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -40,10 +40,10 @@ class MP3_Arithmetic():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -65,10 +65,10 @@ class MP3_Reshape():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map
 
 ##############################################################################
@@ -94,8 +94,8 @@ class MP3_MICO_BIAS_Estimation():
         self.mat_eng = mat_eng
         self.map = files_out['In2'][0]
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map

@@ -85,11 +85,10 @@ class openCV_screen():
         with mss() as sct:
             while True:
                 screenShot = sct.grab(mon)
-                img = Image.frombytes(
-                    'RGB',
-                    (screenShot.width, screenShot.height),
-                    screenShot.rgb,
-                    )
+                img = Image.frombytes('RGB',
+                                      (screenShot.width, screenShot.height),
+                                      screenShot.rgb,
+                                      )
                 if filter == 'NoFilter':
                     sketcher_rect = __real_color(np.array(img))
                 else:

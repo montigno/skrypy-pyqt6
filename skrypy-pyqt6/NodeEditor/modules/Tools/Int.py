@@ -17,10 +17,10 @@ class int_operations_dyn():
                 self.remain = self.result % vi
                 self.result = self.result // vi
 
-    def out_result(self: 'int'):
+    def out_result(self) -> int:
         return self.result
 
-    def out_remainder(self: 'int'):
+    def out_remainder(self) -> int:
         return self.remain
 
 #############################################################################
@@ -32,7 +32,7 @@ class int_to_list_dyn:
         for di in dynamicsInputs:
             self.outList.append(dynamicsInputs[di])
 
-    def out_list(self: 'list_int'):
+    def out_list(self) -> list[int]:
         return self.outList
 
 ###############################################################################
@@ -55,7 +55,7 @@ class int_to_float():
     def __init__(self, int_in=0):
         self.outfloat = float(int_in)
 
-    def outFloat(self: 'float'):
+    def outFloat(self) -> float:
         return self.outfloat
 
 ###############################################################################
@@ -78,5 +78,5 @@ class int_to_string():
     def __init__(self, int_in=0):
         self.outStr = str(int_in)
 
-    def outString(self: 'str'):
+    def outString(self) -> str:
         return self.outStr

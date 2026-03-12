@@ -5,7 +5,7 @@ class addImage():
         image2 = np.array(image2)
         self.image = np.add(image1, image2)
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
 ###############################################################
@@ -19,10 +19,10 @@ class subtractImage:
         self.image = np.subtract(image1, image2)
         self.imageAbs = np.absolute(self.image)
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
-    def imageAbs(self: 'array_float'):
+    def imageAbs(self) -> list[list[float]]:
         return self.imageAbs
 
 ###############################################################
@@ -36,10 +36,10 @@ class MultiplyImage:
         self.image = np.multiply(image1, image2)
         self.imageAbs = np.absolute(self.image)
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
-    def imageAbs(self: 'array_float'):
+    def imageAbs(self) -> list[list[float]]:
         return self.imageAbs
 
 ###############################################################
@@ -56,10 +56,10 @@ class DivideImage:
             self.image = image1
         self.imageAbs = np.absolute(self.image)
 
-    def image(self: 'array_float'):
+    def image(self) -> list[list[float]]:
         return self.image
 
-    def imageAbs(self: 'array_float'):
+    def imageAbs(self) -> list[list[float]]:
         return self.imageAbs
 
 ###############################################################

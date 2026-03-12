@@ -21,7 +21,7 @@ class gen_abscissa:
                                   xmax,
                                   int(1 + (xmax - xmin) / delta_x)))
 
-    def outAbscissa(self: 'list_float'):
+    def outAbscissa(self) -> list[float]:
         return self.x
 
 ##############################################################################
@@ -43,7 +43,7 @@ class gen_list_of_integer:
     def __init__(self, n=10):
         self.serie = range(0, n)
 
-    def serie_int(self: 'list_int'):
+    def serie_int(self) -> list[int]:
         return self.serie
 
 ##############################################################################
@@ -66,7 +66,7 @@ class gen_list_of_integer_2():
     def __init__(self, start=0, end=10):
         self.serie = range(start, end + 1)
 
-    def serie_int(self: 'list_int'):
+    def serie_int(self) -> list[int]:
         return self.serie
 
 ##############################################################################
@@ -76,7 +76,7 @@ class gen_list_of_zero_float:
     def __init__(self, n=10):
         self.serie = [0.0 for x in range(0, n)]
 
-    def serie_float(self: 'list_float'):
+    def serie_float(self) -> list[float]:
         return self.serie
 
 ##############################################################################
@@ -87,7 +87,7 @@ class gen_noise:
         import numpy as np
         self.noise = np.random.normal(size=size, scale=scale)
 
-    def noisy_signal(self: 'list_float'):
+    def noisy_signal(self) -> list[float]:
         return self.noise
 
 ##############################################################################
@@ -98,7 +98,7 @@ class gen_random_float():
         import numpy as np
         self.randout = np.random.rand(1, 1)[0][0]
 
-    def rand_out(self: 'float'):
+    def rand_out(self) -> float:
         return self.randout
 
 ##############################################################################
@@ -109,7 +109,7 @@ class gen_random_list_float():
         import numpy as np
         self.randout = np.random.rand(1, n)[0].tolist()
 
-    def rand_out(self: 'list_float'):
+    def rand_out(self) -> list[float]:
         return self.randout
 
 ##############################################################################
@@ -134,7 +134,7 @@ class gen_random_float_2D():
         import numpy as np
         self.randout = np.random.rand(row, col).tolist()
 
-    def rand_out(self: 'array_float'):
+    def rand_out(self) -> list[list[float]]:
         return self.randout
 
 ##############################################################################
@@ -160,7 +160,7 @@ class gen_random_float_3D():
         import numpy as np
         self.randout = np.random.rand(row, col, slice).tolist()
 
-    def rand_out(self: 'array_float'):
+    def rand_out(self) -> list[list[float]]:
         return self.randout
 
 ##############################################################################
@@ -187,7 +187,7 @@ class gen_random_float_4D():
         import numpy as np
         self.randout = np.random.rand(row, col, slice, temporal).tolist()
 
-    def rand_out(self: 'array_float'):
+    def rand_out(self) -> list[list[float]]:
         return self.randout
 
 ##############################################################################
@@ -219,7 +219,7 @@ class gen_random_float_5D():
                                       temporal,
                                       canal).tolist()
 
-    def rand_out(self: 'array_float'):
+    def rand_out(self) -> list[list[float]]:
         return self.randout
 
 ##############################################################################

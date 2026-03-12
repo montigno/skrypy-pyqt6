@@ -11,10 +11,10 @@ class login_passwd_dialog():
         aws = p.stdout.split(' ')
         self.log, self.pwd = aws[0].strip(), aws[1].strip()
 
-    def login(self: 'str'):
+    def login(self) -> str:
         return self.log
 
-    def passwd(self: 'str'):
+    def passwd(self) -> str:
         return self.pwd
 
 ##############################################################################
@@ -32,5 +32,5 @@ class passwd_dialog():
         p = run([sys.executable, source_disp, message], check=False, capture_output=True, text=True)
         self.pwd = p.stdout.strip()
 
-    def passwd(self: 'str'):
+    def passwd(self) -> str:
         return self.pwd

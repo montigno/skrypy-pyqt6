@@ -1,13 +1,11 @@
 from NodeEditor.python.Diagram_Editor import LoadDiagram, Diagram_excution
 
-from PyQt6.QtCore import Qt, QMimeData
+from PyQt6.QtCore import Qt
 from PyQt6.QtTest import QTest
 from PyQt6.QtWidgets import QApplication
-from PyQt6.QtGui import QDrag
 
 from main import Project_Irmage
 import os
-import sys
 import unittest
 
 
@@ -27,7 +25,7 @@ class mri_worksTest(unittest.TestCase):
 
     def tearDown(self):
         for i in reversed(range(5)):
-            print('\r' + 'The test will stop in', i+1, 'second', end=' ', flush=True)
+            print('\r' + 'The test will stop in', i + 1, 'second', end=' ', flush=True)
             QTest.qWait(1000)
         self.form.close()
 

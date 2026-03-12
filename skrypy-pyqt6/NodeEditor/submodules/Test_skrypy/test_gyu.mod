@@ -1,0 +1,15 @@
+[diagram]
+link=[N0] node=[C0:deftt#Node#U0:listFloat]
+link=[N1] node=[U0:listFloat#Node#C1:outdeft]
+connt=[C0] name=[deftt] type=[in] format=[list_float] valOut=[[0.0]] RectF=[(-214.0, 129.0, 70, 24)] 
+block=[U0] category=[Demos.Models] class=[AllTypes] valInputs=[(['inInt', 'inFloat', 'inString', 'inBool', 'inPath', 'listInt', 'listFloat', 'listString', 'listBool', 'listPath', 'arrayInt', 'arrayFloat', 'arrayString', 'arrayBool', 'arrayPath', 'inDict', 'inTuple', 'inTuple2'], [0, 0.0, '', True, 'path', [0], 'Node(N0)', [''], [False], ['path'], [[0]], [[0.0]], [['']], [[False]], [['path']], {}, ('',), (32,)], ['outInt', 'outFloat', 'outString', 'outBool', 'outPath', 'listInt', 'listFloat', 'listString', 'listBool', 'listPath', 'arrayInt', 'arrayFloat', 'arrayString', 'arrayBool', 'arrayPath', 'dictionary', 'tuple', 'tuple2'], ['int', 'float', 'str', 'bool', 'path', 'list_int', 'list_float', 'list_str', 'list_bool', 'list_path', 'array_int', 'array_float', 'array_str', 'array_bool', 'array_path', 'dict', 'tuple', 'tuple'])] RectF=[(36.0, 1.0, 197.62, 362.01)] 
+connt=[C1] name=[outdeft] type=[out] format=[list_float] RectF=[(356.0, 159.0, 70, 24)] 
+[execution]
+['C0:deftt=']
+['U0']
+{'U0': ('Demos.Models', 'AllTypes', "(['inInt', 'inFloat', 'inString', 'inBool', 'inPath', 'listInt', 'listFloat', 'listString', 'listBool', 'listPath', 'arrayInt', 'arrayFloat', 'arrayString', 'arrayBool', 'arrayPath', 'inDict', 'inTuple', 'inTuple2'], [0, 0.0, '', True, 'path', [0], 'C0:deftt', [''], [False], ['path'], [[0]], [[0.0]], [['']], [[False]], [['path']], {}, ('',), (32,)], ['outInt', 'outFloat', 'outString', 'outBool', 'outPath', 'listInt', 'listFloat', 'listString', 'listBool', 'listPath', 'arrayInt', 'arrayFloat', 'arrayString', 'arrayBool', 'arrayPath', 'dictionary', 'tuple', 'tuple2'], ['int', 'float', 'str', 'bool', 'path', 'list_int', 'list_float', 'list_str', 'list_bool', 'list_path', 'array_int', 'array_float', 'array_str', 'array_bool', 'array_path', 'dict', 'tuple', 'tuple'])")}
+['U0:listFloat']
+{}
+['C1:outdeft=U0:listFloat']
+[interlinks]
+[]

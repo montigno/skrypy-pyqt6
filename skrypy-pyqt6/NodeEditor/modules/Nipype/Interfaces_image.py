@@ -21,10 +21,10 @@ class image_Reorient():
         shutil.move(old_path_file, new_path_file)
         self.outfile = new_path_file
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.outfile
 
-    def transform(self: 'path'):
+    def transform(self) -> None:
         return self.res.outputs.transform
 
 ##############################################################################
@@ -46,5 +46,5 @@ class image_Rescale():
             setattr(invert_t1w.inputs, ef, options[ef])
         self.res = invert_t1w.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

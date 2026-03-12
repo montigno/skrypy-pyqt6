@@ -14,10 +14,10 @@ class nipy_FmriRealign4d():
             setattr(realigner.inputs, ef, options[ef])
         self.res = realigner.run()
 
-    def out_file(self: 'list_path'):
+    def out_file(self) -> list[None]:
         return self.res.outputs.out_file
 
-    def par_file(self: 'list_path'):
+    def par_file(self) -> list[None]:
         return self.res.outputs.par_file
 
 ###############################################################################
@@ -38,10 +38,10 @@ class nipy_SpaceTimeRealigner():
             setattr(realigner.inputs, ef, options[ef])
         self.res = realigner.run()
 
-    def out_file(self: 'list_path'):
+    def out_file(self) -> list[None]:
         return self.res.outputs.out_file
 
-    def par_file(self: 'list_path'):
+    def par_file(self) -> list[None]:
         return self.res.outputs.par_file
 
 ###############################################################################
@@ -56,5 +56,5 @@ class nipy_Trim():
             setattr(trim.inputs, ef, options[ef])
         self.res = trim.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

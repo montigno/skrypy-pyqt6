@@ -3,7 +3,7 @@ class open_text_file():
         from pathlib import Path
         self.txt = Path(text_file_in).read_text()
 
-    def out_text(self: 'str'):
+    def out_text(self) -> str:
         return self.txt
 
 ##############################################################################
@@ -14,7 +14,7 @@ class read_text_lines():
         with open(text_file) as f:
             self.lines = f.readlines()
 
-    def list_lines(self: 'list_str'):
+    def list_lines(self) -> list[str]:
         return self.lines
 
 ##############################################################################

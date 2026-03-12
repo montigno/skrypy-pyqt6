@@ -4,7 +4,7 @@ class json_open_file():
         with open(json_file) as f:
             self.outJson = json.load(f)
 
-    def dict_json(self: 'dict'):
+    def dict_json(self) -> dict:
         return self.outJson
 
 ##############################################################################
@@ -17,7 +17,7 @@ class json_save_file():
             json.dump(data, outfile)
         self.json_file_out = json_file_out
 
-    def json_out_file(self: 'path'):
+    def json_out_file(self) -> None:
         return self.json_file_out
 
 ##############################################################################
@@ -33,7 +33,7 @@ class json_add_element():
             json.dump(data_raw, outfile)
         self.json_file = json_file
 
-    def json_out_file(self: 'path'):
+    def json_out_file(self) -> None:
         return self.json_file
 
 ##############################################################################

@@ -1,6 +1,5 @@
 import ast
 import re
-import os
 from cryptography.fernet import Fernet
 
 
@@ -13,10 +12,10 @@ class GetValueInBrackets():
             tmp = ''
             try:
                 tmp = line[line.index(args[i] + '=') + len(args[i]) + 1:line.index(args[i + 1] + '=') - 1][1:-1]
-            except Exception as e:
+            except Exception:
                 try:
                     tmp = line[line.index(args[i] + '=') + len(args[i]) + 1:line.index(args[i + 2] + '=') - 1][1:-1]
-                except Exception as e:
+                except Exception:
                     pass
             self.res.append(tmp)
         self.res.append(line[line.index(args[-1] + '=') + len(args[-1]) + 1:][1:-1])
@@ -38,8 +37,8 @@ class SetValueInBrackets():
 
 class ReorderList():
 
-    def __init__(self, list):
-        listOrder = self.sorted_nicely(list)
+    def __init__(self, listToOrder):
+        listOrder = self.sorted_nicely(listToOrder)
         self.list = listOrder
 
     def sorted_nicely(self, lst):
@@ -69,18 +68,18 @@ class DefinitType():
         typVar = ''
         if 'list' in type(self.var).__name__:
             if isinstance(self.var, list):
-                len = 1
+                lengt = 1
                 if isinstance(self.var[0], list):
-                    len = 2
+                    lengt = 2
                     if isinstance(self.var[0][0], list):
-                        len = 3
-            if len == 1:
+                        lengt = 3
+            if lengt == 1:
                 typVar = 'list'
                 typVal = self.isPath(self.var[0])
-            elif len == 2:
+            elif lengt == 2:
                 typVar = 'array'
                 typVal = self.isPath(self.var[0][0])
-            elif len == 3:
+            elif lengt == 3:
                 typVar = 'array'
                 typVal = self.isPath(self.var[0][0][0])
 
@@ -177,21 +176,21 @@ class get_dph():
 
 
 class eval_type():
-    def __init__(self, value, format):
+    def __init__(self, value, form):
 
         self.vout = value
 
-        if not format:
-            format = ''
-        elif 'enumerate' in format:
+        if not form:
+            form = ''
+        elif 'enumerate' in form:
             pass
-        elif 'path' in format:
+        elif 'path' in form:
             self.vout = self.vout.replace('\\n', '')
-        elif format == 'bool':
+        elif form == 'bool':
             self.vout = eval(self.vout)
-        elif 'int' in format or 'float' in format:
+        elif 'int' in form or 'float' in form:
             self.vout = eval(self.vout)[1]
-        elif format == 'list_str':
+        elif form == 'list_str':
             self.vout = eval(self.vout)
             tmp = []
             for lstVal in self.vout:
@@ -200,11 +199,11 @@ class eval_type():
                 else:
                     tmp.append(lstVal)
             self.vout = tmp
-        elif 'tuple' in format:
+        elif 'tuple' in form:
             self.vout = ast.literal_eval(self.vout)
         try:
             self.vout = eval(self.vout)
-        except Exception as er:
+        except Exception:
             pass
 
     def getVout(self):

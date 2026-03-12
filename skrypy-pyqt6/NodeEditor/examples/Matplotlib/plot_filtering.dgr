@@ -106,7 +106,7 @@ pylab.plot(signal/max(signal)-ibp/max(ibp),'k')
 
 
 pylab.savefig("SIG.png",dpi=200)
-pylab.show()
+pylab.show(block=False)
 
 []
 [/source S0]

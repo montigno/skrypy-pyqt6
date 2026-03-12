@@ -1,4 +1,3 @@
-from subprocess import Popen, PIPE
 import subprocess
 
 
@@ -17,7 +16,7 @@ pack = Config().getPathLibraries()
 
 for keypk, valpk in pack.items():
     try:
-        print('\033[93m'+'checking ', keypk, end=' : ')
+        print('\033[93m' + 'checking ', keypk, end=' : ')
         print('\033[0m')
         install('pip3 install ' + valpk)
         print('\033[0m')

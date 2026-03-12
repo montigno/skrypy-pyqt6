@@ -8,7 +8,7 @@ class utility_Rename():
             setattr(rename.inputs, ef, options[ef])
         self.res = rename.run()
 
-    def out_file(self: 'str'):
+    def out_file(self) -> str:
         return self.res.outputs.out_file
 
 ##############################################################################
@@ -27,7 +27,7 @@ class utility_Merge():
             setattr(mi.inputs, ef, options[ef])
         self.res = mi.run()
 
-    def out(self: 'list_int'):
+    def out(self) -> list[int]:
         return self.res.outputs.out
 
 ##############################################################################
@@ -43,5 +43,5 @@ class utility_Split():
             setattr(sp.inputs, ef, options[ef])
         self.res = sp.run()
 
-    def out(self: 'list_int'):
+    def out(self) -> list[int]:
         return self.res.outputs.out1

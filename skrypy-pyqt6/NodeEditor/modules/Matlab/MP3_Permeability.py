@@ -17,8 +17,8 @@ class MP3_DCE_phenomeno():
         self.mat_eng = mat_eng
         self.map = files_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'list_path'):
+    def file_out(self) -> list[None]:
         return self.map

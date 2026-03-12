@@ -6,5 +6,5 @@ class quickshear_Quickshear():
             setattr(qs.inputs, ef, options[ef])
         self.res = qs.run()
 
-    def out_file(self: 'path'):
+    def out_file(self) -> None:
         return self.res.outputs.out_file

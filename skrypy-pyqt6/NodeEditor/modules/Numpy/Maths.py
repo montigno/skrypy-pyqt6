@@ -15,7 +15,7 @@ class numpy_abs():
         import numpy as np
         self.abs = np.absolute(y)
 
-    def abs(self: 'list_float'):
+    def abs(self) -> list[float]:
         return self.abs
 
 ##############################################################################
@@ -38,7 +38,7 @@ class numpy_exponential():
         import numpy as np
         self.exp = np.exp(y)
 
-    def exp(self: 'list_float'):
+    def exp(self) -> list[float]:
         return self.exp
 
 ##############################################################################
@@ -62,7 +62,7 @@ class numpy_RMS():
         y = np.array(y)
         self.rms = np.sqrt(np.mean(y ** 2))
 
-    def rms(self: 'float'):
+    def rms(self) -> float:
         return self.rms
 
 ##############################################################################
@@ -85,7 +85,7 @@ class numpy_std():
         import numpy as np
         self.std = np.std(y)
 
-    def rms(self: 'float'):
+    def rms(self) -> float:
         return self.std
 
 ##############################################################################
@@ -96,5 +96,5 @@ class numpy_mean_array():
         import numpy as np
         self.mean = np.mean(y)
 
-    def rms(self: 'float'):
+    def rms(self) -> float:
         return self.mean

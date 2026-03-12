@@ -79,7 +79,6 @@ class execution2():
         # print('listModul:', listModul)
         # print('listConnctOut:', listConnctOut)
 
-
         listNodeValue = list(set(listOut))
 
         listDynamicValueSub = {}
@@ -182,10 +181,10 @@ class execution2():
                 MyClass = getattr(module, classes)
                 enters = eval(listBlock[execution][2])
                 enters_name, enters_val, *rs = enters
-                for id, vl in enumerate(enters_val):
+                for idk, vl in enumerate(enters_val):
                     if type(vl).__name__ == 'str':
                         try:
-                            enters_val[id] = listDynamicValue[vl]
+                            enters_val[idk] = listDynamicValue[vl]
                             if vl in listOut:
                                 listOut.remove(vl)
                                 if vl not in listOut and ':in' not in vl:
@@ -224,18 +223,18 @@ class execution2():
                     except Exception as e:
                         valToPrint = 'unknown'
                     list_info = printProbe(execution,
-                               vl,
-                               listBlock[execution][0],
-                               listBlock[execution][1],
-                               valToPrint,
-                               False)
+                                           vl,
+                                           listBlock[execution][0],
+                                           listBlock[execution][1],
+                                           valToPrint,
+                                           False)
                     col, execution, vl, label, val = list_info.getList()
-                        
+
                     print('{}{} ({}) : {} = {}\033[0m'.format(col,
-                                                       execution,
-                                                       vl,
-                                                       label,
-                                                       val))
+                                                              execution,
+                                                              vl,
+                                                              label,
+                                                              val))
                     print()
                     try:
                         if vl in listOut:
@@ -249,10 +248,10 @@ class execution2():
                 Dyn_Enters = {}
                 enters = eval(listModul[execution][2])
                 enters_name, enters_val, *rs = enters
-                for id, vl in enumerate(enters_val):
+                for idk, vl in enumerate(enters_val):
                     if type(vl).__name__ == 'str':
                         try:
-                            enters_val[id] = listDynamicValue[vl]
+                            enters_val[idk] = listDynamicValue[vl]
                         except Exception as err:
                             pass
                         # try:
@@ -264,7 +263,7 @@ class execution2():
                         #     pass
                 args = dict(zip(enters_name, enters_val))
                 path_submod = os.path.dirname(os.path.realpath(__file__))
-                module = os.path.join(path_submod, '..', 'submodules',  listModul[execution][1], listModul[execution][0] + '.mod')
+                module = os.path.join(path_submod, '..', 'submodules', listModul[execution][1], listModul[execution][0] + '.mod')
                 print("module:", module)
                 f = open(module, 'r')
                 txt = f.read()
@@ -284,7 +283,7 @@ class execution2():
                         listDynamicValue[tmp_k] = lst_v
 
             elif 'F' in execution:
-                Dyn_Enters, Dyn_outs = {}, {}
+                Dyn_Enters = {}
                 txt = listForExecution[execution]
                 ConnectIn, ConnectOut = eval(txt.splitlines()[0]), eval(txt.splitlines()[5])
                 ConnectIn.sort(key=self.alphaNumOrder)
@@ -376,7 +375,7 @@ class execution2():
                             process[-1].daemon = True
                             process[-1].start()
                             with open(os.path.join(os.path.expanduser('~'), '.skrypy', 'list_process.tmp'), 'a') as f:
-                                f.write('{}{}{}\n'.format(process[-1].pid, ' '*10, process_name))
+                                f.write('{}{}{}\n'.format(process[-1].pid, ' ' * 10, process_name))
                         if '*' in execution:
                             for p in process:
                                 try:
@@ -421,7 +420,7 @@ class execution2():
                         for ele in lengthEnter:
                             for keyDyn, valDyn in Dyn_Enters.items():
                                 listDynamicValueSub[keyDyn] = valDyn[ele]
-                            loop_threads.append(threading.Thread(target=self.go_execution, args=(txt+diagram, listDynamicValueSub.copy(), '')))
+                            loop_threads.append(threading.Thread(target=self.go_execution, args=(txt + diagram, listDynamicValueSub.copy(), '')))
                             loop_threads[-1].start()
                         if '*' in execution:
                             [thread.join() for thread in loop_threads]
@@ -473,10 +472,10 @@ class execution2():
                         listDynamicValue[uj] = outVals[uj]
                 except Exception as e:
                     print(error_color + "Diagram Execution " +
-                                      execution +
-                                      " stopped <br>" +
-                                      execution + ' : ' +
-                                      str(e) + '\033[0m\n')
+                          execution +
+                          " stopped <br>" +
+                          execution + ' : ' +
+                          str(e) + '\033[0m\n')
             elif 'J' in execution:
                 a = executionMacro(execution, listScriptExecution[execution], listDynamicValue)
                 outValj = a.getOutValues()
@@ -521,7 +520,7 @@ class executionScript:
                 setattr(current_module, az[0], listDynamicValue[az[1]])
             else:
                 setattr(current_module, az[0], eval(az[1]))
-        code += textScript+'\n'
+        code += textScript + '\n'
         for lst in outputsList:
             az = lst.split(':')
             # code = az[1] + '=None\n' + code
@@ -531,10 +530,10 @@ class executionScript:
             exec(code, d, d)
         except Exception as e:
             print("> Diagram Execution " +
-                    unitName +
-                    " stopped <br>" +
-                    unitName + ' : ' +
-                    str(e))
+                  unitName +
+                  " stopped <br>" +
+                  unitName + ' : ' +
+                  str(e))
 
     def getOutValues(self):
         return self.listDynamicValueToReturn
@@ -575,7 +574,7 @@ class executionMacro:
             else:
                 code += lst
             code += ';\n'
-        code += textScript+'\n'
+        code += textScript + '\n'
         self.listDynamicValueToReturn[outputsList[0]] = '""' + code + '""'
 
     def getOutValues(self):
@@ -598,12 +597,12 @@ class ThreadClass(threading.Thread):
             a = self.classs()
         if self.outp:
             for el in self.outp:
-                unit = el[0:el.index(':')]
+                # unit = el[0:el.index(':')]
                 val = el[el.index(':') + 1:len(el)]
                 value = getattr(a, val)
                 try:
                     self._return[el] = value()
-                except Exception as e:
+                except Exception:
                     self._return[el] = value
 
     def join(self, *args):

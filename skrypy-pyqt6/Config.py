@@ -74,10 +74,9 @@ class Config():
 
     def loadEnvDiagram(self):
         if not os.path.exists(self.env_param_path):
-            f = open(self.env_param_path, 'w+')
+            open(self.env_param_path, 'w+')
 
     def loadServerFile(self):
-        empty_fields = {}
         if not os.path.exists(self.servers_list):
             self.loadEmptyFields()
         else:

@@ -13,8 +13,8 @@ class MP3_BVf():
         self.mat_eng = mat_eng
         self.map = file_out
 
-    def mat_eng(self: 'str'):
+    def mat_eng(self) -> str:
         return self.mat_eng
 
-    def file_out(self: 'path'):
+    def file_out(self) -> None:
         return self.map

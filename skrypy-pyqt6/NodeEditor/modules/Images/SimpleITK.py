@@ -3,7 +3,7 @@ class simpleITK_readImage:
         import SimpleITK as sitk
         self.image = sitk.ReadImage(inputImageFileName, **options)
 
-    def read_image(self: 'array_float'):
+    def read_image(self) -> list[list[float]]:
         return self.image
 
 ##############################################################################
@@ -15,7 +15,7 @@ class simpleITK_writeImage:
         self.image = sitk.WriteImage(image, outputImageFileName)
         self.out_image_path = outputImageFileName
 
-    def out_image_path(self: 'path'):
+    def out_image_path(self) -> None:
         return self.out_image_path
 
 ##############################################################################
@@ -26,7 +26,7 @@ class SimpleITK_ReadTransform:
         import SimpleITK as sitk
         self.read_transform = sitk.ReadTransform(file_in)
 
-    def read_transform(self: 'array_float'):
+    def read_transform(self) -> list[list[float]]:
         return self.read_transform
 
 ##############################################################################
@@ -38,5 +38,5 @@ class SimpleITK_WriteTransform:
         sitk.WriteTransform(basic_transform, file_out_path)
         self.out_file = file_out_path
 
-    def file_transform(self: 'path'):
+    def file_transform(self) -> None:
         return self.out_file

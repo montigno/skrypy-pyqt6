@@ -1,8 +1,8 @@
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QFont, QTextCursor
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QDialog, QPlainTextEdit, QHBoxLayout, QPushButton, \
     QLineEdit, QVBoxLayout, QTextEdit, QCompleter
-from subprocess import Popen, PIPE, STDOUT, DEVNULL
+from subprocess import Popen, PIPE, STDOUT
 
 
 class manage_pck(QDialog):

@@ -64,12 +64,21 @@ QMessageBox {
 QCheckBox {
 	padding-left: 5px;
 }
+QMessageBox {
+	background-color: #ccaa88;
+}
 QMessageBox QLabel {
     background-color: transparent;
 }
 QMessageBox QCheckBox {
     background-color: #aaaaaa;
 }
+QMdiArea QTabBar::tab:selected {
+    background: #4682B4;
+}
+/*QMdiSubWindow:active {
+    background: #555;
+}*/
 /* QProgressDialog {
 	background-color: transparent;
 } */

@@ -3,7 +3,7 @@ class dict_new_value():
         self.new_dict = {}
         self.new_dict[key] = value
 
-    def out_dict(self: 'dict'):
+    def out_dict(self) -> dict:
         return self.new_dict
 
 ###############################################################################
@@ -22,10 +22,10 @@ class dict_get_value_dyn():
         else:
             self.outValue = None
 
-    def out_value(self: 'str'):
+    def out_value(self) -> str:
         return self.outValue
 
-    def out_value_dict(self: 'dict'):
+    def out_value_dict(self) -> dict:
         if isinstance(self.outValue, dict):
             return dict(self.outValue)
         else:
@@ -41,7 +41,7 @@ class dict_set_value_dyn():
         for di, vi in dynamicsInputs.items():
             self.outValue.update(vi)
 
-    def new_dict(self: 'dict'):
+    def new_dict(self) -> dict:
         return self.outValue
 
 ###############################################################################
@@ -51,7 +51,7 @@ class dict_to_string():
     def __init__(self, input_dict={}):
         self.outValue = str(input_dict.copy())
 
-    def dict_str(self: 'str'):
+    def dict_str(self) -> str:
         return self.outValue
 
 ###############################################################################
@@ -61,7 +61,7 @@ class dict_zip_keys_values():
     def __init__(self, coord=[''], value=['']):
         self.setzip = zip(coord, value)
 
-    def out_zipped(self: 'dict'):
+    def out_zipped(self) -> dict:
         return dict(self.setzip)
 
 ###############################################################################
@@ -74,7 +74,7 @@ class dict_to_array():
             temp = [key, value]
             self.dictlist.append(temp)
 
-    def array_dict(self: 'array_str'):
+    def array_dict(self) -> list[list[str]]:
         return self.dictlist
 
 ###############################################################################
@@ -87,8 +87,8 @@ class dict_list_keys_values():
             self.keyslist.append(key)
             self.valueslist.append(value)
 
-    def keys_dict(self: 'list_str'):
+    def keys_dict(self) -> list[str]:
         return self.keyslist
 
-    def values_dict(self: 'list_str'):
+    def values_dict(self) -> list[str]:
         return self.valueslist
