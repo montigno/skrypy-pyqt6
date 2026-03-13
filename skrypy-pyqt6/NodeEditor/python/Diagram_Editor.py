@@ -9144,7 +9144,7 @@ class ssh_diagram_execution():
                 fssh.write(pre_exec + "\n")
                 fssh.write("cd {}\n".format(host_skrypy_path))
                 fssh.write("source bin/activate\n")
-                fssh.write("cd skrypy\n")
+                fssh.write("cd skrypy-pyqt6\n")
                 fssh.write("python3 Execution_ssh.py {} {} {} {} {} {}\n".format(host_path, diagram, n_cpu, self.mode, opx, self.cluster))
                 fssh.write("deactivate\n")
                 fssh.write("echo\n")
