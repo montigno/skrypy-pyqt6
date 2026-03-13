@@ -32,7 +32,7 @@ class seeCode(QDialog):
         nb_line.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         nb_line.setStyleSheet("background: transparent;")
         nb_line.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)
-        txt_nb = [str(x + 1) for x in range(1+len(src.splitlines()))]
+        txt_nb = [str(x + 1) for x in range(1 + len(src.splitlines()))]
         nb_line.setText('\n'.join(txt_nb))
 
         layout = QHBoxLayout()

@@ -83,7 +83,7 @@ class analyze2:
             elif line[0:6] == 'script' and "RectF" in line:
                 args = ["script", "title", "inputs", "outputs", "code", "RectF"]
                 unit, _, inp, outp, _, pos = GetValueInBrackets(line, args).getValues()
-                inp, outp = "["+inp+"]", "["+outp+"]"
+                inp, outp = "[" + inp + "]", "[" + outp + "]"
                 listIt.append(unit)
 
             elif line[0:4] == 'link' and 'node' in line:
@@ -148,7 +148,7 @@ class analyze2:
 
     def assign_variables(self):
         for klan, vlan in self.listNd.items():
-            tmp_klan = 'Node('+klan+')'
+            tmp_klan = 'Node(' + klan + ')'
             if 'U' in vlan[2] or 'M' in vlan[2]:
                 if 'A' in vlan[0]:
                     tmp_val = self.listCt[vlan[0]][0]
@@ -415,7 +415,7 @@ class analyze2:
                 self.textExecution += ('[loopfor {}]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_loopfor(lst_bl)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+": ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + ": ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'
@@ -434,7 +434,7 @@ class analyze2:
                 self.textExecution += ('[loopif {} True]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_if(lst_bl, tmp_it)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+" True: ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + " True: ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'
@@ -453,7 +453,7 @@ class analyze2:
                 self.textExecution += ('[loopif {} False]'.format(lst_bl)) + '\n'
                 conn_loop = self.connection_if(lst_bl, tmp_it)
                 self.textExecution += conn_loop[0] + '\n'
-                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl+" False: ")
+                taks_ord = self.tasks_order(tmp_Nd, tmp_it, [], [True, True], lst_bl + " False: ")
                 self.textExecution += str(taks_ord[0]) + '\n'
                 dict_bl_sm = self.dict_block_submod(taks_ord[0])
                 self.textExecution += dict_bl_sm[0] + '\n'

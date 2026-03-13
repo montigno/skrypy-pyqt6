@@ -654,7 +654,7 @@ class BlockCreate(QGraphicsRectItem):
         if numbLines > 80:
             sizefont = "6"
         if 'link_web' in txt:
-            tmp = txt[txt.index('link_web:')+9:]
+            tmp = txt[txt.index('link_web:') + 9:]
             if 'http' in tmp:
                 try:
                     self.link += tmp[0:tmp.index('\n')].strip()
@@ -970,8 +970,8 @@ class BlocksProjects(QTextEdit):
         txt = diagram.splitlines()
         for line in txt:
             if line[0:5] == 'block':
-                catg = line[line.index("category")+10:line.index("] class")]
-                cls = line[line.index("class")+7:line.index("] valInputs")]
+                catg = line[line.index("category") + 10:line.index("] class")]
+                cls = line[line.index("class") + 7:line.index("] valInputs")]
                 module = importlib.import_module('NodeEditor.modules.' + catg)
                 try:
                     cl = getattr(module, cls)
@@ -980,7 +980,7 @@ class BlocksProjects(QTextEdit):
                     pass
         for line in txt:
             if line[0:6] == 'submod':
-                catg = line[line.index("nameMod")+10:line.index("] valInputs")]
+                catg = line[line.index("nameMod") + 10:line.index("] valInputs")]
 
 
 class Checkbox(QGraphicsRectItem):
@@ -1159,7 +1159,7 @@ class Checkbox(QGraphicsRectItem):
         for lstCh in self.listCheckBox:
             if not lstCh.checkState():
                 lstCh.setChecked(True)
-            self.listItemsBox.append(lstCh.text()+'*')
+            self.listItemsBox.append(lstCh.text() + '*')
         if self.isMod:
             self.updateListItems()
 
@@ -1287,7 +1287,7 @@ class Clusters(QGraphicsRectItem):
             self.resize.wmin = self.wmin
             self.resize.hmin = self.hmin
 
-            self.infoDim.setPos(0, h+5)
+            self.infoDim.setPos(0, h + 5)
             self.infoDim.setPlainText("( {} x {} )".format(self.nrow, self.ncol))
 
     def load(self, val):
@@ -1393,7 +1393,7 @@ class Clusters(QGraphicsRectItem):
             maxval = self.proxyWidget[0][0].widget().maximum()
             self.setLimits(minval, maxval)
 
-        self.infoDim.setPos(0, h+5)
+        self.infoDim.setPos(0, h + 5)
         self.infoDim.setPlainText("( {} x {} )".format(nrow, ncol))
         self.nrow, self.ncol = nrow, ncol
         return w, h
@@ -2224,9 +2224,7 @@ class Constants(QGraphicsRectItem):
         self.elemProxy.setRange(minlim, maxlim)
 
     def warningPath(self):
-        path_relatif = os.path.dirname(os.path.dirname(
-                                        os.path.dirname(
-                                            os.path.abspath(__file__))))
+        path_relatif = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         pathWar = os.path.join(path_relatif,
                                'ressources',
                                'alert_path.png')
@@ -2245,7 +2243,7 @@ class Constants(QGraphicsRectItem):
         label_img.setGeometry(0, 0, 64, 64)
         label_img.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.proxyWarning.setWidget(label_img)
-        self.proxyWarning.setPos(pos.x()-70, pos.y() - 15)
+        self.proxyWarning.setPos(pos.x() - 70, pos.y() - 15)
         self.proxyWarning.setZValue(3)
         self.proxyWarning.updateGeometry()
         self.proxyWarning.setVisible(False)
@@ -2676,8 +2674,7 @@ class Control_IF(QComboBox):
 
         for elemts in editor.diagramView[editor.currentTab].items():
             if (type(elemts) in [BlockCreate, ForLoopItem, ScriptItem, Imagebox, Checkbox,
-                                 Constants, Clusters, Probes]) and \
-                                 elemts.unit in listToOpacit:
+                                 Constants, Clusters, Probes]) and elemts.unit in listToOpacit:
                 elemts.setOpacity(state)
                 self.opacityLink(elemts.unit, state)
 #                 if state == 1 and ('I' in unit or 'I' in elemts.unit):
@@ -3037,7 +3034,7 @@ class DiagramScene(QGraphicsScene):
                     newV = tmpVal[1][lst]
                     try:
                         if 'Node' in newV:
-                            unitNode = newV[newV.index('(')+1:newV.index(')')]
+                            unitNode = newV[newV.index('(') + 1:newV.index(')')]
                             if unitNode in listUnitOld:
                                 newV = newV.replace(unitNode,
                                                     changeUnit[unitNode])
@@ -3062,7 +3059,7 @@ class DiagramScene(QGraphicsScene):
                     newV = tmpVal[1][lst]
                     try:
                         if 'Node' in newV:
-                            unitNode = newV[newV.index('(')+1:newV.index(')')]
+                            unitNode = newV[newV.index('(') + 1:newV.index(')')]
                             if unitNode in listUnitOld:
                                 newV = newV.replace(unitNode,
                                                     changeUnit[unitNode])
@@ -3216,7 +3213,7 @@ class DiagramScene(QGraphicsScene):
         inc = 0
         while NodeExist:
             newChar = char_unit + str(inc)
-            if newChar in listUnit or newChar+"m" in listUnit or newChar+"t" in listUnit or newChar+"m*" in listUnit or newChar+"t*" in listUnit:
+            if newChar in listUnit or newChar + "m" in listUnit or newChar + "t" in listUnit or newChar + "m*" in listUnit or newChar + "t*" in listUnit:
                 inc += 1
             else:
                 NodeExist = False
@@ -3342,7 +3339,7 @@ class DiagramView(QGraphicsView):
             for lstUrl in event.mimeData().urls():
                 current_obj = lstUrl.toLocalFile()
                 QApplication.processEvents()
-                dialog.setValue(int(100*i/len_item))
+                dialog.setValue(int(100 * i / len_item))
                 i += 1
                 if os.path.isdir(current_obj):
                     self.a1 = Constants('newConstant', 80, 30, current_obj,
@@ -4062,8 +4059,8 @@ class ForLoopItem(QGraphicsRectItem):
 
         form = typein
         if '_' in typein:
-            form = typein[typein.index('_')+1:]
-            typein = typein[0:typein.index('_')+1:]
+            form = typein[typein.index('_') + 1:]
+            typein = typein[0:typein.index('_') + 1:]
         typeout = typein
 
         if 'F' in self.unit:
@@ -4151,8 +4148,8 @@ class ForLoopItem(QGraphicsRectItem):
 
         form = typeout
         if '_' in typeout:
-            form = typeout[typeout.index('_')+1:]
-            typeout = typeout[0:typeout.index('_')+1]
+            form = typeout[typeout.index('_') + 1:]
+            typeout = typeout[0:typeout.index('_') + 1]
         else:
             typeout = ""
 
@@ -4345,11 +4342,11 @@ class ForLoopItem(QGraphicsRectItem):
                 # loopBottom2[0], loopBottom2[1] = min(loopBottom2[0], posBottomMax[0]), min(loopBottom2[1], posBottomMax[1])
                 loopBottom2 = posBottomMax
 
-                if loopBottom2[0]*loopTop[0] > 0:
+                if loopBottom2[0] * loopTop[0] > 0:
                     adBottom[0] = abs(abs(loopBottom2[0]) - abs(loopTop[0])) + 20
                 else:
                     adBottom[0] = abs(abs(loopBottom2[0]) - loopTop[0]) + 20
-                if loopBottom2[1]*loopTop[1] > 0:
+                if loopBottom2[1] * loopTop[1] > 0:
                     adBottom[1] = abs(abs(loopBottom2[1]) - abs(loopTop[1])) + 20
                 else:
                     adBottom[1] = abs(abs(loopBottom2[1]) - loopTop[1]) + 20
@@ -4564,13 +4561,12 @@ class Imagebox(QGraphicsRectItem):
             bar.setMaximum(0)
             dialog.setBar(bar)
             dialog.show()
-            fileDiagram = QFileDialog.getOpenFileName(
-                                None,
-                                "Choose Nifti, jpeg file",
-                                self.pathImage,
-                                'Nifti (*.nii *.nii.gz *.jpg *.png)',
-                                None,
-                                QFileDialog.Option.DontUseNativeDialog)
+            fileDiagram = QFileDialog.getOpenFileName(None,
+                                                      "Choose Nifti, jpeg file",
+                                                      self.pathImage,
+                                                      'Nifti (*.nii *.nii.gz *.jpg *.png)',
+                                                      None,
+                                                      QFileDialog.Option.DontUseNativeDialog)
             if fileDiagram[0] != '':
                 try:
                     del editor.listImgBox[editor.currentTab][self.unit]
@@ -4626,15 +4622,15 @@ class Imagebox(QGraphicsRectItem):
             img = img.get_fdata().copy()
             img[np.isnan(img)] = 0.0
             if len(self.sh) == 3:
-                img = img[:, :, int(round(self.sh[2]/2))]
+                img = img[:, :, int(round(self.sh[2] / 2))]
             elif len(self.sh) == 4:
-                img = img[:, :, int(round(self.sh[2]/2)), int(round(self.sh[3]/2))]
+                img = img[:, :, int(round(self.sh[2] / 2)), int(round(self.sh[3] / 2))]
             elif len(self.sh) == 5:
-                img = img[:, :, int(round(self.sh[2]/2)), int(round(self.sh[3]/2)), int(round(self.sh[4]/2))]
+                img = img[:, :, int(round(self.sh[2] / 2)), int(round(self.sh[3] / 2)), int(round(self.sh[4] / 2))]
             img = np.fliplr(rotate(img, -90, reshape=True))
-            img = np.uint8(255.0 * (img - img.min())/np.ptp(img))
+            img = np.uint8(255.0 * (img - img.min()) / np.ptp(img))
             totalBytes = img.nbytes
-            bytesPerLine = int(totalBytes/self.sh[1])
+            bytesPerLine = int(totalBytes / self.sh[1])
             oImage = QImage(img, self.sh[0], self.sh[1], bytesPerLine, QImage.Format.Format_Indexed8)
         # factor = max([self.sh[0], self.sh[1]]) / 300.0
         fov_x, fov_y = x_scale * self.sh[0], y_scale * self.sh[1]
@@ -5199,8 +5195,8 @@ class LoadDiagram:
                 args = ["script", "title", "inputs", "outputs", "code", "RectF"]
                 unit, tit, inp, outp, code, pos = GetValueInBrackets(line, args).getValues()
                 pos = eval(pos)
-                inp = "["+inp+"]"
-                outp = "["+outp+"]"
+                inp = "[" + inp + "]"
+                outp = "[" + outp + "]"
                 edit.loadScriptItem(unit, tit, pos, eval(inp), eval(outp))
                 listSc[unit] = edit.returnBlockSystem()
                 editor.listTools[editor.currentTab][unit] = code
@@ -5614,13 +5610,11 @@ class Menu(QMenuBar):
 #                 blk = BlocksProjects(txt.toPlainText())
                 if ('.dgr' not in extension or
                         tmpActText == 'Save Diagram As...'):
-                    file = QFileDialog\
-                                .getSaveFileName(
-                                    editor,
-                                    "save diagram " + str(editor.currentTab),
-                                    editor.currentpathwork, "Diagrams (*.dgr)",
-                                    None,
-                                    QFileDialog.Option.DontUseNativeDialog)
+                    file = QFileDialog.getSaveFileName(editor,
+                                                       "save diagram " + str(editor.currentTab),
+                                                       editor.currentpathwork, "Diagrams (*.dgr)",
+                                                       None,
+                                                       QFileDialog.Option.DontUseNativeDialog)
                     file = file[0]
                     editor.currentpathwork = file
                     if file:
@@ -5668,19 +5662,18 @@ class Menu(QMenuBar):
             dialog.setBar(bar)
             dialog.show()
 
-            filesCh = QFileDialog.getOpenFileNames(
-                                                editor,
-                                                "Open diagram",
-                                                editor.currentpathwork,
-                                                'Diagrams (*.dgr)',
-                                                None,
-                                                QFileDialog.Option.DontUseNativeDialog)
+            filesCh = QFileDialog.getOpenFileNames(editor,
+                                                   "Open diagram",
+                                                   editor.currentpathwork,
+                                                   'Diagrams (*.dgr)',
+                                                   None,
+                                                   QFileDialog.Option.DontUseNativeDialog)
             if filesCh[0]:
                 editor.currentpathwork = os.path.dirname(filesCh[0][0])
                 i, len_item = 0, len(filesCh[0])
 
                 for fileDiagram in filesCh[0]:
-                    dialog.setValue(int(100*i/len_item))
+                    dialog.setValue(int(100 * i / len_item))
                     i += 1
                     if fileDiagram in editor.pathDiagram:
                         editor.editText("{} is already open".format(fileDiagram),
@@ -5722,13 +5715,12 @@ class Menu(QMenuBar):
             editor.mdi.closeAllSubWindows()
 
         elif tmpActText == 'Archive Project':
-            filesCh = QFileDialog.getOpenFileNames(
-                                                self,
-                                                "Select diagram",
-                                                editor.currentpathwork,
-                                                'Diagrams (*.dgr)',
-                                                None,
-                                                QFileDialog.Option.DontUseNativeDialog)
+            filesCh = QFileDialog.getOpenFileNames(self,
+                                                   "Select diagram",
+                                                   editor.currentpathwork,
+                                                   'Diagrams (*.dgr)',
+                                                   None,
+                                                   QFileDialog.Option.DontUseNativeDialog)
             if filesCh[0]:
                 skrypy_root = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
                 project_archive(filesCh[0][0], skrypy_root, False)
@@ -6146,10 +6138,9 @@ class Menu(QMenuBar):
             f.close()
             try:
                 LoadDiagram(txt)
-                editor.diagramView[editor.currentTab].fitInView(
-                                    editor.diagramScene[editor.currentTab].
-                                    sceneRect(),
-                                    Qt.AspectRatioMode.KeepAspectRatio)
+                editor.diagramView[editor.currentTab].fitInView(editor.diagramScene[editor.currentTab].
+                                                                sceneRect(),
+                                                                Qt.AspectRatioMode.KeepAspectRatio)
                 editor.diagramView[editor.currentTab].scale(0.8, 0.8)
                 # editor.textEdit.clear()
                 self.saveDiagramsConfig(tmpActText)
@@ -9984,7 +9975,7 @@ class UpdateUndoRedo:
         try:
             if self.diagram == editor.undoredoTyping[editor.currentTab][editor.pointTyping[editor.currentTab]]:
                 return
-        except:
+        except Exception:
             pass
 
         for i in range(editor.pointTyping[editor.currentTab] + 1,

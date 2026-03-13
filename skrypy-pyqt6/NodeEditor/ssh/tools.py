@@ -10,13 +10,19 @@ class GetValueInBrackets():
         for i in range(len(args) - 1):
             tmp = ''
             try:
-                tmp = line[line.index(args[i] + '=') +
-                           len(args[i]) + 1:line.index(args[i + 1] + '=') - 1][1:-1]
+                # tmp = line[line.index(args[i] + '=') +
+                #            len(args[i]) + 1:line.index(args[i + 1] + '=') - 1][1:-1]
+                start = line.index(args[i] + '=') + len(args[i]) + 1
+                end = line.index(args[i + 1] + '=') - 1
+                tmp = line[start:end][1:-1]
             except Exception:
                 try:
-                    tmp = line[line.index(args[i] + '=') +
-                               len(args[i]) +
-                               1:line.index(args[i + 2] + '=') - 1][1:-1]
+                    start = line.index(args[i] + '=') + len(args[i]) + 1
+                    end = line.index(args[i + 2] + '=') - 1
+                    tmp = line[start:end][1:-1]
+                    # tmp = line[line.index(args[i] + '=') +
+                    #            len(args[i]) +
+                    #            1:line.index(args[i + 2] + '=') - 1][1:-1]
                 except Exception:
                     pass
             self.res.append(tmp)

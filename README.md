@@ -10,6 +10,11 @@ A documentation is available here : [https://montigno.github.io/skrypy-pyqt6](ht
 
 <p></p>
 
+	13/03/2026: version 26.03.13a
+	- PEP correction
+
+<p></p>
+
 	11/03/2026: version 26.03.11a
 	- important modification of Skrypy : 
 		- annotation of block outputs conforms to Python conventions.

@@ -38,7 +38,7 @@ class skrypy_update(QDialog):
             self.error_message()
 
     def error_message(self):
-        label1 = QLabel("fatal: unable to access 'https://github.com/montigno/skrypy.git/': \nCould not resolve host: github.com' ")
+        label1 = QLabel("fatal: unable to access 'https://github.com/montigno/skrypy-pyqt6.git/': \nCould not resolve host: github.com' ")
         buttonOk = QPushButton('OK', self)
         vbox = QVBoxLayout(self)
         vbox.addWidget(label1)

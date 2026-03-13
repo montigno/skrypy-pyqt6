@@ -14,8 +14,8 @@ Last modification on 14 mars 2023
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFontMetrics, QAction
 from PyQt6.QtWidgets import QDialog, QCheckBox, QVBoxLayout, QHBoxLayout, \
-     QPushButton, QScrollArea, QWidget, QMenuBar, \
-     QTextEdit
+    QPushButton, QScrollArea, QWidget, QMenuBar, \
+    QTextEdit
 import importlib
 import os
 import yaml

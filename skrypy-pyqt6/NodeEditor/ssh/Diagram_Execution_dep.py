@@ -471,11 +471,7 @@ class execution2():
                     for uj in outVals.keys():
                         listDynamicValue[uj] = outVals[uj]
                 except Exception as e:
-                    print(error_color + "Diagram Execution " +
-                          execution +
-                          " stopped <br>" +
-                          execution + ' : ' +
-                          str(e) + '\033[0m\n')
+                    print(error_color + "Diagram Execution " + execution + " stopped <br>" + execution + ' : ' + str(e) + '\033[0m\n')
             elif 'J' in execution:
                 a = executionMacro(execution, listScriptExecution[execution], listDynamicValue)
                 outValj = a.getOutValues()
@@ -529,11 +525,7 @@ class executionScript:
             d = dict(locals(), **globals())
             exec(code, d, d)
         except Exception as e:
-            print("> Diagram Execution " +
-                  unitName +
-                  " stopped <br>" +
-                  unitName + ' : ' +
-                  str(e))
+            print("> Diagram Execution " + unitName + " stopped <br>" + unitName + ' : ' + str(e))
 
     def getOutValues(self):
         return self.listDynamicValueToReturn
@@ -551,25 +543,25 @@ class executionMacro:
             az = lst.split('=')
             ispath = ':/' in az[1]
             if ':' in az[1] and not ispath:
-                if type(listDynamicValue[az[1]]).__name__ in ['tuple', 'list', 'range']:
-                    val = listDynamicValue[az[1]]
+                value_type = listDynamicValue[az[1]]
+                if type(value_type).__name__ in ['tuple', 'list', 'range']:
+                    val = value_type
                     val = 'newArray(' + ','.join(('\'' + x + '\'') for x in val) + ')'
                     code += az[0] + ' = ' + val
-                elif type(listDynamicValue[az[1]]).__name__ in 'str':
-                    code += az[0] + ' = "' + str(listDynamicValue[az[1]]) + '"'
-                elif (type(listDynamicValue[az[1]]).__name__ in ['bool']):
-                    val = listDynamicValue[az[1]]
+                elif type(value_type).__name__ in 'str':
+                    code += az[0] + ' = "' + str(value_type) + '"'
+                elif (type(value_type).__name__ in ['bool']):
+                    val = value_type
                     val == 1 if val == 'True' else 0
-                elif ('float' in type(listDynamicValue[az[1]]).__name__ or
-                      'int' in type(listDynamicValue[az[1]]).__name__):
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]])
-                elif (type(listDynamicValue[az[1]]).__name__ in ['array']):
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]])
-                elif type(listDynamicValue[az[1]]).__name__ in ['memmap']:
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]].tolist())
-                elif type(listDynamicValue[az[1]]).__name__ in ['ndarray']:
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]].tolist())
-                elif type(listDynamicValue[az[1]]).__name__ in ['NoneType']:
+                elif ('float' in type(value_type).__name__) or ('int' in type(value_type).__name__):
+                    code += az[0] + ' = ' + str(value_type)
+                elif (type(value_type).__name__ in ['array']):
+                    code += az[0] + ' = ' + str(value_type)
+                elif type(value_type).__name__ in ['memmap']:
+                    code += az[0] + ' = ' + str(value_type.tolist())
+                elif type(value_type).__name__ in ['ndarray']:
+                    code += az[0] + ' = ' + str(value_type.tolist())
+                elif type(value_type).__name__ in ['NoneType']:
                     code += az[0] + ' = None'
             else:
                 code += lst

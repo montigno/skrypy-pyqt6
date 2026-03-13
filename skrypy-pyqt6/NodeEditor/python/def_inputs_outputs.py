@@ -32,7 +32,7 @@ class define_inputs_outputs(QDialog):
         dim, form = '', 'int'
         if '_' in currentFormat:
             dim = currentFormat[0:currentFormat.index('_')]
-            form = currentFormat[currentFormat.index('_')+1:]
+            form = currentFormat[currentFormat.index('_') + 1:]
         elif currentFormat:
             form = currentFormat
 

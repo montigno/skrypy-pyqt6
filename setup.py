@@ -85,7 +85,7 @@ def install_linux(pyth, base_dir):
         lines = fp.readlines()
     start_here = False
     if '#skrypy {}\n'.format("pyqt6") in lines:
-        print("{}aliases for skrypy version {} already exist! Manually update .bashrc !{}".format(RED, pyth, RESET))
+        print("{}aliases for skrypy version {} already exist! Manually update .bashrc !{}".format(RED, "pyqt6", RESET))
         exit()
 
     fp = open(src_bash)
