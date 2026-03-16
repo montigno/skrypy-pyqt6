@@ -21,7 +21,7 @@ from NodeEditor.python.input_output_name import input_output_setName
 from NodeEditor.python.editParam import editParam
 from NodeEditor.python.editParamForLoop import editParamLoopFor
 from NodeEditor.python.errorHandler import errorHandler
-from NodeEditor.python.fullScreen import SubWindow
+from NodeEditor.python.fullScreen2 import SubWindow
 from NodeEditor.python.limits_constants import setLimits
 from NodeEditor.python.loadModules import getlistModules
 from NodeEditor.python.loadSubModules import getlistSubModules

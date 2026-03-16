@@ -64,7 +64,7 @@ class buildLibrary(QWidget):
                     glayout.addLayout(vbox, i, j)
                 except Exception:
                     pass
-        self.setFixedHeight(row_number*100)
+        self.setFixedHeight(row_number * 100)
         self.setLayout(glayout)
 
     def buttonClik(self, txt):

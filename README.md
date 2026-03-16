@@ -10,6 +10,12 @@ A documentation is available here : [https://montigno.github.io/skrypy-pyqt6](ht
 
 <p></p>
 
+	16/03/2026: version 26.03.16a
+	- Background grid added
+	- Development has begun on the "File Explorer" tool (not yet visible).
+
+<p></p>
+
 	13/03/2026: version 26.03.13a
 	- PEP correction
 

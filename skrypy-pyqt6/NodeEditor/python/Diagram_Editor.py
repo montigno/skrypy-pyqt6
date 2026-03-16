@@ -13,11 +13,11 @@ Last modification on 04 feb. 2026
 '''
 
 from PyQt6.QtCore import QByteArray, Qt, QStringListModel, QLineF, QPointF, \
-    QMimeData, QRectF, pyqtSlot, QRunnable, QTimer, pyqtSignal
+    QMimeData, QRectF, pyqtSlot, QRunnable, QTimer, pyqtSignal, QDir
 from PyQt6.QtGui import QStandardItemModel, QPixmap, QPainterPath, QCursor, \
     QBrush, QStandardItem, QPainter, QImage, QTransform, QColor, QFont, QPen, \
     QPolygonF, QLinearGradient, QKeySequence, QIcon, QFontMetrics, QPalette, \
-    QPainterPathStroker, QAction
+    QPainterPathStroker, QAction, QFileSystemModel
 from PyQt6.QtWidgets import QMenuBar, QTextEdit, QGraphicsScene, QDialog, \
     QGraphicsView, QGraphicsPathItem, QGraphicsPolygonItem, \
     QGraphicsRectItem, QSpinBox, QDoubleSpinBox, QComboBox, \
@@ -26,7 +26,7 @@ from PyQt6.QtWidgets import QMenuBar, QTextEdit, QGraphicsScene, QDialog, \
     QHBoxLayout, QLabel, QPushButton, QGraphicsProxyWidget, QGraphicsTextItem, \
     QGridLayout, QCheckBox, QLineEdit, QCompleter, QToolBar, \
     QProgressBar, QApplication, QScrollArea, QProgressDialog, \
-    QMdiArea, QMdiSubWindow, QTabWidget
+    QMdiArea, QMdiSubWindow, QTabWidget, QGraphicsWidget, QGraphicsLinearLayout
 
 from collections import deque
 from enum import Enum
@@ -45,6 +45,7 @@ import yaml
 import shutil
 from random import randint
 from threading import Timer
+import math
 
 from . import Config, Plugin, AboutSoft
 from . import DefinitType
@@ -3224,22 +3225,16 @@ class DiagramView(QGraphicsView):
 
     def __init__(self, scene, parent=None):
         QGraphicsView.__init__(self, scene, parent)
+        self.setCacheMode(QGraphicsView.CacheModeFlag.CacheBackground)
+        self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.SmartViewportUpdate)
         self.setRenderHints(QPainter.RenderHint.Antialiasing |
                             QPainter.RenderHint.SmoothPixmapTransform)
-        # self.setMouseTracking(True)
         self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.setResizeAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.scalefactor = 1
         self.setBackgroundBrush(ItemColor.BACKGROUND.value)
         self.setDragMode(QGraphicsView.DragMode.RubberBandDrag)
         self.setRubberBandSelectionMode(Qt.ItemSelectionMode.IntersectsItemShape)
-        # self.gridVisible = True
-        # self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        # self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        # self.horizontalScrollBar().setStyleSheet('background: grey')
-        # self.verticalScrollBar().setStyleSheet('background: grey')
-        # self.verticalScrollBar().installEventFilter(self);
-        # self.horizontalScrollBar().installEventFilter(self);
         self.setContentsMargins(0, 0, 0, 0)
         self.setMouseTracking(True)
         self.setAcceptDrops(True)
@@ -3250,7 +3245,52 @@ class DiagramView(QGraphicsView):
         self.currentScript = None
         self.m_originX, self.m_originY = 0, 0
 
-#         self.startPos = None
+        self.base_grid = ItemGrid.SPACEGRID.value
+        self.major_step = ItemGrid.MAJORSTEP.value
+
+        self.pen_minor = QPen(ItemColor.GRID_MINOR.value)
+        self.pen_major = QPen(ItemColor.GRID_MAJOR.value)
+        self.pen_axis = QPen(ItemColor.GRID_AXIS.value)
+        
+        self.pen_minor.setWidth(1)
+        self.pen_major.setWidth(1)
+        self.pen_axis.setWidth(2)
+        
+    def drawBackground(self, painter, rect):
+        super().drawBackground(painter, rect)
+
+        zoom = self.transform().m11()
+        grid = self.base_grid
+        while grid * zoom < 15:
+            grid *= 2
+        left = math.floor(rect.left() / grid) * grid
+        top = math.floor(rect.top() / grid) * grid
+        minor = []
+        major = []
+
+        x = left
+        while x < rect.right():
+            if int(x / grid) % self.major_step == 0:
+                major.append(QLineF(x, rect.top(), x, rect.bottom()))
+            else:
+                minor.append(QLineF(x, rect.top(), x, rect.bottom()))
+            x += grid
+
+        y = top
+        while y < rect.bottom():
+            if int(y / grid) % self.major_step == 0:
+                major.append(QLineF(rect.left(), y, rect.right(), y))
+            else:
+                minor.append(QLineF(rect.left(), y, rect.right(), y))
+            y += grid
+
+        painter.setPen(self.pen_minor)
+        painter.drawLines(minor)
+        painter.setPen(self.pen_major)
+        painter.drawLines(major)
+        painter.setPen(self.pen_axis)
+        painter.drawLine(QLineF(0, rect.top(), 0, rect.bottom()))
+        painter.drawLine(QLineF(rect.left(), 0, rect.right(), 0))
 
     def dragEnterEvent(self, event):
         event.accept()
@@ -3323,6 +3363,7 @@ class DiagramView(QGraphicsView):
                 break
 
         editor.diagramScene[editor.currentTab].clearSelection()
+        self.a1 = None
 
         if event.mimeData().hasUrls():
             dialog = QProgressDialog('Loading ...', None, 0, 0, None)
@@ -3383,8 +3424,6 @@ class DiagramView(QGraphicsView):
                                       editor.getlib()[name][1]).getBlocks()
                 view_pos = event.position()
                 self.b1.setPos(self.mapToScene(int(view_pos.x()), int(view_pos.y())))
-
-                # self.b1.setPos(self.mapToScene(event.pos()))
                 self.scene().addItem(self.b1)
                 editor.listItems[editor.currentTab][self.b1.unit] = self.b1
                 self.addItemLoop(self.b1.unit)
@@ -3466,6 +3505,10 @@ class DiagramView(QGraphicsView):
                     self.a1 = ConnectorItem('unkn', '', 70, 26, 'out', 'unkn', '', True)
             elif "Stop_execution" in name:
                 self.a1 = StopExecution('newStopExec', True)
+            elif "File_explorer" in name:
+                self.a1 = GraphicsWindow('newExplorer', 'File Explorer', True)
+            
+        if self.a1:
             view_pos = event.position()
             self.a1.setPos(self.mapToScene(int(view_pos.x()), int(view_pos.y())))
             self.scene().addItem(self.a1)
@@ -3475,7 +3518,7 @@ class DiagramView(QGraphicsView):
                 self.addItemLoop(self.a1.unit)
             except Exception:
                 pass
-        UpdateUndoRedo()
+            UpdateUndoRedo()
         return QGraphicsView.dropEvent(self, event)
 
     def addItemLoop(self, unitItem):
@@ -4459,10 +4502,157 @@ class ForLoopItem(QGraphicsRectItem):
         editor.deleteItemsLoop(self)
 
 
+class FileExplorer(QWidget):
+    def __init__(self, parent=None):
+        super(FileExplorer, self).__init__(parent)
+        
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+
+        model = QFileSystemModel()
+        model.setRootPath(QDir.homePath())
+
+        tree = QTreeView()
+        tree.setModel(model)
+        tree.setRootIndex(model.index(QDir.homePath()))
+
+        layout.addWidget(tree)
+
 class getPathWork():
     def pathWork(self):
         return editor.currentpathwork
 
+
+class GraphicsWindow(QGraphicsWidget):
+
+    def __init__(self, unit='', label='', isMod=True, parent=None):
+        super(GraphicsWindow, self).__init__(parent)
+        
+        self.unit = unit
+        self.isMod = isMod
+
+        self.setZValue(1)
+        # self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self.setFlags(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable | QGraphicsItem.GraphicsItemFlag.ItemIsMovable | QGraphicsItem.GraphicsItemFlag.ItemSendsGeometryChanges)
+        self.dragging = False
+        self.resizing = False
+
+        self.resize(420, 300)
+
+        layout = QGraphicsLinearLayout(Qt.Orientation.Vertical)
+        self.setLayout(layout)
+
+        self.title_bar = QLabel(label)
+        self.title_bar.setStyleSheet("""
+            background:#2c2c2c;
+            color:white;
+            padding:6px;
+        """)
+        title_proxy = QGraphicsProxyWidget()
+        title_proxy.setWidget(self.title_bar)
+
+        widget = FileExplorer()
+        self.content_proxy = QGraphicsProxyWidget()
+        self.content_proxy.setWidget(widget)
+
+        layout.addItem(title_proxy)
+        layout.addItem(self.content_proxy)
+
+        layout.setStretchFactor(title_proxy, 0)
+        layout.setStretchFactor(self.content_proxy, 1)
+        
+        
+        self.wmin, self.hmin = 60, 60
+        self.w = self.boundingRect().size().width() + 6
+        self.h = self.boundingRect().size().height() + 6
+        
+        self.inputs, self.outputs = [], []
+        self.outputs.append(Port('', 'out', 'list_path', self.unit, True, self.isMod, 80, -12, self))
+        self.outputs[0].setPos(self.w + 2, self.h / 2)
+        
+        x, y = self.newSize(self.w, self.h)
+        
+        if self.isMod:
+            self.res = Slide(self)
+            self.res.setPos(x, y)
+            # self.ongrid = True
+            self.res.posChangeCallbacks.append(self.newSize)  # Connect the callback
+            self.res.setFlag(self.res.GraphicsItemFlag.ItemIsSelectable, True)
+            self.res.wmin = self.wmin
+            self.res.hmin = self.hmin
+        
+    def itemChange(self, *args, **kwargs):
+        if args[0] == self.GraphicsItemChange.ItemPositionHasChanged:
+            xV = round(args[1].x() / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value
+            yV = round(args[1].y() / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value
+            self.setPos(QPointF(xV, yV))
+        return QGraphicsItem.itemChange(self, *args, **kwargs)
+        
+    def newSize(self, w, h):
+        # Limit the block size:
+        if h < self.hmin:
+            h = self.hmin + 2
+        if w < self.wmin:
+            w = self.wmin
+
+        w, h = round(w / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value, round(h / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value
+
+        self.resize(w, h)
+        
+        self.outputs[0].setPos(w, h / 2)
+        
+        return w, h
+
+    # # -------------------
+    # # Gestion des événements souris
+    # # -------------------
+    # def mousePressEvent(self, event):
+    #     rect = self.boundingRect()
+    #     # coin bas droit : resize
+    #     if rect.width() - event.pos().x() < 15 and rect.height() - event.pos().y() < 15:
+    #         self.resizing = True
+    #     # barre de titre : drag
+    #     elif event.pos().y() < 30:
+    #         self.dragging = True
+    #         self.drag_offset = event.pos()
+    #     else:
+    #         self.dragging = False
+    #
+    #     # focus devant
+    #     self.setZValue(self.zValue() + 1)
+    #     super().mousePressEvent(event)
+    #
+    # def mouseMoveEvent(self, event):
+    #     if self.dragging:
+    #         new_pos = self.pos() + (event.pos() - self.drag_offset)
+    #         self.setPos(new_pos)
+    #     elif self.resizing:
+    #         w = max(200, event.pos().x())
+    #         h = max(150, event.pos().y())
+    #         self.resize(w, h)
+    #     else:
+    #         super().mouseMoveEvent(event)
+    #
+    # def mouseReleaseEvent(self, event):
+    #     self.dragging = False
+    #     self.resizing = False
+    #     super().mouseReleaseEvent(event)
+
+    # -------------------
+    # Dessin : fenêtre + poignée
+    # -------------------
+    def paint(self, painter, option, widget):
+        rect = self.boundingRect()
+
+        # fond
+        painter.setBrush(QColor(45, 45, 45))
+        painter.setPen(QPen(QColor(20, 20, 20), 2))
+        painter.drawRect(rect)
+
+        # # poignée resize
+        # handle = QRectF(rect.width() - 10, rect.height() - 10, 10, 10)
+        # painter.setBrush(QColor(180, 180, 180))
+        # painter.drawRect(handle)
 
 class Imagebox(QGraphicsRectItem):
 
@@ -4676,13 +4866,16 @@ class Imagebox(QGraphicsRectItem):
         event.accept()
 #         return QGraphicsRectItem.hoverEnterEvent(self, event)
 
-    # def itemChange(self, *args, **kwargs):
-    #     gridSize = ItemGrid.SPACEGRID.value
-    #     if args[0] == self.GraphicsItemChange.ItemPositionHasChanged:
-    #         xV = round(args[1].x() / gridSize) * gridSize
-    #         yV = round(args[1].y() / gridSize) * gridSize
-    #         self.setPos(QPointF(xV, yV))
-    #     return QGraphicsRectItem.itemChange(self, *args, **kwargs)
+    def itemChange(self, *args, **kwargs):
+        if self.isMod:
+            if args[0] == self.GraphicsItemChange.ItemPositionHasChanged:
+                xV = round(args[1].x() / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value
+                yV = round(args[1].y() / ItemGrid.SPACEGRID.value) * ItemGrid.SPACEGRID.value
+                self.setPos(QPointF(xV, yV))
+            try:
+                return QGraphicsRectItem.itemChange(self, *args, **kwargs)
+            except Exception as err:
+                print(err)
 
     def mousePressEvent(self, event):
         if self.isMod:
@@ -4764,6 +4957,9 @@ class ItemColor(Enum):
     TEXT_PORT_LABEL_INPUT2 = QColor(150, 150, 150, 255)
     TEXT_PORT_LABEL_OUTPUT2 = QColor(150, 150, 150, 255)
     BIS_LINK = BACKGROUND
+    GRID_MINOR = QColor(80, 60, 60, 100)
+    GRID_MAJOR = QColor(120, 100, 100, 100)
+    GRID_AXIS = QColor(150, 80, 80, 100)
 #     bis_link = QColor(30, 30, 30, 255)
     FOCUS_LINK = QColor(150, 150, 250, 255)
     FRAME_COMMENT = QColor(100, 100, 200, 255)
@@ -4798,8 +4994,9 @@ class ItemMouse(Enum):
 
 
 class ItemGrid(Enum):
-    SPACEGRID = 0.01
-    # SPACEGRID = 25
+    # SPACEGRID = 0.01
+    SPACEGRID = 20
+    MAJORSTEP = 5
 
 
 class ItemResize(Enum):
@@ -6209,6 +6406,7 @@ class NodeEdit(QWidget):
                                                 'Constant_combobox', 'Constant_boolean', 'Constant_path',
                                                 'Constant_tuple'),
                                   'Control': ('Stop_execution',),
+                                  # 'Explorer': ('File_explorer',),
                                   'Loop': ('For_sequential', 'For_multiprocessing', 'For_multithreading'),
                                   'Probes': ('Value', 'Type', 'Length'),
                                   'Script': ('Script_python', 'Macro_ImageJ'),
