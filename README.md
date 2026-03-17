@@ -10,6 +10,12 @@ A documentation is available here : [https://montigno.github.io/skrypy-pyqt6](ht
 
 <p></p>
 
+	17/03/2026: version 26.03.17a
+	- Continued development of the file explorer tool
+	- Some bugs fixed
+
+<p></p>
+
 	16/03/2026: version 26.03.16a
 	- Background grid added
 	- Development has begun on the "File Explorer" tool (not yet visible).

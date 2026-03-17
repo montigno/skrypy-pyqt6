@@ -658,25 +658,25 @@ class executionMacro:
             az = lst.split('=')
             ispath = ':/' in az[1]
             if ':' in az[1] and not ispath:
-                if type(listDynamicValue[az[1]]).__name__ in ['tuple', 'list', 'range']:
-                    val = listDynamicValue[az[1]]
+                value_type = listDynamicValue[az[1]]
+                if type(value_type).__name__ in ['tuple', 'list', 'range']:
+                    val = value_type
                     val = 'newArray(' + ','.join(('\'' + x + '\'') for x in val) + ')'
                     code += az[0] + ' = ' + val
-                elif type(listDynamicValue[az[1]]).__name__ in 'str':
-                    code += az[0] + ' = "' + str(listDynamicValue[az[1]]) + '"'
-                elif (type(listDynamicValue[az[1]]).__name__ in ['bool']):
-                    val = listDynamicValue[az[1]]
+                elif type(value_type).__name__ in 'str':
+                    code += az[0] + ' = "' + str(value_type) + '"'
+                elif (type(value_type).__name__ in ['bool']):
+                    val = value_type
                     val == 1 if val == 'True' else 0
-                elif ('float' in type(listDynamicValue[az[1]]).__name__ or
-                      'int' in type(listDynamicValue[az[1]]).__name__):
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]])
-                elif (type(listDynamicValue[az[1]]).__name__ in ['array']):
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]])
-                elif type(listDynamicValue[az[1]]).__name__ in ['memmap']:
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]].tolist())
-                elif type(listDynamicValue[az[1]]).__name__ in ['ndarray']:
-                    code += az[0] + ' = ' + str(listDynamicValue[az[1]].tolist())
-                elif type(listDynamicValue[az[1]]).__name__ in ['NoneType']:
+                elif isinstance(value_type, (int, float)):
+                    code += az[0] + ' = ' + str(value_type)
+                elif (type(value_type).__name__ in ['array']):
+                    code += az[0] + ' = ' + str(value_type)
+                elif type(value_type).__name__ in ['memmap']:
+                    code += az[0] + ' = ' + str(value_type.tolist())
+                elif type(value_type).__name__ in ['ndarray']:
+                    code += az[0] + ' = ' + str(value_type.tolist())
+                elif type(value_type).__name__ in ['NoneType']:
                     code += az[0] + ' = None'
             else:
                 code += lst
