@@ -26,7 +26,8 @@ from PyQt6.QtWidgets import QMenuBar, QTextEdit, QGraphicsScene, QDialog, \
     QHBoxLayout, QLabel, QPushButton, QGraphicsProxyWidget, QGraphicsTextItem, \
     QGridLayout, QCheckBox, QLineEdit, QCompleter, QToolBar, \
     QProgressBar, QApplication, QScrollArea, QProgressDialog, \
-    QMdiArea, QMdiSubWindow, QTabWidget, QGraphicsWidget, QGraphicsLinearLayout
+    QMdiArea, QMdiSubWindow, QTabWidget, QGraphicsWidget, QGraphicsLinearLayout,\
+    QStyle
 
 from collections import deque
 from enum import Enum
@@ -67,14 +68,71 @@ from . import setPreferences, setLimits, TextEditor
 # showGrid = True
 
 
+class AdvancedPlate(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(8, 8, 8, 8)
+        self.layout.setSpacing(2)  # réduire interlignes
+
+        self.setLayout(self.layout)
+
+        self.info_dict = {
+            "Author(s)": "",
+            "Date": datetime.today().date(),
+            "Project": "my project",
+            "Statut": "Under development"
+        }
+
+        self.labels = {}
+        self.update_content(self.info_dict)
+
+        self.setStyleSheet("""
+            background-color: rgba(230,230,250,220);
+            border-radius: 10px;
+            border: 1px solid black;
+        """)
+
+    def mouseDoubleClickEvent(self, event):
+        dialog = EditDialog(self.info_dict)
+
+        if dialog.exec_():
+            info_dict = dialog.get_info()
+            self.update_content(info_dict)
+
+    def update_content(self, info_dict):
+        """Met à jour dynamiquement le contenu de la plaque"""
+        self.info_dict = info_dict.copy()
+
+        # Supprimer labels existants qui ne sont plus dans info_dict
+        for key in list(self.labels.keys()):
+            if key not in info_dict:
+                label = self.labels.pop(key)
+                self.layout.removeWidget(label)
+                label.deleteLater()
+
+        # Ajouter / mettre à jour les labels
+        for key, value in info_dict.items():
+            if key in self.labels:
+                self.labels[key].setText(f"{key}: {value}")
+            else:
+                label = QLabel(f"{key}: {value}")
+                label.setStyleSheet("color: black;")
+                self.layout.addWidget(label)
+                self.labels[key] = label
+        self.updateGeometry()
+        # self.adjustSize()
+
+
 class ArrowDynamicDown(QGraphicsPolygonItem):
 
     def __init__(self, parent=None):
-        super(ArrowDynamicDown, self).__init__(QPolygonF([QPointF(14, -9),
-                                                          QPointF(22, -9),
-                                                          QPointF(22, -7),
-                                                          QPointF(14, -7)]),
-                                               parent)
+        ARROW_DOWN = [
+            (14, -9), (22, -9), (22, -7), (14, -7)
+        ]
+        polygon = QPolygonF(QPointF(x, y) for x, y in ARROW_DOWN)
+        super(ArrowDynamicDown, self).__init__(polygon, parent)
         self.setBrush(QBrush(Qt.GlobalColor.red))
         self.setCursor(QCursor(ItemMouse.HANDLETOPITEM.value))
         self.answer = False
@@ -91,19 +149,13 @@ class ArrowDynamicDown(QGraphicsPolygonItem):
 class ArrowDynamicUp(QGraphicsPolygonItem):
 
     def __init__(self, parent=None):
-        super(ArrowDynamicUp, self).__init__(QPolygonF([QPointF(3, -9),
-                                                        QPointF(6, -9),
-                                                        QPointF(6, -12),
-                                                        QPointF(8, -12),
-                                                        QPointF(8, -9),
-                                                        QPointF(11, -9),
-                                                        QPointF(11, -7),
-                                                        QPointF(8, -7),
-                                                        QPointF(8, -4),
-                                                        QPointF(6, -4),
-                                                        QPointF(6, -7),
-                                                        QPointF(3, -7)]),
-                                             parent)
+        ARROW_UP = [
+            (3, -9), (6, -9), (6, -12), (8, -12),
+            (8, -9), (11, -9), (11, -7), (8, -7),
+            (8, -4), (6, -4), (6, -7), (3, -7)
+        ]
+        polygon = QPolygonF(QPointF(x, y) for x, y in ARROW_UP)
+        super().__init__(polygon, parent)
         self.setBrush(QBrush(Qt.GlobalColor.green))
         self.setCursor(QCursor(ItemMouse.HANDLETOPITEM.value))
         self.answer = False
@@ -121,7 +173,6 @@ class ArrowOptions(QGraphicsPolygonItem):
 
     def __init__(self, parent=None):
         super(ArrowOptions, self).__init__(QPolygonF([QPointF(5, -9),
-                                                      # QPointF(10, -15),
                                                       QPointF(15, -9),
                                                       QPointF(10, -3)]),
                                            parent)
@@ -157,8 +208,6 @@ class BlockCreate(QGraphicsRectItem):
         self.preview = False
         self.moved = False
 
-        self.setAcceptHoverEvents(True)
-
         if self.category:
             self.editBlock(ItemColor.PROCESS_TOP.value, ItemColor.PROCESS_BOT.value, ItemColor.FRAME_PROCESS.value)
         else:
@@ -166,6 +215,37 @@ class BlockCreate(QGraphicsRectItem):
 
         self.caseFinal = False
         self.currentLoop = None
+        
+        self.setAcceptHoverEvents(True)
+        if isMod:
+            self.setFlag(self.GraphicsItemFlag.ItemSendsGeometryChanges)
+            
+    def paint(self, painter, option, widget=None):
+        # super().paint(painter, option, widget)
+
+        rect = self.rect()
+
+        if self.category:
+            colorGradient1, colorGradient2, colorPen = ItemColor.PROCESS_TOP.value, ItemColor.PROCESS_BOT.value, ItemColor.FRAME_PROCESS.value
+        else:
+            colorGradient1, colorGradient2, colorPen = ItemColor.SUBPROCESS_TOP.value, ItemColor.SUBPROCESS_BOT.value, ItemColor.FRAME_SUBPROCESS.value
+
+        gradient = QLinearGradient(QPointF(0, 0), QPointF(0, 50))
+        gradient.setColorAt(0, colorGradient1)
+        gradient.setColorAt(1, colorGradient2)
+
+        pen = QPen()
+        pen.setColor(colorPen)
+        pen.setStyle(Qt.PenStyle.SolidLine)
+        pen.setWidth(4)
+
+        painter.setPen(pen)
+        painter.setBrush(QBrush(gradient))
+
+        if option.state & QStyle.StateFlag.State_Selected:
+            super().paint(painter, option, widget)
+        radius = 12
+        painter.drawRoundedRect(rect, radius, radius)
 
     def addProbesOutputs(self):
         height = self.boundingRect().height() / 2
@@ -323,9 +403,7 @@ class BlockCreate(QGraphicsRectItem):
         menu.exec(event.screenPos())
 
     def editBlock(self, colorGradient1, colorGradient2, colorPen):
-        # self.colorGradient1 = colorGradient1
-        # self.colorGradient2 = colorGradient2
-        # self.colorPen = colorPen
+
         gradient = QLinearGradient(QPointF(0, 0), QPointF(0, 50))
         gradient.setColorAt(0, colorGradient1)
         gradient.setColorAt(1, colorGradient2)
