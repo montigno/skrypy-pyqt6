@@ -4,6 +4,8 @@ from PyQt6.QtWidgets import QDialog, QPlainTextEdit, QHBoxLayout, QPushButton, \
     QLineEdit, QVBoxLayout, QTextEdit, QCompleter
 from subprocess import Popen, PIPE, STDOUT
 
+import sys
+
 
 class manage_pck(QDialog):
 
@@ -18,11 +20,11 @@ class manage_pck(QDialog):
         a = QTextEdit()
         a.setMinimumHeight(100)
         a.setReadOnly(True)
-        a.insertHtml('-- to list the packages already installed in your virtual environment, type : <b>pip3 list</b><br> ')
-        a.insertHtml('-- to install your package, type : <b>pip3 install <i>package_name</i></b> (ex: pip3 install numpy)<br>')
-        a.insertHtml('-- to install your package with version, type : <b>pip3 install <i>package_name==version</i></b> (ex: pip3 install numpy==1.21.0)<br>')
-        a.insertHtml('-- to uninstall a package, type: <b>pip3 uninstall <i>package_name</i></b> (ex : pip3 uninstall numpy) <br>')
-        a.insertHtml('-- to update a package, type: <b>pip3 install <i>package_name</i> --upgrade</b> (ex : pip3 install numpy --upgrade) <br>')
+        a.insertHtml('-- to list the packages already installed in your virtual environment, type : <b>pip list</b><br> ')
+        a.insertHtml('-- to install your package, type : <b>pip install <i>package_name</i></b> (ex: pip install numpy)<br>')
+        a.insertHtml('-- to install your package with version, type : <b>pip install <i>package_name==version</i></b> (ex: pip install numpy==1.21.0)<br>')
+        a.insertHtml('-- to uninstall a package, type: <b>pip uninstall <i>package_name</i></b> (ex : pip uninstall numpy) <br>')
+        a.insertHtml('-- to update a package, type: <b>pip install <i>package_name</i> --upgrade</b> (ex : pip install numpy --upgrade) <br>')
 
         self.b = QPlainTextEdit()
         fixed_font = QFont("monospace")
@@ -40,7 +42,7 @@ class manage_pck(QDialog):
 
         hlayout = QHBoxLayout()
 
-        self.cmd = QLineEdit('pip3 install package_name')
+        self.cmd = QLineEdit('pip install package_name')
         self.cmd.setMinimumWidth(400)
 
         self.button_run = QPushButton('run', self)
@@ -60,10 +62,10 @@ class manage_pck(QDialog):
     def install_package(self):
         self.cmd.setEnabled(False)
         self.button_run.setEnabled(False)
-        command = self.cmd.text()
+        command = str(sys.executable) + ' -m ' + self.cmd.text()
         if 'uninstall' in command:
-            if '-y' not in command:
-                command = "pip3 uninstall -y " + command[command.find("uninstall") + 10:]
+            if ' -y ' not in command:
+                command = str(sys.executable) + ' -m ' + 'pip uninstall -y ' + command[command.find("uninstall") + 10:]
         self.b.clear()
         self.b.insertPlainText(command + "\n")
         self.b.update()
