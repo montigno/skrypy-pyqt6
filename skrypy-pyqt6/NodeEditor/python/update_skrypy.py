@@ -1,5 +1,5 @@
 import os
-import git
+# import git
 import shutil
 import yaml
 import tempfile
@@ -11,6 +11,10 @@ from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, \
 
 class skrypy_update(QDialog):
     def __init__(self, parent=None):
+        try:
+            import git
+        except ImportError:
+            print("Git is not installed on your system. Please install it with the command 'sudo apt-get install git-all'.")
         super(skrypy_update, self).__init__(parent)
         self.setWindowTitle("Skrypy Updater")
         self.setMinimumWidth(400)
