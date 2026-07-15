@@ -19,6 +19,16 @@ If you don't have Python3 or not the right version, you can try this method::
 	sudo apt-get update
 	sudo apt-get install python3.x # x the chosen version between 6 and 12
 
+Git
+---
+
+Git will allow you to update Skrypy via the Help -> Update Skrypy menu.
+
+To install::
+
+	sudo apt-get update
+	sudo apt-get install git-all
+
 Miniconda
 ---------
 
