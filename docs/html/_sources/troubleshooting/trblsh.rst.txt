@@ -7,15 +7,27 @@ Bugs with Qt
 
 1. Error with "xcb":
 
-   .. |pic1| image:: ../ressources/Bug_Qt6.png
+   .. |pic1| image:: ../ressources/Bug_Qt5.png
       :width: 100%
-      :alt: (bug Qt6)
+      :alt: (bug Qt5)
 
 |pic1|
 
    Solution::
 
-	sudo apt-get install -y libxcb-cursor-dev
+	sudo apt install \
+    		libxcb-cursor0 \
+    		libxcb-xinerama0 \
+    		libxcb-render0 \
+    		libxcb-render-util0 \
+    		libxcb-shape0 \
+    		libxcb-randr0 \
+    		libxcb-image0 \
+    		libxcb-keysyms1 \
+    		libxcb-icccm4 \
+    		libxcb-sync1 \
+    		libxcb-xfixes0 \
+    		libxkbcommon-x11-0
 
 
 Bug with Matlab
