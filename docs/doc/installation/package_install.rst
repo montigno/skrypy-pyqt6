@@ -6,7 +6,7 @@ When installing Skrypy, some packages have already been installed. To install ot
 
 #. On terminal::
 
-	cd /skrypy_root/skrypy_venv_312
+	cd /skrypy_root/skrypy_venv
 	source bin/activate
 	pip3 install <your package>
 

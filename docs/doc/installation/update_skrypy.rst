@@ -9,6 +9,10 @@ How to upgrade Skrypy
       :width: 30%
       :alt: (dialog update)
 
+.. important::
+   Git must be installed to update Skrypy. See `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#git>`__.
+
+
 1. In the 'Help' menu, click on 'Update Skrypy'
 
   |pic1|

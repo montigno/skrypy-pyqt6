@@ -28,45 +28,27 @@ Install
 
 	cd skrypy-main
 
+#. Make the installer file executable::
+
+	chmod +x install_skrypy_Linux.sh
+
 #. Launch the install::
 
-	python3.12 setup.py /home/user/Applications/skrypy_venv
+	./install_skrypy_Linux.sh
 
    .. tip::
 
-	**python3.12**: choose the version of Python (see `requirements chapter <https://montigno.github.io/skrypy/html/installation/requirements.html>`__). |br|
-	**setup.py**: contains the installation code. |br|
-	**/home/user/Applications/skrypy_venv**: specify the installation path of your virtual environment. |br|
+	**Do not do** 'sh install_skrypy_Linux.sh'. |br|
+	**Installation folder [/home/user_name/Applications]** : press Enter to select the default folder or type your installation folder path. |br|
 
    .. NOTE::
 
-	At the end of this step, 3 aliases are created in your OS's .bashrc file (312 as Python version). |br|
-	**skrypy_312** to launch Skrypy. |br|
-	**skrypy_312_install** for installing Python packages. |br|
-	**skrypy_312_test** to test that skrypy is working properly. |br|
+	This installs your virtual environment with some Python packages (Numpy, Matplotlib, ...).
 
-#. Reload .bashrc::
+#. To launch Skrypy:
 
-	source ~/.bashrc
-
-#. Install packages::
-
-	skrypy_312_packages
-
-   .. NOTE::
-
-	This installs all packages written in Python (TensorFlow, Numpy, etc...) in your virtual environment.
-
-   .. attention::
-	It takes a little time and will take up about 10GB.
-
-Test
-----
-
-#. To test if Skrypy is working, type in the terminal::
-
-	skrypy_312_test
-
+	- type skrypy on Terminal.
+	- or use the Skrypy launcher in the Applications menu.
 
 .. # define a hard line break for HTML
 .. |br| raw:: html

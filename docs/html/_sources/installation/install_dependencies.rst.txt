@@ -194,8 +194,8 @@ To give an idea, here is a configuration of **env_parameters.txt** file::
 	sh /home/olivier/Applications/fsl/etc/fslconf/fsl.sh
 
 	#ANTs
-	export PATH=/home/olivier/Applications/ants-2.5.0
-	export ANTSPATH=/home/olivier/Applications/ants-2.5.0
+	export PATH=/home/olivier/Applications/ants-2.5.0/bin
+	export ANTSPATH=/home/olivier/Applications/ants-2.5.0/bin
 
 	#MRTrix3
 	export PATH=/home/olivier/Applications/mrtrix3/bin

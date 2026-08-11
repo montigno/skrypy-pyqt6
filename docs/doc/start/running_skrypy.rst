@@ -1,7 +1,7 @@
-Running Skrypy
+Using Skrypy
 ==============
 
-This page explains how to launch Skrypy locally or on a cluster.
+This page explains how to execute diagrams (pipelines) locally or on a cluster.
 
    .. |pic1| image:: ../ressources/Skrypy_buttons.png
       :width: 100%

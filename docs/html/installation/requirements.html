@@ -60,7 +60,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Using Skrypy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
 </ul>
@@ -105,22 +105,22 @@
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Skrypy is developed and runs on Linux. <br />
-For Windows, it is under development. <br />
-It has not yet been tested for macOS.</p>
+<p>Skrypy is developed on Ubuntu. <br />
+It runs on Linux and Windows via WSL (Windows Subsystem for Linux). <br />
+It has not yet been tested for macOS but you can use a virtual machine (like VirtualBox) with Ubuntu inside.</p>
 </div>
 <section id="python">
 <h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>First of all, you should carefully select the correct Python 3 version (3.6 to 3.12) to install the Skrypy virtual environment. <br />
+<p>You must have Python 3.10 or more installed on your machine. <br />
 If you plan to use <a class="reference external" href="https://www.mathworks.com/help/matlab/matlab-engine-for-python.html">the Matlab engine</a>, you should check <a class="reference external" href="https://fr.mathworks.com/support/requirements/python-compatibility.html">the supported versions</a>. <br />
 Otherwise it is recommended to use at least Python3.12 version.</p>
 </div>
 <p>If you don’t have Python3 or not the right version, you can try this method:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">deadsnakes</span><span class="o">/</span><span class="n">ppa</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">.</span><span class="n">x</span> <span class="c1"># x the chosen version between 6 and 12</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">.</span><span class="n">x</span> <span class="c1"># x the chosen version between 10 and 12</span>
 </pre></div>
 </div>
 </section>

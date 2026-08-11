@@ -49,7 +49,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to install Skrypy</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#download-the-installer">Download the installer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test">Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="package_install.html">How to install Python packages</a></li>
@@ -59,7 +58,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Running Skrypy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/running_skrypy.html">Using Skrypy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start/demo_1.html">Beginner Skrypy tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start/shared_memory.html">Shared memory for inter-process</a></li>
 </ul>
@@ -126,51 +125,32 @@
 </pre></div>
 </div>
 </li>
+<li><p>Make the installer file executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">install_skrypy_Linux</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
 <li><p>Launch the install:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="mf">.12</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">skrypy_venv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install_skrypy_Linux</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><strong>python3.12</strong>: choose the version of Python (see <a class="reference external" href="https://montigno.github.io/skrypy/html/installation/requirements.html">requirements chapter</a>). <br />
-<strong>setup.py</strong>: contains the installation code. <br />
-<strong>/home/user/Applications/skrypy_venv</strong>: specify the installation path of your virtual environment. <br /></p>
+<p><strong>Do not do</strong> ‘sh install_skrypy_Linux.sh’. <br />
+<strong>Installation folder [/home/user_name/Applications]</strong> : press Enter to select the default folder or type your installation folder path. <br /></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>At the end of this step, 3 aliases are created in your OS’s .bashrc file (312 as Python version). <br />
-<strong>skrypy_312</strong> to launch Skrypy. <br />
-<strong>skrypy_312_install</strong> for installing Python packages. <br />
-<strong>skrypy_312_test</strong> to test that skrypy is working properly. <br /></p>
+<p>This installs your virtual environment with some Python packages (Numpy, Matplotlib, …).</p>
 </div>
 </li>
-<li><p>Reload .bashrc:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
-</pre></div>
-</div>
-</li>
-<li><p>Install packages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skrypy_312_packages</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This installs all packages written in Python (TensorFlow, Numpy, etc…) in your virtual environment.</p>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>It takes a little time and will take up about 10GB.</p>
-</div>
-</li>
-</ol>
-</section>
-<section id="test">
-<h2>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h2>
-<ol class="arabic">
-<li><p>To test if Skrypy is working, type in the terminal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skrypy_312_test</span>
-</pre></div>
-</div>
+<li><p>To launch Skrypy:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>type skrypy on Terminal.</p></li>
+<li><p>or use the Skrypy launcher in the Applications menu.</p></li>
+</ul>
+</div></blockquote>
 </li>
 </ol>
 </section>
