@@ -36,7 +36,7 @@ Bug with Skrypy update
 	Git must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#git>`__.
 
 
-Bug with cluster connection
+Bug with Cluster connection
 ---------------------------
 
 	sshpass must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#sshpass>`__. |br|
@@ -45,6 +45,12 @@ Bug with cluster connection
 
 		ssh user@host_name
 
+
+Bug with missing package or module
+----------------------------------
+
+	If it is a Python package that needs to be installed using pip, see `How to install Python packages <https://montigno.github.io/skrypy-pyqt5/html/installation/package_install.html>`__. |br|
+	If it concerns another dependency, see `How to install dependencies <https://montigno.github.io/skrypy-pyqt5/html/installation/install_dependencies.html>`__. |br|
 
 Bug with Matlab
 ---------------

@@ -1,6 +1,10 @@
 How to install dependencies
 ===========================
 
+.. NOTE::
+   You can install any software or dependencies of your choice. |br|
+   This page lists the most common dependencies.
+
 Environment variables
 ---------------------
 .. important::
@@ -8,7 +12,8 @@ Environment variables
    The .bashrc file is in principle sufficient, but it has been found that when processing on a cluster, it does not always load. |br|
    The best solution is to edit the file **'env_parameters.txt'** which is located in the hidden folder **/home/username/.skrypy/**. |br|
    You can edit this file in a terminal (especially for clusters) or in the menu 'Configuration'-'Edit environment variables'. |br|
-   Skrypy takes care of concatenating the 'PATH' variable.
+   Skrypy takes care of concatenating the 'PATH' variable. |br|
+   
 
 `ANTs <https://github.com/ANTsX/ANTs>`__
 ----------------------------------------
@@ -18,7 +23,7 @@ Environment variables
 #. Decompress in a folder (e.g /home/user/Applications/)
 
 #. Edit **'env_parameters.txt'** and add::
-	
+
 	#ANTs
 	export PATH=ants_root/ants-2.5.0/bin
 	export ANTSPATH=ants_root/ants-2.5.0/bin
@@ -175,6 +180,7 @@ ________________________________________________________________
 
 	#SPM12
 	export SPM_PATH=matlab_root/MATLAB/R2024b/toolbox/spm12/
+
 
 Configuration example
 ------------------------
