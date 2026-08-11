@@ -10,7 +10,7 @@ Welcome to the Skrypy documentation!
    :width: 32
    :alt: (github logo)
 
-|logoGit| `Github <https://github.com/montigno/skrypy-pyqt5>`__.
+|logoGit| `Skrypy's GitHub <https://github.com/montigno/skrypy-pyqt5>`__.
 
 (documentation still in development)
 ------------------------------------
