@@ -33,13 +33,13 @@ Bugs with Qt
 Bug with Skrypy update
 ----------------------
 
-	Git must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#git>`__.
+	Git must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#git-required>`__.
 
 
 Bug with Cluster connection
 ---------------------------
 
-	sshpass must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#sshpass>`__. |br|
+	sshpass must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#sshpass-required>`__. |br|
 
 	Test the user@host_name connection in a terminal::
 
