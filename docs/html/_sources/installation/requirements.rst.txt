@@ -6,8 +6,8 @@ Requirements
    It runs on Linux and Windows via WSL (Windows Subsystem for Linux). |br|
    It has not yet been tested for macOS but you can use a virtual machine (like VirtualBox) with Ubuntu inside.
 
-Python
-------
+Python (required)
+-----------------
 .. important::
    You must have Python 3.10 or more installed on your machine. |br|
    If you plan to use `the Matlab engine <https://www.mathworks.com/help/matlab/matlab-engine-for-python.html>`__, you should check `the supported versions <https://fr.mathworks.com/support/requirements/python-compatibility.html>`__. |br|
@@ -19,8 +19,8 @@ If you don't have Python3 or not the right version, you can try this method::
 	sudo apt-get update
 	sudo apt-get install python3.x # x the chosen version between 10 and 12
 
-Git
----
+Git (required)
+--------------
 
 Git will allow you to update Skrypy via the Help -> Update Skrypy menu.
 
@@ -29,8 +29,16 @@ To install::
 	sudo apt-get update
 	sudo apt-get install git-all
 
-Miniconda
----------
+SSHPass (required)
+------------------
+
+SSHPass is an utility which allows to provide the ssh password non-interactivly::
+
+        sudo apt install sshpass
+
+
+Miniconda (recommended)
+-----------------------
 
 Some dependencies require miniconda to be installed.
 
@@ -60,14 +68,6 @@ Some dependencies require miniconda to be installed.
 #. To deactivate conda::
 
 	conda deactivate
-
-
-SSHPass
--------
-
-SSHPass is an utility which allows to provide the ssh password non-interactivly::
-
-	sudo apt install sshpass
 
 
 

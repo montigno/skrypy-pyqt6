@@ -46,10 +46,10 @@
               <p class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#git">Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#miniconda">Miniconda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sshpass">SSHPass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-required">Python (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-required">Git (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sshpass-required">SSHPass (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#miniconda-recommended">Miniconda (recommended)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install_skrypy.html">How to install Skrypy</a></li>
@@ -109,8 +109,8 @@
 It runs on Linux and Windows via WSL (Windows Subsystem for Linux). <br />
 It has not yet been tested for macOS but you can use a virtual machine (like VirtualBox) with Ubuntu inside.</p>
 </div>
-<section id="python">
-<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<section id="python-required">
+<h2>Python (required)<a class="headerlink" href="#python-required" title="Link to this heading"></a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>You must have Python 3.10 or more installed on your machine. <br />
@@ -124,8 +124,8 @@ Otherwise it is recommended to use at least Python3.12 version.</p>
 </pre></div>
 </div>
 </section>
-<section id="git">
-<h2>Git<a class="headerlink" href="#git" title="Link to this heading"></a></h2>
+<section id="git-required">
+<h2>Git (required)<a class="headerlink" href="#git-required" title="Link to this heading"></a></h2>
 <p>Git will allow you to update Skrypy via the Help -&gt; Update Skrypy menu.</p>
 <p>To install:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
@@ -133,8 +133,15 @@ Otherwise it is recommended to use at least Python3.12 version.</p>
 </pre></div>
 </div>
 </section>
-<section id="miniconda">
-<h2>Miniconda<a class="headerlink" href="#miniconda" title="Link to this heading"></a></h2>
+<section id="sshpass-required">
+<h2>SSHPass (required)<a class="headerlink" href="#sshpass-required" title="Link to this heading"></a></h2>
+<p>SSHPass is an utility which allows to provide the ssh password non-interactivly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">sshpass</span>
+</pre></div>
+</div>
+</section>
+<section id="miniconda-recommended">
+<h2>Miniconda (recommended)<a class="headerlink" href="#miniconda-recommended" title="Link to this heading"></a></h2>
 <p>Some dependencies require miniconda to be installed.</p>
 <ol class="arabic">
 <li><p>To install:</p>
@@ -169,13 +176,6 @@ Otherwise it is recommended to use at least Python3.12 version.</p>
 </div>
 </li>
 </ol>
-</section>
-<section id="sshpass">
-<h2>SSHPass<a class="headerlink" href="#sshpass" title="Link to this heading"></a></h2>
-<p>SSHPass is an utility which allows to provide the ssh password non-interactivly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">sshpass</span>
-</pre></div>
-</div>
 </section>
 </section>
 

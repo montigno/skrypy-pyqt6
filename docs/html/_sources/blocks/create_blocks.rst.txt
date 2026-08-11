@@ -4,35 +4,31 @@ How to create a block
 This page explains how to create a new block in the library.
 
    .. |pic1| image:: ../ressources/explorer_modules.png
-      :width: 30%
+      :width: 25%
       :alt: (skrypy buttons)
 
    .. |pic2| image:: ../ressources/Blocks_library_sum.png
       :width: 20%
       :alt: (arrow)
 
-   .. |pic3| image:: ../ressources/explorer_modules_pcnn.png
-      :width: 30%
+   .. |pic3| image:: ../ressources/explorer_modules_interp.png
+      :width: 20%
       :alt: (order processes)
 
-   .. |pic4| image:: ../ressources/Blocks_library_spat.png
-      :width: 20%
+   .. |pic4| image:: ../ressources/Blocks_library_interp.png
+      :width: 25%
       :alt: (order processes cluster)
 
-   .. |pic5| image:: ../ressources/Blocks_library_pcnn.png
-      :width: 20%
-      :alt: (order processes cluster)
-
-   .. |pic6| image:: ../ressources/block_explain1.jpg
-      :width: 60%
+   .. |pic6| image:: ../ressources/block_explain1.png
+      :width: 80%
       :alt: (skrypy buttons)
 
-   .. |pic7| image:: ../ressources/block_explain2.jpg
-      :width: 60%
+   .. |pic7| image:: ../ressources/block_explain2.png
+      :width: 80%
       :alt: (arrow)
 
-   .. |pic8| image:: ../ressources/explorer_modules_pcnn_options.png
-      :width: 30%
+   .. |pic8| image:: ../ressources/explorer_modules_interp_options.png
+      :width: 20%
       :alt: (arrow)
 
 The source codes
@@ -42,7 +38,7 @@ All blocks in the library are written in Python and are located in the 'root_of_
 
 |pic1| ' ' |pic2|
 
-|pic3| ' ' |pic4| ' ' |pic5|
+|pic3| ' ' |pic4|
 
 If you open a .py file, you find a list of classes. |br|
 A block corresponds to a simple Python class. |br|
@@ -70,28 +66,28 @@ Function return types
 
 For function returns, it is necessary to add annotations and specify the type::
 
-	def out_result(self:"array_float")
+	def out_result(self) -> list[float]:
 	    return self.result
 
 Here is the list of types::
 
-	def out_result(self: "int")
-	def out_result(self: "float")
-        def out_result(self: "str")
-        def out_result(self: "bool")
-        def out_result(self: "path")
-        def out_result(self: "dict")
-        def out_result(self: "tuple")
-        def out_result(self: "list_int")
-        def out_result(self: "list_float")
-        def out_result(self: "list_str")
-        def out_result(self: "list_bool")
-        def out_result(self: "list_path")
-        def out_result(self: "array_int")
-        def out_result(self: "array_float")
-        def out_result(self: "array_str")
-        def out_result(self: "array_bool")
-        def out_result(self: "array_path")
+	def out_result(self) -> int:			(integer)
+	def out_result(self) -> float:			(float)
+        def out_result(self) -> str:			(string)
+        def out_result(self) -> bool:			(boolean)
+        def out_result(self) -> None:			(path)
+        def out_result(self) -> dict:			(dictionary)
+        def out_result(self) -> tuple:			(tuple)
+        def out_result(self) -> list[int]:		(list of integer)
+        def out_result(self) -> list[float]:		(list of float)
+        def out_result(self) -> list[str]:		(list of str)
+        def out_result(self) -> list[bool]:		(list of boolean)
+        def out_result(self) -> list[None]:		(list of path)
+        def out_result(self) -> list[list[int]]:	(array of integer)
+        def out_result(self) -> list[list[float]]:	(array of float)
+        def out_result(self) -> list[list[str]]:	(array of str)
+        def out_result(self) -> list[list[bool]]:	(array of boolean)
+        def out_result(self) -> list[list[None]]:	(array of path)
 
 
 The options

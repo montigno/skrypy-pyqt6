@@ -134,6 +134,7 @@ ________________________________________________________________
 `RS2 <https://github.com/VitoLin21/Rodent-Skull-Stripping>`__
 -------------------------------------------------------------
 
+#. Requires Miniconda, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#miniconda>`__
 #. Download RS2 `here <https://github.com/VitoLin21/Rodent-Skull-Stripping/archive/refs/heads/main.zip>`__
 #. Save it in a temporary folder
 #. In terminal::
