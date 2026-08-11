@@ -3,8 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the Skrypy documentation! 
+Welcome to the Skrypy documentation!
 ==================================== 
+
+.. |logoGit| image:: ./ressources/github.png
+   :width: 32
+   :alt: (github logo)
+
+|logoGit| `Github <https://github.com/montigno/skrypy-pyqt5>`__.
 
 (documentation still in development)
 ------------------------------------
