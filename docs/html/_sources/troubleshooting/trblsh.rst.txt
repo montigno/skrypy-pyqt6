@@ -30,6 +30,22 @@ Bugs with Qt
 		libxkbcommon-x11-0
 
 
+Bug with Skrypy update
+----------------------
+
+	Git must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#git>`__.
+
+
+Bug with cluster connection
+---------------------------
+
+	sshpass must be installed, see `here <https://montigno.github.io/skrypy-pyqt5/html/installation/requirements.html#sshpass>`__. |br|
+
+	Test the user@host_name connection in a terminal::
+
+		ssh user@host_name
+
+
 Bug with Matlab
 ---------------
 
