@@ -1,7 +1,10 @@
 How to create a block
 =====================
 
-This page explains how to create a new block in the library.
+This page explains how to create your own blocks in the library.
+
+.. important::
+   When adding new blocks, back up the 'module' folder. |br|
 
    .. |pic1| image:: ../ressources/explorer_modules.png
       :width: 25%
